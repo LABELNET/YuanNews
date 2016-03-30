@@ -1,9 +1,15 @@
 package cn.hpu.yuan.ssm.model.base;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * Created by yuan on 16-3-30.
  * 新闻基础对象
  */
+@Entity
 public class News {
 
     private Integer id;
@@ -15,6 +21,16 @@ public class News {
     private Integer rnum;
     private Integer cid;
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setRnum(int rnum) {
+        this.rnum = rnum;
+    }
+
+    @Id
+    @Column(name = "id")
     public Integer getId() {
         return id;
     }
@@ -23,6 +39,8 @@ public class News {
         this.id = id;
     }
 
+    @Basic
+    @Column(name = "title")
     public String getTitle() {
         return title;
     }
@@ -31,6 +49,8 @@ public class News {
         this.title = title;
     }
 
+    @Basic
+    @Column(name = "source")
     public String getSource() {
         return source;
     }
@@ -39,6 +59,8 @@ public class News {
         this.source = source;
     }
 
+    @Basic
+    @Column(name = "content")
     public String getContent() {
         return content;
     }
@@ -47,6 +69,8 @@ public class News {
         this.content = content;
     }
 
+    @Basic
+    @Column(name = "dt")
     public String getDt() {
         return dt;
     }
@@ -55,6 +79,8 @@ public class News {
         this.dt = dt;
     }
 
+    @Basic
+    @Column(name = "img")
     public String getImg() {
         return img;
     }
@@ -63,6 +89,8 @@ public class News {
         this.img = img;
     }
 
+    @Basic
+    @Column(name = "rnum")
     public Integer getRnum() {
         return rnum;
     }
@@ -77,5 +105,35 @@ public class News {
 
     public void setCid(Integer cid) {
         this.cid = cid;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        News news = (News) o;
+
+        if (id != null ? !id.equals(news.id) : news.id != null) return false;
+        if (title != null ? !title.equals(news.title) : news.title != null) return false;
+        if (source != null ? !source.equals(news.source) : news.source != null) return false;
+        if (content != null ? !content.equals(news.content) : news.content != null) return false;
+        if (dt != null ? !dt.equals(news.dt) : news.dt != null) return false;
+        if (img != null ? !img.equals(news.img) : news.img != null) return false;
+        if (rnum != null ? !rnum.equals(news.rnum) : news.rnum != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        result = 31 * result + (source != null ? source.hashCode() : 0);
+        result = 31 * result + (content != null ? content.hashCode() : 0);
+        result = 31 * result + (dt != null ? dt.hashCode() : 0);
+        result = 31 * result + (img != null ? img.hashCode() : 0);
+        result = 31 * result + (rnum != null ? rnum.hashCode() : 0);
+        return result;
     }
 }
