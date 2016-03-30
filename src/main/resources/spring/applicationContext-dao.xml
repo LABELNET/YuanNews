@@ -22,7 +22,7 @@
     </bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="cn.labelnet.ssm.mapper"></property>
+        <property name="basePackage" value="cn.hpu.yuan.ssm.mapper"></property>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
     </bean>
 
