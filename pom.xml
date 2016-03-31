@@ -257,6 +257,13 @@
       <version>5.2.1.Final</version>
     </dependency>
 
+    <!-- 缺少aspectjweaver.jar 依赖 -->
+    <dependency>
+      <groupId> org.aspectj</groupId >
+      <artifactId> aspectjweaver</artifactId >
+      <version> 1.6.11</version >
+    </dependency>
+
   </dependencies>
 
 </project>
