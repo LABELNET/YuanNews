@@ -12,5 +12,9 @@
 </head>
 <body>
 
+<h1> Sorry , 404 ! </h1>
+<hr>
+<h2><%=pageContext.getException()%></h2>
+
 </body>
 </html>

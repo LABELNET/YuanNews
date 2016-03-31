@@ -12,5 +12,9 @@
 </head>
 <body>
 
+<h1> Sorry , 500 ! </h1>
+<hr>
+<h2><%=pageContext.getException()%></h2>
+
 </body>
 </html>

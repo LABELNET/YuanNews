@@ -14,7 +14,19 @@
 
     Hi , Yuan ! I 'm test page !
 
+    <img src="/manager/images/1.jpg">
+
+     <br>
+    四个数据库表 ：
+    
     <img src="images/db_tables.png">
+
+    <br>
+
+    四个数据库表 1 ：
+
+    <img src="images/db_tables.png">
+
 
 </body>
 </html>
