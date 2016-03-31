@@ -13,7 +13,7 @@
     <mappers>
 
         <!-- 采用类扫描的方式加载mapper文件 -->
-         <package name="cn.hpu.yuan.ssm.mapper"/>
+         <!--<package name="cn.hpu.yuan.ssm.mapper"/>-->
     </mappers>
 
 </configuration>
