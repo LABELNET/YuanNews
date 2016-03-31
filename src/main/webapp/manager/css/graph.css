@@ -1,0 +1,116 @@
+/* Resets */
+.graph-container,
+.graph-container div,
+.graph-container a,
+.graph-container span {
+	margin: 0;
+	padding: 0;
+}
+
+/* Gradinet and Rounded Corners */
+
+/*  Graph Container */
+.graph-container {
+	position: relative;
+    width: 100%;
+    height: 150px;
+    margin: 0;
+    background:#fff;
+}
+
+.graph-container > div {
+	position: absolute;
+	width: inherit;
+	height: inherit;
+	top: 0px;
+	left:0px;
+}
+/* Text Styles */
+#tooltip, .graph-info a {
+	height: 30px;
+	font-size: 1em;
+	color: #fff;
+	background:#F26797;
+}
+
+.tickLabel {
+	font-size: 1em;
+	color:#fff;
+}
+
+/* Tooltip */
+#tooltip {
+	position: absolute;
+	display: none;
+	padding: 5px 10px;
+	border: 1px solid #e1e1e1;
+}
+
+/* Links */
+.graph-info a {
+	position: relative;
+	display: inline-block;
+	float: left;
+	padding: 7px 10px 5px 30px;
+	margin-right: 10px;
+	text-decoration: none;
+	cursor: default;
+}
+
+/* Color Circle for Links */
+.graph-info a:before {
+	position: absolute;
+	display: block;
+	content: '';
+	width: 8px;
+	height: 8px;
+	top: 13px;
+	left: 13px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+/* Colors For each Link */
+.graph-info .visitors { border-bottom: 2px solid #67398C; }
+.graph-info .returning { border-bottom: 2px solid #77b7c5; }
+
+.graph-info .visitors:before { background: #67398C; }
+.graph-info .returning:before { background: #67398C; }
+
+
+/* Hide the First and Last Y Label */
+.yAxis .tickLabel:first-child,
+.yAxis .tickLabel:last-child { display: none; }
+
+/* Clear Floats */
+.graph-info:before, .graph-info:after,
+.graph-container:before, .graph-container:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+.graph-container h3{
+	font-size:1.5em;
+	color:#FFF;
+	margin-bottom:1em;
+}
+
+@media (max-width:1280px){		
+	.graph-container {
+		height: 100px;
+	}
+}
+@media (max-width:1024px){
+	.graph-container {
+		height: 76px;
+	}
+}
+@media (max-width:800px){
+	canvas.overlay, canvas.base {
+		height: auto;
+	}
+	.graph-container {
+		height: auto;
+	}
+}
