@@ -23,4 +23,7 @@ public interface CateManagerMapper {
     //删除分类信息 : 管理的时候需要先判断是否存在正在使用的分类信息（在新闻中判断该分类下的新闻）
     Integer deleteCate(Integer id);
 
+    //添加分类信息
+    Integer insertCate(String content);
+
 }

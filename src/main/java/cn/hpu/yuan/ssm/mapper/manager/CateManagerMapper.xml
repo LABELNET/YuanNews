@@ -20,4 +20,8 @@
         DELETE FROM  cate WHERE id=#{id}
     </delete>
 
+    <insert id="insertCate" parameterType="java.lang.String">
+        INSERT INTO cate(content) VALUES (#{content})
+    </insert>
+
 </mapper>
