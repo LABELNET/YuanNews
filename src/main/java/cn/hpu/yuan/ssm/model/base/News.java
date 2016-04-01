@@ -14,12 +14,12 @@ public class News {
 
     private Integer id;
     private String title;
-    private String source;
     private String content;
     private String dt;
     private String img;
     private Integer rnum;
     private Integer cid;
+    private Integer sid;
 
     public void setId(int id) {
         this.id = id;
@@ -51,12 +51,12 @@ public class News {
 
     @Basic
     @Column(name = "source")
-    public String getSource() {
-        return source;
+    public Integer getSource() {
+        return sid;
     }
 
-    public void setSource(String source) {
-        this.source = source;
+    public void setSource(Integer sid) {
+        this.sid = sid;
     }
 
     @Basic
@@ -116,7 +116,7 @@ public class News {
 
         if (id != null ? !id.equals(news.id) : news.id != null) return false;
         if (title != null ? !title.equals(news.title) : news.title != null) return false;
-        if (source != null ? !source.equals(news.source) : news.source != null) return false;
+        if (sid != null ? !sid.equals(news.sid) : news.sid != null) return false;
         if (content != null ? !content.equals(news.content) : news.content != null) return false;
         if (dt != null ? !dt.equals(news.dt) : news.dt != null) return false;
         if (img != null ? !img.equals(news.img) : news.img != null) return false;
@@ -129,7 +129,7 @@ public class News {
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (title != null ? title.hashCode() : 0);
-        result = 31 * result + (source != null ? source.hashCode() : 0);
+        result = 31 * result + (sid != null ? sid.hashCode() : 0);
         result = 31 * result + (content != null ? content.hashCode() : 0);
         result = 31 * result + (dt != null ? dt.hashCode() : 0);
         result = 31 * result + (img != null ? img.hashCode() : 0);
@@ -142,7 +142,7 @@ public class News {
         return "News{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", source='" + source + '\'' +
+                ", source='" + sid + '\'' +
                 ", content='" + content + '\'' +
                 ", dt='" + dt + '\'' +
                 ", img='" + img + '\'' +
