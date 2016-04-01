@@ -8,6 +8,7 @@
         <!--配置别名-->
         <typeAlias type="cn.hpu.yuan.ssm.model.vo.UserVo" alias="user"/>
         <typeAlias type="cn.hpu.yuan.ssm.model.vo.NewsVo" alias="news"/>
+        <typeAlias type="cn.hpu.yuan.ssm.model.vo.CateVo" alias="cate"/>
     </typeAliases>
 
     <mappers>

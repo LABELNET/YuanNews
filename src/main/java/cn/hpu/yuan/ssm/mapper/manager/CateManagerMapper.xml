@@ -4,7 +4,20 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.hpu.yuan.ssm.mapper.manager.CateManagerMapper">
 
+    <select id="findCateById" parameterType="java.lang.Integer" resultType="cate">
+        SELECT * FROM cate WHERE id=#{id}
+    </select>
 
+    <select id="findCates" resultType="cate">
+        SELECT * FROM cate
+    </select>
 
+    <update id="updateCate">
+        UPDATE cate SET content=#{content} WHERE id=#{id}
+    </update>
+
+    <delete id="deleteCate" parameterType="java.lang.Integer">
+        DELETE FROM  cate WHERE id=#{id}
+    </delete>
 
 </mapper>

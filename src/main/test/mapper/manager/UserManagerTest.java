@@ -1,7 +1,6 @@
 package mapper.manager;
 
 import cn.hpu.yuan.ssm.mapper.manager.UserManagerMapper;
-import cn.hpu.yuan.ssm.model.custom.UserCustom;
 import cn.hpu.yuan.ssm.model.vo.UserVo;
 import org.junit.Before;
 import org.junit.Test;
