@@ -5,5 +5,4 @@
 <mapper namespace="cn.hpu.yuan.ssm.mapper.manager.TasteManagerMapper">
 
 
-
 </mapper>
