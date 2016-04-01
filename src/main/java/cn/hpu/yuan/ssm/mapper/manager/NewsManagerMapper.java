@@ -1,5 +1,6 @@
 package cn.hpu.yuan.ssm.mapper.manager;
 
+import cn.hpu.yuan.ssm.model.pojo.NewsPo;
 import cn.hpu.yuan.ssm.model.vo.NewsVo;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public interface NewsManagerMapper {
      * 查询
      */
     //根据新闻id，查询新闻（不要内容）
-    NewsVo findNewsById(Integer id);
+    NewsPo findNewsById(Integer id);
     //分页查询新闻 （不要内容）： 以id倒序排列
     List<NewsVo> findNews(Integer start,Integer num);
     //根据新闻id , 查询新闻内容
