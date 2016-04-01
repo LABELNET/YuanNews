@@ -67,4 +67,13 @@ public class Taste {
         result = 31 * result + (label != null ? label.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Taste{" +
+                "id=" + id +
+                ", label='" + label + '\'' +
+                ", uid=" + uid +
+                '}';
+    }
 }

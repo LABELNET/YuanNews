@@ -136,4 +136,18 @@ public class News {
         result = 31 * result + (rnum != null ? rnum.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "News{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", source='" + source + '\'' +
+                ", content='" + content + '\'' +
+                ", dt='" + dt + '\'' +
+                ", img='" + img + '\'' +
+                ", rnum=" + rnum +
+                ", cid=" + cid +
+                '}';
+    }
 }

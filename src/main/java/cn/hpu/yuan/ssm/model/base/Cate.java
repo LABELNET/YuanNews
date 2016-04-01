@@ -54,4 +54,12 @@ public class Cate {
         result = 31 * result + (content != null ? content.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Cate{" +
+                "id=" + id +
+                ", content='" + content + '\'' +
+                '}';
+    }
 }

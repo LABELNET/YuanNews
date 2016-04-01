@@ -1,12 +1,12 @@
 package cn.hpu.yuan.ssm.model.vo;
 
-import cn.hpu.yuan.ssm.model.base.Cate;
+import cn.hpu.yuan.ssm.model.base.Taste;
 
 /**
  * Created by yuan on 16-4-1.
- * 分类拓展类
+ * 兴趣拓展类
  */
-public class CateVo extends Cate{
+public class TasteVo extends Taste{
 
     @Override
     public String toString() {

@@ -7,4 +7,9 @@ import cn.hpu.yuan.ssm.model.base.News;
  * 客户实体类
  */
 public class NewsVo extends News{
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
