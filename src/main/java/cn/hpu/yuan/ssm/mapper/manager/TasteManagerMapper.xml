@@ -18,7 +18,7 @@
     </select>
 
     <select id="findTasteByLabel" resultType="java.lang.Integer">
-        SELECT uid FROM taste WHERE label=#{label}
+        SELECT uid FROM taste WHERE label=#{label} ORDER BY uid
     </select>
 
     <select id="findTasteByUidAndLabel" resultType="java.lang.Integer">
