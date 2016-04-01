@@ -6,36 +6,24 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * Created by yuan on 16-3-30.
- * 新闻基础对象
+ * Created by yuan on 16-4-1.
  */
 @Entity
 public class News {
-
-    private Integer id;
+    private int id;
     private String title;
     private String content;
     private String dt;
     private String img;
-    private Integer rnum;
-    private Integer cid;
-    private Integer sid;
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setRnum(int rnum) {
-        this.rnum = rnum;
-    }
+    private int rnum;
 
     @Id
     @Column(name = "id")
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -47,16 +35,6 @@ public class News {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    @Basic
-    @Column(name = "source")
-    public Integer getSource() {
-        return sid;
-    }
-
-    public void setSource(Integer sid) {
-        this.sid = sid;
     }
 
     @Basic
@@ -91,20 +69,12 @@ public class News {
 
     @Basic
     @Column(name = "rnum")
-    public Integer getRnum() {
+    public int getRnum() {
         return rnum;
     }
 
-    public void setRnum(Integer rnum) {
+    public void setRnum(int rnum) {
         this.rnum = rnum;
-    }
-
-    public Integer getCid() {
-        return cid;
-    }
-
-    public void setCid(Integer cid) {
-        this.cid = cid;
     }
 
     @Override
@@ -114,26 +84,24 @@ public class News {
 
         News news = (News) o;
 
-        if (id != null ? !id.equals(news.id) : news.id != null) return false;
+        if (id != news.id) return false;
+        if (rnum != news.rnum) return false;
         if (title != null ? !title.equals(news.title) : news.title != null) return false;
-        if (sid != null ? !sid.equals(news.sid) : news.sid != null) return false;
         if (content != null ? !content.equals(news.content) : news.content != null) return false;
         if (dt != null ? !dt.equals(news.dt) : news.dt != null) return false;
         if (img != null ? !img.equals(news.img) : news.img != null) return false;
-        if (rnum != null ? !rnum.equals(news.rnum) : news.rnum != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
+        int result = id;
         result = 31 * result + (title != null ? title.hashCode() : 0);
-        result = 31 * result + (sid != null ? sid.hashCode() : 0);
         result = 31 * result + (content != null ? content.hashCode() : 0);
         result = 31 * result + (dt != null ? dt.hashCode() : 0);
         result = 31 * result + (img != null ? img.hashCode() : 0);
-        result = 31 * result + (rnum != null ? rnum.hashCode() : 0);
+        result = 31 * result + rnum;
         return result;
     }
 
@@ -142,12 +110,10 @@ public class News {
         return "News{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", source='" + sid + '\'' +
                 ", content='" + content + '\'' +
                 ", dt='" + dt + '\'' +
                 ", img='" + img + '\'' +
                 ", rnum=" + rnum +
-                ", cid=" + cid +
                 '}';
     }
 }

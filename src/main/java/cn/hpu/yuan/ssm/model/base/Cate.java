@@ -6,13 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * Created by yuan on 16-3-30.
- * 分类基础对象
+ * Created by yuan on 16-4-1.
  */
 @Entity
 public class Cate {
-
-    private Integer id;
+    private int id;
     private String content;
 
     @Id
@@ -42,7 +40,7 @@ public class Cate {
 
         Cate cate = (Cate) o;
 
-        if (id != null ? !id.equals(cate.id) : cate.id != null) return false;
+        if (id != cate.id) return false;
         if (content != null ? !content.equals(cate.content) : cate.content != null) return false;
 
         return true;
@@ -50,7 +48,7 @@ public class Cate {
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
+        int result = id;
         result = 31 * result + (content != null ? content.hashCode() : 0);
         return result;
     }

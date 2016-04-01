@@ -6,7 +6,7 @@ import cn.hpu.yuan.ssm.model.base.Cate;
  * Created by yuan on 16-4-1.
  * 分类拓展类
  */
-public class CateVo extends Cate{
+public class CateVo extends Cate {
 
     @Override
     public String toString() {

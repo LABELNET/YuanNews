@@ -6,7 +6,7 @@ import cn.hpu.yuan.ssm.model.base.Taste;
  * Created by yuan on 16-4-1.
  * 兴趣拓展类
  */
-public class TasteVo extends Taste{
+public class TasteVo extends Taste {
 
     @Override
     public String toString() {

@@ -1,8 +1,6 @@
 package cn.hpu.yuan.ssm.model.pojo;
 
-import cn.hpu.yuan.ssm.model.vo.CateVo;
 import cn.hpu.yuan.ssm.model.vo.NewsVo;
-import cn.hpu.yuan.ssm.model.vo.SourceVo;
 
 /**
  * Created by yuan on 16-4-1.
@@ -10,22 +8,30 @@ import cn.hpu.yuan.ssm.model.vo.SourceVo;
  */
 public class NewsPo extends NewsVo {
 
-    private SourceVo sourceVo;
-    private CateVo cateVo;
+    private String cateStr;
+    private String sourceStr;
 
-    public SourceVo getSourceVo() {
-        return sourceVo;
+    public String getCateStr() {
+        return cateStr;
     }
 
-    public void setSourceVo(SourceVo sourceVo) {
-        this.sourceVo = sourceVo;
+    public void setCateStr(String cateStr) {
+        this.cateStr = cateStr;
     }
 
-    public CateVo getCateVo() {
-        return cateVo;
+    public String getSourceStr() {
+        return sourceStr;
     }
 
-    public void setCateVo(CateVo cateVo) {
-        this.cateVo = cateVo;
+    public void setSourceStr(String sourceStr) {
+        this.sourceStr = sourceStr;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString()+"NewsPo{" +
+                "cateStr=" + cateStr +
+                ", sourceStr=" + sourceStr +
+                '}';
     }
 }
