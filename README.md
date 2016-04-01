@@ -3,6 +3,15 @@
 
 
 #2015.04.01
+ * 后台管理，数据访问实现 ；
+ * 添加信息来源表 ；
+   ```
+      create table source(
+               id int(11) not null primary key auto_increment,
+               source varchar(100) not null
+             )DEFAULT CHARSET=utf8;
+
+   ```
 
 
 #2015.03.31
@@ -47,17 +56,24 @@
 
    * 新闻表
    ```
-     insert into news(title,source,content,dt,img,rnum,cid) values('Uber招程序员有新招：车上玩个游戏就行'
-     ,'中关村在线','据悉，应用内的游戏共包含三项挑战，用户必须在60秒内搞定每个挑战。如果得分够高，就可以直接通过应用联系Uber的人力资源部，并通过email收到相关的工作申请链接。
+     insert into news(title,content,dt,img,rnum,cid,sid) values('Uber招程序员有新招：车上玩个游戏就行'
+     ,'据悉，应用内的游戏共包含三项挑战，用户必须在60秒内搞定每个挑战。如果得分够高，就可以直接通过应用联系Uber的人力资源部，并通过email收到相关的工作申请链接。
                　　Uber发言人表示：“我们一直在利用各种新方式接触潜在的人才，Uber希望与它们一起解决各种有趣的问题。如果你生活的城市拥有非常浓的科技气息，就可以在Uber应用中找到"路上的代码"挑战。只要你有一技之长，肯定会觉得这项挑战非常有趣，它不但能帮你找工作，还能让你的旅途不再枯燥。”
                　　很多程序员看到这项有趣的挑战后，纷纷发起了挑战。未来，该公司将会把这项挑战推向全美多个城市，以挖掘人才。此外，Uber也解释称，这项挑战并不是想利用个人信息来对用户进行定位',
-               '2016-03-29','http://i3.hexunimg.cn/2016-03-29/183020755.jpg',212,4);
+               '2016-03-29','http://i3.hexunimg.cn/2016-03-29/183020755.jpg',212,4,1);
 
-    insert into news(title,source,content,dt,img,rnum,cid) values('习近平出席捷克总统泽曼举行的欢迎仪式','新华社','新华社布拉格3月29日电（记者王丰丰）29日，国家主席习近平出席捷克总统泽曼在布拉格总统府举行的隆重欢迎仪式。
+    insert into news(title,content,dt,img,rnum,cid,sid) values('习近平出席捷克总统泽曼举行的欢迎仪式','新华社布拉格3月29日电（记者王丰丰）29日，国家主席习近平出席捷克总统泽曼在布拉格总统府举行的隆重欢迎仪式。
                                                                                               初春的布拉格，阳光明媚，绿草如茵。春光下的总统府，旌旗招展，鲜花绽放，等待着中国贵宾的到来。
                                                                                               当地时间上午10时许，习近平抵达总统府3号院。旗手沿红地毯整装列队。泽曼在军乐队前迎接习近平。两国元首面向总统旗站立，军乐队奏中捷两国国歌，鸣礼炮21响。习近平在泽曼陪同下检阅仪仗队，仪仗队由捷克军队和总统府警卫部队组成。
                                                                                               检阅毕，习近平用捷克语问候捷克士兵“战士们好”，捷克士兵齐声响亮回应“好”。两国元首登上检阅台，共同检阅分列式。
-                                                                                              王沪宁、栗战书、杨洁篪等出席欢迎仪式。','2016-03-29','http://upload.cankaoxiaoxi.com/2016/0329/1459243945740.jpg',1021,1);
+                                                                                              王沪宁、栗战书、杨洁篪等出席欢迎仪式。','2016-03-29','http://upload.cankaoxiaoxi.com/2016/0329/1459243945740.jpg',1021,1,2);
+  * 来源表
+
+   ```
+        insert into source(source) values("腾讯新闻");
+        insert into source(source) values("搜狐新闻");
+        insert into source(source) values("中关村在线");
+        insert into source(source) values("百度新闻");
 
 
    ```
@@ -92,12 +108,12 @@
       ```
       private Integer id;
       private String title;
-      private String source;
       private String content;
       private String dt;
       private String img;
       private Integer rnum;
       private Integer cid;
+      private Integer sid;
 
       ```
 
@@ -127,7 +143,7 @@
         * id 新闻id
         * content 新闻内容
         * title 新闻标题
-        * source 来源
+        * sid 来源 -> source/id
         * cid 分类id  -> cate/id
         * dt 发布时间
         * rnum 阅读次数
@@ -188,13 +204,12 @@
         create table news(
             id int(11) not null primary key auto_increment,
             title varchar(200),
-            source varchar(150),
             content text,
             dt varchar(100),
             img varchar(200) default '/images/moren.jpg',
             rnum int(11) not null default '0',
-            cid int(11) not null default '0',
-            FOREIGN KEY (cid) REFERENCES cate(id)
+            cid int(11) not null default '0' , FOREIGN KEY (cid) REFERENCES cate(id),
+            sid int(11) not null default '0', FOREIGN KEY (sid) REFERENCES source(id)
           )DEFAULT CHARSET=utf8;
 
      ```
