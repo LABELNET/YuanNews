@@ -1,8 +1,53 @@
 package cn.hpu.yuan.ssm.mapper.manager;
 
+import cn.hpu.yuan.ssm.model.base.Taste;
+import cn.hpu.yuan.ssm.model.vo.TasteVo;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import java.util.List;
+
 /**
  * Created by yuan on 16-4-1.
  * 用户兴趣管理
  */
 public interface TasteManagerMapper {
+
+    /**
+     * -----------------------------------
+     * 查询
+     */
+
+    //根据兴趣id 查询 兴趣信息
+    TasteVo findTasteById(Integer id);
+    //根据用户id 查询 兴趣信息
+    List<TasteVo> findTastesByUid(Integer id);
+    //分页查询所有兴趣信息
+    List<TasteVo> findTasteList(Integer start,Integer num);
+    //根据兴趣查询 兴趣信息 返回多个用户
+    List<TasteVo> findTasteByLabel(String label);
+    //根据兴趣信息和用户id 查询是否具有改兴趣 , 查询id即可
+    Integer findTasteByUidAndLabel(String label,Integer uid);
+
+    /**
+     * ----------------------------------
+     * 添加
+     */
+    //根据用户兴趣和用户id 进行添加
+    Integer insertTasteByUidAndLabel(String label,String uid);
+
+    /**
+     * ----------------------------------
+     * 修改
+     */
+    //根据兴趣id 进行修改兴趣信息
+    Integer updateTasteById(String label,Integer id);
+
+    /**
+     * ----------------------------------
+     * 删除
+     */
+    //根据兴趣id ， 删除改兴趣 ，直接删除
+    Integer deleteTasteById(Integer id);
+
+
 }
