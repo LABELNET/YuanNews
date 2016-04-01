@@ -130,4 +130,17 @@ public class User {
         result = 31 * result + (status != null ? status.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", unum='" + unum + '\'' +
+                ", head='" + head + '\'' +
+                ", nick='" + nick + '\'' +
+                ", pass='" + pass + '\'' +
+                ", sex=" + sex +
+                ", status=" + status +
+                '}';
+    }
 }

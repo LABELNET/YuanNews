@@ -7,4 +7,9 @@ import cn.hpu.yuan.ssm.model.base.User;
  * 用户拓展实体类
  */
 public class UserVo extends User{
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

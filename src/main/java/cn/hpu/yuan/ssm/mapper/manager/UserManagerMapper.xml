@@ -5,8 +5,51 @@
 
 <mapper namespace="cn.hpu.yuan.ssm.mapper.manager.UserManagerMapper">
 
+
     <select id="findUserById" parameterType="int" resultType="user">
         select * from user WHERE id=#{id}
     </select>
+
+    <select id="findPageIndexUsers" parameterType="int" resultType="user">
+        select * from user order by id desc limit #{0},#{1}
+    </select>
+
+
+    <select id="findUserByUnum" resultType="java.lang.Integer">
+        SELECT id FROM user WHERE unum=#{unum}
+    </select>
+
+    <select id="findUserByUnumPass" resultType="user">
+        SELECT id,unum,head,nick,sex,status FROM user WHERE unum=#{unum} AND pass=#{pass}
+    </select>
+
+    <update id="updateUserStatus" parameterType="int">
+        update user set status=#{1} where id=#{0}
+    </update>
+
+    <update id="updateUserSex" parameterType="int">
+        update user set sex=#{1} where id=#{0}
+    </update>
+
+    <update id="updateUserHead">
+        update user set head=#{img} where id=${id}
+    </update>
+
+    <update id="updateUserPass">
+        update user set pass=#{pass} where id =${id}
+    </update>
+
+    <update id="updateUserNick">
+        update user set nick=#{nick} WHERE id =#{id}
+    </update>
+
+    <update id="deleteUserById" parameterType="int">
+        update user set status=3 where id=#{id};
+    </update>
+
+    <insert id="insertUser" parameterType="user">
+        insert into user(unum,pass,nick) VALUES (#{unum},#{pass},#{nick})
+    </insert>
+
 
 </mapper>

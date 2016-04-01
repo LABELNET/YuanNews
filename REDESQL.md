@@ -13,6 +13,26 @@
 
    ```
 
+  * 修改某个用户的状态
+   ```
+   update user set status=1 where id=1;
+
+   ```
+
+  * 修改的sql
+   ```
+     update user set head='/imgage/type.jpg' where id=1;
+     update user set pass=111111 where id = 1;
+     update user set sex=1 where id=1;
+
+   ```
+
+  * 多条件查询
+   ```
+    SELECT id,unum,head,nick,sex,status from user where unum='150365186579' AND pass='123456';
+   ```
+
+
 #类别sql
 #兴趣sql
 #新闻sql
