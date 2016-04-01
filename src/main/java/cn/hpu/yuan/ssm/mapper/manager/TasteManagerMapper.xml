@@ -5,4 +5,37 @@
 <mapper namespace="cn.hpu.yuan.ssm.mapper.manager.TasteManagerMapper">
 
 
+    <select id="findTasteById" parameterType="java.lang.Integer" resultType="taste">
+        SELECT * FROM taste WHERE id=#{id}
+    </select>
+
+    <select id="findTastesByUid" parameterType="java.lang.Integer" resultType="taste">
+        SELECT * FROM  taste WHERE uid=#{id}
+    </select>
+
+    <select id="findTasteList" parameterType="java.lang.Integer" resultType="taste">
+        select * from taste order by id desc limit #{0},#{1}
+    </select>
+
+    <select id="findTasteByLabel" resultType="java.lang.Integer">
+        SELECT uid FROM taste WHERE label=#{label}
+    </select>
+
+    <select id="findTasteByUidAndLabel" resultType="java.lang.Integer">
+        SELECT id FROM taste WHERE label=#{label} AND uid=#{uid}
+    </select>
+
+
+    <insert id="insertTasteByUidAndLabel">
+        INSERT INTO taste(label,uid) VALUES (#{label},#{uid})
+    </insert>
+
+    <update id="updateTasteById">
+        UPDATE taste SET label=#{label} WHERE id=#{id}
+    </update>
+
+    <delete id="deleteTasteById" parameterType="java.lang.Integer">
+        DELETE FROM taste WHERE id=#{id}
+    </delete>
+
 </mapper>
