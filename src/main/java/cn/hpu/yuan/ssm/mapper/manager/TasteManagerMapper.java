@@ -1,10 +1,7 @@
 package cn.hpu.yuan.ssm.mapper.manager;
 
-import cn.hpu.yuan.ssm.model.base.Taste;
 import cn.hpu.yuan.ssm.model.vo.TasteVo;
 import org.apache.ibatis.annotations.Param;
-
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 /**
