@@ -9,6 +9,11 @@ import java.util.List;
  */
 public interface NewsManagerMapper {
 
+
+    /**
+     * --------------------------------------
+     * 查询
+     */
     //根据新闻id，查询新闻（不要内容）
     NewsVo findNewsById(Integer id);
     //分页查询新闻 （不要内容）： 以id倒序排列
@@ -18,17 +23,42 @@ public interface NewsManagerMapper {
     //根据分类，分页查询新闻（不要内容）
     List<NewsVo> findNewsByCate(Integer start, Integer num,Integer cid);
     //根据来源，分页查询新闻（不要内容）
+    List<NewsVo> findNewsBySource(Integer start, Integer num,Integer sid);
 
+
+    /**
+     * --------------------------------------
+     * 修改
+     */
 
     //根据新闻id ， 修改新闻阅读量
+    Integer updateNewsRnum(Integer id,Integer rnum);
     //根据新闻id,修改新闻标题
+    Integer updateNewsTitle(Integer id,String title);
     //根据新闻id, 修改新闻来源
+    Integer updateNewsSource(Integer id,Integer sid);
     //根据新闻id，修改新闻图片
+    Integer updateNewsImg(Integer id,String img);
     //根据新闻id,修改新闻时间
+    Integer updateNewsTime(Integer id,String dt);
     //根据新闻id,修改分类
+    Integer updateNewsCate(Integer id,Integer cid);
 
+
+    /**
+     * --------------------------------------
+     * 删除
+     */
     //根据新闻id,删除新闻
+    Integer deleteNewsById(Integer id);
 
+
+
+    /**
+     * --------------------------------------
+     * 添加
+     */
     //手动添加新闻（前期）
+    Integer insertNews(NewsVo newsVo);
 
 }
