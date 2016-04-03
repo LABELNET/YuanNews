@@ -1,6 +1,39 @@
 # YuanNews
  基于用户兴趣标签的新闻推荐系统（毕业设计）
 
+#2015.04.03
+ 添加评论表（信息图），点赞表 （❤）
+ * 评论表设计 ：
+    * id 评论id
+    * content 评论内容
+    * uid 评论用户id
+    * nid 评论新闻id
+    * status 评论状态
+ * 创建评论表
+   ```
+    create table comment(
+       id int(11) not null primary key auto_increment,
+       content text not null,
+       uid int(11) not null default '0' , FOREIGN KEY (uid) REFERENCES user(id),
+       nid int(11) not null default '0' , FOREIGN KEY (nid) REFERENCES news(id),
+       status int(4) not null default '0'
+    )DEFAULT CHARSET=utf8;
+   ```
+
+ * 点赞表 ：
+    * id 点赞id
+    * uid 用户id
+    * nid 新闻id
+    * status 点赞状态 0,没有点赞，1,点赞
+ * 创建点赞表
+    ```
+      create table liked(
+             id int(11) not null primary key auto_increment,
+             uid int(11) not null default '0' , FOREIGN KEY (uid) REFERENCES user(id),
+             nid int(11) not null default '0' , FOREIGN KEY (nid) REFERENCES news(id),
+             status int(4) not null default '0'
+          )DEFAULT CHARSET=utf8;
+    ```
 
 #2015.04.01
  * 后台管理，数据访问实现 ；
