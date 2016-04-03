@@ -24,11 +24,17 @@ public class NewsManagerTest {
         newsManagerMapper= (NewsManagerMapper) context.getBean("newsManagerMapper");
     }
 
+
+    /**
+     * 通过id , 查询新闻（不包含内容）
+     */
     @Test
     public void findNewsById(){
         NewsPo newsById = newsManagerMapper.findNewsById(2);
         System.out.printf("新闻测试结果  ： "+newsById.toString());
     }
+
+
 
 
 
