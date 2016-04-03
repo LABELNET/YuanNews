@@ -2,11 +2,14 @@ package mapper.manager;
 
 import cn.hpu.yuan.ssm.mapper.manager.NewsManagerMapper;
 import cn.hpu.yuan.ssm.model.pojo.NewsPo;
+import cn.hpu.yuan.ssm.model.vo.NewsVo;
 import common.MapperContanst;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.util.List;
 
 /**
  * Created by yuan on 16-4-1.
@@ -32,6 +35,15 @@ public class NewsManagerTest {
     public void findNewsById(){
         NewsPo newsById = newsManagerMapper.findNewsById(2);
         System.out.printf("新闻测试结果  ： "+newsById.toString());
+    }
+
+    /**
+     * 分页查询新闻信息
+     */
+    @Test
+    public void findNews(){
+        List<NewsVo> news = newsManagerMapper.findNews(0, 3);
+        System.out.printf("新闻测试结果  ： "+news.toString());
     }
 
 

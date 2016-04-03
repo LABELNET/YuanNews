@@ -11,6 +11,10 @@
         <typeAlias type="cn.hpu.yuan.ssm.model.vo.CateVo" alias="cate"/>
         <typeAlias type="cn.hpu.yuan.ssm.model.vo.TasteVo" alias="taste"/>
 
+
+        <!-- 拓展类配置别名 -->
+        <typeAlias type="cn.hpu.yuan.ssm.model.pojo.NewsPo" alias="newsPo"/>
+
     </typeAliases>
 
     <mappers>

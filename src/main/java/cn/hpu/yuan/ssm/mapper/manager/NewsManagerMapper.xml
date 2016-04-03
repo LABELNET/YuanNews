@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.hpu.yuan.ssm.mapper.manager.NewsManagerMapper">
 
-   <select id="findNewsById" parameterType="java.lang.Integer" resultType="cn.hpu.yuan.ssm.model.pojo.NewsPo">
+   <select id="findNewsById" parameterType="java.lang.Integer" resultType="newsPo">
         SELECT n.id,n.title,n.cid,n.sid,n.dt,n.img,n.rnum,c.content cateStr,s.source sourceStr
         FROM news n,cate c,source s
         WHERE n.cid=c.id
@@ -12,6 +12,14 @@
         AND n.id=#{id}
         ORDER BY n.id DESC
    </select>
+
+    <select id="findNews" parameterType="java.lang.Integer" resultType="newsPo">
+        SELECT n.id,n.title,n.cid,n.sid,n.dt,n.img,n.rnum,c.content cateStr,s.source sourceStr
+        FROM news n,cate c,source s
+        WHERE n.cid=c.id
+        AND n.sid=s.id
+        ORDER BY n.id DESC limit #{0},#{1}
+    </select>
 
 
 </mapper>
