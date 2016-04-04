@@ -43,6 +43,90 @@
                 c.status=0
      </select>
 
+    <select id="findComments" parameterType="java.lang.Integer" resultMap="commentPo">
+        SELECT c.id as id,
+        c.content AS content,
+        c.uid AS uid,
+        c.nid AS nid,
+        u.nick AS nick,
+        u.head AS head,
+        n.title AS title
+        FROM
+        comment AS c,
+        user AS u ,
+        news AS n
+        WHERE
+        c.uid=u.id
+        AND
+        c.nid=n.id
+        AND
+        c.status=0
+        ORDER BY
+        c.id
+        limit #{0},#{1}
+    </select>
+
+
+    <select id="findCommentsByNid" parameterType="java.lang.Integer" resultMap="commentPo">
+        SELECT c.id as id,
+        c.content AS content,
+        c.uid AS uid,
+        c.nid AS nid,
+        u.nick AS nick,
+        u.head AS head,
+        n.title AS title
+        FROM
+        comment AS c,
+        user AS u ,
+        news AS n
+        WHERE
+        c.uid=u.id
+        AND
+        c.nid=n.id
+        AND
+        c.status=0
+        AND
+        c.nid=#{2}
+        ORDER BY
+        c.id
+        limit #{0},#{1}
+    </select>
+
+
+    <select id="findCommentsByUid" parameterType="java.lang.Integer" resultMap="commentPo">
+        SELECT c.id as id,
+        c.content AS content,
+        c.uid AS uid,
+        c.nid AS nid,
+        u.nick AS nick,
+        u.head AS head,
+        n.title AS title
+        FROM
+        comment AS c,
+        user AS u ,
+        news AS n
+        WHERE
+        c.uid=u.id
+        AND
+        c.nid=n.id
+        AND
+        c.status=0
+        AND
+        c.uid=#{2}
+        ORDER BY
+        c.id
+        limit #{0},#{1}
+    </select>
+
+    <update id="updateCommentStatus" parameterType="java.lang.Integer">
+        UPDATE
+          comment
+        SET
+          status=#{1}
+        WHERE
+          id=#{0}
+    </update>
+
 
 
 </mapper>
