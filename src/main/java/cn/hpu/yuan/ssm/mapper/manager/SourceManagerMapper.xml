@@ -4,4 +4,20 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.hpu.yuan.ssm.mapper.manager.SourceManagerMapper">
 
+    <select id="findSources" parameterType="java.lang.Integer" resultType="source">
+        SELECT * FROM source ORDER BY id DESC limit #{0},#{1}
+    </select>
+    
+    <update id="updateSourceContent">
+        UPDATE source SET source=#{source} WHERE id=#{id}
+    </update>
+
+    <insert id="insertSource" parameterType="java.lang.String">
+        INSERT INTO source(source) VALUES (#{0})
+    </insert>
+
+    <delete id="deleteSourceContent" parameterType="java.lang.Integer">
+        DELETE FROM source WHERE id=#{0}
+    </delete>
+    
 </mapper>
