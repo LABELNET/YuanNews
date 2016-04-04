@@ -7,4 +7,9 @@ import cn.hpu.yuan.ssm.model.base.Comment;
  * 留言拓展类
  */
 public class CommentVo extends Comment{
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
