@@ -10,7 +10,7 @@
         <typeAlias type="cn.hpu.yuan.ssm.model.vo.NewsVo" alias="news"/>
         <typeAlias type="cn.hpu.yuan.ssm.model.vo.CateVo" alias="cate"/>
         <typeAlias type="cn.hpu.yuan.ssm.model.vo.TasteVo" alias="taste"/>
-
+        <typeAlias type="cn.hpu.yuan.ssm.model.vo.SourceVo" alias="source"/>
 
         <!-- 拓展类配置别名 -->
         <typeAlias type="cn.hpu.yuan.ssm.model.pojo.NewsPo" alias="newsPo"/>
