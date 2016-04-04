@@ -1,5 +1,30 @@
 #记录sql语句
 
+
+#2016.04.04
+　评论表的查询sql :
+ ```
+     SELECT c.id as id,
+                 c.content AS content,
+                 c.uid AS uid,
+                 c.nid AS nid,
+                 u.nick AS nick,
+                 u.head AS head,
+                 n.title AS title
+          FROM
+                 comment AS c,
+                 user AS u ,
+                 news AS n
+          WHERE
+                c.uid=u.id
+          AND
+                c.nid=n.id
+          AND
+                c.id=#{0}
+          AND
+                c.status=0
+ ```
+
 #2016.04.03 数据库总结第一版
  总共7个表 ：
   * user 用户表

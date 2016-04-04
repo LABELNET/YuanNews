@@ -6,7 +6,6 @@
 
 
     <resultMap id="commentPo" type="cn.hpu.yuan.ssm.model.pojo.CommentPo">
-
          <id column="id" property="id"/>
          <result column="content" property="content"/>
          <result column="uid" property="uid"/>
@@ -15,15 +14,18 @@
              <constructor>
                  <idArg column="uid" javaType="java.lang.Integer"></idArg>
              </constructor>
-
          </association>
 
-
+        <association property="newsVo" select="findNewsById" javaType="newsPo">
+              <constructor>
+                  <idArg column="nid" javaType="java.lang.Integer"/>
+              </constructor>
+        </association>
     </resultMap>
 
 
     <select id="findCommentById" parameterType="java.lang.Integer" resultMap="commentPo">
-
+           SELECT * FROM comment WHERE id=#{0} AND status=0
      </select>
 
 </mapper>
