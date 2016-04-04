@@ -4,4 +4,40 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.hpu.yuan.ssm.mapper.manager.LikedManagerMapper">
 
+    <resultMap id="LikedPo" type="cn.hpu.yuan.ssm.model.pojo.LikedPo">
+        <id property="id" column="id" />
+        <result property="status" column="status"/>
+        <association property="userVo" javaType="user">
+            <id property="id" column="uid"/>
+            <result property="head" column="head"/>
+            <result property="nick" column="nick"/>
+        </association>
+        <association property="newsVo" javaType="news">
+            <id property="id" column="nid"/>
+            <result property="title" column="title"/>
+        </association>
+    </resultMap>
+
+    <select id="findLikeds" parameterType="java.lang.Integer" resultMap="LikedPo">
+        SELECT
+           l.id AS id,
+           l.status AS status,
+           l.uid AS uid,
+           l.nid AS nid,
+           u.head AS head,
+           u.nick AS nick,
+           n.title AS title
+        FROM
+           liked AS l,
+           user AS u,
+           news AS n
+        WHERE
+            l.uid=u.id
+        AND
+            l.nid=n.id
+        ORDER BY l.id
+        limit #{0},#{1}
+    </select>
+
+
 </mapper>

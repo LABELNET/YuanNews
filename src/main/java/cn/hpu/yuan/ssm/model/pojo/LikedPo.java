@@ -27,4 +27,12 @@ public class LikedPo extends LikedVo {
     public void setNewsVo(NewsVo newsVo) {
         this.newsVo = newsVo;
     }
+
+    @Override
+    public String toString() {
+        return super.toString()+"LikedPo{" +
+                "userVo=" + userVo +
+                ", newsVo=" + newsVo +
+                '}';
+    }
 }
