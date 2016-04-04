@@ -1,6 +1,7 @@
 package cn.hpu.yuan.ssm.model.pojo;
 
 import cn.hpu.yuan.ssm.model.vo.CommentVo;
+import cn.hpu.yuan.ssm.model.vo.NewsVo;
 import cn.hpu.yuan.ssm.model.vo.UserVo;
 
 /**
@@ -10,7 +11,7 @@ import cn.hpu.yuan.ssm.model.vo.UserVo;
 public class CommentPo extends CommentVo{
 
     private UserVo userVo;
-    private NewsPo newsVo;
+    private NewsVo newsVo;
 
     public UserVo getUserVo() {
         return userVo;
@@ -20,11 +21,11 @@ public class CommentPo extends CommentVo{
         this.userVo = userVo;
     }
 
-    public NewsPo getNewsVo() {
+    public NewsVo getNewsVo() {
         return newsVo;
     }
 
-    public void setNewsVo(NewsPo newsVo) {
+    public void setNewsVo(NewsVo newsVo) {
         this.newsVo = newsVo;
     }
 
