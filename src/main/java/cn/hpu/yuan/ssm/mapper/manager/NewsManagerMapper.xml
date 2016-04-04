@@ -21,5 +21,72 @@
         ORDER BY n.id DESC limit #{0},#{1}
     </select>
 
+    <select id="findNewsContentById" parameterType="java.lang.Integer" resultType="java.lang.String">
+        SELECT content FROM news WHERE id=#{id}
+    </select>
+
+    <select id="findNewsByCate" parameterType="java.lang.Integer" resultType="newsPo">
+          SELECT n.id,n.title,n.cid,n.sid,n.dt,n.img,n.rnum,c.content cateStr,s.source sourceStr
+        FROM news n,cate c,source s
+        WHERE n.cid=c.id
+        AND n.sid=s.id
+        AND n.cid=#{2}
+        ORDER BY n.id DESC limit #{0},#{1}
+    </select>
+
+    <select id="findNewsBySource" parameterType="java.lang.Integer" resultType="newsPo">
+         SELECT n.id,n.title,n.cid,n.sid,n.dt,n.img,n.rnum,c.content cateStr,s.source sourceStr
+        FROM news n,cate c,source s
+        WHERE n.cid=c.id
+        AND n.sid=s.id
+        AND n.sid=#{2}
+        ORDER BY n.id DESC limit #{0},#{1}
+    </select>
+    
+    <update id="updateNewsRnum" parameterType="java.lang.Integer">
+        UPDATE news 
+        SET rnum=#{1}
+        WHERE id=#{0} 
+    </update>
+    
+    <update id="updateNewsTitle">
+        UPDATE news
+        SET title=#{title}
+        WHERE id=#{id}
+    </update>
+
+    <update id="updateNewsSource" parameterType="java.lang.Integer">
+        UPDATE news
+        SET sid=#{1}
+        WHERE id=#{0}
+    </update>
+
+    <update id="updateNewsImg">
+        UPDATE news
+        SET img=#{img}
+        WHERE id=#{id}
+    </update>
+
+    <update id="updateNewsTime">
+        UPDATE news
+        SET  dt=#{dt}
+        WHERE id=#{id}
+    </update>
+
+    <update id="updateNewsCate" parameterType="java.lang.Integer">
+        UPDATE news
+        SET cid=#{1}
+        WHERE id=#{0}
+    </update>
+
+    <delete id="deleteNewsById" parameterType="java.lang.Integer">
+        DELETE FROM news
+        WHERE id=#{0}
+    </delete>
+
+    <insert id="insertNews" parameterType="news">
+        INSERT INTO news(title, content, dt, img, cid, sid)
+        VALUES (#{title},#{content}, #{dt}, #{img}, #{cid}, #{sid})
+    </insert>
 
 </mapper>

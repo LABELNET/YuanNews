@@ -2,6 +2,8 @@ package cn.hpu.yuan.ssm.mapper.manager;
 
 import cn.hpu.yuan.ssm.model.pojo.NewsPo;
 import cn.hpu.yuan.ssm.model.vo.NewsVo;
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 /**
@@ -18,13 +20,13 @@ public interface NewsManagerMapper {
     //根据新闻id，查询新闻（不要内容）
     NewsPo findNewsById(Integer id);
     //分页查询新闻 （不要内容）： 以id倒序排列
-    List<NewsVo> findNews(Integer start,Integer num);
+    List<NewsPo> findNews(Integer start,Integer num);
     //根据新闻id , 查询新闻内容
     String findNewsContentById(Integer id);
     //根据分类，分页查询新闻（不要内容）
-    List<NewsVo> findNewsByCate(Integer start, Integer num,Integer cid);
+    List<NewsPo> findNewsByCate(Integer start, Integer num,Integer cid);
     //根据来源，分页查询新闻（不要内容）
-    List<NewsVo> findNewsBySource(Integer start, Integer num,Integer sid);
+    List<NewsPo> findNewsBySource(Integer start, Integer num,Integer sid);
 
 
     /**
@@ -35,13 +37,13 @@ public interface NewsManagerMapper {
     //根据新闻id ， 修改新闻阅读量
     Integer updateNewsRnum(Integer id,Integer rnum);
     //根据新闻id,修改新闻标题
-    Integer updateNewsTitle(Integer id,String title);
+    Integer updateNewsTitle(@Param("id") Integer id,@Param("title") String title);
     //根据新闻id, 修改新闻来源
     Integer updateNewsSource(Integer id,Integer sid);
     //根据新闻id，修改新闻图片
-    Integer updateNewsImg(Integer id,String img);
+    Integer updateNewsImg(@Param("id") Integer id,@Param("img") String img);
     //根据新闻id,修改新闻时间
-    Integer updateNewsTime(Integer id,String dt);
+    Integer updateNewsTime(@Param("id") Integer id,@Param("dt") String dt);
     //根据新闻id,修改分类
     Integer updateNewsCate(Integer id,Integer cid);
 
