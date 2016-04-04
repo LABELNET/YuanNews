@@ -25,10 +25,23 @@ public class LikedManagerTest {
         likedManagerMapper= (LikedManagerMapper) context.getBean("likedManagerMapper");
     }
 
+    /**
+     * 分页查询
+     */
     @Test
     public void findLikeds(){
         List<LikedPo> likeds = likedManagerMapper.findLikeds(0, 2);
         System.out.printf("点赞测试结果　："+likeds);
     }
+
+    /**
+     * 查询不到　ｎｕｌｌ， 查询结果为ｉｄ
+     */
+    @Test
+    public void findLikedByNidUid(){
+        Integer id = likedManagerMapper.findLikedByNidUid(1, 2);
+        System.out.printf("点赞测试结果　："+id);
+    }
+
 
 }

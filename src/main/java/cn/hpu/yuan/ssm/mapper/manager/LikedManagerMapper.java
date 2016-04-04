@@ -16,7 +16,9 @@ public interface LikedManagerMapper {
     //分页查询－　根据新闻id查询　－　id排序　倒序输出
     List<LikedPo> findLikedsByNid(Integer start,Integer num,Integer nid);
 
-
     //删除该条点赞
     Integer deleteLikeds(Integer id);
+
+    //判断是否点过赞
+    Integer findLikedByNidUid(Integer uid,Integer nid);
 }

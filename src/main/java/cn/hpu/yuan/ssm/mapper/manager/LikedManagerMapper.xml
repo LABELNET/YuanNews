@@ -39,5 +39,65 @@
         limit #{0},#{1}
     </select>
 
+    <select id="findLikedsByUid" parameterType="java.lang.Integer" resultMap="LikedPo">
+        SELECT
+        l.id AS id,
+        l.status AS status,
+        l.uid AS uid,
+        l.nid AS nid,
+        u.head AS head,
+        u.nick AS nick,
+        n.title AS title
+        FROM
+        liked AS l,
+        user AS u,
+        news AS n
+        WHERE
+        l.uid=u.id
+        AND
+        l.nid=n.id
+        AND
+        l.uid=#{2}
+        ORDER BY l.id
+        limit #{0},#{1}
+    </select>
+
+    <select id="findLikedsByNid" parameterType="java.lang.Integer" resultMap="LikedPo">
+        SELECT
+        l.id AS id,
+        l.status AS status,
+        l.uid AS uid,
+        l.nid AS nid,
+        u.head AS head,
+        u.nick AS nick,
+        n.title AS title
+        FROM
+        liked AS l,
+        user AS u,
+        news AS n
+        WHERE
+        l.uid=u.id
+        AND
+        l.nid=n.id
+        AND
+        l.nid=#{2}
+        ORDER BY l.id
+        limit #{0},#{1}
+    </select>
+
+    <select id="findLikedByNidUid" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        SELECT
+          id
+        FROM
+          liked
+        WHERE
+          uid=#{0}
+        AND
+          nid=#{1}
+    </select>
+
+    <delete id="deleteLikeds" parameterType="java.lang.Integer">
+        DELETE FROM liked WHERE id=#{0}
+    </delete>
 
 </mapper>
