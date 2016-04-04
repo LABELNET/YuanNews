@@ -1,8 +1,7 @@
 package cn.hpu.yuan.ssm.mapper.manager;
 
-import cn.hpu.yuan.ssm.model.vo.CommentVo;
 
-import java.util.List;
+import cn.hpu.yuan.ssm.model.pojo.CommentPo;
 
 /**
  * Created by yuan on 16-4-3.
@@ -15,6 +14,8 @@ public interface CommentManagerMapper {
      * 查询
      */
     //根据id 查询评论信息
+    CommentPo findCommentById(Integer id);
+
 
 
 

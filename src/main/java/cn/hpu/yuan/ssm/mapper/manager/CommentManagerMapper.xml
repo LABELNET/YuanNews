@@ -4,4 +4,26 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.hpu.yuan.ssm.mapper.manager.CommentManagerMapper">
 
+
+    <resultMap id="commentPo" type="cn.hpu.yuan.ssm.model.pojo.CommentPo">
+
+         <id column="id" property="id"/>
+         <result column="content" property="content"/>
+         <result column="uid" property="uid"/>
+         <result column="nid" property="nid"/>
+         <association property="userVo" select="findUserById" javaType="user">
+             <constructor>
+                 <idArg column="uid" javaType="java.lang.Integer"></idArg>
+             </constructor>
+
+         </association>
+
+
+    </resultMap>
+
+
+    <select id="findCommentById" parameterType="java.lang.Integer" resultMap="commentPo">
+
+     </select>
+
 </mapper>
