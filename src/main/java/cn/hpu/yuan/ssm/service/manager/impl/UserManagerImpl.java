@@ -16,11 +16,10 @@ public class UserManagerImpl implements UserManager{
     @Autowired
     private UserManagerMapper userManagerMapper;
 
-
     /**
      * 管理员登陆
-     * @param unum　
-     * @param pass
+     * @param unum　账号
+     * @param pass　密码
      * @return
      * @throws Exception
      */
