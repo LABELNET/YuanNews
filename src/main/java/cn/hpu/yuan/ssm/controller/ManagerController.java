@@ -31,9 +31,6 @@ public class ManagerController {
 
     /**
      * 管理员登陆　action
-     * @param unum
-     * @param pass
-     * @return
      */
     @RequestMapping(value = "/managerLogin",method= RequestMethod.POST)
     public @ResponseBody Integer managerLogin(HttpSession httpSession, @RequestParam String unum, @RequestParam String pass){
@@ -67,7 +64,6 @@ public class ManagerController {
     /**
      * 管理员－登出
      */
-
     @RequestMapping("/managerLoginOut")
     public String managerLoginOut(HttpSession httpSession){
         httpSession.invalidate();
