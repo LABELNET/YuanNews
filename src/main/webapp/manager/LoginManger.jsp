@@ -13,7 +13,7 @@
     <title>管理员登陆</title>
 </head>
 <body>
-    <form method="post" action="/managerLogin.action">
+    <form method="post" action="/managerLogin">
         <input id="unum" name="unum" type="number"><br>
         <input id="pass" name="pass" type="password"><br>
         <input type="submit" title="注册">
