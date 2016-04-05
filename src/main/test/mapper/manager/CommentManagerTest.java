@@ -27,7 +27,7 @@ public class CommentManagerTest {
      * 根据id , 查询评论
      */
     @Test
-    public void findCommentById(){
+    public void findCommentById() throws Exception{
         CommentPo commentPo = commentManagerMapper.findCommentById(1);
         System.out.printf("评论管理测试　：　"+commentPo);
     }
@@ -36,7 +36,7 @@ public class CommentManagerTest {
      * 修改评论状态
      */
     @Test
-    public void updateCommentStatus(){
+    public void updateCommentStatus() throws Exception{
         Integer status = commentManagerMapper.updateCommentStatus(1, 0);
         System.out.printf("评论管理测试　：　"+status +(status>0?"成功":"失败"));
     }
