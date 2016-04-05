@@ -6,75 +6,50 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE HTML>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-    <title>500</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="Easy Admin Panel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
-    <!-- Custom CSS -->
-    <link href="css/style.css" rel='stylesheet' type='text/css' />
-    <!-- Graph CSS -->
-    <link href="css/font-awesome.css" rel="stylesheet">
-    <!-- jQuery -->
-    <!-- lined-icons -->
-    <link rel="stylesheet" href="css/icon-font.min.css" type='text/css' />
-    <!-- //lined-icons -->
-    <!-- chart -->
-    <script src="js/Chart.js"></script>
-    <!-- //chart -->
-    <!--animate-->
-    <link href="css/animate.css" rel="stylesheet" type="text/css" media="all">
-    <script src="js/wow.min.js"></script>
-    <script>
-        new WOW().init();
-    </script>
-    <!--//end-animate-->
-    <!----webfonts--->
-    <link href='http://fonts.useso.com/css?family=Cabin:400,400italic,500,500italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
-    <!---//webfonts--->
-    <!-- Meters graphs -->
-    <script src="js/jquery-1.10.2.min.js"></script>
-    <!-- Placed js at the end of the document so the pages load faster -->
+    <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+    <title>500 - 这个.. 页面没有找到！！！</title>
+
+    <style type="text/css">
+        body{ margin:0; padding:0; background:#efefef; font-family:Georgia, Times, Verdana, Geneva, Arial, Helvetica, sans-serif; }
+        div#mother{ margin:0 auto; width:943px; height:572px; position:relative; }
+        div#errorBox{ background: url(images/404_bg.png) no-repeat top left; width:943px; height:572px; margin:auto; }
+        div#errorText{ color:#39351e; padding:146px 0 0 446px }
+        div#errorText p{ width:303px; font-size:14px; line-height:26px; }
+        div.link{ /*background:#f90;*/ height:50px; width:145px; float:left; }
+        div#home{ margin:20px 0 0 444px;}
+        div#contact{ margin:20px 0 0 25px;}
+        h1{ font-size:40px; margin-bottom:35px; }
+    </style>
+
+
 
 </head>
+<body>
+<div id="mother">
+    <div id="errorBox">
+        <div id="errorText">
+            <h1>Sorry..页面没有找到！</h1>
+            <p>
+                似乎你所寻找的网页已移动或丢失了。
+            <p>或者也许你只是键入错误了一些东西。</p>
+            请不要担心，这没事。如果该资源对你很重要，请与管理员联系。
+            </p>
 
-<body class="sticky-header left-side-collapsed"  onload="initMap()">
-<section>
-        <!-- //header-ends -->
-        <div id="page-wrapper">
-            <div class="graphs">
-                <div class="error-main">
-                    <h3><i class="fa fa-exclamation-triangle"></i> <span>500</span></h3>
-                    <div class="col-xs-7 error-main-left">
-                        <span>Oops!</span>
-                        <p>　哦哦，不是你的错，服务器崩溃了，oh my god !</p>
-                        <div class="error-btn">
-                            <a href="index.html">点我　－> 重试?</a>
-                        </div>
-                    </div>
-                    <div class="col-xs-5 error-main-right">
-                        <img src="images/7.png" alt=" " class="img-responsive" />
-                    </div>
-                    <div class="clearfix"> </div>
-                </div>
-            </div>
+            <p>
+                火星不太安全，我可以免费送你回地球
+            </p>
         </div>
-        <!--footer section start-->
-        <footer>
-            <p>Copyright &copy; 201６.LABELNET-yuan All rights reserved.<a target="_blank" href="http://www.labelnet.cn">yuan</a></p>
-        </footer>
-        <!--footer section end-->
-</section>
+        <a href="#" title="返回首页">
+            <div class="link" id="home"></div>
+        </a>
+        <a href="#" title="联系管理员">
+            <div class="link" id="contact"></div>
 
-<script src="js/jquery.nicescroll.js"></script>
-<script src="js/scripts.js"></script>
-<!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+        </a>
+    </div>
+</div>
 </body>
 </html>
