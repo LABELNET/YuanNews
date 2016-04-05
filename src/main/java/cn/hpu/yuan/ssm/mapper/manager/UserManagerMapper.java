@@ -24,9 +24,9 @@ public interface UserManagerMapper {
     //分页查询，用户所有信息
     List<UserVo> findPageIndexUsers(Integer pageIndex, Integer pageNum) throws Exception;
     //登陆查询 ，查询账号是否存在
-    Integer findUserByUnum(@Param("unum") String unum);
+    Integer findUserByUnum(@Param("unum") String unum) throws Exception;
     //登陆查询 ，根据账号查询密码
-    UserVo findUserByUnumPass(@Param("unum") String unum,@Param("pass") String pass);
+    UserVo findUserByUnumPass(@Param("unum") String unum,@Param("pass") String pass) throws Exception;
 
     /**
      * ---------------------------------------------------------------
