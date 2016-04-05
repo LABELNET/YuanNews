@@ -1,6 +1,7 @@
 package cn.hpu.yuan.ssm.controller;
 
 import cn.hpu.yuan.ssm.common.LoggerUtil;
+import cn.hpu.yuan.ssm.controller.constant.ManagerConstant;
 import cn.hpu.yuan.ssm.service.manager.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,8 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ManagerController {
 
-    private static final String MANAGER_INDEX="manager/index";
-
     @Autowired
     private UserManager userManager;
 
@@ -26,16 +25,16 @@ public class ManagerController {
     public ModelAndView managerLogin(@RequestParam String unum,@RequestParam String pass){
         ModelAndView modelAndView=new ModelAndView();
         Integer userId=0;
-        LoggerUtil.print(unum,pass);
+        LoggerUtil.print(ManagerConstant.LOG_MANAGER_CONTROLLER,unum,pass);
         try {
              userId = userManager.managerLogin(unum, pass);
         } catch (Exception e) {
             //异常处理
             e.printStackTrace();
-            System.out.printf("错误　：　"+e.getMessage());
+            LoggerUtil.print(e.getMessage());
         }
         modelAndView.addObject("uid",userId);
-        modelAndView.setViewName(MANAGER_INDEX);
+        modelAndView.setViewName(ManagerConstant.MANAGER_INDEX);
 
         return modelAndView;
     }
