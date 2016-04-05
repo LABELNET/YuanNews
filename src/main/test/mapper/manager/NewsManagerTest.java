@@ -60,7 +60,7 @@ public class NewsManagerTest {
      * 根据分类，分页获得新闻
      */
     @Test
-    public void findNewsByCate(){
+    public void findNewsByCate() throws Exception{
         List<NewsPo> newsPos = newsManagerMapper.findNewsByCate(0, 3, 1);
         System.out.printf("新闻测试结果  ： "+newsPos);
     }

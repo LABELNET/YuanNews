@@ -29,7 +29,7 @@ public class TasteManagerTest {
      * 根据兴趣id 查询兴趣信息
      */
     @Test
-    public void findTasteById(){
+    public void findTasteById() throws Exception{
         TasteVo tasteById = tasteManagerMapper.findTasteById(1);
         System.out.printf("兴趣管理测试结果 ： "+tasteById.toString());
     }
@@ -38,7 +38,7 @@ public class TasteManagerTest {
      * 根据用户id 查询用户兴趣
      */
     @Test
-    public void findTastesByUid(){
+    public void findTastesByUid() throws Exception{
         List<TasteVo> voList = tasteManagerMapper.findTastesByUid(1);
         System.out.printf("兴趣管理测试结果 ： "+voList.toString());
     }
@@ -47,7 +47,7 @@ public class TasteManagerTest {
      * 分页查询，兴趣信息
      */
     @Test
-    public void findTasteList(){
+    public void findTasteList() throws Exception{
         List<TasteVo> voList = tasteManagerMapper.findTasteList(0,3);
         System.out.printf("兴趣管理测试结果 ： "+voList.toString());
     }
@@ -58,7 +58,7 @@ public class TasteManagerTest {
      */
 
     @Test
-    public void findTasteByLabel(){
+    public void findTasteByLabel() throws Exception{
         List<Integer> tasteByLabel = tasteManagerMapper.findTasteByLabel("小米");
         System.out.printf("兴趣管理测试结果 ： "+tasteByLabel.toString());
     }
@@ -68,7 +68,7 @@ public class TasteManagerTest {
      * 失败 返回 null,等于null ，则该用户不存在该兴趣
      */
     @Test
-    public void findTasteByUidAndLabel(){
+    public void findTasteByUidAndLabel() throws Exception{
         Integer id = tasteManagerMapper.findTasteByUidAndLabel("小米", 100);
         System.out.printf("兴趣管理测试结果 ： "+id +(id>0?"存在":"不存在"));
     }
@@ -79,7 +79,7 @@ public class TasteManagerTest {
      * 注意 uid 是否存在，存在 ，才使其添加到记录
      */
     @Test
-    public void insertTasteByUidAndLabel(){
+    public void insertTasteByUidAndLabel() throws Exception{
         Integer id = tasteManagerMapper.insertTasteByUidAndLabel("小米",2);
         System.out.printf("兴趣管理测试结果 ： "+id +(id>0?"成功":"不成功"));
     }
@@ -89,7 +89,7 @@ public class TasteManagerTest {
      * 根据兴趣id 修改 兴趣信息
      */
     @Test
-    public void updateTasteById(){
+    public void updateTasteById() throws Exception{
         Integer id = tasteManagerMapper.updateTasteById("华为",12);
         System.out.printf("兴趣管理测试结果 ： "+id +(id>0?"成功":"不成功"));
     }
@@ -98,7 +98,7 @@ public class TasteManagerTest {
      * 删除兴趣信息
      */
     @Test
-    public void deleteTasteById(){
+    public void deleteTasteById() throws Exception{
         Integer[] ids={7,8,9,12};
         for (int id : ids){
             Integer result = tasteManagerMapper.deleteTasteById(id);
