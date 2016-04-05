@@ -30,17 +30,34 @@
             });
             //验证码
             createCode();
+
+            //弹出：确认按钮
+            $(".trueBtn").click(function(){
+                $(".pop_bg").fadeOut();
+            });
+            //弹出：取消或关闭按钮
+            $(".falseBtn").click(function(){
+                $(".pop_bg").fadeOut();
+            });
+
         });
 
         function login() {
-            validate();
-            var unum=$("#unum").val();
+
+            var isTrue = validate();
+            if(isTrue==false){
+                showDialog("验证码不正确，请重写输入！");
+                return;
+            }
+
+            var num=$("#unum").val();
             var  pass=$("#pass").val();
             $.post("/managerLogin.action",{
-                        unum:unum,
+                        unum:num,
                         pass:pass
                     },
                     function (data,status) {
+                        console.log(data+ " | "+status);
                         forwardPage(data);
                     }
             );
@@ -54,20 +71,26 @@
 
             if(data==-1){
                 //密码错误
-                alert("密码错误");
+                showDialog("密码错误");
             }
 
             if(data==-2){
                 //账号不存在
-                alert("账号不存在！")
+                showDialog("账号不存在！");
             }
 
             if(data==-3){
                 //服务器错误，登陆失败
-                alert("服务器错误，登陆失败,请刷新重试！");
+                showDialog("服务器错误，登陆失败,请刷新重试！");
             }
 
         }
+
+        function showDialog(msg) {
+            $(".pop_cont_text").text(msg);
+            $(".pop_bg").fadeIn();
+        }
+
     </script>
 </head>
 <body>
@@ -77,7 +100,7 @@
         <em>Management System</em>
     </dt>
     <dd class="user_icon">
-        <input type="text"　id="unum" placeholder="账号" class="login_txtbx"/>
+        <input type="number" name="unum" id="unum" placeholder="账号" class="login_txtbx"/>
     </dd>
     <dd class="pwd_icon">
         <input type="password" id="pass" placeholder="密码" class="login_txtbx"/>
@@ -97,6 +120,23 @@
         <p><a href="http://www.labelnet.cn">yuan</a></p>
     </dd>
 </dl>
+
+<section class="pop_bg">
+    <div class="pop_cont">
+        <!--title-->
+        <h3>　温馨提示　</h3>
+        <!--以pop_cont_text分界-->
+        <div class="pop_cont_text">
+            这里是文字性提示信息！
+        </div>
+        <!--bottom:operate->button-->
+        <div class="btm_btn">
+            <input type="button" value="确认" class="input_btn trueBtn"/>
+            <input type="button" value="关闭" class="input_btn falseBtn"/>
+        </div>
+    </div>
+</section>
+
 </body>
 </html>
 

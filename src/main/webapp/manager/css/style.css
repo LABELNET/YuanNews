@@ -157,11 +157,11 @@ header .rt_nav li .quit_icon:before{content:"Q";}
 .cont_col_lt{width:300px;overflow:hidden;float:left;}
 .cont_col_rt{margin-left:315px;overflow:hidden;}
 /*pop*/
-.pop_bg{display:none;background:rgba(0,0,0,.35);width:100%;height:100%;position:fixed;top:0;left:0;z-index:999;}
+.pop_bg{display:none;background:rgba(0,0,0,.80);width:100%;height:100%;position:fixed;top:0;left:0;z-index:999;}
 .pop_cont{background:white;min-width:300px;height:auto;overflow:hidden;position:absolute;top:20%;left:50%;margin-left:-150px;border-radius:5px 5px 0 0;}
 .pop_cont h3{height:40px;line-height:40px;background:#19a97b;color:white;font-size:14px;font-weight:bold;margin:0;padding:0 1em;}
 .pop_cont h3:before{content:"*";font-family:'adminthemesregular';margin-right:2px;font-size:20px;font-weight:normal;}
-.pop_cont .pop_cont_text{padding:10px;line-height:1.3;color:grey;}
+.pop_cont .pop_cont_text{padding:15px;line-height:1.3;color:grey;min-height: 30%;}
 .pop_cont .pop_cont_input{padding:10px;text-align:center;}
 .pop_cont .pop_cont_input li{margin:5px 0;text-align:left;overflow:hidden;}
 .pop_cont .pop_cont_input li .ttl{display:inline-block;}
