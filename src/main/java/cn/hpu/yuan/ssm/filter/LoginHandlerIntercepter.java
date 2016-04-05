@@ -36,8 +36,8 @@ public class LoginHandlerIntercepter implements HandlerInterceptor {
         if(requestURI.indexOf(INTERCEPTER_ACTION)>0){
             //访问后台主页
             HttpSession session = request.getSession();
-            String username = (String) session.getAttribute(SESSION_ATTRIBUTE_KEY);
-            if(username!=null){
+            Integer uid = (Integer) session.getAttribute(SESSION_ATTRIBUTE_KEY);
+            if(uid!=null){
                 //登陆成功的用户
                 return true;
             }else{
