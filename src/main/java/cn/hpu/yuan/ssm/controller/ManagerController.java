@@ -1,6 +1,7 @@
 package cn.hpu.yuan.ssm.controller;
 
 import cn.hpu.yuan.ssm.service.manager.UserManager;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,8 +20,9 @@ public class ManagerController {
 
 
     @RequestMapping(value = "/managerLogin",method= RequestMethod.POST)
-    public Integer managerLogin(String unum,String pass){
+    public String managerLogin(String unum,String pass){
         Integer userId=0;
+
         try {
              userId = userManager.managerLogin(unum, pass);
 
@@ -28,7 +30,8 @@ public class ManagerController {
             //异常处理
             e.printStackTrace();
         }
-        return userId;
+
+        return new String(userId+"");
     }
 
 }
