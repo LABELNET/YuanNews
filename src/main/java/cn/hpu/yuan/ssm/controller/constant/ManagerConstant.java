@@ -6,8 +6,8 @@ package cn.hpu.yuan.ssm.controller.constant;
  */
 public interface ManagerConstant {
 
-    String LOG_MANAGER_CONTROLLER="controller/ManagerController";
+    String LOG_MANAGER_CONTROLLER="controller/ManagerController";//后台管理－log位置标示
 
-    String MANAGER_INDEX="manager/index";
+    String MANAGER_INDEX="manager/index"; //后台管理-主页
 
 }
