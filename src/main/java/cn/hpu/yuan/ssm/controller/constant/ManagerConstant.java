@@ -16,6 +16,6 @@ public interface ManagerConstant {
 
     String MANAGER_INDEX_MV_KEY="userVo";
 
-    String MAGAGER_USER_PAGE="UserManager.jsp";
+    String MAGAGER_USER_PAGE="manager/UserManager";
 
 }

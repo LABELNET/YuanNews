@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 
 /**
@@ -73,12 +74,13 @@ public class ManagerController {
     /**
      * 后台管理－用户管理
      */
-    public String managerUserPage(){
-
-
-
-
-        return ManagerConstant.MAGAGER_USER_PAGE;
+    @RequestMapping("/managerUserPage")
+    public ModelAndView managerUserPage() throws Exception {
+        List<UserVo> userVos = userManager.managerFindUserList(0,10);
+        ModelAndView mav=new ModelAndView();
+        mav.addObject("userVos",userVos);
+        mav.setViewName(ManagerConstant.MAGAGER_USER_PAGE);
+        return mav;
     }
 
 
