@@ -63,7 +63,7 @@
       <dl>
         <dt>用户信息</dt>
         <!--当前链接则添加class:active-->
-        <dd><a href="#" class="active">用户列表</a></dd>
+        <dd><a href="/manager/managerUserPage.action" class="active">用户列表</a></dd>
         <dd><a href="#">用户兴趣</a></dd>
       </dl>
     </li>

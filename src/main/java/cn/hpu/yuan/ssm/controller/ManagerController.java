@@ -1,7 +1,6 @@
 package cn.hpu.yuan.ssm.controller;
 
 import cn.hpu.yuan.ssm.common.LoggerUtil;
-import cn.hpu.yuan.ssm.common.LoginStatus;
 import cn.hpu.yuan.ssm.controller.constant.ManagerConstant;
 import cn.hpu.yuan.ssm.model.vo.UserVo;
 import cn.hpu.yuan.ssm.service.manager.UserManager;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.servlet.http.HttpSession;
 
 
@@ -71,6 +69,18 @@ public class ManagerController {
         httpSession.invalidate();
         return ManagerConstant.MANAGER_REDRICT_LOGIN;
     }
+
+    /**
+     * 后台管理－用户管理
+     */
+    public String managerUserPage(){
+
+
+
+
+        return ManagerConstant.MAGAGER_USER_PAGE;
+    }
+
 
 
 
