@@ -16,11 +16,11 @@
 
 
     <select id="findUserByUnum" resultType="java.lang.Integer">
-        SELECT id FROM user WHERE unum=#{unum}
+        SELECT id FROM user WHERE unum=#{unum} AND status=1
     </select>
 
     <select id="findUserByUnumPass" resultType="user">
-        SELECT id,unum,head,nick,sex,status FROM user WHERE unum=#{unum} AND pass=#{pass}
+        SELECT id,unum,head,nick,sex,status FROM user WHERE unum=#{unum} AND pass=#{pass} AND status=1
     </select>
 
     <update id="updateUserStatus" parameterType="int">
