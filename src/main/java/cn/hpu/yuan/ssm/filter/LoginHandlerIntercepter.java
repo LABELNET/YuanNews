@@ -16,6 +16,9 @@ import javax.servlet.http.HttpSession;
  */
 public class LoginHandlerIntercepter implements HandlerInterceptor {
 
+    private static final String INTERCEPTER_ACTION="managerIndex.action";
+    private static final String INRERCEPTER_FORWARD="/manager/LoginManger.jsp";
+    private static final String SESSION_ATTRIBUTE_KEY="uid";
 
     public void afterCompletion(HttpServletRequest request,
                                 HttpServletResponse response, Object arg2, Exception arg3)
@@ -30,16 +33,16 @@ public class LoginHandlerIntercepter implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse arg1,
                              Object arg2) throws Exception {
         String requestURI = request.getRequestURI();
-        if(requestURI.indexOf("managerIndex.action")>0){
+        if(requestURI.indexOf(INTERCEPTER_ACTION)>0){
             //访问后台主页
             HttpSession session = request.getSession();
-            String username = (String) session.getAttribute("uid");
+            String username = (String) session.getAttribute(SESSION_ATTRIBUTE_KEY);
             if(username!=null){
                 //登陆成功的用户
                 return true;
             }else{
                 //没有登陆，转向登陆界面
-                request.getRequestDispatcher("/manager/LoginManger.jsp").forward(request,arg1);
+                request.getRequestDispatcher(INRERCEPTER_FORWARD).forward(request,arg1);
                 return false;
             }
         }else{

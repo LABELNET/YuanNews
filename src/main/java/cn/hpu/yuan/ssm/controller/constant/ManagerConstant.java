@@ -10,4 +10,6 @@ public interface ManagerConstant {
 
     String MANAGER_INDEX="manager/index"; //后台管理-主页
 
+    String SESSION_ATTRIBUTE_KEY="uid"; //HttpSession 的 key
+
 }
