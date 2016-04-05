@@ -6,6 +6,8 @@ import cn.hpu.yuan.ssm.model.vo.UserVo;
 import cn.hpu.yuan.ssm.service.manager.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 /**
  * Created by yuan on 16-4-4.
  * 业务层　－　后台管理 － 用户管理 - 接口实现
@@ -47,6 +49,17 @@ public class UserManagerImpl implements UserManager{
      */
     public UserVo managerFindUserIfo(Integer uid) throws Exception {
         return userManagerMapper.findUserById(uid);
+    }
+
+    /**
+     * 获取用户列表
+     * @param start
+     * @param num
+     * @return
+     * @throws Exception
+     */
+    public List<UserVo> managerFindUserList(Integer start, Integer num) throws Exception {
+        return userManagerMapper.findPageIndexUsers(start,num);
     }
 
 
