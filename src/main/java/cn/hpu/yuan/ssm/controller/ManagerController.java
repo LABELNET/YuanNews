@@ -56,8 +56,10 @@ public class ManagerController {
      * 后台主页面
      */
     @RequestMapping(value = "/managerIndex",method = RequestMethod.GET)
-    public String managerIndex(@RequestParam Integer uid){
+    public String managerIndex(HttpSession httpSession){
+        Integer uid= (Integer) httpSession.getAttribute(ManagerConstant.SESSION_ATTRIBUTE_KEY);
         LoggerUtil.print("主页　用户id : "+uid);
+
         //TODO 后台主页实现
         return ManagerConstant.MANAGER_INDEX;
     }
