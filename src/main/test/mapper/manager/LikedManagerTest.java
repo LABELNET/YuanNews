@@ -29,7 +29,7 @@ public class LikedManagerTest {
      * 分页查询
      */
     @Test
-    public void findLikeds(){
+    public void findLikeds() throws Exception{
         List<LikedPo> likeds = likedManagerMapper.findLikeds(0, 2);
         System.out.printf("点赞测试结果　："+likeds);
     }
@@ -38,7 +38,7 @@ public class LikedManagerTest {
      * 查询不到　ｎｕｌｌ， 查询结果为ｉｄ
      */
     @Test
-    public void findLikedByNidUid(){
+    public void findLikedByNidUid() throws Exception{
         Integer id = likedManagerMapper.findLikedByNidUid(1, 2);
         System.out.printf("点赞测试结果　："+id);
     }
