@@ -29,7 +29,7 @@ public class CateManagerTest {
      * 通过id，查询分类信息
      */
     @Test
-    public void findCateById(){
+    public void findCateById() throws Exception{
         CateVo cateById = managerMapper.findCateById(1);
         System.out.printf("分类测试结果 ： "+cateById);
     }
@@ -39,7 +39,7 @@ public class CateManagerTest {
      * 查询所有的分类信息
      */
     @Test
-    public void findCates(){
+    public void findCates() throws Exception{
         List<CateVo> cates = managerMapper.findCates();
         System.out.printf("分类测试结果 ： "+cates.toString());
     }
@@ -48,7 +48,7 @@ public class CateManagerTest {
      * 修改分类信息，没有的话 返回 0
      */
     @Test
-    public void updateCate(){
+    public void updateCate() throws Exception{
         Integer result = managerMapper.updateCate(3, "笑话");
         System.out.printf("分类测试结果 ： "+result + (result>0?"成功":"失败"));
     }
@@ -57,7 +57,7 @@ public class CateManagerTest {
      * 删除分类 ，直接删除 ，找不到 返回 0 ，删除成功为 1
      */
     @Test
-    public void deleteCate(){
+    public void deleteCate() throws Exception{
         Integer result = managerMapper.deleteCate(6);
         System.out.printf("分类测试结果 ： "+result + (result>0?"成功":"失败"));
     }
@@ -66,7 +66,7 @@ public class CateManagerTest {
      * 添加分类信息
      */
     @Test
-    public void insertCate(){
+    public void insertCate() throws Exception{
         Integer result = managerMapper.insertCate("我是测试专家");
         System.out.printf("分类测试结果 ： "+result + (result>0?"成功":"失败"));
     }
