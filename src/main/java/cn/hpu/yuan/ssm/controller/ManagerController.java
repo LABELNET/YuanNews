@@ -41,7 +41,7 @@ public class ManagerController {
         try {
             Integer uid = userManager.managerLogin(unum, pass);
             if(uid>0){
-                httpSession.setAttribute("uid",uid);
+                httpSession.setAttribute(ManagerConstant.SESSION_ATTRIBUTE_KEY,uid);
             }
             return uid;
         } catch (Exception e) {
