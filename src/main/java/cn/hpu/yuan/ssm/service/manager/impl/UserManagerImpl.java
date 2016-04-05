@@ -39,4 +39,15 @@ public class UserManagerImpl implements UserManager{
         return LoginStatus.Login_ERROR;
     }
 
+    /**
+     * 获得用户信息
+     * @param uid
+     * @return
+     * @throws Exception
+     */
+    public UserVo managerFindUserIfo(Integer uid) throws Exception {
+        return userManagerMapper.findUserById(uid);
+    }
+
+
 }

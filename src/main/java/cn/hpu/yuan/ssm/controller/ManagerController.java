@@ -3,6 +3,7 @@ package cn.hpu.yuan.ssm.controller;
 import cn.hpu.yuan.ssm.common.LoggerUtil;
 import cn.hpu.yuan.ssm.common.LoginStatus;
 import cn.hpu.yuan.ssm.controller.constant.ManagerConstant;
+import cn.hpu.yuan.ssm.model.vo.UserVo;
 import cn.hpu.yuan.ssm.service.manager.UserManager;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 
@@ -33,32 +35,31 @@ public class ManagerController {
      * 管理员登陆　action
      */
     @RequestMapping(value = "/managerLogin",method= RequestMethod.POST)
-    public @ResponseBody Integer managerLogin(HttpSession httpSession, @RequestParam String unum, @RequestParam String pass){
+    public @ResponseBody Integer managerLogin(HttpSession httpSession, @RequestParam String unum, @RequestParam String pass) throws Exception {
         LoggerUtil.print(ManagerConstant.LOG_MANAGER_CONTROLLER,unum,pass);
-        try {
-            Integer uid = userManager.managerLogin(unum, pass);
+        Integer uid = userManager.managerLogin(unum, pass);
+
             if(uid>0){
                 httpSession.setAttribute(ManagerConstant.SESSION_ATTRIBUTE_KEY,uid);
             }
-            return uid;
-        } catch (Exception e) {
-            //异常处理
-            e.printStackTrace();
-            LoggerUtil.print(e.getMessage());
-        }
-        return LoginStatus.Login_ERROR;
+
+        return uid;
     }
 
     /**
      * 后台主页面
      */
     @RequestMapping(value = "/managerIndex",method = RequestMethod.GET)
-    public String managerIndex(HttpSession httpSession){
+    public ModelAndView managerIndex(HttpSession httpSession) throws Exception {
         Integer uid= (Integer) httpSession.getAttribute(ManagerConstant.SESSION_ATTRIBUTE_KEY);
         LoggerUtil.print("主页　用户id : "+uid);
 
+        UserVo userVo = userManager.managerFindUserIfo(uid);
+        ModelAndView modelAndView=new ModelAndView();
+        modelAndView.addObject(ManagerConstant.MANAGER_INDEX_MV_KEY,userVo);
+        modelAndView.setViewName(ManagerConstant.MANAGER_INDEX);
         //TODO 后台主页实现
-        return ManagerConstant.MANAGER_INDEX;
+        return modelAndView;
     }
 
     /**
@@ -70,6 +71,8 @@ public class ManagerController {
         //TODO 登出后转向哪里
         return ManagerConstant.MANAGER_INDEX;
     }
+
+
 
 
 }

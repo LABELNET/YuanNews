@@ -14,4 +14,6 @@ public interface ManagerConstant {
 
     String MANAGER_REDRICT_LOGIN="redirect:manager/LoginManger"; //重定向url到登陆界面
 
+    String MANAGER_INDEX_MV_KEY="userVo";
+
 }
