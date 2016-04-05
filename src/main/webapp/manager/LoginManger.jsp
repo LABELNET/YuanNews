@@ -52,7 +52,7 @@
 
             var num=$("#unum").val();
             var  pass=$("#pass").val();
-            $.post("/managerLogin.action",{
+            $.post("/manager/managerLogin.action",{
                         unum:num,
                         pass:pass
                     },
@@ -66,7 +66,7 @@
         function forwardPage(data) {
             if(data>0){
                 //跳转
-                location.href="/managerIndex.action";
+                location.href="/manager/managerIndex.action";
             }
 
             if(data==-1){

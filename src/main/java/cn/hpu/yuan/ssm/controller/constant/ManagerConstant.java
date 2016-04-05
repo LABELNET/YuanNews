@@ -12,7 +12,7 @@ public interface ManagerConstant {
 
     String SESSION_ATTRIBUTE_KEY="uid"; //HttpSession 的 key
 
-    String MANAGER_REDRICT_LOGIN="redirect:manager/LoginManger"; //重定向url到登陆界面
+    String MANAGER_REDRICT_LOGIN="redirect:LoginManger.jsp"; //重定向url到登陆界面
 
     String MANAGER_INDEX_MV_KEY="userVo";
 

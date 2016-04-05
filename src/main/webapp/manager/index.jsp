@@ -49,9 +49,9 @@
   <!-- 初始化 ：　管理员信息-->
   <ul class="rt_nav">
     <li><a href="/CustomerIndex.action" target="_blank" class="website_icon">站点首页</a></li>
-    <li><a href="#" class="admin_icon">管理员姓名</a></li>
+    <li><a href="#" class="admin_icon">${userVo.nick}</a></li>
     <li><a href="#" class="set_icon">个人中心</a></li>
-    <li><a href="/managerLoginOut.action" class="quit_icon">安全退出</a></li>
+    <li><a href="/manager/managerLoginOut.action" class="quit_icon">安全退出</a></li>
   </ul>
 </header>
 

@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
  * Created by yuan on 16-4-4.
  * 　控制器　－　后台管理　
  */
-
+@RequestMapping(value = "/manager")
 @Controller
 public class ManagerController {
 
@@ -64,12 +64,12 @@ public class ManagerController {
 
     /**
      * 管理员－登出
+     * 登出转向　登陆页面
      */
     @RequestMapping("/managerLoginOut")
     public String managerLoginOut(HttpSession httpSession){
         httpSession.invalidate();
-        //TODO 登出后转向哪里
-        return ManagerConstant.MANAGER_INDEX;
+        return ManagerConstant.MANAGER_REDRICT_LOGIN;
     }
 
 
