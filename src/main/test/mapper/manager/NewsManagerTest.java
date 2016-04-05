@@ -33,7 +33,7 @@ public class NewsManagerTest {
      * 通过id , 查询新闻（不包含内容）
      */
     @Test
-    public void findNewsById(){
+    public void findNewsById() throws Exception{
         NewsPo newsById = newsManagerMapper.findNewsById(2);
         System.out.printf("新闻测试结果  ： "+newsById.toString());
     }
@@ -42,7 +42,7 @@ public class NewsManagerTest {
      * 分页查询新闻信息
      */
     @Test
-    public void findNews(){
+    public void findNews() throws Exception{
         List<NewsPo> news = newsManagerMapper.findNews(0, 3);
         System.out.printf("新闻测试结果  ： "+news.toString());
     }
@@ -51,7 +51,7 @@ public class NewsManagerTest {
      * 测试获取 新闻内容
      */
     @Test
-    public void findNewsContentById(){
+    public void findNewsContentById() throws Exception{
         String byId = newsManagerMapper.findNewsContentById(2);
         System.out.printf("新闻测试结果  ： "+byId);
     }
@@ -70,7 +70,7 @@ public class NewsManagerTest {
      * 根据来源
      */
     @Test
-    public void findNewsBySource(){
+    public void findNewsBySource() throws Exception{
         List<NewsPo> newsPos = newsManagerMapper.findNewsBySource(0, 3, 1);
         System.out.printf("新闻测试结果  ： "+newsPos);
     }
@@ -80,7 +80,7 @@ public class NewsManagerTest {
      * 更新阅读量
      */
     @Test
-    public void updateNewsRnum(){
+    public void updateNewsRnum() throws Exception{
         Integer integer = newsManagerMapper.updateNewsRnum(2, 100);
         System.out.printf("新闻测试结果  ： "+integer+ " | " +(integer>0?"成功":"失败") );
     }
@@ -90,7 +90,7 @@ public class NewsManagerTest {
      * 修改 title
      */
     @Test
-    public void updateNewsTitle(){
+    public void updateNewsTitle() throws Exception{
         Integer integer = newsManagerMapper.updateNewsTitle(2,"失败是成功之母 ？　Yes ");
         System.out.printf("新闻测试结果  ： "+integer+ " | " +(integer>0?"成功":"失败") );
     }
@@ -99,7 +99,7 @@ public class NewsManagerTest {
      * 修改新闻来源
      */
     @Test
-    public void updateNewsSource(){
+    public void updateNewsSource() throws Exception{
         Integer integer = newsManagerMapper.updateNewsSource(2,3);
         System.out.printf("新闻测试结果  ： "+integer+ " | " +(integer>0?"成功":"失败") );
     }
@@ -108,7 +108,7 @@ public class NewsManagerTest {
      * 修改图片地址
      */
     @Test
-    public void updateNewsImg(){
+    public void updateNewsImg() throws Exception{
         Integer integer = newsManagerMapper.updateNewsImg(2,"/images/moren.jpg");
         System.out.printf("新闻测试结果  ： "+integer+ " | " +(integer>0?"成功":"失败") );
     }
@@ -117,7 +117,7 @@ public class NewsManagerTest {
      * 修改时间
      */
     @Test
-    public void updateNewsTime(){
+    public void updateNewsTime() throws Exception{
         Integer integer = newsManagerMapper.updateNewsTime(2,new Date().toString());
         System.out.printf("新闻测试结果  ： "+integer+ " | " +(integer>0?"成功":"失败") );
     }
@@ -126,7 +126,7 @@ public class NewsManagerTest {
      * 修改分类信息
      */
     @Test
-    public void updateNewsCate(){
+    public void updateNewsCate() throws Exception{
         Integer integer = newsManagerMapper.updateNewsCate(2,2);
         System.out.printf("新闻测试结果  ： "+integer+ " | " +(integer>0?"成功":"失败") );
     }
@@ -136,7 +136,7 @@ public class NewsManagerTest {
      * 测试添加
      */
     @Test
-    public void insertNews(){
+    public void insertNews() throws Exception{
         NewsVo vo=new NewsVo();
         vo.setContent("我是一个小鸭子！！");
         vo.setDt(new Date().toString());
@@ -155,7 +155,7 @@ public class NewsManagerTest {
      *
      */
     @Test
-    public void deleteNewsById(){
+    public void deleteNewsById() throws Exception{
         Integer integer = newsManagerMapper.deleteNewsById(16);
         System.out.printf("新闻测试结果  ： "+integer+ " | " +(integer>0?"成功":"失败") );
     }
