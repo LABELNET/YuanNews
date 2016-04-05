@@ -45,6 +45,38 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
     <script type="application/javascript">
         function login() {
+　　　　　　　 var unum=$("#unum").val();
+            var  pass=$("#pass").val();
+              $.post("/managerLogin.action",{
+                  unum:unum,
+                  pass:pass
+              },
+                function (data,status) {
+                    forwardPage(data);
+                }
+              );      　　
+        }
+        
+        function forwardPage(data) {
+            if(data>0){
+                //跳转
+                location.href="/managerIndex.action?uid="+data;
+            }
+
+            if(data==-1){
+                //密码错误
+                alert("密码错误");
+            }
+
+            if(data==-2){
+                //账号不存在
+                alert("账号不存在！")
+            }
+
+            if(data==-3){
+                //服务器错误，登陆失败
+                alert("服务器错误，登陆失败,请刷新重试！");
+            }
 
         }
     </script>
@@ -57,7 +89,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="graphs">
             <div class="sign-in-form">
                 <div class="sign-in-form-top">
-                    <p><span>Sign In to</span> <a href="index.html">Admin</a></p>
+                    <p><span>新闻推荐</span> <a href="index.html">后台管理</a></p>
                 </div>
                 <div class="signin">
                     <div class="signin-rit">
@@ -67,7 +99,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <p><a href="#">点我－> 回到主页</a> </p>
                         <div class="clearfix"> </div>
                     </div>
-                    <form action="/managerLogin.action" method="post">
+                    <form >
                         <div class="log-input">
                             <div class="log-input-left">
                                 <input type="text" class="user" id="unum" name="unum" value="手机号码" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '手机号码:';}"/>
@@ -80,7 +112,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </div>
                             <div class="clearfix"> </div>
                         </div>
-                        <input type="submit" value="　登　陆　">
+                        <input type="button" onclick="login()" value="　登　陆　">
                     </form>
                 </div>
                 <div class="new_people">
