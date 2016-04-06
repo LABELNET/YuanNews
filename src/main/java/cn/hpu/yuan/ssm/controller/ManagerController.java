@@ -1,6 +1,6 @@
 package cn.hpu.yuan.ssm.controller;
 
-import cn.hpu.yuan.ssm.common.LoggerUtil;
+import cn.hpu.yuan.core.util.LoggerUtil;
 import cn.hpu.yuan.ssm.controller.constant.ManagerConstant;
 import cn.hpu.yuan.ssm.model.vo.UserVo;
 import cn.hpu.yuan.ssm.service.manager.UserManager;

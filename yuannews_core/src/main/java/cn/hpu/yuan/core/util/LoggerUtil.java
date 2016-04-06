@@ -1,4 +1,4 @@
-package cn.hpu.yuan.ssm.common;
+package cn.hpu.yuan.core.util;
 
 /**
  * Created by yuan on 16-4-5.
