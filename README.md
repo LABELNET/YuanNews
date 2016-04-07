@@ -10,13 +10,10 @@
 
 ---
 
- # 小结
+# 小结
  <br>
  　　news - 第一版,开发平台是idea,通过maven 进行的环境搭建，其实挺方便的；<br>
- ```
-      基本的开发思路是:　mapper -> service -> controller -> jsp ;
- ```
-
+     基本的开发思路是:　mapper -> service -> controller -> jsp ;<br>
      当然，第一版是在一个project 中进行开发的，随着代码的编写，类，接口等越来越多，看起来非常不爽！就想到了Android Studio 开发的时候，可以多模块，
   进行开发Android。
      故，就尝试了在news上就行大改版，使用idea进行多个module（web,config,contorller,dao,model,service,common　）七个module,单独的模块
