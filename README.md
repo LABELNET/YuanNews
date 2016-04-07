@@ -7,8 +7,13 @@
     * 2. 　还是采用　maven 的方式进行环境配置和相关module直接的配置；
     * 3. 多module 配置有些类似　asp.net 类库的配置，所以需要借鉴配置思想；
     * 4. 多module 开发是的各个模块之间耦合性降低，方便开发，十分方便；
- * 小结
- 　　news - 第一版,开发平台是idea,通过maven 进行的环境搭建，其实挺方便的；基本的开发思路是　mapper -> service -> controller -> jsp ;
+
+---
+ #小结
+ 　　news - 第一版,开发平台是idea,通过maven 进行的环境搭建，其实挺方便的；
+ ```
+      基本的开发思路是:　mapper -> service -> controller -> jsp ;
+ ```
   当然，第一版是在一个project 中进行开发的，随着代码的编写，类，接口等越来越多，看起来非常不爽！就想到了Android Studio 开发的时候，可以多模块，
   进行开发Android。故，就尝试了在news上就行大改版，使用idea进行多个module（web,config,contorller,dao,model,service,common　）七个module,
   单独的module进行如果需要其它的module，需要进行maven依赖配置。通过maven，将多个module进行配置，然后进行每个模块的单独开发！当然由于没有经验，
