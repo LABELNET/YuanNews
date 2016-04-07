@@ -7,16 +7,15 @@ package yuan.ssm.common.util;
 public class LoggerUtil {
 
 
-    public static void print(String... params){
-        String[] strings = params.clone();
+    public static void print(Object... params){
+        Object[] objects = params.clone();
         System.out.println("＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋");
         System.out.println("＋＋");
-        for(int i=0;i<strings.length;i++){
-            System.out.println("＋＋  arg"+i+"   :   "+strings[i]);
+        for(int i=0;i<objects.length;i++){
+            System.out.println("＋＋  "+i+"   :   "+objects[i]);
         }
         System.out.println("＋＋");
         System.out.println("＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋＋");
     }
-
 
 }
