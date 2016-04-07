@@ -17,6 +17,9 @@ public class UserManagerImpl implements UserManager {
     @Autowired
     private UserManagerMapper userManagerMapper;
 
+    public void setUserManagerMapper(UserManagerMapper userManagerMapper) {
+        this.userManagerMapper = userManagerMapper;
+    }
     /**
      * 管理员登陆
      * @param unum　账号

@@ -11,7 +11,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class ServiceBaseTest {
 
 
-    public ApplicationContext context;
+     public ApplicationContext context;
 
     @Before
     public void setUp(){

@@ -5,6 +5,6 @@ package common;
  */
 public interface ServiceConstant {
 
-    String SERVICE_APPLICATION="classpath:spring/applicationContext-service.xml";
+    String SERVICE_APPLICATION="classpath:spring/applicationContext-*.xml";
 
 }
