@@ -4,4 +4,29 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="yuan.ssm.dao.manager.ManagerCountMapper">
 
+    <select id="findUserCount" parameterType="java.lang.Integer" resultType="yuan.ssm.other.PageJo">
+        SELECT
+           count(id) AS allCount
+        <if test="type==1">
+            FROM user
+        </if>
+
+        <if test="type==2">
+            FROM news
+        </if>
+
+        <if test="type==3">
+            FROM comment
+        </if>
+
+        <if test="type==4">
+            FROM liked
+        </if>
+
+        <if test="type==5">
+            FROM taste
+        </if>
+
+    </select>
+
 </mapper>
