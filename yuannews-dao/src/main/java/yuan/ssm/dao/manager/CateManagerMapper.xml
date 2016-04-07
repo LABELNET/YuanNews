@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="yuan.ssm.dao.manager.CateManagerMapper">
+
+    <select id="findCateById" parameterType="java.lang.Integer" resultType="cate">
+        SELECT * FROM cate WHERE id=#{id}
+    </select>
+
+    <select id="findCates" resultType="cate">
+        SELECT * FROM cate
+    </select>
+
+    <update id="updateCate">
+        UPDATE cate SET content=#{content} WHERE id=#{id}
+    </update>
+
+    <delete id="deleteCate" parameterType="java.lang.Integer">
+        DELETE FROM  cate WHERE id=#{id}
+    </delete>
+
+    <insert id="insertCate" parameterType="java.lang.String">
+        INSERT INTO cate(content) VALUES (#{content})
+    </insert>
+
+</mapper>
