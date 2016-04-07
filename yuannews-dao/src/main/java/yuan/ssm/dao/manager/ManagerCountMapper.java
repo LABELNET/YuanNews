@@ -6,4 +6,9 @@ package yuan.ssm.dao.manager;
  */
 public interface ManagerCountMapper {
 
+    /**
+     * 分页信息：　
+     *
+     */
+
 }
