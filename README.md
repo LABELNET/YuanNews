@@ -16,10 +16,11 @@
  ```
       基本的开发思路是:　mapper -> service -> controller -> jsp ;
  ```
-     当然，第一版是在一个project 中进行开发的，随着代码的编写，类，接口等越来越多，看起来非常不爽！就想到了Android Studio 开发的时候，可以多模块，<br>
-  进行开发Android。<br>
-     故，就尝试了在news上就行大改版，使用idea进行多个module（web,config,contorller,dao,model,service,common　）七个module,单独的模块<br>
-  module进行如果需要其它的module，需要进行maven依赖配置。通过maven，将多个module进行配置，然后进行每个模块的单独开发！<br>
+
+     当然，第一版是在一个project 中进行开发的，随着代码的编写，类，接口等越来越多，看起来非常不爽！就想到了Android Studio 开发的时候，可以多模块，
+  进行开发Android。
+     故，就尝试了在news上就行大改版，使用idea进行多个module（web,config,contorller,dao,model,service,common　）七个module,单独的模块
+  module进行如果需要其它的module，需要进行maven依赖配置。通过maven，将多个module进行配置，然后进行每个模块的单独开发！
   　　当然由于没有经验，配置了１天多的时间，中间思考了很多，就想起来了asp.net开发的时候dll类库的时候，故就其思想，进行了依赖配置，结果成功了！<br>
   　　稍后，将在csdn博客上进行配置总结，当然　使用gradle应该基本一致！
   　
