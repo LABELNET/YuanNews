@@ -13,9 +13,11 @@ public interface UserManager {
 
     //管理员登陆
     Integer managerLogin(String unum,String pass) throws Exception;
-
+    //获取用户信息
     UserVo managerFindUserIfo(Integer uid) throws Exception;
-
+    //获取多个用户
     List<UserVo> managerFindUserList(Integer start,Integer num) throws Exception;
+    //获取用户总数
+    Integer managerFindUserCount() throws Exception;
 
 }
