@@ -1,3 +1,5 @@
+<%@ page import="yuan.ssm.common.constant.ManagerConstant" %>
+<%@ page import="yuan.ssm.vo.UserVo" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -7,6 +9,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<% UserVo userVo= (UserVo) session.getAttribute(ManagerConstant.MANAGER_USER_NAME); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,7 +52,7 @@
   <!-- 初始化 ：　管理员信息-->
   <ul class="rt_nav">
     <li><a href="/CustomerIndex.action" target="_blank" class="website_icon">站点首页</a></li>
-    <li><a href="#" class="admin_icon">${userVo.nick}</a></li>
+    <li><a href="#" class="admin_icon"><%=userVo.getNick()%></a></li>
     <li><a href="#" class="set_icon">个人中心</a></li>
     <li><a href="/manager/managerLoginOut.action" class="quit_icon">安全退出</a></li>
   </ul>

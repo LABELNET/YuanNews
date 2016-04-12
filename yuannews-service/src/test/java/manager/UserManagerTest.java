@@ -4,6 +4,7 @@ import common.ServiceBaseTest;
 import org.junit.Before;
 import org.junit.Test;
 import yuan.ssm.dao.manager.UserManagerMapper;
+import yuan.ssm.other.PageJo;
 import yuan.ssm.service.manager.UserManager;
 import yuan.ssm.service.manager.impl.UserManagerImpl;
 import yuan.ssm.vo.UserVo;
@@ -29,5 +30,13 @@ public class UserManagerTest extends ServiceBaseTest{
         List<UserVo> userVos = userManager.managerFindUserList(0, 3);
         System.out.println(" 服务端测试结果　：　 "+userVos);
     }
+
+    @Test
+    public void managerFindUserCount() throws Exception {
+        PageJo pageJo = userManager.managerFindUserCount();
+        System.out.println(" 服务端测试结果　：　 "+pageJo.getAllCount());
+    }
+
+
 
 }

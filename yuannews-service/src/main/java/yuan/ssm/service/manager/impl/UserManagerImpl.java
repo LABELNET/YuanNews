@@ -2,7 +2,10 @@ package yuan.ssm.service.manager.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import yuan.ssm.common.status.LoginStatus;
+import yuan.ssm.common.status.ManagerConutStatus;
+import yuan.ssm.dao.manager.ManagerCountMapper;
 import yuan.ssm.dao.manager.UserManagerMapper;
+import yuan.ssm.other.PageJo;
 import yuan.ssm.service.manager.UserManager;
 import yuan.ssm.vo.UserVo;
 import java.util.List;
@@ -17,9 +20,9 @@ public class UserManagerImpl implements UserManager {
     @Autowired
     private UserManagerMapper userManagerMapper;
 
-    public void setUserManagerMapper(UserManagerMapper userManagerMapper) {
-        this.userManagerMapper = userManagerMapper;
-    }
+    @Autowired
+    private ManagerCountMapper managerCountMapper;
+
     /**
      * 管理员登陆
      * @param unum　账号
@@ -62,6 +65,15 @@ public class UserManagerImpl implements UserManager {
      */
     public List<UserVo> managerFindUserList(Integer start, Integer num) throws Exception {
         return userManagerMapper.findPageIndexUsers(start,num);
+    }
+
+    /**
+     * 获取用户总数
+     * @return
+     * @throws Exception
+     */
+    public PageJo managerFindUserCount() throws Exception {
+        return managerCountMapper.findUserCount(ManagerConutStatus.MANAGER_USER_COUNT_TYPE);
     }
 
 

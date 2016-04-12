@@ -18,4 +18,6 @@ public interface ManagerConstant {
 
     String MAGAGER_USER_PAGE="manager/UserManager";
 
+    String MANAGER_USER_NAME="usernick";
+
 }

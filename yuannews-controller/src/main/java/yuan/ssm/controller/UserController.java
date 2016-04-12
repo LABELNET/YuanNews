@@ -48,15 +48,14 @@ public class UserController {
 
     /**
      * 后台主页面
+     * @Params 注意这个是后台管理主页
      */
     @RequestMapping(value = "/managerIndex",method = RequestMethod.GET)
     public ModelAndView managerIndex(HttpSession httpSession) throws Exception {
         Integer uid= (Integer) httpSession.getAttribute(ManagerConstant.SESSION_ATTRIBUTE_KEY);
-        LoggerUtil.print("主页　用户id : "+uid);
-
         UserVo userVo = userManager.managerFindUserIfo(uid);
+        httpSession.setAttribute(ManagerConstant.MANAGER_USER_NAME,userVo);
         ModelAndView modelAndView=new ModelAndView();
-        modelAndView.addObject(ManagerConstant.MANAGER_INDEX_MV_KEY,userVo);
         modelAndView.setViewName(ManagerConstant.MANAGER_INDEX);
         //TODO 后台主页实现
         return modelAndView;

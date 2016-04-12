@@ -2,6 +2,7 @@ package yuan.ssm.service.manager;
 
 
 
+import yuan.ssm.other.PageJo;
 import yuan.ssm.vo.UserVo;
 import java.util.List;
 
@@ -18,6 +19,6 @@ public interface UserManager {
     //获取多个用户
     List<UserVo> managerFindUserList(Integer start,Integer num) throws Exception;
     //获取用户总数
-    Integer managerFindUserCount() throws Exception;
+    PageJo managerFindUserCount() throws Exception;
 
 }
