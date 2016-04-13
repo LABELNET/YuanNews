@@ -16,12 +16,18 @@
   <meta charset="utf-8"/>
   <title>新闻推荐-后台管理系统</title>
   <meta name="author" content="DeathGhost" />
-  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <link rel="stylesheet" type="text/css" href="css/style.css"/>
+
   <!--[if lt IE 9]>
   <script src="js/html5.js"></script>
   <![endif]-->
   <script src="js/jquery.js"></script>
   <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+
+  <!-- 分页插件－simplePagination -->
+  <link  rel="stylesheet" type="text/css" href="css/simplePagination.css" />
+  <script src="js/simplePagination.js"></script>
+
   <script>
     (function($){
       $(window).load(function(){
@@ -66,7 +72,7 @@
       <dl>
         <dt>用户信息</dt>
         <!--当前链接则添加class:active-->
-        <dd><a href="/manager/managerUserPage.action">用户列表</a></dd>
+        <dd><a href="/manager/managerUserPage.action?p=1">用户列表</a></dd>
         <dd><a href="#">用户兴趣</a></dd>
       </dl>
     </li>

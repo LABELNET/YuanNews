@@ -3,6 +3,14 @@
 
 
 
+
+#2016.04.13
+ * 更新用户分页加载页面的控制器改写
+ * 显示界面，通过jstl，进行判断显示
+ * 用户管理列表实现分页插件simplePagination : http://flaviusmatis.github.io/simplePagination.js/
+ *
+
+
 #2016.04.07
   * 给各个module 添加 md文件用来记录和阅读
   * 准备入手实现步骤　：　dao 全部业务需求实现，service 全部业务需求实现，最后开始controller和web的开发与整合！

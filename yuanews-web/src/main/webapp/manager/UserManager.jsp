@@ -17,11 +17,17 @@
   <title>新闻推荐-后台管理系统</title>
   <meta name="author" content="DeathGhost" />
   <link rel="stylesheet" type="text/css" href="css/style.css" />
+
   <!--[if lt IE 9]>
   <script src="js/html5.js"></script>
   <![endif]-->
   <script src="js/jquery.js"></script>
   <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+
+  <!-- 分页插件－simplePagination -->
+  <link  rel="stylesheet" type="text/css" href="css/simplePagination.css" />
+  <script src="js/simplePagination.js"></script>
+
   <script>
     (function($){
       $(window).load(function(){
@@ -43,6 +49,20 @@
 
       });
     })(jQuery);
+
+    $(function() {
+      $("#paginationpage").pagination({
+        items: 100,
+        itemsOnPage: 10,
+        page:10,
+        hrefTextPrefix:"?p=",
+        cssStyle: 'light-theme',
+        prevText:"上一页",
+        nextText:"下一页"
+
+      });
+    });
+
   </script>
 </head>
 <body>
@@ -66,7 +86,7 @@
       <dl>
         <dt>用户信息</dt>
         <!--当前链接则添加class:active-->
-        <dd><a href="/manager/managerUserPage.action" class="active">用户列表</a></dd>
+        <dd><a href="/manager/managerUserPage.action?p=1" class="active">用户列表</a></dd>
         <dd><a href="#">用户兴趣</a></dd>
       </dl>
     </li>
@@ -108,7 +128,7 @@
 </aside>
 
 <section class="rt_wrap content mCustomScrollbar">
-  <div class="rt_content">
+  <div class="rt_content" style="margin-top: 10px;">
 
     <section>
       <div class="page_title">
@@ -125,29 +145,30 @@
           <th>身份</th>
           <th>操作</th>
         </tr>
-        <c:forEach items="${userVos}" var="userVo">
-          <tr>
-            <td>${userVo.id}</td>
-            <td><img src="${userVo.head}" style="max-width: 50px;max-height: 50px;"></td>
-            <td>${userVo.unum}</td>
-            <td>${userVo.nick}</td>
-            <td>${userVo.sex==0?"男":"女"}</td>
-            <td>${userVo.status==0?"普通用户":"管理员"}</td>
-            <td>
-              <a href="#">表内链接</a>
-              <a href="#" class="inner_btn">表内按钮</a>
-            </td>
-          </tr>
-        </c:forEach>
+        <c:if test="${!empty userVos}">
+          <c:forEach items="${userVos}" var="userVo">
+            <tr>
+              <td>${userVo.id}</td>
+              <td><img src="${userVo.head}" style="max-width: 50px;max-height: 50px;"></td>
+              <td>${userVo.unum}</td>
+              <td>${userVo.nick}</td>
+              <td>${userVo.sex==0?"男":"女"}</td>
+              <td>${userVo.status==0?"普通用户":"管理员"}</td>
+              <td>
+                <a href="#">表内链接</a>
+                <a href="#" class="inner_btn">表内按钮</a>
+              </td>
+            </tr>
+           </c:forEach>
+        </c:if>
+        <c:if test="${empty userVos}">
+          　<tr>
+               <td colspan="7"><c:out value="没有更多数据了"/></td>
+            </tr>
+        </c:if>
       </table>
       <aside class="paging">
-        <a>第一页</a>
-        <a>1</a>
-        <a>2</a>
-        <a>3</a>
-        <a>…</a>
-        <a>1004</a>
-        <a>最后一页</a>
+        <div id="paginationpage" style="float: right"></div>
       </aside>
     </section>
 

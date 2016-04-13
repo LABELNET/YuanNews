@@ -1,5 +1,9 @@
 package yuan.ssm.dao.customer;
 
+import yuan.ssm.pojo.NewsCustom;
+
+import java.util.List;
+
 /**
  * Created by yuan on 16-4-4.
  * 用户端－新闻mapper接口
@@ -12,6 +16,14 @@ public interface NewsMapper {
     但是最基本的根据兴趣查询新闻，在此实现；　
     分页查询；　根据阅读量，进行从高到低排序　，阅读量大于５０的
      */
+
+    //单个兴趣查询
+    List<NewsCustom> findNewsCustomByTaste(String taste,Integer start,Integer num);
+
+    //多个兴趣查询
+    List<NewsCustom> findNewsCustomByTastes(String taste,String taste1,Integer start,Integer num);
+
+
 
     /**
      * 02. 推荐

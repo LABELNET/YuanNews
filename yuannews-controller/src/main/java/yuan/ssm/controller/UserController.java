@@ -31,6 +31,8 @@ public class UserController {
     @Autowired
     private  ObjectMapper mapperJson;
 
+    private int userPageNum=2;
+
     /**
      * 管理员登陆　action
      */
@@ -74,9 +76,18 @@ public class UserController {
     /**
      * 后台管理－用户管理
      */
-    @RequestMapping("/managerUserPage")
-    public ModelAndView managerUserPage() throws Exception {
-        List<UserVo> userVos = userManager.managerFindUserList(0,10);
+    @RequestMapping(value = "/managerUserPage",method = RequestMethod.GET)
+    public ModelAndView managerUserPage(@RequestParam Integer p) throws Exception {
+        if(p==null){
+            p=1;
+        }
+        if(p<0){
+            p=1;
+        }
+        LoggerUtil.print("用户管理：　p= "+p);
+        p=userPageNum*(p-1);
+        List<UserVo> userVos = userManager.managerFindUserList(p,userPageNum);
+        LoggerUtil.print("用户管理：　userVos= "+userVos);
         ModelAndView mav=new ModelAndView();
         mav.addObject("userVos",userVos);
         mav.setViewName(ManagerConstant.MAGAGER_USER_PAGE);
