@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import yuan.ssm.common.constant.ManagerConstant;
 import yuan.ssm.common.util.LoggerUtil;
+import yuan.ssm.other.PageJo;
 import yuan.ssm.service.manager.UserManager;
 import yuan.ssm.vo.UserVo;
 
@@ -84,13 +85,18 @@ public class UserController {
         if(p<0){
             p=1;
         }
+        int currentPage=p;
         LoggerUtil.print("用户管理：　p= "+p);
         p=userPageNum*(p-1);
         List<UserVo> userVos = userManager.managerFindUserList(p,userPageNum);
         LoggerUtil.print("用户管理：　userVos= "+userVos);
+        PageJo jo = userManager.managerFindUserCount();
+        LoggerUtil.print("用户管理：　PageJo = "+jo.getAllCount());
         ModelAndView mav=new ModelAndView();
         mav.addObject("userVos",userVos);
         mav.setViewName(ManagerConstant.MAGAGER_USER_PAGE);
+        mav.addObject("currentPage",currentPage);
+        mav.addObject("userCount",jo.getAllCount());
         return mav;
     }
 

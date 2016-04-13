@@ -3,12 +3,17 @@
 
 
 
+#2016.04.14
+ * 用户信息修改　service - 页面实现
+ * 兴趣列表分页实现　: service 和　页面实现
+ * 兴趣的增删改查实现
+
 
 #2016.04.13
  * 更新用户分页加载页面的控制器改写
  * 显示界面，通过jstl，进行判断显示
  * 用户管理列表实现分页插件simplePagination : http://flaviusmatis.github.io/simplePagination.js/
- *
+ * 用户列表分页插件实现与优化实现
 
 
 #2016.04.07

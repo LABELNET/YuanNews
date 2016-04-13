@@ -50,15 +50,17 @@
       });
     })(jQuery);
 
+    //分页实现：　itemsOnPage 当前页面的item总数
     $(function() {
       $("#paginationpage").pagination({
-        items: 100,
-        itemsOnPage: 10,
+        items: ${userCount},
+        itemsOnPage: 15,
         page:10,
         hrefTextPrefix:"?p=",
         cssStyle: 'light-theme',
         prevText:"上一页",
-        nextText:"下一页"
+        nextText:"下一页",
+        currentPage:${currentPage}
 
       });
     });
