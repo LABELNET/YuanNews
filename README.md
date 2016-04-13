@@ -1,9 +1,11 @@
 # YuanNews
  基于用户兴趣标签的新闻推荐系统（毕业设计）
 
-#注意事项
+##注意事项
  * 界面的修改，均已index.jsp修改为主，在进行子界面的修改，保持统一性！
  * tomcat的使用　：　部署yuanews-web.war explor　包，运行时，见运行菜单！
+ * ps :
+      ![image](https://github.com/LABELNET/YuanNews/blob/master/yuanews-web/src/main/webapp/images/tomcat-learn.png?raw=true)
 
 
 
