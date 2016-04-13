@@ -32,7 +32,7 @@ public class UserController {
     @Autowired
     private  ObjectMapper mapperJson;
 
-    private int userPageNum=2;
+    private int userPageNum=15;
 
     /**
      * 管理员登陆　action

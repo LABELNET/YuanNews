@@ -65,6 +65,25 @@
       });
     });
 
+    function deleteUser() {
+      //删除用户ajax进行操作
+      alert("暂时无法删除用户");
+    }
+
+    function addUser() {
+      //新增用户
+      alert("暂时无法新增加用户");
+    }
+
+    function updateUser() {
+      //修改用户信息
+      alert("暂时无法修改用户");
+    }
+
+    //实现思路　：　两个方法　：　dialog(user) 和　ajax(url,user)
+
+
+
   </script>
 </head>
 <body>
@@ -135,7 +154,7 @@
     <section>
       <div class="page_title">
         <h2 class="fl">用户管理</h2>
-        <a class="fr top_rt_btn">新增用户</a>
+        <button type="button" class="fr top_rt_btn" onclick="addUser()">新增用户</button>
       </div>
       <table class="table" style="text-align:center">
         <tr>
@@ -157,8 +176,8 @@
               <td>${userVo.sex==0?"男":"女"}</td>
               <td>${userVo.status==0?"普通用户":"管理员"}</td>
               <td>
-                <a href="#">表内链接</a>
-                <a href="#" class="inner_btn">表内按钮</a>
+                <button type="button" class="link_btn" onclick="updateUser()">修改信息</button>
+                <a class="inner_btn" onclick="deleteUser()">删除信息</a>
               </td>
             </tr>
            </c:forEach>
