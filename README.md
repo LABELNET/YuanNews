@@ -3,7 +3,7 @@
 
 #注意事项
  * 界面的修改，均已index.jsp修改为主，在进行子界面的修改，保持统一性！
-
+ * tomcat的使用　：　部署yuanews-web.war explor　包，运行时，见运行菜单！
 
 
 
