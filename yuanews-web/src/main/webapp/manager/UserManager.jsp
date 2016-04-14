@@ -48,6 +48,7 @@
         });
 
       });
+
     })(jQuery);
 
     //分页实现：　itemsOnPage 当前页面的item总数
@@ -65,7 +66,7 @@
       });
     });
 
-    function deleteUser() {
+    function deleteUser(id) {
       //删除用户ajax进行操作
       alert("暂时无法删除用户");
     }
@@ -75,13 +76,103 @@
       alert("暂时无法新增加用户");
     }
 
-    function updateUser() {
-      //修改用户信息
-      alert("暂时无法修改用户");
+    function updateUser(id) {
+
+      //1.加载当前用户信息
+      var arr={ id:id };
+      dataRequest("/manager/managerUserIfo.action",arr,0);
+
     }
 
     //实现思路　：　两个方法　：　dialog(user) 和　ajax(url,user)
 
+    function showDialog(data,type) {
+
+      console.log(data);
+
+      if(type==0){
+        //初始化修改dialog界面
+
+        $("#pop_title").text("　修改信息 ");
+        $(".pop_cont_input").show();
+        $("#userunum").text(data.unum);
+        $("#nick").text(data.nick);
+        $(".pop_add_input").hide();
+        if(data.sex==0){
+          $("#sex").find("option[text='男']").attr("selected",true);
+        }else if(data.sex==1){
+          $("#sex").find("option[text='男']").attr("selected",true);
+        }else {
+          $("#sex").find("option[text='未知']").attr("selected",true);
+        }
+
+　　　　　if(data.status==0){
+          $("#status").find("option[text='普通用户']").attr("selected",true);
+        }else {
+          $("#status").find("option[text='管理员']").attr("selected",true);
+        }
+
+        $(".pop_cont_text").text("是否对　"+data.unum+"　的信息进行修改？");
+
+      }
+
+      if(type==1){
+        //初始化删除dialog界面
+
+      }
+
+      if(type==2){
+        //初始化添加dialog界面
+      }
+
+　　  $(".pop_bg").fadeIn();
+
+      //弹出：确认按钮
+      $(".trueBtn").click(function(){
+　　　　　if(type==0){
+  　　　　　　//进行修改
+           alert("修改成功！");
+　　　　　}
+
+        $(".pop_bg").fadeOut();
+      });
+      //弹出：取消或关闭按钮
+      $(".falseBtn").click(function(){
+        $(".pop_bg").fadeOut();
+      });
+
+    }
+
+    function dataRequest(typeurl,arr,type) {
+
+      $.ajax({
+         url:typeurl,
+         data:arr,
+         type:'post',
+         cache:false,
+         dataType:'json',
+         success:function (data,status) {
+            if(status=="success"){
+              showDialog(data,type);
+            }else {
+              showSE("网络加载失败～");
+            }
+         }
+      });
+    }
+
+    function showSE(msg) {
+      $(".pop_bg").fadeIn();
+      $("#pop_title").text("温馨提醒");
+      $(".pop_cont_input").hide();
+      $(".pop_cont_text").text(msg);
+      $(".falseBtn").hide();
+      $(".pop_add_input").hide();
+      //弹出：确认按钮
+      $(".trueBtn").click(function(){
+        $(".pop_bg").fadeOut();
+      });
+    }
 
 
   </script>
@@ -181,8 +272,8 @@
               <c:if test="${userVo.status!=-1}">
                 <td>${userVo.status==0?"普通用户":"管理员"}</td>
                 <td>
-                  <button type="button" class="link_btn" onclick="updateUser()">修改信息</button>
-                  <a class="inner_btn" onclick="deleteUser()">删除信息</a>
+                  <button type="button" class="link_btn" onclick="updateUser(${userVo.id})">修改信息</button>
+                  <a class="inner_btn" onclick="deleteUser(${userVo.id})">删除信息</a>
                 </td>
               </c:if>
 
@@ -200,10 +291,77 @@
       </aside>
     </section>
 
+    <section class="pop_bg">
+      <div class="pop_cont">
+        <!--title-->
+        <h3 id="pop_title">弹出提示标题</h3>
+        <!--content-->
+        <div class="pop_cont_input">
+          <ul>
+            <li>
+              <span id="userunum">账号：</span>
+            </li>
+
+            <li>
+              <span class="ttl">昵称：</span>
+              <input type="text"　id="nick" placeholder="修改你的昵称" class="textbox"/>
+            </li>
+
+            <li>
+              <span class="ttl">性别：</span>
+              <select  　class="select" id="sex">
+                <option value="0">男</option>
+                <option value="1">女</option>
+                <option value="2">未知</option>
+              </select>
+            </li>
+            <li>
+              <span class="ttl">权限设置：</span>
+              <select  　class="status" name="status" id="status">
+                <option value="0">普通用户</option>
+                <option value="1">管理员</option>
+              </select>
+
+            </li>
+          </ul>
+        </div>
+
+　　　　<div class="pop_add_input">
+          <ul>
+            <li>
+              <span class="ttl">昵称：</span>
+              <input type="text"　id="nick" placeholder="输入你的昵称" class="textbox"/>
+            </li>
+            <li>
+              <span class="ttl">昵称：</span>
+              <input type="text"　id="nick" placeholder="输入你的账号" class="textbox"/>
+            </li>
+            <li>
+              <span class="ttl">昵称：</span>
+              <input type="text"　id="nick" placeholder="输入你的密码" class="textbox"/>
+            </li>
+            <li>
+              <span class="ttl">昵称：</span>
+              <input type="text"　id="nick" placeholder="重新输入你的密码" class="textbox"/>
+            </li>
+          </ul>
+       </div>
+
+        <!--以pop_cont_text分界-->
+        <div class="pop_cont_text">
+          是否进行信息的修改?
+        </div>
+        <!--bottom:operate->button-->
+        <div class="btm_btn">
+          <input type="button" value="确认" class="input_btn trueBtn"/>
+          <input type="button" value="关闭" class="input_btn falseBtn"/>
+        </div>
+      </div>
+    </section>
+    <!--结束：弹出框效果-->
 
 
   </div>
 </section>
 </body>
 </html>
-
