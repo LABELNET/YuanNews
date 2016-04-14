@@ -21,4 +21,7 @@ public interface UserManager {
     //获取用户总数
     PageJo managerFindUserCount() throws Exception;
 
+    //修改用户信息
+    Integer managerUpdateUserIfo(UserVo userVo) throws Exception;
+
 }

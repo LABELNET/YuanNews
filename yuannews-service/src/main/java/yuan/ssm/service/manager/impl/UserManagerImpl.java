@@ -77,4 +77,15 @@ public class UserManagerImpl implements UserManager {
     }
 
 
+    /**
+     * 修改用户信息
+     * @param userVo　用户实体对象
+     * @return
+     * @throws Exception
+     */
+    public Integer managerUpdateUserIfo(UserVo userVo) throws Exception {
+        return null;
+    }
+
+
 }
