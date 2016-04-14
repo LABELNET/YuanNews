@@ -89,17 +89,35 @@ public class UserManagerImpl implements UserManager {
             return UpdateStatus.UPDATE_FAIL;
         }
 
-        return null;
+        int uid=userVo.getId();
+        int success=UpdateStatus.UPDATE_SUCCESS;
+
+        if(uid<=0){
+            return UpdateStatus.UPDATE_ID_ZORE;
+        }
+
+        if(userVo.getNick()!=null){
+            success=userManagerMapper.updateUserNick(uid,userVo.getNick());
+        }
+
+        if(userVo.getSex()>-1){
+            success=userManagerMapper.updateUserSex(uid,userVo.getSex());
+        }
+
+        if(userVo.getStatus()>-1){
+            success=userManagerMapper.updateUserStatus(uid,userVo.getStatus());
+        }
+        return success;
     }
 
     /**
      * 添加用户信息
-     * @param userVo
-     * @return
+     * @param userVo 用户实体
+     * @return 成功>0
      * @throws Exception
      */
     public Integer managerInsertUserIfo(UserVo userVo) throws Exception {
-        return null;
+        return userManagerMapper.insertUser(userVo);
     }
 
     /**
@@ -109,7 +127,7 @@ public class UserManagerImpl implements UserManager {
      * @throws Exception
      */
     public Integer managerDeleteUserIfo(Integer id) throws Exception {
-        return null;
+        return userManagerMapper.deleteUserById(id);
     }
 
 

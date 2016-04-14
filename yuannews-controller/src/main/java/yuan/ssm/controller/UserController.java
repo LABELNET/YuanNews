@@ -100,6 +100,11 @@ public class UserController {
         return mav;
     }
 
+    @RequestMapping(value = "/managerUpdateUser",method = RequestMethod.POST)
+    public Integer managerUpdateUser(@RequestParam UserVo userVo) throws Exception{
+        return userManager.managerUpdateUserIfo(userVo);
+    }
+
 
 
 
