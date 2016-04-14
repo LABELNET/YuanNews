@@ -122,12 +122,24 @@ public class UserManagerImpl implements UserManager {
 
     /**
      * 删除用户信息
-     * @param id
+     * @param id 用户id
      * @return
      * @throws Exception
+     * 状态改为　3代表已经删除
      */
     public Integer managerDeleteUserIfo(Integer id) throws Exception {
-        return userManagerMapper.deleteUserById(id);
+        return userManagerMapper.deleteUserById(id,3);
+    }
+
+    /**
+     * 恢复用户信息
+     * @param id　用户id
+     * @return
+     * @throws Exception
+     * 回复为普通用户
+     */
+    public Integer managerSettingUserIfo(Integer id) throws Exception {
+        return userManagerMapper.deleteUserById(id,0);
     }
 
 

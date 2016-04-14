@@ -101,7 +101,7 @@ public class UserManagerTest extends ManagerBaseTest{
      */
     @Test
     public void deleteUserById() throws Exception {
-        Integer result = managerMapper.deleteUserById(1);
+        Integer result = managerMapper.deleteUserById(1,3);
         System.out.println("查询结果 ："+(result>0?"成功":"失败"));
         testFindUserById();
     }

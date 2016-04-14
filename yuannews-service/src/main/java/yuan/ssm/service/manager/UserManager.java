@@ -30,4 +30,7 @@ public interface UserManager {
     //删除用户信息
     Integer managerDeleteUserIfo(Integer id) throws Exception;
 
+    //恢复用户信息
+    Integer managerSettingUserIfo(Integer id) throws Exception;
+
 }
