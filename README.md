@@ -11,6 +11,8 @@
  * 用户信息修改　service - 页面实现
  * 兴趣列表分页实现　: service 和　页面实现
  * 兴趣的增删改查实现
+ * 添加文字转图片工具类和需要配置的配置常量类
+ * 上传图片策略实现思路：物理路径与虚拟路径实现策略：http://blog.csdn.net/lablenet/article/details/50481173
 
 
 #2016.04.13
@@ -311,4 +313,3 @@ news-第一版完结　
  * mysql-connector-java 5.1.38
  * fastjson          1.2.7
  * junit             3.8.1
-
