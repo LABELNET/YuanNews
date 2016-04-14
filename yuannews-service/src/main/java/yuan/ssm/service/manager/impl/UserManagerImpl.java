@@ -84,6 +84,9 @@ public class UserManagerImpl implements UserManager {
      * @throws Exception
      */
     public Integer managerUpdateUserIfo(UserVo userVo) throws Exception {
+
+
+
         return null;
     }
 
