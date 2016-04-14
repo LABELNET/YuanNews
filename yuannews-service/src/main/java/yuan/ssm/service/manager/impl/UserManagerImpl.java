@@ -1,15 +1,20 @@
 package yuan.ssm.service.manager.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import yuan.ssm.common.status.LoginStatus;
 import yuan.ssm.common.status.ManagerConutStatus;
 import yuan.ssm.common.status.UpdateStatus;
+import yuan.ssm.common.util.DateUtil;
+import yuan.ssm.common.util.FontImageUtil;
+import yuan.ssm.common.util.StringUtil;
 import yuan.ssm.dao.manager.ManagerCountMapper;
 import yuan.ssm.dao.manager.UserManagerMapper;
 import yuan.ssm.other.PageJo;
 import yuan.ssm.service.manager.UserManager;
 import yuan.ssm.vo.UserVo;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by yuan on 16-4-4.
@@ -117,6 +122,11 @@ public class UserManagerImpl implements UserManager {
      * @throws Exception
      */
     public Integer managerInsertUserIfo(UserVo userVo) throws Exception {
+        //生成默认头像，并存储
+        String imgName = DateUtil.getDateFileName()+UUID.randomUUID() +".png";
+        String font= StringUtil.getCharString(userVo.getNick());
+        FontImageUtil.createImage(font,imgName);
+        userVo.setHead("/image/"+imgName);
         return userManagerMapper.insertUser(userVo);
     }
 
