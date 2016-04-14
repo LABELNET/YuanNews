@@ -24,4 +24,10 @@ public interface UserManager {
     //修改用户信息
     Integer managerUpdateUserIfo(UserVo userVo) throws Exception;
 
+    //添加用户信息
+    Integer managerInsertUserIfo(UserVo userVo) throws Exception;
+
+    //删除用户信息
+    Integer managerDeleteUserIfo(Integer id) throws Exception;
+
 }

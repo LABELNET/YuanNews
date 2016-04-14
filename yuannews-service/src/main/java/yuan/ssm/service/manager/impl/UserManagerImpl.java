@@ -3,6 +3,7 @@ package yuan.ssm.service.manager.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import yuan.ssm.common.status.LoginStatus;
 import yuan.ssm.common.status.ManagerConutStatus;
+import yuan.ssm.common.status.UpdateStatus;
 import yuan.ssm.dao.manager.ManagerCountMapper;
 import yuan.ssm.dao.manager.UserManagerMapper;
 import yuan.ssm.other.PageJo;
@@ -84,9 +85,30 @@ public class UserManagerImpl implements UserManager {
      * @throws Exception
      */
     public Integer managerUpdateUserIfo(UserVo userVo) throws Exception {
+        if(userVo==null){
+            return UpdateStatus.UPDATE_FAIL;
+        }
 
+        return null;
+    }
 
+    /**
+     * 添加用户信息
+     * @param userVo
+     * @return
+     * @throws Exception
+     */
+    public Integer managerInsertUserIfo(UserVo userVo) throws Exception {
+        return null;
+    }
 
+    /**
+     * 删除用户信息
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    public Integer managerDeleteUserIfo(Integer id) throws Exception {
         return null;
     }
 

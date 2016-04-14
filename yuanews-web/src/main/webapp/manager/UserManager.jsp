@@ -174,11 +174,16 @@
               <td>${userVo.unum}</td>
               <td>${userVo.nick}</td>
               <td>${userVo.sex==0?"男":"女"}</td>
-              <td>${userVo.status==0?"普通用户":"管理员"}</td>
-              <td>
-                <button type="button" class="link_btn" onclick="updateUser()">修改信息</button>
-                <a class="inner_btn" onclick="deleteUser()">删除信息</a>
-              </td>
+              <c:if test="${userVo.status==-1}">
+                <td　colspan="2"><c:out value="该用户已被删除"</td>
+              </c:if>
+              <c:if test="${userVo.status!=-1}">
+                <td>${userVo.status==0?"普通用户":"管理员"}</td>
+                <td>
+                  <button type="button" class="link_btn" onclick="updateUser()">修改信息</button>
+                  <a class="inner_btn" onclick="deleteUser()">删除信息</a>
+                </td>
+              </c:if>
             </tr>
            </c:forEach>
         </c:if>
