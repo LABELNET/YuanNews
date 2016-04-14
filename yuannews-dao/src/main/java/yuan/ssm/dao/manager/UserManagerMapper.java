@@ -49,7 +49,7 @@ public interface UserManagerMapper {
      */
 
     //删除用户 ： 修改 status 状态为 -1 ；
-    Integer deleteUserById(Integer id) throws Exception;
+    Integer deleteUserById(Integer id,Integer status) throws Exception;
 
     /**
      * ---------------------------------------------------------------

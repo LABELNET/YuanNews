@@ -32,8 +32,8 @@
 
     var updateGetUserIfoUrl="/manager/managerUserIfo.action";
     var updateCommitUserIfoUrl="/manager/managerUpdateUser.action";
-    var deleteUserIfoUrl="";
-    var insertUserIfoUrl="";
+    var deleteUserIfoUrl="/manager/managerDeleteUserIfo.action";
+    var insertUserIfoUrl="/manager/managerInsertUserIfo.action";
 
     (function($){
       $(window).load(function(){
@@ -123,20 +123,18 @@
       if(type==1){
         //初始化删除dialog界面
         $(".pop_bg").fadeIn();
-        $("#pop_title").text("温馨提醒");
+        $("#pop_title").text(" 删除信息 ");
         $(".pop_cont_input").hide();
-        $(".pop_cont_text").text(msg);
-        $(".falseBtn").hide();
+        $(".pop_cont_text").text("　你确定要删除该用户吗？　");
         $(".pop_add_input").hide();
       }
 
       if(type==2){
         //初始化添加dialog界面
         $(".pop_bg").fadeIn();
-        $("#pop_title").text("温馨提醒");
+        $("#pop_title").text("　添加用户　");
         $(".pop_cont_input").hide();
-        $(".pop_cont_text").text(msg);
-        $(".falseBtn").hide();
+        $(".pop_cont_text").text(" 你确定要添加该用户吗？ ");
         $(".pop_add_input").show();
       }
 
@@ -161,7 +159,25 @@
 
         if(type==1){
           //进行删除
-          dataRequest(updateCommitUserIfoUrl,data,1);
+          dataRequest(deleteUserIfoUrl,data,1);
+        }
+
+        if(type==2){
+          //进行添加
+          var userVonick=$("#userVonick").val();
+          var userVounum=$("#userVounum").val();
+          var userVopass=$("#userVopass").val();
+          var pass=$("#pass").val();
+          if(pass==userVopass){
+　　　　　　　var arr={
+               nick:userVonick,
+               unum:userVounum,
+               pass:userVopass
+          };
+          dataRequest(insertUserIfoUrl,arr,1);
+          }else {
+            $("#pass").val("");
+          }
         }
 
         $(".pop_bg").fadeOut();
@@ -301,11 +317,12 @@
               <td>${userVo.unum}</td>
               <td>${userVo.nick}</td>
               <td>${userVo.sex==0?"男":"女"}</td>
-              <c:if test="${userVo.status==-1}">
-                <td　colspan="2"><c:out value="该用户已被删除"/></td>
+              <c:if test="${userVo.status==3}">
+                <td style="color: red;">该用户已被删除</td>
+                <td><button type="button" class="link_btn" onclick="settingsUser(${userVo.id})">恢复信息</button></td>
               </c:if>
 
-              <c:if test="${userVo.status!=-1}">
+              <c:if test="${userVo.status!=3}">
                 <td>${userVo.status==0?"普通用户":"管理员"}</td>
                 <td>
                   <button type="button" class="link_btn" onclick="updateUser(${userVo.id})">修改信息</button>

@@ -44,7 +44,7 @@
     </update>
 
     <update id="deleteUserById" parameterType="int">
-        update user set status=3 where id=#{id};
+        update user set status=#{1} where id=#{0};
     </update>
 
     <insert id="insertUser" parameterType="user">
