@@ -29,6 +29,12 @@
   <script src="js/simplePagination.js"></script>
 
   <script>
+
+    var updateGetUserIfoUrl="/manager/managerUserIfo.action";
+    var updateCommitUserIfoUrl="/manager/managerUpdateUser.action";
+    var deleteUserIfoUrl="";
+    var insertUserIfoUrl="";
+
     (function($){
       $(window).load(function(){
 
@@ -68,36 +74,34 @@
 
     function deleteUser(id) {
       //删除用户ajax进行操作
-      alert("暂时无法删除用户");
+      var arr={id:id};
+      showDialog(arr,1);
     }
 
     function addUser() {
       //新增用户
-      alert("暂时无法新增加用户");
+      showDialog("",2);
     }
 
     function updateUser(id) {
-
       //1.加载当前用户信息
       var arr={ id:id };
-      dataRequest("/manager/managerUserIfo.action",arr,0);
-
+      dataRequest(updateGetUserIfoUrl,arr,0);
     }
 
     //实现思路　：　两个方法　：　dialog(user) 和　ajax(url,user)
 
     function showDialog(data,type) {
 
-      console.log(data);
-
       if(type==0){
         //初始化修改dialog界面
 
         $("#pop_title").text("　修改信息 ");
         $(".pop_cont_input").show();
-        $("#userunum").text(data.unum);
-        $("#nick").text(data.nick);
+        $("#userunum").text("账号：　"+data.unum);
+        $(".nick").val(data.nick);
         $(".pop_add_input").hide();
+        $("#uid").val(data.id);
         if(data.sex==0){
           $("#sex").find("option[text='男']").attr("selected",true);
         }else if(data.sex==1){
@@ -118,11 +122,22 @@
 
       if(type==1){
         //初始化删除dialog界面
-
+        $(".pop_bg").fadeIn();
+        $("#pop_title").text("温馨提醒");
+        $(".pop_cont_input").hide();
+        $(".pop_cont_text").text(msg);
+        $(".falseBtn").hide();
+        $(".pop_add_input").hide();
       }
 
       if(type==2){
         //初始化添加dialog界面
+        $(".pop_bg").fadeIn();
+        $("#pop_title").text("温馨提醒");
+        $(".pop_cont_input").hide();
+        $(".pop_cont_text").text(msg);
+        $(".falseBtn").hide();
+        $(".pop_add_input").show();
       }
 
 　　  $(".pop_bg").fadeIn();
@@ -131,11 +146,27 @@
       $(".trueBtn").click(function(){
 　　　　　if(type==0){
   　　　　　　//进行修改
-           alert("修改成功！");
+           var nick=$(".nick").val();
+           var sex=$("#sex").val();
+           var status=$("#status").val();
+           var id=$("#uid").val();
+           var arr={
+             id:id,
+             nick:nick,
+             sex:sex,
+             status:status
+           };
+           dataRequest(updateCommitUserIfoUrl,arr,0);
 　　　　　}
+
+        if(type==1){
+          //进行删除
+          dataRequest(updateCommitUserIfoUrl,data,1);
+        }
 
         $(".pop_bg").fadeOut();
       });
+
       //弹出：取消或关闭按钮
       $(".falseBtn").click(function(){
         $(".pop_bg").fadeOut();
@@ -144,16 +175,21 @@
     }
 
     function dataRequest(typeurl,arr,type) {
-
       $.ajax({
          url:typeurl,
          data:arr,
          type:'post',
-         cache:false,
+         cache:true,
          dataType:'json',
          success:function (data,status) {
+            console.log(data);
             if(status=="success"){
-              showDialog(data,type);
+              if(data>=0){
+                //刷新页面
+                window.location.reload();
+              }else {
+                showDialog(data,type);
+              }
             }else {
               showSE("网络加载失败～");
             }
@@ -300,11 +336,12 @@
           <ul>
             <li>
               <span id="userunum">账号：</span>
+              <input type="hidden" id="uid" />
             </li>
 
             <li>
               <span class="ttl">昵称：</span>
-              <input type="text"　id="nick" placeholder="修改你的昵称" class="textbox"/>
+              <input type="text"　id="nick" name="nick"  placeholder="修改你的昵称" class="nick"/>
             </li>
 
             <li>
@@ -330,19 +367,19 @@
           <ul>
             <li>
               <span class="ttl">昵称：</span>
-              <input type="text"　id="nick" placeholder="输入你的昵称" class="textbox"/>
+              <input type="text"　id="userVonick" placeholder="输入你的昵称" class="textbox"/>
             </li>
             <li>
-              <span class="ttl">昵称：</span>
-              <input type="text"　id="nick" placeholder="输入你的账号" class="textbox"/>
+              <span class="ttl">账号：</span>
+              <input type="text"　id="userVounum" placeholder="输入你的账号" class="textbox"/>
             </li>
             <li>
-              <span class="ttl">昵称：</span>
-              <input type="text"　id="nick" placeholder="输入你的密码" class="textbox"/>
+              <span class="ttl">密码：</span>
+              <input type="text"　id="userVopass" placeholder="输入你的密码" class="textbox"/>
             </li>
             <li>
-              <span class="ttl">昵称：</span>
-              <input type="text"　id="nick" placeholder="重新输入你的密码" class="textbox"/>
+              <span class="ttl">重新输入密码：</span>
+              <input type="text"　id="pass" placeholder="重新输入你的密码" class="textbox"/>
             </li>
           </ul>
        </div>

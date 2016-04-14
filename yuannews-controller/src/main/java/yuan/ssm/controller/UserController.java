@@ -3,11 +3,9 @@ package yuan.ssm.controller;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import yuan.ssm.base.User;
 import yuan.ssm.common.constant.ManagerConstant;
 import yuan.ssm.common.util.LoggerUtil;
 import yuan.ssm.other.PageJo;
@@ -107,7 +105,7 @@ public class UserController {
      * @throws Exception
      */
     @RequestMapping(value = "/managerUpdateUser",method = RequestMethod.POST)
-    public @ResponseBody Integer managerUpdateUser(@RequestParam UserVo userVo) throws Exception{
+    public @ResponseBody Integer managerUpdateUser(@ModelAttribute UserVo userVo) throws Exception{
         LoggerUtil.print("修改的用户信息　：　"+userVo);
         return userManager.managerUpdateUserIfo(userVo);
     }
@@ -120,12 +118,32 @@ public class UserController {
      */
     @RequestMapping(value = "/managerUserIfo",method = RequestMethod.POST)
     public @ResponseBody UserVo managerUserIfo(@RequestParam Integer id) throws Exception{
-        LoggerUtil.print("用户id　：　"+id);
+        LoggerUtil.print("获取用户的id　：　"+id);
         return userManager.managerFindUserIfo(id);
     }
 
+    /**
+     * 删除用户信息
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/managerDeleteUserIfo",method = RequestMethod.POST)
+    public @ResponseBody Integer managerDeleteUserIfo(@RequestParam Integer id) throws Exception{
+        LoggerUtil.print("删除用户id　：　"+id);
+        return userManager.managerDeleteUserIfo(id);
+    }
 
-
-
+    /**
+     * 新添加用户信息
+     * @param userVo
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/managerInsertUserIfo",method = RequestMethod.POST)
+    public @ResponseBody Integer managerInsertUserIfo(@ModelAttribute UserVo userVo) throws Exception{
+        LoggerUtil.print("新添加的用户信息　：　"+userVo);
+        return userManager.managerInsertUserIfo(userVo);
+    }
 
 }
