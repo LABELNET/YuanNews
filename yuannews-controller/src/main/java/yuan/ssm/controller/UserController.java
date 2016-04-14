@@ -100,9 +100,28 @@ public class UserController {
         return mav;
     }
 
+    /**
+     * 修改用户信息
+     * @param userVo　用户vo
+     * @return 状态
+     * @throws Exception
+     */
     @RequestMapping(value = "/managerUpdateUser",method = RequestMethod.POST)
-    public Integer managerUpdateUser(@RequestParam UserVo userVo) throws Exception{
+    public @ResponseBody Integer managerUpdateUser(@RequestParam UserVo userVo) throws Exception{
+        LoggerUtil.print("修改的用户信息　：　"+userVo);
         return userManager.managerUpdateUserIfo(userVo);
+    }
+
+    /**
+     * 获取单个用户信息
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/managerUserIfo",method = RequestMethod.POST)
+    public @ResponseBody UserVo managerUserIfo(@RequestParam Integer id) throws Exception{
+        LoggerUtil.print("用户id　：　"+id);
+        return userManager.managerFindUserIfo(id);
     }
 
 
