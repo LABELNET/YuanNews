@@ -34,6 +34,7 @@
     var updateCommitUserIfoUrl="/manager/managerUpdateUser.action";
     var deleteUserIfoUrl="/manager/managerDeleteUserIfo.action";
     var insertUserIfoUrl="/manager/managerInsertUserIfo.action";
+    var settingUserIfoUrl="/manager/managerSettingUserIfo.action";
 
     (function($){
       $(window).load(function(){
@@ -83,10 +84,17 @@
       showDialog("",2);
     }
 
+
     function updateUser(id) {
       //1.加载当前用户信息
       var arr={ id:id };
       dataRequest(updateGetUserIfoUrl,arr,0);
+    }
+
+    function settingsUser(id) {
+      //回复用户信息
+      var arr={ id:id };
+      dataRequest(settingUserIfoUrl,arr,1);
     }
 
     //实现思路　：　两个方法　：　dialog(user) 和　ajax(url,user)
@@ -165,18 +173,20 @@
         if(type==2){
           //进行添加
           var userVonick=$("#userVonick").val();
-          var userVounum=$("#userVounum").val();
-          var userVopass=$("#userVopass").val();
-          var pass=$("#pass").val();
-          if(pass==userVopass){
-　　　　　　　var arr={
-               nick:userVonick,
-               unum:userVounum,
-               pass:userVopass
+          var username=$(".username").val();
+          var password=$(".password").val();
+          var pass=$(".pass").val();
+          var arr2={
+            nick:userVonick,
+            unum:username,
+            pass:password
           };
-          dataRequest(insertUserIfoUrl,arr,1);
+          console.log(arr2);
+          if(pass==password){
+            dataRequest(insertUserIfoUrl,arr2,1);
           }else {
             $("#pass").val("");
+            return;
           }
         }
 
@@ -191,6 +201,7 @@
     }
 
     function dataRequest(typeurl,arr,type) {
+      console.log(arr);
       $.ajax({
          url:typeurl,
          data:arr,
@@ -203,6 +214,8 @@
               if(data>=0){
                 //刷新页面
                 window.location.reload();
+              }else if(data<0){
+                showSE("操作失败～");
               }else {
                 showDialog(data,type);
               }
@@ -384,19 +397,19 @@
           <ul>
             <li>
               <span class="ttl">昵称：</span>
-              <input type="text"　id="userVonick" placeholder="输入你的昵称" class="textbox"/>
+              <input type="text"　name="userVonick" id="userVonick" placeholder="输入你的昵称" class="textbox userVonick"/>
             </li>
             <li>
               <span class="ttl">账号：</span>
-              <input type="text"　id="userVounum" placeholder="输入你的账号" class="textbox"/>
+              <input type="text" name="username" 　id="username" placeholder="输入你的账号" class="textbox username"/>
             </li>
             <li>
               <span class="ttl">密码：</span>
-              <input type="text"　id="userVopass" placeholder="输入你的密码" class="textbox"/>
+              <input type="text" name="password" 　id="password" placeholder="输入你的密码" class="textbox password"/>
             </li>
             <li>
               <span class="ttl">重新输入密码：</span>
-              <input type="text"　id="pass" placeholder="重新输入你的密码" class="textbox"/>
+              <input type="text"　name="pass" id="pass" placeholder="重新输入你的密码" class="textbox pass"/>
             </li>
           </ul>
        </div>

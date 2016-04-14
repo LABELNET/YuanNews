@@ -12,6 +12,7 @@ import yuan.ssm.other.PageJo;
 import yuan.ssm.service.manager.UserManager;
 import yuan.ssm.vo.UserVo;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -144,6 +145,18 @@ public class UserController {
     public @ResponseBody Integer managerInsertUserIfo(@ModelAttribute UserVo userVo) throws Exception{
         LoggerUtil.print("新添加的用户信息　：　"+userVo);
         return userManager.managerInsertUserIfo(userVo);
+    }
+
+    /**
+     * 恢复用户信息
+     * @param id　用户id
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/managerSettingUserIfo",method = RequestMethod.POST)
+    public @ResponseBody Integer managerSettingUserIfo(@RequestParam Integer id) throws Exception{
+        LoggerUtil.print("修改用户的id : "+id);
+        return userManager.managerSettingUserIfo(id);
     }
 
 }
