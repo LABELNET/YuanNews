@@ -43,7 +43,7 @@ public class LoginHandlerIntercepter implements HandlerInterceptor {
             }else{
                 //没有登陆，转向登陆界面
 //                request.getRequestDispatcher(INRERCEPTER_FORWARD).forward(request,arg1);
-                arg1.sendRedirect(INRERCEPTER_FORWARD);
+                arg1.sendRedirect(request.getContextPath()+INRERCEPTER_FORWARD);
                 return false;
             }
         }else{

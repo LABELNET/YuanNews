@@ -7,6 +7,7 @@
  * ps :
       ![image](https://github.com/LABELNET/YuanNews/blob/master/yuanews-web/src/main/webapp/images/tomcat-learn.png?raw=true)
  * 所有的jsp页面中的链接　添加　request.getContextPath() , 确保路径正确使用！！
+ * 代码中使用到了重定向等页面跳转，添加 request.getContextPath() ,　确保路径正确使用！！
 
 
 #2016.04.15
