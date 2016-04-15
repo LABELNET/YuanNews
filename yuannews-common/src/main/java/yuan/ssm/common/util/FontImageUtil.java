@@ -41,7 +41,7 @@ public class FontImageUtil {
      * @throws Exception
      */
     public static void createImage(String str, String imgName) throws Exception{
-        createImage(str,new Font("宋体",Font.BOLD,40),new File(FONT_IMAGE_BASE_PATH+imgName));
+        createImage(str,new Font("宋体",Font.BOLD,50),new File(FONT_IMAGE_BASE_PATH+imgName));
     }
 
     /**
@@ -52,7 +52,7 @@ public class FontImageUtil {
      * @throws Exception
      */
     public static void createImage(String str, File outFile) throws Exception{
-        createImage(str,new Font("宋体",Font.BOLD,40),outFile);
+        createImage(str,new Font("宋体",Font.BOLD,50),outFile);
     }
 
     /**
@@ -65,21 +65,36 @@ public class FontImageUtil {
      */
     public static void createImage(String str, Font font, File outFile) throws Exception{
 
-        ArrayList<int[]> rgbs = getRGB();
+//        ArrayList<int[]> rgbs = getRGB();
+        int[] ranRGB = getRanRGB();
+        boolean isQian=isQianRGB(ranRGB);
         int width=120;
         int height=120;
 
         //创建图片
         BufferedImage image=new BufferedImage(width,height,BufferedImage.TYPE_INT_BGR);
-        Graphics g=image.getGraphics();
-
-        g.setColor(new Color(rgbs.get(1)[0],rgbs.get(1)[1],rgbs.get(1)[2]));//深色
-        g.fillRect(0, 0, width, height);//先用深色填充整张图片,也就是背景
-        g.setColor(new Color(rgbs.get(0)[0],rgbs.get(0)[1],rgbs.get(0)[2]));//在换成浅色
-        g.setFont(font);//设置画笔字体
-
+        Graphics2D g=image.createGraphics();
+        g.setColor(new Color(ranRGB[0],ranRGB[1],ranRGB[2]));//　一个未知颜色
+        g.fillRect(0, 0, width, height);//先用颜色填充背景
+        //判断是浅颜色还是深颜色
+        if(isQian){
+            g.setColor(Color.black);//黑色
+        }else{
+            g.setColor(Color.white);//白色
+        }
+        //设置画笔字体
+        g.setFont(font);
+        //设置抗锯齿
+        g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+        //判断字体的绘制位置,居中显示
+        FontMetrics fm=g.getFontMetrics(font);
+        int textWidth=fm.stringWidth(str);
+        int x=(width-textWidth)/2;
+        int ascent=fm.getAscent();
+        int descent=fm.getDescent();
+        int y=(height-ascent-descent)/2+ascent;
         //画出字符串
-        g.drawString(str,70,70);
+        g.drawString(str,x,y);
         g.dispose();
         //输出png图片
         ImageIO.write(image, "png", outFile);
@@ -94,8 +109,10 @@ public class FontImageUtil {
      *      // add shadow
      *    }
      *
-     * 已废弃
-     */
+     * @deprecated  业务修改，不仅仅是需要深色悲剧，浅色字，效率底
+     *
+     * 修改为　：　获得随机颜色背景，深色绘制白色字体，浅色，绘制黑色字体
+     * */
     private static ArrayList<int[]> getRGB(){
        //1.　随机生成　rgb
        //2.　判断深颜色还是浅颜色
@@ -127,7 +144,7 @@ public class FontImageUtil {
 
     /**
      * 获得随机颜色
-     * @return
+     * @return rgb颜色
      */
     private static int[] getRanRGB(){
         int [] colors=new int[3];
@@ -138,9 +155,9 @@ public class FontImageUtil {
     }
 
     /**
-     * 判断是不是深颜色
+     * 判断是不是浅颜色
      * @param colors
-     * @return
+     * @return 是否是浅颜色
      */
     private static boolean isQianRGB(int[] colors){
         int grayLevel = (int) (colors[0] * 0.299 + colors[1] * 0.587 + colors[2] * 0.114);

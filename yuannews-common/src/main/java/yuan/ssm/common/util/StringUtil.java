@@ -24,7 +24,6 @@ public class StringUtil {
 
     private static final String  ENGLISH_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-
     /**
      * 获取首字母或汉字来，用来进行绘制头像
      * @param nick
@@ -55,7 +54,5 @@ public class StringUtil {
         }
         return String.valueOf(ENGLISH_CHARS.charAt((int)(Math.random() * 26)));
     }
-
-
 
 }
