@@ -7,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%  String projectPath=request.getContextPath(); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,7 +53,7 @@
 
             var num=$("#unum").val();
             var  pass=$("#pass").val();
-            $.post("/manager/managerLogin.action",{
+            $.post("<%=projectPath%>/manager/managerLogin.action",{
                         unum:num,
                         pass:pass
                     },
@@ -66,7 +67,7 @@
         function forwardPage(data) {
             if(data>0){
                 //跳转
-                location.href="/manager/managerIndex.action";
+                location.href="<%=projectPath%>/manager/managerIndex.action";
             }
 
             if(data==-1){

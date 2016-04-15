@@ -10,6 +10,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% UserVo userVo= (UserVo) session.getAttribute(ManagerConstant.MANAGER_USER_NAME); %>
+<% String projectPath=request.getContextPath(); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,11 +31,11 @@
 
   <script>
 
-    var updateGetUserIfoUrl="/manager/managerUserIfo.action";
-    var updateCommitUserIfoUrl="/manager/managerUpdateUser.action";
-    var deleteUserIfoUrl="/manager/managerDeleteUserIfo.action";
-    var insertUserIfoUrl="/manager/managerInsertUserIfo.action";
-    var settingUserIfoUrl="/manager/managerSettingUserIfo.action";
+    var updateGetUserIfoUrl="<%=projectPath%>/manager/managerUserIfo.action";
+    var updateCommitUserIfoUrl="<%=projectPath%>/manager/managerUpdateUser.action";
+    var deleteUserIfoUrl="<%=projectPath%>/manager/managerDeleteUserIfo.action";
+    var insertUserIfoUrl="<%=projectPath%>/manager/managerInsertUserIfo.action";
+    var settingUserIfoUrl="<%=projectPath%>/manager/managerSettingUserIfo.action";
 
     (function($){
       $(window).load(function(){
@@ -248,22 +249,22 @@
   <h1><img src="images/admin_logo.png"/></h1>
   <!-- 初始化 ：　管理员信息-->
   <ul class="rt_nav">
-    <li><a href="/CustomerIndex.action" target="_blank" class="website_icon">站点首页</a></li>
+    <li><a href="<%=projectPath%>/CustomerIndex.action" target="_blank" class="website_icon">站点首页</a></li>
     <li><a href="#" class="admin_icon"><%=userVo.getNick()%></a></li>
     <li><a href="#" class="set_icon">个人中心</a></li>
-    <li><a href="/manager/managerLoginOut.action" class="quit_icon">安全退出</a></li>
+    <li><a href="<%=projectPath%>/manager/managerLoginOut.action" class="quit_icon">安全退出</a></li>
   </ul>
 </header>
 
 <!--aside nav-->
 <aside class="lt_aside_nav content mCustomScrollbar">
-  <h2><a href="#">首页</a></h2>
+  <h2><a href="<%=projectPath%>/manager/managerIndex.action">首页</a></h2>
   <ul>
     <li>
       <dl>
         <dt>用户信息</dt>
         <!--当前链接则添加class:active-->
-        <dd><a href="/manager/managerUserPage.action?p=1" class="active">用户列表</a></dd>
+        <dd><a href="<%=projectPath%>/manager/managerUserPage.action?p=1" class="active">用户列表</a></dd>
         <dd><a href="#">用户兴趣</a></dd>
       </dl>
     </li>
