@@ -16,8 +16,10 @@ public interface ManagerConstant {
 
     String MANAGER_INDEX_MV_KEY="userVo";
 
-    String MAGAGER_USER_PAGE="manager/UserManager";
+    String MAGAGER_USER_PAGE="manager/UserManager"; //用户管理页面
 
     String MANAGER_USER_NAME="usernick";
+
+    String MANAGER_TASTE_PAGE="manager/TasteManager"; //兴趣管理页面
 
 }

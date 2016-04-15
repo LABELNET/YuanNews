@@ -5,14 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import yuan.ssm.base.User;
+import yuan.ssm.common.config.ConfigConstant;
 import yuan.ssm.common.constant.ManagerConstant;
 import yuan.ssm.common.util.LoggerUtil;
 import yuan.ssm.other.PageJo;
 import yuan.ssm.service.manager.UserManager;
 import yuan.ssm.vo.UserVo;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -31,7 +30,7 @@ public class UserController {
     @Autowired
     private  ObjectMapper mapperJson;
 
-    private int userPageNum=8;
+    private int userPageNum= ConfigConstant.MAGAGER_USER_PAGE_NUM;
 
     /**
      * 管理员登陆　action

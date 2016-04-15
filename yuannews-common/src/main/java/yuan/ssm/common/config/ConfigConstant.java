@@ -29,5 +29,15 @@ public interface ConfigConstant {
      */
     String FONT_IMAGE_BASE_PATH="/mnt/JAVA/tomcatImageServer/";
 
+    /**
+     * 用户管理页面，每页加载的数量
+     */
+    Integer MAGAGER_USER_PAGE_NUM=8;
+
+    /**
+     * 兴趣管理页面，每页加载的数量
+     */
+    Integer MANAGER_TASTE_PAGE_NUM=10;
+
 
 }
