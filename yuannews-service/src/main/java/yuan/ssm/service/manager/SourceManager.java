@@ -9,6 +9,8 @@ import yuan.ssm.vo.SourceVo;
  */
 public interface SourceManager extends ManagerBase<SourceVo>{
 
-    //可拓展其他接口方法
+    /**
+     * 其他业务方法在此拓展实现
+     */
 
 }
