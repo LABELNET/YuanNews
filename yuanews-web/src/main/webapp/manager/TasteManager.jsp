@@ -74,7 +74,7 @@
         <dt>用户信息</dt>
         <!--当前链接则添加class:active-->
         <dd><a href="<%=projectPath%>/manager/managerUserPage.action?p=1">用户列表</a></dd>
-        <dd><a href="<%=projectPath%>/manager/managerTastePage.action?p=1">用户兴趣</a></dd>
+        <dd><a href="<%=projectPath%>/manager/managerTastePage.action?p=1" class="active">用户兴趣</a></dd>
       </dl>
     </li>
     <li>

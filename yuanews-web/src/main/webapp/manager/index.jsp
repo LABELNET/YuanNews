@@ -67,7 +67,7 @@
 
 <!--aside nav-->
 <aside class="lt_aside_nav content mCustomScrollbar">
-  <h2><a href="<%=projectPath%>/manager/managerIndex.action">首页</a></h2>
+  <h2><a href="<%=projectPath%>/manager/managerIndex.action" class="active">首页</a></h2>
   <ul>
     <li>
       <dl>
