@@ -9,4 +9,6 @@
 
     <bean id="mapperJson" class="org.codehaus.jackson.map.ObjectMapper"/>
 
+    <bean id="tasteManagerImpl" class="yuan.ssm.service.manager.impl.TasteManagerImpl"/>
+
 </beans>
