@@ -13,8 +13,8 @@
 </head>
 <body>
 
-    Hi , Yuan ! I 'm test page !<br/>
-   <t1>当前工程： <%=projectPath%></t1> <br/>
+     Hi , Yuan ! I 'm test page !<br/>
+    <t1>当前工程： <%=projectPath%></t1> <br/>
     <a href="<%=projectPath %>/manager/managerIndex.action"> 后台管理 </a>
 
 
