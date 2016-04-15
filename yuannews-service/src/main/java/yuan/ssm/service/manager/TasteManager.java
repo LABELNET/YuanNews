@@ -1,5 +1,6 @@
 package yuan.ssm.service.manager;
 
+import yuan.ssm.other.PageJo;
 import yuan.ssm.vo.TasteVo;
 import java.util.List;
 
@@ -16,13 +17,16 @@ public interface TasteManager {
     TasteVo managerTaste(Integer id) throws Exception;
 
     //添加兴趣
-    Integer insertTaste(String label,Integer uid) throws Exception;
+    Integer managerInsertTaste(String label,Integer uid) throws Exception;
 
     //删除兴趣
-    Integer deleteTaste(Integer id) throws Exception;
+    Integer managerDeleteTaste(Integer id) throws Exception;
 
     //修改兴趣
-    Integer updateTaste(String label,Integer id);
+    Integer managerUpdateTaste(String label,Integer id) throws Exception;
+
+    //获得兴趣总数
+    PageJo managerTasteCount() throws Exception;
 
 
 }

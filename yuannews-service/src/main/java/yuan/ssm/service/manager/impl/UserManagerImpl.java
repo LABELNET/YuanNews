@@ -79,7 +79,7 @@ public class UserManagerImpl implements UserManager {
      * @throws Exception
      */
     public PageJo managerFindUserCount() throws Exception {
-        return managerCountMapper.findUserCount(ManagerConutStatus.MANAGER_USER_COUNT_TYPE);
+        return managerCountMapper.findCount(ManagerConutStatus.MANAGER_USER_COUNT_TYPE);
     }
 
 

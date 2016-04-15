@@ -20,7 +20,7 @@ public interface ManagerCountMapper {
      *    4. Liked
      *    5. Taste
      */
-    PageJo findUserCount(@Param("type") Integer type) throws Exception;
+    PageJo findCount(@Param("type") Integer type) throws Exception;
 
     /**
      * ......
