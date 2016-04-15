@@ -6,6 +6,7 @@
  * tomcat的使用　：　部署yuanews-web.war explor　包，运行时，见运行菜单！
  * ps :
       ![image](https://github.com/LABELNET/YuanNews/blob/master/yuanews-web/src/main/webapp/images/tomcat-learn.png?raw=true)
+ * 所有的jsp页面添加　request.getContext()
 
 
 
