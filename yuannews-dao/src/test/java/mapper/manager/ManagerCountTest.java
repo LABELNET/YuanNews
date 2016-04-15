@@ -23,7 +23,7 @@ public class ManagerCountTest extends ManagerBaseTest{
 
     @Test
     public void findUserCount() throws Exception {
-        PageJo pageJo = managerCountMapper.findUserCount(3);
+        PageJo pageJo = managerCountMapper.findCount(3);
         System.out.println("查询结果为　：　"+pageJo.getAllCount());
     }
 

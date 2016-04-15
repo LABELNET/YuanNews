@@ -117,7 +117,7 @@
 <section class="rt_wrap content mCustomScrollbar">
   <div class="rt_content" style="margin-top: 10px;">
 
-   <h1> hi , 新闻推荐后台管理系统　v１.0 !</h1>
+   <h1>总数：${count}}</h1>
 
 
   </div>
