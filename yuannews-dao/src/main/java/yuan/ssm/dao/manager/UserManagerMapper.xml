@@ -48,7 +48,7 @@
     </update>
 
     <insert id="insertUser" parameterType="user">
-        insert into user(unum,pass,nick) VALUES (#{unum},#{pass},#{nick})
+        insert into user(unum,pass,nick,head) VALUES (#{unum},#{pass},#{nick},#{head})
     </insert>
 
 
