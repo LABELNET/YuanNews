@@ -123,10 +123,14 @@ public class UserManagerImpl implements UserManager {
      */
     public Integer managerInsertUserIfo(UserVo userVo) throws Exception {
         //生成默认头像，并存储
-        String imgName = DateUtil.getDateFileName()+UUID.randomUUID() +".png";
-        String font= StringUtil.getCharString(userVo.getNick());
-        FontImageUtil.createImage(font,imgName);
-        userVo.setHead("/image/"+imgName);
+        try {
+            String imgName = DateUtil.getDateFileName()+UUID.randomUUID() +".png";
+            String font= StringUtil.getCharString(userVo.getNick());
+            FontImageUtil.createImage(font,imgName);
+            userVo.setHead("/image/"+imgName);
+        }catch (Exception e){
+            userVo.setHead("/images/moren.jpg");
+        }
         return userManagerMapper.insertUser(userVo);
     }
 

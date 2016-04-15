@@ -62,7 +62,7 @@
     $(function() {
       $("#paginationpage").pagination({
         items: ${userCount},
-        itemsOnPage: 15,
+        itemsOnPage: 8,
         page:10,
         hrefTextPrefix:"?p=",
         cssStyle: 'light-theme',
