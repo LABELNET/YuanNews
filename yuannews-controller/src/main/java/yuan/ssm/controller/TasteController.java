@@ -37,8 +37,9 @@ import java.util.List;
  * ==================================================
  */
 
-@RequestMapping(value = "/manager")
+
 @Controller
+@RequestMapping(value = "/manager")
 public class TasteController {
 
     @Autowired
@@ -52,7 +53,7 @@ public class TasteController {
      * @param p 当前页数
      * @return 数据列表，数据总数，当前页数
      */
-    @RequestMapping(value = "/managerTastePage",method = RequestMethod.POST)
+    @RequestMapping(value = "/managerTastePage",method = RequestMethod.GET)
     public ModelAndView managerTastePage(@RequestParam Integer p) throws Exception {
        if(p<0) p=1;
         int currentPage=p;

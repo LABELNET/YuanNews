@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="yuan.ssm.dao.manager.ManagerCountMapper">
 
-    <select id="findUserCount" parameterType="java.lang.Integer" resultType="yuan.ssm.other.PageJo">
+    <select id="findCount" parameterType="java.lang.Integer" resultType="yuan.ssm.other.PageJo">
         SELECT
            count(id) AS allCount
         <if test="type==1">

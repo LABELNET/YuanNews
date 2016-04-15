@@ -20,8 +20,9 @@ import java.util.List;
  * Created by yuan on 16-4-4.
  * 　控制器　－　后台管理　
  */
-@RequestMapping(value = "/manager")
+
 @Controller
+@RequestMapping(value = "/manager")
 public class UserController {
 
     @Autowired
