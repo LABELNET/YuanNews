@@ -5,9 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import yuan.ssm.common.config.ConfigConstant;
 import yuan.ssm.common.constant.ManagerConstant;
+import yuan.ssm.common.status.UpdateStatus;
 import yuan.ssm.common.util.LoggerUtil;
 import yuan.ssm.other.PageJo;
 import yuan.ssm.service.manager.TasteManager;
@@ -71,6 +73,69 @@ public class TasteController {
         return mav;
     }
 
+
+    /**
+     * 添加兴趣
+     * @param label　兴趣内容
+     * @param uid　兴趣的用户id
+     * @return
+     */
+    @RequestMapping(value = "/managerTasteInsert",method = RequestMethod.POST)
+    public Integer managerTasteInsert(@RequestParam String label,@RequestParam Integer uid) throws Exception {
+        if(uid<0){
+            return UpdateStatus.UPDATE_FAIL;
+        }
+
+        if(label==null){
+            return UpdateStatus.UPDATE_FAIL;
+        }
+        return tasteManager.managerInsertTaste(label,uid);
+    }
+
+    /**
+     * 修改兴趣信息
+     * @param label　兴趣
+     * @param id　兴趣id
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/managerTasteUpdate",method = RequestMethod.POST)
+    public Integer managerTasteUpdate(@RequestParam String label,@RequestParam Integer id) throws Exception {
+        if(id<0){
+            return UpdateStatus.UPDATE_FAIL;
+        }
+
+        if(label==null){
+            return UpdateStatus.UPDATE_FAIL;
+        }
+        return tasteManager.managerUpdateTaste(label,id);
+    }
+
+    /**
+     * 兴趣删除
+     * @param id 兴趣id
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/managerTasteDelete")
+    public Integer managerTasteDelete(@RequestParam Integer id) throws Exception {
+        if(id<0){
+            return UpdateStatus.UPDATE_FAIL;
+        }
+        return tasteManager.managerDeleteTaste(id);
+    }
+
+
+    /**
+     *
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/managerTasteFind")
+    public @ResponseBody TasteVo managerTasteFind(@RequestParam Integer id) throws Exception {
+        return tasteManager.managerTaste(id);
+    }
 
 
 
