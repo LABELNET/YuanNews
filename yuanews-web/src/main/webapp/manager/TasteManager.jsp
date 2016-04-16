@@ -167,10 +167,15 @@
               </c:forEach>
             </c:if>
 
+            <tfoot>
+               <tr>
+                 <td colspan="5">
+                   <div id="paginationpage" style="float: right"></div>
+                 </td>
+               </tr>
+            </tfoot>
           </table>
-            <aside class="paging">
-              <div id="paginationpage" style="float: right"></div>
-            </aside>
+
       </section>
 
   </div>
