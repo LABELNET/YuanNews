@@ -2,7 +2,7 @@ package yuan.ssm.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import yuan.ssm.common.config.ConfigConstant;
 import yuan.ssm.common.constant.ManagerConstant;
@@ -66,6 +66,46 @@ public class SourceController {
         mav.addObject("currentPage",currentPage);
         return mav;
     }
+
+    /**
+     * 添加新闻来源
+     * @return
+     */
+    @RequestMapping(value = "/managerSourceInsert",method = RequestMethod.POST)
+    public @ResponseBody Integer managerSourceInsert(@ModelAttribute SourceVo sourceVo) throws Exception {
+        return sourceManager.managerInsertOne(sourceVo);
+    }
+
+    /**
+     * 修改新闻来源信息
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/managerSourceUpdate",method = RequestMethod.POST)
+    public @ResponseBody Integer managerSourceUpdate(@ModelAttribute SourceVo sourceVo) throws Exception {
+        return sourceManager.managerUpdateOne(sourceVo);
+    }
+
+    /**
+     * 删除 新闻来源
+     */
+    @RequestMapping(value = "/managerSourceDelete")
+    public @ResponseBody Integer managerSourceDelete(@RequestParam Integer id) throws Exception {
+        return sourceManager.managerDeleteOne(id);
+    }
+
+
+    /**
+     *
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/managerSourceFinds")
+    public @ResponseBody SourceVo managerSourceFind(@RequestParam Integer id) throws Exception {
+        return sourceManager.managerFindOne(id);
+    }
+
 
 
 }

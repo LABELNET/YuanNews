@@ -51,6 +51,22 @@
       });
     })(jQuery);
 
+    //分页实现：　itemsOnPage 当前页面的item总数
+    $(function() {
+      $("#paginationpage").pagination({
+        items: ${count},
+        itemsOnPage: 10,
+        page:10,
+        hrefTextPrefix:"?p=",
+        cssStyle: 'light-theme',
+        prevText:"上一页",
+        nextText:"下一页",
+        currentPage:${currentPage}
+
+      });
+    });
+
+    
 
     //网络请求方法提取
     function dataRequest(typeurl,arr,type) {
@@ -102,7 +118,7 @@
         <dt>新闻信息</dt>
         <dd><a href="#">新闻列表</a></dd>
         <dd><a href="#">分类管理</a></dd>
-        <dd><a href="<%=projectPath%>/manager/managerSourcePage.action">来源管理</a></dd>
+        <dd><a href="<%=projectPath%>/manager/managerSourcePage.action?p=1">来源管理</a></dd>
       </dl>
     </li>
     <li>
@@ -166,6 +182,14 @@
             </tr>
           </c:forEach>
         </c:if>
+
+        <tfoot>
+           <tr>
+             <td colspan="5">
+               <div id="paginationpage" style="float: right"></div>
+             </td>
+           </tr>
+        </tfoot>
       </table>
     </section>
 
