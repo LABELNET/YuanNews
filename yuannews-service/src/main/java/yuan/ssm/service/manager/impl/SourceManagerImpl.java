@@ -85,6 +85,7 @@ public class SourceManagerImpl implements SourceManager{
 
     /**
      * 查询来源信息总数（这里不实现，不需要分页）
+     * @deprecated 业务不需要实现
      * @return
      * @throws Exception
      */
