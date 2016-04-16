@@ -49,7 +49,7 @@ public class SourceController {
         LoggerUtil.print(sourceVos);
         ModelAndView mav=new ModelAndView();
         mav.setViewName(ManagerConstant.MANAGER_SOURCE_PAGR);
-        mav.addObject(sourceVos);
+        mav.addObject("sourceVos",sourceVos);
         return mav;
     }
 

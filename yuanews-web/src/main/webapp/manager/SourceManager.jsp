@@ -137,8 +137,37 @@
 <section class="rt_wrap content mCustomScrollbar">
   <div class="rt_content" style="margin-top: 10px;">
 
-   <h1> hi , 新闻推荐后台管理系统　v１.0 !</h1>
+    <section>
+      <div class="page_title">
+        <h2 class="fl">新闻来源管理</h2>
+        <a class="fr top_rt_btn">添加新闻来源</a>
+      </div>
 
+      <table class="table">
+        <tr>
+          <th>新闻来源ID</th>
+          <th>新闻来源</th>
+          <th>操作</th>
+        </tr>
+        <c:if test="${empty sourceVos}">
+           <tr>
+             <td colspan="3">没有更多数据了</td>
+           </tr>
+        </c:if>
+        <c:if test="${!empty sourceVos}">
+          <c:forEach items="${sourceVos}" var="sourceVo">
+            <tr>
+              <td>${sourceVo.id}</td>
+              <td>${sourceVo.source}</td>
+              <td>
+                <button type="button" class="link_btn" >修改兴趣</button>
+                <a class="inner_btn" >删除信息</a>
+              </td>
+            </tr>
+          </c:forEach>
+        </c:if>
+      </table>
+    </section>
 
   </div>
 </section>
