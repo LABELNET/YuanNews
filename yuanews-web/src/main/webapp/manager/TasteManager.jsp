@@ -50,11 +50,13 @@
 
       });
 
+    })(jQuery);
 
-      //分页插件实现
+    //分页实现：　itemsOnPage 当前页面的item总数
+    $(function() {
       $("#paginationpage").pagination({
         items: ${count},
-        itemsOnPage: 10,
+        itemsOnPage: 8,
         page:10,
         hrefTextPrefix:"?p=",
         cssStyle: 'light-theme',
@@ -63,8 +65,8 @@
         currentPage:${currentPage}
 
       });
+    });
 
-    })(jQuery);
   </script>
 </head>
 <body>
@@ -132,11 +134,10 @@
 <section class="rt_wrap content mCustomScrollbar">
   <div class="rt_content" style="margin-top: 10px;">
 
-   <h1>总数：${count}}</h1>
     <section>
       <div class="page_title">
-        <h2 class="fl">用户管理</h2>
-        <button type="button" class="fr top_rt_btn" onclick="addUser()">新增用户</button>
+        <h2 class="fl">兴趣管理</h2>
+        <button type="button" class="fr top_rt_btn" onclick="addUser()">添加兴趣</button>
       </div>
           <table class="table fl" style="margin-top:8px;">
             <tr>
@@ -146,21 +147,34 @@
               <th>用户昵称</th>
               <th>操作</th>
             </tr>
-            <tr>
-              <td class="center">顶级管理员</td>
-              <td class="center"><a class="inner_btn">DeathGhost</a></td>
-            </tr>
-            <tr>
-              <td class="center">采购人员</td>
-              <td class="center"><a class="inner_btn">DeathGhost</a></td>
-            </tr>
+            <c:if test="${empty tasteVos}">
+                <tr>
+                  <td colspan="5">没有更多数据了</td>
+                </tr>
+            </c:if>
+            <c:if test="${!empty tasteVos}">
+              <c:forEach items="${tasteVos}" var="tasteVo">
+                <tr>
+                  <td class="center">${tasteVo.id}</td>
+                  <td class="center">${tasteVo.label}</td>
+                  <td class="center">${tasteVo.uid}</td>
+                  <td class="center">${tasteVo.nick}</td>
+                  <td class="center">
+                    <button type="button" class="link_btn" >修改兴趣</button>
+                    <a class="inner_btn">删除信息</a>
+                  </td>
+                </tr>
+              </c:forEach>
+            </c:if>
+
           </table>
-          <aside class="paging">
-            <div id="paginationpage" style="float: right"></div>
-          </aside>
+            <aside class="paging">
+              <div id="paginationpage" style="float: right"></div>
+            </aside>
       </section>
 
   </div>
+
 </section>
 </body>
 </html>
