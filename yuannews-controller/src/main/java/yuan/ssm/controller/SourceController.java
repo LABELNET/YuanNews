@@ -1,7 +1,15 @@
 package yuan.ssm.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+import yuan.ssm.common.constant.ManagerConstant;
+import yuan.ssm.common.util.LoggerUtil;
+import yuan.ssm.dao.manager.SourceManagerMapper;
+import yuan.ssm.vo.SourceVo;
+
+import java.util.List;
 
 /**
  * ==================================================
@@ -28,6 +36,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class SourceController {
 
 
+    @Autowired
+    private SourceManagerMapper sourceManagerMapper;
+
+    /**
+     * 新闻来源管理主页
+     * @return 数据，页面
+     */
+    @RequestMapping("/managerSourcePage")
+    public ModelAndView managerSourcePage() throws Exception {
+        List<SourceVo> sourceVos = sourceManagerMapper.findSources(0, 0);
+        LoggerUtil.print(sourceVos);
+        ModelAndView mav=new ModelAndView();
+        mav.setViewName(ManagerConstant.MANAGER_SOURCE_PAGR);
+        mav.addObject(sourceVos);
+        return mav;
+    }
 
 
 }

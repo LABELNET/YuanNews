@@ -22,4 +22,6 @@ public interface ManagerConstant {
 
     String MANAGER_TASTE_PAGE="manager/TasteManager"; //兴趣管理页面
 
+    String MANAGER_SOURCE_PAGR="manager/SourceManager"; //新闻来源管理页面
+
 }
