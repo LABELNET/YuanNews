@@ -44,10 +44,22 @@ public class CommentManagerImpl implements CommentManager{
         return commentManagerMapper.findCommentById(id);
     }
 
+    /**
+     * @deprecated 业务不需要
+     * @param commentPo
+     * @return
+     * @throws Exception
+     */
     public Integer managerInsertOne(CommentPo commentPo) throws Exception {
         return null;
     }
 
+    /**
+     * @deprecated  业务不需要
+     * @param commentPo
+     * @return
+     * @throws Exception
+     */
     public Integer managerUpdateOne(CommentPo commentPo) throws Exception {
         return null;
     }
