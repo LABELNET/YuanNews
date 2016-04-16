@@ -49,6 +49,21 @@
         });
 
       });
+
+
+      //分页插件实现
+      $("#paginationpage").pagination({
+        items: ${count},
+        itemsOnPage: 10,
+        page:10,
+        hrefTextPrefix:"?p=",
+        cssStyle: 'light-theme',
+        prevText:"上一页",
+        nextText:"下一页",
+        currentPage:${currentPage}
+
+      });
+
     })(jQuery);
   </script>
 </head>
