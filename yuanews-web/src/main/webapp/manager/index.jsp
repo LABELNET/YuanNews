@@ -66,7 +66,6 @@
             if(status=="success"){
 
             }else {
-              showSE("网络加载失败～");
             }
          }
       });
@@ -104,7 +103,7 @@
         <dt>新闻信息</dt>
         <dd><a href="#">新闻列表</a></dd>
         <dd><a href="#">分类管理</a></dd>
-        <dd><a href="#">来源管理</a></dd>
+        <dd><a href="<%=projectPath%>/manager/managerSourcePage.action">来源管理</a></dd>
       </dl>
     </li>
     <li>
