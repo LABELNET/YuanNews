@@ -6,7 +6,17 @@
 
 
     <select id="findTasteById" parameterType="java.lang.Integer" resultType="taste">
-        SELECT * FROM taste WHERE id=#{id}
+        select
+          t.id id,
+          t.label label,
+          t.uid uid,
+          u.nick nick
+        from
+          taste t,
+          user u
+        where
+          t.uid=u.id
+          AND t.id=#{id}
     </select>
 
     <select id="findTastesByUid" parameterType="java.lang.Integer" resultType="taste">
@@ -14,7 +24,17 @@
     </select>
 
     <select id="findTasteList" parameterType="java.lang.Integer" resultType="taste">
-        select * from taste order by id desc limit #{0},#{1}
+        select
+          t.id id,
+          t.label label,
+          t.uid uid,
+          u.nick nick
+        from
+          taste t,
+          user u
+        where
+          t.uid=u.id
+        order by id desc limit #{0},#{1}
     </select>
 
     <select id="findTasteByLabel" resultType="java.lang.Integer">
