@@ -30,6 +30,9 @@
   <script src="js/simplePagination.js"></script>
 
   <script>
+
+    var tasteBaseUrl="<%=projectPath%>/manager/";
+
     (function($){
       $(window).load(function(){
 
@@ -56,7 +59,7 @@
     $(function() {
       $("#paginationpage").pagination({
         items: ${count},
-        itemsOnPage: 8,
+        itemsOnPage: 10,
         page:10,
         hrefTextPrefix:"?p=",
         cssStyle: 'light-theme',
@@ -65,7 +68,151 @@
         currentPage:${currentPage}
 
       });
+
+
+
     });
+
+   var tasteInsertUrl=tasteBaseUrl+"managerTasteInsert.action";
+   var tasteUpdateUrl=tasteBaseUrl+"managerTasteUpdate.action";
+   var tasteDeleteUrl=tasteBaseUrl+"managerTasteDelete.action";
+   var tasteFindOneUrl=tasteBaseUrl+"managerTasteFind.action";
+
+
+  function addTaste(){
+      //添加兴趣信息
+      showDialog(0,0);
+  }
+
+  function updateTaste(id) {
+    //修改兴趣信息
+    var arr={id:id};
+    dataRequest(tasteFindOneUrl,arr,1);
+  }
+
+  function deleteTaste(id) {
+    //删除兴趣信息
+    showDialog(2,id);
+  }
+
+  function showDialog(type,id) {
+
+    $(".btn_es").hide();
+
+    if(type==1){
+      $(".dialog_ids").hide();
+    }
+
+    if(type==2){
+      $(".pop_cont_input").hide();
+      $(".pop_cont_text").text("你确定要删除该兴趣吗？");
+    }
+
+    $(".pop_bg").fadeIn();
+
+    //弹出：确认按钮
+    $(".trueBtn").click(function(){
+      $(".pop_bg").fadeOut();
+      if(type==0){
+        insert();
+      }else if(type==1){
+        update(id);
+      }else if(type==2){
+        deleteIfo(id);
+      }
+
+    });
+
+    //弹出：取消
+    $(".falseBtn").click(function(){
+      $(".pop_bg").fadeOut();
+      initDialog();
+    });
+  }
+
+  function deleteIfo(id) {
+      //执行删除
+      var arr={id:id};
+      dataRequest(tasteDeleteUrl,arr,2);
+  }
+
+  function update(id) {
+     //执行修改
+     var label=$(".dialog_label").val();
+     var arr={
+        id:id,
+        label:label
+     };
+     //执行更新
+     dataRequest(tasteUpdateUrl,arr,3);
+  }
+
+  function insert() {
+     //执行添加
+     var addLabel=$(".dialog_label").val();
+     var addUid=$(".dialog_id").val();
+     var arr={
+       label:addLabel,
+       uid:addUid
+     }
+     dataRequest(tasteInsertUrl,arr,0);
+  }
+
+  //清空
+  function initDialog() {
+     $(".dialog_label").val("");
+     $(".dialog_id").val("");
+  }
+
+
+    function dataRequest(typeurl,arr,type) {
+      console.log(arr);
+      $.ajax({
+         url:typeurl,
+         data:arr,
+         type:'post',
+         cache:true,
+         dataType:'json',
+         success:function (data,status) {
+              showResult(data,arr,status,type);
+         }
+      });
+    }
+
+    function showResult(data,arr,status,type) {
+      console.log(data);
+      if(status=="success"){
+        //操作成功
+        if(type==0){
+　　　　　　　//添加成功　　　　
+              window.location.reload();
+        }else if(type==1){
+          //显示修改信息
+          $(".dialog_label").val(data.label);
+          showDialog(1,arr.id);
+        }else if(type==2){
+           //删除信息，刷新页面
+             window.location.reload();
+        }else if (type==3) {
+            //执行更新成功
+              window.location.reload();
+        }
+     }else{
+       //操作失败
+       showES("网络错误，请检测网络是否链接？！");
+     }
+    }
+
+
+    function showES(msg) {
+        $(".btm_btn").hide();
+        $(".pop_cont_input").hide();
+        $(".pop_cont_text").text(msg);
+        $(".es_btn").click(function(){
+          $(".pop_bg").fadeOut();
+          window.location.reload();
+        });
+    }
 
   </script>
 </head>
@@ -137,7 +284,7 @@
     <section>
       <div class="page_title">
         <h2 class="fl">兴趣管理</h2>
-        <button type="button" class="fr top_rt_btn" onclick="addUser()">添加兴趣</button>
+        <button type="button" class="fr top_rt_btn" onclick="addTaste()">添加兴趣</button>
       </div>
           <table class="table fl" style="margin-top:8px;">
             <tr>
@@ -160,8 +307,8 @@
                   <td class="center">${tasteVo.uid}</td>
                   <td class="center">${tasteVo.nick}</td>
                   <td class="center">
-                    <button type="button" class="link_btn" >修改兴趣</button>
-                    <a class="inner_btn">删除信息</a>
+                    <button type="button" class="link_btn" onclick="updateTaste(${tasteVo.id})">修改兴趣</button>
+                    <a class="inner_btn" onclick="deleteTaste(${tasteVo.id})">删除信息</a>
                   </td>
                 </tr>
               </c:forEach>
@@ -175,12 +322,45 @@
                </tr>
             </tfoot>
           </table>
-
+            <aside class="paging">
+            </aside>
       </section>
 
-  </div>
+      <!-- 弹出框 -->
+      <section class="pop_bg">
+      <div class="pop_cont">
+       <!--title-->
+       <h3 class="dialog_title">温馨提示</h3>
+       <!--content-->
+       <div class="pop_cont_input">
+        <ul>
+         <li>
+          <span>兴趣标签内容：</span>
+          <input type="text" class="dialog_label" name="dialog_label" placeholder="标签内容" class="textbox"/>
+         </li>
+         <li class="dialog_ids">
+          <span >用户ID　：</span>
+          <input type="text" class="dialog_id" name="dialog_id" placeholder="用户ID" class="textbox"/>
+         </li>
+        </ul>
+       </div>
+       <!--以pop_cont_text分界-->
+       <div class="pop_cont_text">
+        你确定添加改兴趣吗？
+       </div>
+       <!--bottom:operate->button-->
+       <div class="btm_btn">
+        <input type="button" value="确认" class="input_btn trueBtn"/>
+        <input type="button" value="关闭" class="input_btn falseBtn"/>
+       </div>
+       <div class="btn_es">
+        <input type="button" value="确认" class="input_btn link_btn es_btn"/>
+       </div>
 
+      </div>
+     </section>
+
+  </div>
 </section>
 </body>
 </html>
-

@@ -50,6 +50,28 @@
 
       });
     })(jQuery);
+
+
+    //网络请求方法提取
+    function dataRequest(typeurl,arr,type) {
+      console.log(arr);
+      $.ajax({
+         url:typeurl,
+         data:arr,
+         type:'post',
+         cache:true,
+         dataType:'json',
+         success:function (data,status) {
+            console.log(data);
+            if(status=="success"){
+
+            }else {
+              showSE("网络加载失败～");
+            }
+         }
+      });
+    }
+
   </script>
 </head>
 <body>
@@ -124,4 +146,3 @@
 </section>
 </body>
 </html>
-

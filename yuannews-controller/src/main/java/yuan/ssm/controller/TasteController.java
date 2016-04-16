@@ -81,7 +81,7 @@ public class TasteController {
      * @return
      */
     @RequestMapping(value = "/managerTasteInsert",method = RequestMethod.POST)
-    public Integer managerTasteInsert(@RequestParam String label,@RequestParam Integer uid) throws Exception {
+    public @ResponseBody Integer managerTasteInsert(@RequestParam String label,@RequestParam Integer uid) throws Exception {
         if(uid<0){
             return UpdateStatus.UPDATE_FAIL;
         }
@@ -100,7 +100,7 @@ public class TasteController {
      * @throws Exception
      */
     @RequestMapping(value = "/managerTasteUpdate",method = RequestMethod.POST)
-    public Integer managerTasteUpdate(@RequestParam String label,@RequestParam Integer id) throws Exception {
+    public @ResponseBody Integer managerTasteUpdate(@RequestParam String label,@RequestParam Integer id) throws Exception {
         if(id<0){
             return UpdateStatus.UPDATE_FAIL;
         }
@@ -118,7 +118,7 @@ public class TasteController {
      * @throws Exception
      */
     @RequestMapping(value = "/managerTasteDelete")
-    public Integer managerTasteDelete(@RequestParam Integer id) throws Exception {
+    public @ResponseBody Integer managerTasteDelete(@RequestParam Integer id) throws Exception {
         if(id<0){
             return UpdateStatus.UPDATE_FAIL;
         }
