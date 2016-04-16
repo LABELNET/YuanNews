@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import yuan.ssm.common.config.ConfigConstant;
 import yuan.ssm.common.constant.ManagerConstant;
 import yuan.ssm.common.util.LoggerUtil;
 import yuan.ssm.dao.manager.SourceManagerMapper;
@@ -39,12 +40,15 @@ public class SourceController {
     @Autowired
     private SourceManagerMapper sourceManagerMapper;
 
+    //每页显示的数量
+    private int pageNum= ConfigConstant.MANAGER_SOURCE_PAGE_NUM;
+
     /**
      * 新闻来源管理主页
      * @return 数据，页面
      */
     @RequestMapping("/managerSourcePage")
-    public ModelAndView managerSourcePage() throws Exception {
+    public ModelAndView managerSourcePage(Integer p) throws Exception {
         List<SourceVo> sourceVos = sourceManagerMapper.findSources(0, 0);
         LoggerUtil.print(sourceVos);
         ModelAndView mav=new ModelAndView();

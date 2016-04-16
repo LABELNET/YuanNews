@@ -39,5 +39,10 @@ public interface ConfigConstant {
      */
     Integer MANAGER_TASTE_PAGE_NUM=10;
 
+    /**
+     * 新闻来源管理页面，每页加载的数量
+     */
+    Integer MANAGER_SOURCE_PAGE_NUM=10;
+
 
 }
