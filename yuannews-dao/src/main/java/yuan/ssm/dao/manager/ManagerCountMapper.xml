@@ -27,6 +27,10 @@
             FROM taste
         </if>
 
+        <if test="type==6">
+            FROM source
+        </if>
+
     </select>
 
 </mapper>

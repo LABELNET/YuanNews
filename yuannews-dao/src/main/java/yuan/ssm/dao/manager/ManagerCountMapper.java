@@ -19,6 +19,7 @@ public interface ManagerCountMapper {
      *    3. Comment
      *    4. Liked
      *    5. Taste
+     *    6. 新闻来源　source
      */
     PageJo findCount(@Param("type") Integer type) throws Exception;
 
