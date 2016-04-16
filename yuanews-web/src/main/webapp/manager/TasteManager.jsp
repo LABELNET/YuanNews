@@ -99,8 +99,16 @@
 
     $(".btn_es").hide();
 
+    if(type==0){
+      $(".pop_cont_input").show();
+      $(".dialog_ids").show();
+      $(".pop_cont_text").text("你确定要添加该兴趣吗？");
+    }
+
     if(type==1){
+      $(".pop_cont_input").show();
       $(".dialog_ids").hide();
+      $(".pop_cont_text").text("你确定要修改该兴趣吗？");
     }
 
     if(type==2){
