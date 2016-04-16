@@ -56,6 +56,7 @@ public class LikedManagerImpl implements LikedManager {
 
     /**
      * 下面的方法没有使用，业务需求不需要
+     * @deprecated
      * @param id　查询的id
      * @return
      * @throws Exception
@@ -64,10 +65,22 @@ public class LikedManagerImpl implements LikedManager {
         return null;
     }
 
+    /**
+     * @deprecated 业务不需要
+     * @param likedPo
+     * @return
+     * @throws Exception
+     */
     public Integer managerInsertOne(LikedPo likedPo) throws Exception {
         return null;
     }
 
+    /**
+     * @deprecated  业务不需要
+     * @param likedPo
+     * @return
+     * @throws Exception
+     */
     public Integer managerUpdateOne(LikedPo likedPo) throws Exception {
         return null;
     }
