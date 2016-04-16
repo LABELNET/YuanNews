@@ -3,12 +3,22 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-
-
     <bean id="userManagerImpl" class="yuan.ssm.service.manager.impl.UserManagerImpl" />
 
     <bean id="mapperJson" class="org.codehaus.jackson.map.ObjectMapper"/>
 
     <bean id="tasteManagerImpl" class="yuan.ssm.service.manager.impl.TasteManagerImpl"/>
+
+    <bean id="sourceManagerImpl" class="yuan.ssm.service.manager.impl.SourceManagerImpl"/>
+
+    <bean id="newsManagerImpl" class="yuan.ssm.service.manager.impl.NewsManagerImpl"/>
+
+    <bean id="likedManagerImpl" class="yuan.ssm.service.manager.impl.LikedManagerImpl"/>
+
+    <bean id="indexManagerImpl" class="yuan.ssm.service.manager.impl.IndexManagerImpl"/>
+
+    <bean id="commentManagerImpl" class="yuan.ssm.service.manager.impl.CommentManagerImpl"/>
+
+    <bean id="cateManagerImpl" class="yuan.ssm.service.manager.impl.CateManagerImpl"/>
 
 </beans>
