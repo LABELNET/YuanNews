@@ -1,5 +1,9 @@
 package yuan.ssm.service.manager.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import yuan.ssm.common.status.ManagerConutStatus;
+import yuan.ssm.dao.manager.CommentManagerMapper;
+import yuan.ssm.dao.manager.ManagerCountMapper;
 import yuan.ssm.other.PageJo;
 import yuan.ssm.pojo.CommentPo;
 import yuan.ssm.service.manager.CommentManager;
@@ -11,12 +15,33 @@ import java.util.List;
  * 业务层　－　后台管理 － 评论管理 - 接口实现
  */
 public class CommentManagerImpl implements CommentManager{
+
+
+    @Autowired
+    private CommentManagerMapper commentManagerMapper;
+
+    @Autowired
+    private ManagerCountMapper managerCountMapper;
+
+    /**
+     * 最简单的分页实现
+     * @param start　开始位置
+     * @param num　数量
+     * @return
+     * @throws Exception
+     */
     public List<CommentPo> managerFindList(Integer start, Integer num) throws Exception {
-        return null;
+        return commentManagerMapper.findComments(start,num);
     }
 
+    /**
+     * 查询单条评论信息
+     * @param id　查询的id
+     * @return
+     * @throws Exception
+     */
     public CommentPo managerFindOne(Integer id) throws Exception {
-        return null;
+        return commentManagerMapper.findCommentById(id);
     }
 
     public Integer managerInsertOne(CommentPo commentPo) throws Exception {
@@ -27,11 +52,22 @@ public class CommentManagerImpl implements CommentManager{
         return null;
     }
 
+    /**
+     * 伪删除，修改评论status为１
+     * @param id　删除的信息id
+     * @return
+     * @throws Exception
+     */
     public Integer managerDeleteOne(Integer id) throws Exception {
-        return null;
+        return commentManagerMapper.updateCommentStatus(id,1);
     }
 
+    /**
+     * 得到评论总数
+     * @return
+     * @throws Exception
+     */
     public PageJo managerFindCount() throws Exception {
-        return null;
+        return managerCountMapper.findCount(ManagerConutStatus.MANAGER_COMMENT_COUNT_TYPE);
     }
 }
