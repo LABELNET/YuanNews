@@ -8,8 +8,8 @@
         SELECT * FROM source ORDER BY id DESC limit #{0},#{1}
     </select>
     
-    <update id="updateSourceContent">
-        UPDATE source SET source=#{source} WHERE id=#{id}
+    <update id="updateSourceContent" >
+        UPDATE source SET source=#{content} WHERE id=#{id}
     </update>
 
     <insert id="insertSource" parameterType="java.lang.String">

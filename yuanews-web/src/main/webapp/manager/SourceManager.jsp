@@ -66,7 +66,91 @@
       });
     });
 
-    
+      var sourceBaseUrl="<%=projectPath%>/manager/";
+      var sourceInsertUrl=sourceBaseUrl+"managerSourceInsert.action";
+      var sourceUpdateUrl=sourceBaseUrl+"managerSourceUpdate.action";
+      var sourceDeleteUrl=sourceBaseUrl+"managerSourceDelete.action";
+      var sourceFindOne=sourceBaseUrl+"managerSourceFinds.action";
+
+
+    //type: 0,添加　；２,删除　；１,修改 : ３，提交修改
+    function showDialog(id,type){
+
+　　　　　$(".pop_bg").fadeIn();
+
+　　　　　if(type==0){
+          $(".dialog_title").text("添加新闻来源信息");
+          $(".pop_cont_input").show();
+          $(".pop_cont_text").text("你确定要添加该来源信息吗？");
+       }
+
+　　　　　if(type==1){
+          $(".dialog_title").text("修改新闻来源信息");
+          $(".pop_cont_input").show();
+          $(".pop_cont_text").text("你确定要修改该来源信息吗？");
+       }
+
+       if(type==2){
+         $(".dialog_title").text("温馨提醒");
+         $(".pop_cont_input").hide();
+         $(".pop_cont_text").text("你确定要删除该来源信息吗？");
+       }
+
+        //弹出：确认按钮
+        $(".trueBtn").click(function(){
+          $(".pop_bg").fadeOut();
+          if(type==0){
+            insert();
+          }else if(type==1){
+            update(id);
+          }else if(type==2){
+            deleteIfo(id);
+          }
+        });
+
+        //弹出：取消
+        $(".falseBtn").click(function(){
+          $(".pop_bg").fadeOut();
+          $(".dialog_label").val("");
+        });
+    }
+
+  function insert() {
+    //新添加
+    var source=$(".dialog_label").val();
+    var arr={
+      source:source
+    }
+    dataRequest(sourceInsertUrl,arr,0);
+  }
+
+　function update(id) {
+　  //修改:　提交修改type 3
+    var source=$(".dialog_label").val();
+    var arr={
+      id:id,
+      source:source
+    }
+    dataRequest(sourceUpdateUrl,arr,3);
+　}
+
+　function deleteIfo(id) {
+　  //删除
+　　var arr={
+      id:id
+    }
+    dataRequest(sourceDeleteUrl,arr,2);
+　}
+
+
+    //加载修改的信息
+    function dataRequestIfo(id,type) {
+        var arr={
+          id:id
+        }
+        dataRequest(sourceFindOne,arr,type);
+    }
+
 
     //网络请求方法提取
     function dataRequest(typeurl,arr,type) {
@@ -80,7 +164,14 @@
          success:function (data,status) {
             console.log(data);
             if(status=="success"){
+               if(type==1){
+                 $(".dialog_label").val(data.source);
+                 showDialog(arr.id,type);
+               }else(
+                 window.location.reload()
+               )
             }else {
+              window.location.reload()
             }
          }
       });
@@ -156,15 +247,17 @@
     <section>
       <div class="page_title">
         <h2 class="fl">新闻来源管理</h2>
-        <a class="fr top_rt_btn">添加新闻来源</a>
+        <a class="fr top_rt_btn" onclick="showDialog(0,0)">添加新闻来源</a>
       </div>
 
       <table class="table">
-        <tr>
-          <th>新闻来源ID</th>
-          <th>新闻来源</th>
-          <th>操作</th>
-        </tr>
+        <thead>
+          <tr>
+            <th>新闻来源ID</th>
+            <th>新闻来源</th>
+            <th>操作</th>
+          </tr>
+       </thead>
         <c:if test="${empty sourceVos}">
            <tr>
              <td colspan="3">没有更多数据了</td>
@@ -176,8 +269,8 @@
               <td>${sourceVo.id}</td>
               <td>${sourceVo.source}</td>
               <td>
-                <button type="button" class="link_btn" >修改兴趣</button>
-                <a class="inner_btn" >删除信息</a>
+                <button type="button" class="link_btn" onclick="dataRequestIfo(${sourceVo.id},1)">修改兴趣</button>
+                <a class="inner_btn" onclick="showDialog(${sourceVo.id},2)">删除信息</a>
               </td>
             </tr>
           </c:forEach>
@@ -192,6 +285,33 @@
         </tfoot>
       </table>
     </section>
+
+    <!-- 弹出框 -->
+    <section class="pop_bg">
+    <div class="pop_cont">
+     <!--title-->
+     <h3 class="dialog_title">温馨提示</h3>
+     <!--content-->
+     <div class="pop_cont_input">
+      <ul>
+       <li>
+        <span>新闻来源内容：</span>
+        <input type="text" class="dialog_label" name="dialog_label" placeholder="标签内容" class="textbox"/>
+       </li>
+      </ul>
+     </div>
+     <!--以pop_cont_text分界-->
+     <div class="pop_cont_text">
+      你确定操作吗？
+     </div>
+     <!--bottom:operate->button-->
+     <div class="btm_btn">
+      <input type="button" value="确认" class="input_btn trueBtn"/>
+      <input type="button" value="关闭" class="input_btn falseBtn"/>
+     </div>
+    </div>
+    </section>
+
 
   </div>
 </section>
