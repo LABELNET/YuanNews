@@ -19,5 +19,9 @@
     <delete id="deleteSourceContent" parameterType="java.lang.Integer">
         DELETE FROM source WHERE id=#{0}
     </delete>
+
+    <select id="findSourceOne" parameterType="java.lang.Integer" resultType="source">
+        SELECT * FROM source WHERE id=#{id}
+    </select>
     
 </mapper>

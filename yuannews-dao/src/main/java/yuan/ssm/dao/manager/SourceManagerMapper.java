@@ -22,4 +22,7 @@ public interface SourceManagerMapper {
     //新增　- 新闻来源
     Integer insertSource(String content) throws Exception;
 
+    //查询 - 一条来源信息
+    SourceVo findSourceOne(Integer id) throws Exception;
+
 }
