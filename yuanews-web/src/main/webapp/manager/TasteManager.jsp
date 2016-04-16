@@ -133,7 +133,32 @@
   <div class="rt_content" style="margin-top: 10px;">
 
    <h1>总数：${count}}</h1>
-
+    <section>
+      <div class="page_title">
+        <h2 class="fl">用户管理</h2>
+        <button type="button" class="fr top_rt_btn" onclick="addUser()">新增用户</button>
+      </div>
+          <table class="table fl" style="margin-top:8px;">
+            <tr>
+              <th>ID</th>
+              <th>兴趣标签</th>
+              <th>用户ID</th>
+              <th>用户昵称</th>
+              <th>操作</th>
+            </tr>
+            <tr>
+              <td class="center">顶级管理员</td>
+              <td class="center"><a class="inner_btn">DeathGhost</a></td>
+            </tr>
+            <tr>
+              <td class="center">采购人员</td>
+              <td class="center"><a class="inner_btn">DeathGhost</a></td>
+            </tr>
+          </table>
+          <aside class="paging">
+            <div id="paginationpage" style="float: right"></div>
+          </aside>
+      </section>
 
   </div>
 </section>
