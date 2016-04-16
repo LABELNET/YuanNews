@@ -21,5 +21,8 @@ public interface ManagerConutStatus {
     //爱好类型
     Integer MANAGER_TASTE_COUNT_TYPE=5;
 
+    //新闻来源类型
+    Integer MANAGER_SOURCE_COUNT_TYPE=6;
+
 
 }

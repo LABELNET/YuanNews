@@ -1,6 +1,7 @@
 package yuan.ssm.service.manager.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import yuan.ssm.common.status.ManagerConutStatus;
 import yuan.ssm.common.status.UpdateStatus;
 import yuan.ssm.dao.manager.ManagerCountMapper;
 import yuan.ssm.dao.manager.SourceManagerMapper;
@@ -94,7 +95,7 @@ public class SourceManagerImpl implements SourceManager{
      * @throws Exception
      */
     public PageJo managerFindCount() throws Exception {
-        return managerCountMapper.findCount();
+        return managerCountMapper.findCount(ManagerConutStatus.MANAGER_SOURCE_COUNT_TYPE);
     }
 
 
