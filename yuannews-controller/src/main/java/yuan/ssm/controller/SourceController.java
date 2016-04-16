@@ -7,7 +7,8 @@ import org.springframework.web.servlet.ModelAndView;
 import yuan.ssm.common.config.ConfigConstant;
 import yuan.ssm.common.constant.ManagerConstant;
 import yuan.ssm.common.util.LoggerUtil;
-import yuan.ssm.dao.manager.SourceManagerMapper;
+import yuan.ssm.other.PageJo;
+import yuan.ssm.service.manager.SourceManager;
 import yuan.ssm.vo.SourceVo;
 
 import java.util.List;
@@ -38,22 +39,31 @@ public class SourceController {
 
 
     @Autowired
-    private SourceManagerMapper sourceManagerMapper;
+    private SourceManager sourceManager;
 
     //每页显示的数量
     private int pageNum= ConfigConstant.MANAGER_SOURCE_PAGE_NUM;
 
     /**
      * 新闻来源管理主页
-     * @return 数据，页面
+     * @return 数据，页面，当前页面
      */
     @RequestMapping("/managerSourcePage")
     public ModelAndView managerSourcePage(Integer p) throws Exception {
-        List<SourceVo> sourceVos = sourceManagerMapper.findSources(0, 0);
+        if(p<0){
+            p=1;
+        }
+        int currentPage=p;
+        p=pageNum*(p-1);
+        List<SourceVo> sourceVos = sourceManager.managerFindList(p,pageNum);
         LoggerUtil.print(sourceVos);
+        PageJo pageJo = sourceManager.managerFindCount();
+        LoggerUtil.print(pageJo.getAllCount());
         ModelAndView mav=new ModelAndView();
         mav.setViewName(ManagerConstant.MANAGER_SOURCE_PAGR);
         mav.addObject("sourceVos",sourceVos);
+        mav.addObject("count",pageJo.getAllCount());
+        mav.addObject("currentPage",currentPage);
         return mav;
     }
 
