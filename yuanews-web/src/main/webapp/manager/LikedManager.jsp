@@ -52,7 +52,7 @@
     })(jQuery);
 
     var baseUrl="<%=projectPath%>/manager/";
-    var likeDeleteUrl=sourceBaseUrl+"managerDeleteLiked.action";
+    var likeDeleteUrl=baseUrl+"managerDeleteLiked.action";
 
     //分页实现：　itemsOnPage 当前页面的item总数
     $(function() {
@@ -79,12 +79,13 @@
                var arr={
                  id:id
                };
-              dataRequest（likeDeleteUrl,arr,）
+              dataRequest(likeDeleteUrl,arr);
              });
 
              //弹出：取消
              $(".falseBtn").click(function(){
                $(".pop_bg").fadeOut();
+                id=-1;
              });
 
    }
@@ -173,11 +174,17 @@
   <div class="rt_content" style="margin-top: 10px;">
 
     <section>
-      <div class="page_title">
+      <div class="page_title" >
         <h2 class="fl">新闻点赞信息管理</h2>
+        <div style="float:right;">
+          点赞状态描述 ：
+          <img style="width:40px;margin-left:20px;" src="/image/icon/zan.png"/> 没有点赞
+          <img style="width:40px;margin-left:20px;" src="/image/icon/normalzan.png"/> 点赞
+          <img style="width:40px;margin-left:20px;" src="/image/icon/superzan.png"/> 超赞
+        </div>
       </div>
 
-      <table class="table">
+      <table class="table center" style="margin-top:10px;">
         <thead>
           <tr>
             <th>ID</th>
@@ -197,10 +204,10 @@
           <c:forEach items="${likedPos}" var="likedPo">
             <tr>
               <td>${likedPo.id}</td>
-              <td><img src="${likedPo.userVo.head}"/></td>
+              <td><img style="width:50px;" src="${likedPo.userVo.head}"/></td>
               <td>${likedPo.userVo.nick}</td>
               <td>${likedPo.newsVo.title}</td>
-              <td>${likedPo.status==1?"/image/icon/normalzan.png":"/image/icon/superzan.png"}</td>
+              <td><img style="width:50px;" src="${likedPo.status==1?"/image/icon/normalzan.png":"/image/icon/superzan.png"}" /></td>
               <td>
                 <a class="inner_btn" onclick="showDialog(${likedPo.id})">删除信息</a>
               </td>
@@ -210,11 +217,12 @@
 
         <tfoot>
            <tr>
-             <td colspan="5">
+             <td colspan="6">
                <div id="paginationpage" style="float: right"></div>
              </td>
            </tr>
         </tfoot>
+
       </table>
     </section>
 

@@ -3,6 +3,7 @@ package yuan.ssm.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import yuan.ssm.common.config.ConfigConstant;
@@ -67,7 +68,13 @@ public class LikedController {
         return mav;
     }
 
-    @RequestMapping("/managerDeleteLiked")
+    /**
+     * 删除点赞信息
+     * @param id　点赞id
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/managerDeleteLiked",method = RequestMethod.POST)
     public Integer managerDeleteLiked(@RequestParam Integer id) throws Exception{
        return likedManager.managerDeleteOne(id);
     }
