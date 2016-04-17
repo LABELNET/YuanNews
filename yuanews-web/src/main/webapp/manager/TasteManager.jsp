@@ -135,6 +135,7 @@
     $(".falseBtn").click(function(){
       $(".pop_bg").fadeOut();
       initDialog();
+      type=-1;
     });
   }
 

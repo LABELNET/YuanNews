@@ -197,6 +197,7 @@
       //弹出：取消或关闭按钮
       $(".falseBtn").click(function(){
         $(".pop_bg").fadeOut();
+        type=-1;
       });
 
     }
