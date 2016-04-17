@@ -281,7 +281,7 @@
 
     <section>
       <div class="page_title">
-        <h2 class="fl">新闻来源管理</h2>
+        <h2 class="fl">新闻管理</h2>
          <div style="color:blue;margin-left:50px;float:right;">
             新闻数据不提供录入功能，数据来自爬虫自动完成！
          </div>
