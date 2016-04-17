@@ -123,7 +123,7 @@
       <dl>
         <dt>关于</dt>
         <dd><a href="<%=projectPath%>/manager/managerPersent.jsp">站点介绍</a></dd>
-        <dd><a href="<%=projectPath%>/manager/aboutMe.jsp">关于我</a></dd>
+        <dd><a href="<%=projectPath%>/manager/aboutMe.jsp" class="active">关于我</a></dd>
       </dl>
     </li>
 
@@ -137,12 +137,12 @@
   <div class="rt_content center" style="margin-top: 10px;">
 
     <h1>毕设设计题目： 基于用户兴趣标签的新闻推荐系统设计与实现</h1>
-
-    <h1>学院：　计算机学院</h1>
-    <h1>专业：　软件工程(.net) </h1>
-    <h1>姓名：　原明卓</h1>
-    <h1>班级：　12-1</h1>
    　
+    <div style="text-align: center">
+      <p style="max-width: 500px;margin: 0 auto;">　
+        <br/> 学院：　计算机学院 <br/> 专业：　软件工程(.net) <br/> 姓名：　原明卓 <br/> 班级：　12-1
+      </p>
+    </div>
 
 
   </div>
