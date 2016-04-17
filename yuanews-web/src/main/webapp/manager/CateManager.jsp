@@ -183,7 +183,7 @@
 
 <!--aside nav-->
 <aside class="lt_aside_nav content mCustomScrollbar">
-  <h2><a href="<%=projectPath%>/manager/managerIndex.action" class="active">首页</a></h2>
+  <h2><a href="<%=projectPath%>/manager/managerIndex.action" >首页</a></h2>
   <ul>
     <li>
       <dl>
@@ -197,7 +197,7 @@
       <dl>
         <dt>新闻信息</dt>
         <dd><a href="<%=projectPath%>/manager/managerNewsPage.action?p=1">新闻列表</a></dd>
-        <dd><a href="<%=projectPath%>/manager/managerCatePage.action">分类管理</a></dd>
+        <dd><a href="<%=projectPath%>/manager/managerCatePage.action" class="active">分类管理</a></dd>
         <dd><a href="<%=projectPath%>/manager/managerSourcePage.action?p=1">来源管理</a></dd>
       </dl>
     </li>
@@ -211,9 +211,7 @@
     <li>
       <dl>
         <dt>Api设计</dt>
-        <dd><a href="#">管理员接口</a></dd>
-        <dd><a href="#">用户接口</a></dd>
-        <dd><a href="#">其他接口</a></dd>
+        <dd><a href="<%=projectPath%>/manager/managerApi.jsp"　target="_blank">新闻推荐API</a></dd>
       </dl>
     </li>
     <li>

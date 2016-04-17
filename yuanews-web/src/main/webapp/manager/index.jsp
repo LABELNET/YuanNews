@@ -116,9 +116,7 @@
     <li>
       <dl>
         <dt>Api设计</dt>
-        <dd><a href="#">管理员接口</a></dd>
-        <dd><a href="#">用户接口</a></dd>
-        <dd><a href="#">其他接口</a></dd>
+        <dd><a href="<%=projectPath%>/manager/managerApi.jsp"　target="_blank">新闻推荐API</a></dd>
       </dl>
     </li>
     <li>

@@ -123,7 +123,7 @@
 
 <!--aside nav-->
 <aside class="lt_aside_nav content mCustomScrollbar">
-  <h2><a href="<%=projectPath%>/manager/managerIndex.action" class="active">首页</a></h2>
+  <h2><a href="<%=projectPath%>/manager/managerIndex.action" >首页</a></h2>
   <ul>
     <li>
       <dl>
@@ -144,16 +144,14 @@
     <li>
       <dl>
         <dt>评论信息</dt>
-        <dd><a href="<%=projectPath%>/manager/managerCommentPage.action?p=1">评论管理</a></dd>
+        <dd><a href="<%=projectPath%>/manager/managerCommentPage.action?p=1" class="active">评论管理</a></dd>
         <dd><a href="<%=projectPath%>/manager/managerLikedPage.action?p=1">点赞管理</a></dd>
       </dl>
     </li>
     <li>
       <dl>
         <dt>Api设计</dt>
-        <dd><a href="#">管理员接口</a></dd>
-        <dd><a href="#">用户接口</a></dd>
-        <dd><a href="#">其他接口</a></dd>
+          <dd><a href="<%=projectPath%>/manager/managerApi.jsp"　target="_blank">新闻推荐API</a></dd>
       </dl>
     </li>
     <li>
