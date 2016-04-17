@@ -44,5 +44,10 @@ public interface ConfigConstant {
      */
     Integer MANAGER_SOURCE_PAGE_NUM=10;
 
+    /**
+     * 点赞每页显示的数量
+     */
+    Integer MANAGER_LIKED_PAGE_NUM=10;
+
 
 }
