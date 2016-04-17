@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * Created by yuan on 16-3-30.
+ * 用户端　－　主页控制器
  */
 
 @Controller
