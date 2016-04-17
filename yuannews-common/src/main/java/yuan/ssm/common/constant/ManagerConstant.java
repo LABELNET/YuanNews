@@ -3,6 +3,7 @@ package yuan.ssm.common.constant;
 /**
  * Created by yuan on 16-4-5.
  * 控制器－后台管理－放置常量
+ * 注意：核心类，配置后台管理各个页面（jsp）
  */
 public interface ManagerConstant {
 
@@ -23,5 +24,7 @@ public interface ManagerConstant {
     String MANAGER_TASTE_PAGE="manager/TasteManager"; //兴趣管理页面
 
     String MANAGER_SOURCE_PAGR="manager/SourceManager"; //新闻来源管理页面
+
+    String MANAGER_CATE_PAGE="manager/CateManager"; //新闻分类管理页面
 
 }

@@ -20,9 +20,6 @@ public class CateManagerImpl implements CateManager {
     @Autowired
     private CateManagerMapper cateManagerMapper;
 
-    @Autowired
-    private ManagerCountMapper managerCountMapper;
-
     /**
      * 分类查询 - 全部分类信息，没有分页
      * @param start　开始位置
@@ -89,6 +86,7 @@ public class CateManagerImpl implements CateManager {
      * @return
      * @throws Exception
      * @deprecated 业务不需要，没必要实现
+     * @see CateManagerMapper
      */
     public PageJo managerFindCount() throws Exception {
         return null;
