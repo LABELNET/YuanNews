@@ -66,11 +66,12 @@
       });
     });
 
-      var sourceBaseUrl="<%=projectPath%>/manager/";
-      var sourceInsertUrl=sourceBaseUrl+"managerSourceInsert.action";
-      var sourceUpdateUrl=sourceBaseUrl+"managerSourceUpdate.action";
-      var sourceDeleteUrl=sourceBaseUrl+"managerSourceDelete.action";
-      var sourceFindOne=sourceBaseUrl+"managerSourceFinds.action";
+      var baseUrl="<%=projectPath%>/manager/";
+      var newsInsertUrl=baseUrl+"managerInsertNews.action";
+      var newsUpdateUrl=baseUrl+"managerUpdateNews.action";
+      var newsDeleteUrl=baseUrl+"managerDeleteNews.action";
+      var newsFindOne=baseUrl+"managerNewsOne.action";
+      var newsFindNewsContent=baseUrl+"managerFindNewsContent.action";
 
 
     //type: 0,添加　；２,删除　；１,修改 : ３，提交修改
@@ -79,21 +80,21 @@
 　　　　　$(".pop_bg").fadeIn();
 
 　　　　　if(type==0){
-          $(".dialog_title").text("添加新闻来源信息");
-          $(".pop_cont_input").show();
-          $(".pop_cont_text").text("你确定要添加该来源信息吗？");
+//          $(".dialog_title").text("添加新闻来源信息");
+//          $(".pop_cont_input").show();
+//          $(".pop_cont_text").text("你确定要添加该来源信息吗？");
        }
 
 　　　　　if(type==1){
-          $(".dialog_title").text("修改新闻来源信息");
-          $(".pop_cont_input").show();
-          $(".pop_cont_text").text("你确定要修改该来源信息吗？");
+//          $(".dialog_title").text("修改新闻来源信息");
+//          $(".pop_cont_input").show();
+//          $(".pop_cont_text").text("你确定要修改该来源信息吗？");
        }
 
        if(type==2){
-         $(".dialog_title").text("温馨提醒");
-         $(".pop_cont_input").hide();
-         $(".pop_cont_text").text("你确定要删除该来源信息吗？");
+//         $(".dialog_title").text("温馨提醒");
+//         $(".pop_cont_input").hide();
+//         $(".pop_cont_text").text("你确定要删除该来源信息吗？");
        }
 
         //弹出：确认按钮
@@ -254,23 +255,33 @@
       <table class="table">
         <thead>
           <tr>
-            <th>新闻来源ID</th>
-            <th>新闻来源</th>
+            <th>ID</th>
+            <th>title</th>
+            <th>图片</th>
+            <th>阅读量</th>
+            <th>内容</th>
+            <th>来源</th>
+            <th>分类</th>
             <th>操作</th>
           </tr>
        </thead>
-        <c:if test="${empty sourceVos}">
+        <c:if test="${empty newsPos}">
            <tr>
              <td colspan="3">没有更多数据了</td>
            </tr>
         </c:if>
-        <c:if test="${!empty sourceVos}">
-          <c:forEach items="${sourceVos}" var="sourceVo">
+        <c:if test="${!empty newsPos}">
+          <c:forEach items="${newsPos}" var="newsPo">
             <tr>
-              <td>${sourceVo.id}</td>
-              <td>${sourceVo.source}</td>
+              　<td>${newsPo.id}</td>
+                <td>${newsPo.title}</td>
+                <td><img style="width: 80px" src="${newsPo.img}" /></td>
+                <td>${newsPo.rnum}</td>
+              <td><button type="button" class="link_btn" onclick="showDialog(${newsPo.id},4)"/> </td>
+              <td>${newsPo.sourceStr}</td>
+              <td>${newsPo.cateStr}</td>
               <td>
-                <button type="button" class="link_btn" onclick="dataRequestIfo(${sourceVo.id},1)">修改兴趣</button>
+                <button type="button" class="link_btn" onclick="dataRequestIfo(${sourceVo.id},1)">修改信息</button>
                 <a class="inner_btn" onclick="showDialog(${sourceVo.id},2)">删除信息</a>
               </td>
             </tr>
