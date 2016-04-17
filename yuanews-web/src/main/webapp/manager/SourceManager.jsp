@@ -229,7 +229,7 @@
     <li>
       <dl>
         <dt>关于</dt>
-        <dd><a href="#">站点介绍</a></dd>
+        <dd><a href="<%=projectPath%>/manager/managerPersent.jsp">站点介绍</a></dd>
         <dd><a href="#">关于我</a></dd>
       </dl>
     </li>
