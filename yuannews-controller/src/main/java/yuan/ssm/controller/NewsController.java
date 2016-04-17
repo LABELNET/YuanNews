@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import yuan.ssm.common.config.ConfigConstant;
 import yuan.ssm.common.constant.ManagerConstant;
-import yuan.ssm.common.util.LoggerUtil;
 import yuan.ssm.other.PageJo;
 import yuan.ssm.pojo.NewsPo;
+import yuan.ssm.pojo.NewsPoCustom;
 import yuan.ssm.service.manager.NewsManager;
 import yuan.ssm.vo.NewsVo;
 
@@ -87,8 +87,8 @@ public class NewsController {
      * @throws Exception
      */
     @RequestMapping("/managerNewsOne")
-    public @ResponseBody NewsPo managerNewsOne(@RequestParam Integer id) throws Exception{
-        return newsManager.managerFindOne(id);
+    public @ResponseBody NewsPoCustom managerNewsOne(@RequestParam Integer id) throws Exception{
+        return newsManager.managerFindNews(id);
     }
 
     /**

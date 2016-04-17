@@ -3,12 +3,17 @@ package yuan.ssm.service.manager.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import yuan.ssm.common.status.ManagerConutStatus;
 import yuan.ssm.common.status.UpdateStatus;
+import yuan.ssm.dao.manager.CateManagerMapper;
 import yuan.ssm.dao.manager.ManagerCountMapper;
 import yuan.ssm.dao.manager.NewsManagerMapper;
+import yuan.ssm.dao.manager.SourceManagerMapper;
 import yuan.ssm.other.PageJo;
 import yuan.ssm.pojo.NewsPo;
+import yuan.ssm.pojo.NewsPoCustom;
 import yuan.ssm.service.manager.NewsManager;
+import yuan.ssm.vo.CateVo;
 import yuan.ssm.vo.NewsVo;
+import yuan.ssm.vo.SourceVo;
 
 import java.util.List;
 
@@ -24,6 +29,12 @@ public class NewsManagerImpl implements NewsManager{
 
     @Autowired
     private ManagerCountMapper managerCountMapper;
+
+    @Autowired
+    private CateManagerMapper cateManagerMapper;
+
+    @Autowired
+    private SourceManagerMapper sourceManagerMapper;
 
     /**
      * 新闻分页查询
@@ -132,6 +143,23 @@ public class NewsManagerImpl implements NewsManager{
      */
     public String managerFindNewsContent(Integer id) throws Exception {
         return newsManagerMapper.findNewsContentById(id);
+    }
+
+    /**
+     * 查询单条新闻信息，所有分类，所有来源信息
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    public NewsPoCustom managerFindNews(Integer id) throws Exception {
+        NewsPoCustom custom=new NewsPoCustom();
+        NewsPo newsPo = managerFindOne(id);
+        List<CateVo> cates = cateManagerMapper.findCates();
+        List<SourceVo> sources = sourceManagerMapper.findSources(0, 20);
+        custom.setNewsPo(newsPo);
+        custom.setCates(cates);
+        custom.setSourceVos(sources);
+        return custom;
     }
 
 }
