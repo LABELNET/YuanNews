@@ -1,5 +1,16 @@
 package yuan.ssm.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import yuan.ssm.common.constant.ManagerConstant;
+import yuan.ssm.common.util.LoggerUtil;
+import yuan.ssm.service.manager.CateManager;
+import yuan.ssm.vo.CateVo;
+
+import java.util.List;
+
 /**
  * ==================================================
  * <p/>
@@ -21,5 +32,67 @@ package yuan.ssm.controller;
  * <p>
  * ==================================================
  */
+@Controller
+@RequestMapping("/manager")
 public class CateController {
+
+
+    @Autowired
+    private CateManager cateManager;
+
+    /**
+     * 分类信息管理页面
+     * @return 数据，页面
+     */
+    @RequestMapping("/managerCatePage")
+    public ModelAndView managerCatePage() throws Exception {
+        List<CateVo> cateVos = cateManager.managerFindList(0, 0);
+        LoggerUtil.print(cateVos);
+        ModelAndView mav=new ModelAndView();
+        mav.setViewName(ManagerConstant.MANAGER_CATE_PAGE);
+        mav.addObject("cateVos",cateVos);
+        return mav;
+    }
+
+    /**
+     * 添加新闻来源
+     * @return
+     */
+    @RequestMapping(value = "/managerCateInsert",method = RequestMethod.POST)
+    public @ResponseBody
+    Integer managerCateInsert(@ModelAttribute CateVo cateVo) throws Exception {
+        return cateManager.managerInsertOne(cateVo);
+    }
+
+    /**
+     * 修改新闻来源信息
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/managerCateUpdate",method = RequestMethod.POST)
+    public @ResponseBody Integer managerCateUpdate(@ModelAttribute CateVo cateVo) throws Exception {
+        return cateManager.managerUpdateOne(cateVo);
+    }
+
+    /**
+     * 删除 新闻来源
+     */
+    @RequestMapping(value = "/managerCateDelete")
+    public @ResponseBody Integer managerCateDelete(@RequestParam Integer id) throws Exception {
+        return cateManager.managerDeleteOne(id);
+    }
+
+
+    /**
+     *
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/managerSourceFinds")
+    public @ResponseBody CateVo managerSourceFind(@RequestParam Integer id) throws Exception {
+        return cateManager.managerFindOne(id);
+    }
+
+
 }
