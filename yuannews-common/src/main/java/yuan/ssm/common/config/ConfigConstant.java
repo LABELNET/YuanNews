@@ -49,5 +49,10 @@ public interface ConfigConstant {
      */
     Integer MANAGER_LIKED_PAGE_NUM=10;
 
+    /**
+     * 评论每页显示数量
+     */
+    Integer MANAGER_COMMENT_PAGE_NUM=8;
+
 
 }

@@ -29,4 +29,6 @@ public interface ManagerConstant {
 
     String MANAGER_LIKED_PAGE="manager/LikedManager"; //点赞管理页面
 
+    String MANAGER_COMMENT_PAGR="manager/CommentManager";//评论管理页面
+
 }
