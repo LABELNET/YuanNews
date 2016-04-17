@@ -216,7 +216,7 @@
     <li>
       <dl>
         <dt>评论信息</dt>
-        <dd><a href="#">评论管理</a></dd>
+        <dd><a href="<%=projectPath%>/manager/managerCommentPage.action?p=1">评论管理</a></dd>
         <dd><a href="<%=projectPath%>/manager/managerLikedPage.action?p=1">点赞管理</a></dd>
       </dl>
     </li>
