@@ -2,6 +2,7 @@ package yuan.ssm.service.manager.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import yuan.ssm.common.status.ManagerConutStatus;
+import yuan.ssm.common.util.LoggerUtil;
 import yuan.ssm.dao.manager.LikedManagerMapper;
 import yuan.ssm.dao.manager.ManagerCountMapper;
 import yuan.ssm.other.PageJo;
@@ -42,7 +43,9 @@ public class LikedManagerImpl implements LikedManager {
      * @throws Exception
      */
     public Integer managerDeleteOne(Integer id) throws Exception {
-        return likedManagerMapper.deleteLikeds(id);
+        Integer likeds = likedManagerMapper.deleteLikeds(id);
+        LoggerUtil.print(likeds);
+        return likeds;
     }
 
     /**

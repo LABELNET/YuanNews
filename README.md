@@ -10,6 +10,8 @@
  * 代码中使用到了重定向等页面跳转，添加 request.getContextPath() ,　确保路径正确使用！！
  * dao 层中的接口不要随意修改，如果需要修改，一定要要修改mapper中的参数！！
  * dao mapper中的参数不一定正确，注意看出错信息，已确定错误来源！！
+ * controller中在返回值的时候，注意添加注解：@ResponseBody　！！
+
 
 #2016.04.17
  * 新闻，评论，点赞，分类的controller全部实现
