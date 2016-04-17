@@ -35,7 +35,7 @@
             l.uid=u.id
         AND
             l.nid=n.id
-        ORDER BY l.id
+        ORDER BY l.id DESC
         limit #{0},#{1}
     </select>
 
@@ -58,7 +58,7 @@
         l.nid=n.id
         AND
         l.uid=#{2}
-        ORDER BY l.id
+        ORDER BY l.id DESC
         limit #{0},#{1}
     </select>
 
@@ -81,7 +81,7 @@
         l.nid=n.id
         AND
         l.nid=#{2}
-        ORDER BY l.id
+        ORDER BY l.id DESC
         limit #{0},#{1}
     </select>
 
