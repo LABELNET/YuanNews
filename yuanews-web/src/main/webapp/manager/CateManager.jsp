@@ -56,11 +56,13 @@
       var cateInsertUrl=cateBaseUrl+"managerCateInsert.action";
       var cateUpdateUrl=cateBaseUrl+"managerCateUpdate.action";
       var cateDeleteUrl=cateBaseUrl+"managerCateDelete.action";
-      var cateFindOne=cateBaseUrl+"managerCateFinds.action";
+      var cateFindOne=cateBaseUrl+"managerCateFind.action";
 
 
     //type: 0,添加　；２,删除　；１,修改 : ３，提交修改
     function showDialog(id,type){
+
+        console.log(" type: "+type);
 
 　　　　　$(".pop_bg").fadeIn();
 
@@ -98,6 +100,7 @@
         $(".falseBtn").click(function(){
           $(".pop_bg").fadeOut();
           $(".dialog_label").val("");
+          type=-1;
         });
     }
 
@@ -105,7 +108,7 @@
     //新添加
     var cate=$(".dialog_label").val();
     var arr={
-      cate:cate
+      content:cate
     }
     dataRequest(cateInsertUrl,arr,0);
   }
@@ -115,7 +118,7 @@
     var cate=$(".dialog_label").val();
     var arr={
       id:id,
-      cate:cate
+      content:cate
     }
     dataRequest(cateUpdateUrl,arr,3);
 　}
@@ -151,8 +154,8 @@
             console.log(data);
             if(status=="success"){
                if(type==1){
-                 $(".dialog_label").val(data.cate);
-                 showDialog(arr.id,type);
+                 $(".dialog_label").val(data.content);
+                 showDialog(arr.id,1);
                }else(
                  window.location.reload()
                )

@@ -89,8 +89,8 @@ public class CateController {
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/managerSourceFinds")
-    public @ResponseBody CateVo managerSourceFind(@RequestParam Integer id) throws Exception {
+    @RequestMapping(value = "/managerCateFind")
+    public @ResponseBody CateVo managerCateFind(@RequestParam Integer id) throws Exception {
         return cateManager.managerFindOne(id);
     }
 

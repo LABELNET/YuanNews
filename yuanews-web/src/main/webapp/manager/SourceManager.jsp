@@ -112,6 +112,7 @@
         $(".falseBtn").click(function(){
           $(".pop_bg").fadeOut();
           $(".dialog_label").val("");
+          type=-1;
         });
     }
 
