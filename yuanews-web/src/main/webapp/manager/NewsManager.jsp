@@ -67,22 +67,21 @@
     });
 
       var baseUrl="<%=projectPath%>/manager/";
-      var newsInsertUrl=baseUrl+"managerInsertNews.action";
+    //  var newsInsertUrl=baseUrl+"managerInsertNews.action";
       var newsUpdateUrl=baseUrl+"managerUpdateNews.action";
       var newsDeleteUrl=baseUrl+"managerDeleteNews.action";
       var newsFindOne=baseUrl+"managerNewsOne.action";
       var newsFindNewsContent=baseUrl+"managerFindNewsContent.action";
 
 
-    //type: 0,添加　；２,删除　；１,修改 : ３，提交修改
+    //type: 0,添加　；２,删除　；１,修改 : ３，提交修改 : ４．查看新闻内容
     function showDialog(id,type){
 
 　　　　　$(".pop_bg").fadeIn();
 
-　　　　　if(type==0){
-//          $(".dialog_title").text("添加新闻来源信息");
-//          $(".pop_cont_input").show();
-//          $(".pop_cont_text").text("你确定要添加该来源信息吗？");
+　　　　　if(type==4){
+          $(".dialog_title").text("新闻内容：");
+          $(".pop_cont_input").hide();
        }
 
 　　　　　if(type==1){
@@ -117,14 +116,6 @@
         });
     }
 
-  function insert() {
-    //新添加
-    var source=$(".dialog_label").val();
-    var arr={
-      source:source
-    }
-    dataRequest(sourceInsertUrl,arr,0);
-  }
 
 　function update(id) {
 　  //修改:　提交修改type 3
@@ -133,7 +124,7 @@
       id:id,
       source:source
     }
-    dataRequest(sourceUpdateUrl,arr,3);
+    dataRequest(newsDeleteUrl,arr,3);
 　}
 
 　function deleteIfo(id) {
@@ -141,7 +132,7 @@
 　　var arr={
       id:id
     }
-    dataRequest(sourceDeleteUrl,arr,2);
+    dataRequest(newsDeleteUrl,arr,2);
 　}
 
 
@@ -150,7 +141,14 @@
         var arr={
           id:id
         }
-        dataRequest(sourceFindOne,arr,type);
+        dataRequest(newsFindOne,arr,type);
+    }
+
+    function dataRequestContent(id,type) {
+      var arr={
+        id:id
+      }
+      dataRequest(newsFindNewsContent,arr,type);
     }
 
 
@@ -165,16 +163,16 @@
          dataType:'json',
          success:function (data,status) {
             console.log(data);
-            if(status=="success"){
-               if(type==1){
-                 $(".dialog_label").val(data.source);
+             if(type==4){
+                 //查看新闻内容
                  showDialog(arr.id,type);
-               }else(
-                 window.location.reload()
-               )
-            }else {
-              window.location.reload()
-            }
+                 $(".pop_cont_text").text(data.content);
+             }
+
+
+
+              //window.location.reload()
+
          }
       });
     }
@@ -249,16 +247,19 @@
     <section>
       <div class="page_title">
         <h2 class="fl">新闻来源管理</h2>
-        <a class="fr top_rt_btn" onclick="showDialog(0,0)">添加新闻来源</a>
+         <div style="color:blue;margin-left:50px;float:right;">
+            新闻数据不提供录入功能，数据来自爬虫自动完成！
+         </div>
       </div>
 
-      <table class="table">
+      <table class="table center">
         <thead>
           <tr>
             <th>ID</th>
             <th>title</th>
             <th>图片</th>
             <th>阅读量</th>
+            <th>时间</th>
             <th>内容</th>
             <th>来源</th>
             <th>分类</th>
@@ -277,7 +278,8 @@
                 <td>${newsPo.title}</td>
                 <td><img style="width: 80px" src="${newsPo.img}" /></td>
                 <td>${newsPo.rnum}</td>
-              <td><button type="button" class="link_btn" onclick="showDialog(${newsPo.id},4)"/> </td>
+                <td>${newsPo.dt}</td>
+              <td><button type="button" class="link_btn" onclick="dataRequestContent(${newsPo.id},4)">查看新闻内容</button> </td>
               <td>${newsPo.sourceStr}</td>
               <td>${newsPo.cateStr}</td>
               <td>
@@ -290,7 +292,7 @@
 
         <tfoot>
            <tr>
-             <td colspan="5">
+             <td colspan="9">
                <div id="paginationpage" style="float: right"></div>
              </td>
            </tr>

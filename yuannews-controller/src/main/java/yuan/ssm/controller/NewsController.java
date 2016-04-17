@@ -2,19 +2,19 @@ package yuan.ssm.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import yuan.ssm.common.config.ConfigConstant;
 import yuan.ssm.common.constant.ManagerConstant;
+import yuan.ssm.common.util.LoggerUtil;
 import yuan.ssm.other.PageJo;
 import yuan.ssm.pojo.NewsPo;
 import yuan.ssm.service.manager.NewsManager;
 import yuan.ssm.vo.NewsVo;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * ==================================================
@@ -118,9 +118,12 @@ public class NewsController {
      * @return
      * @throws Exception
      */
-    @RequestMapping("/managerFindNewsContent")
-    public @ResponseBody String managerFindNewsContent(@RequestParam Integer id) throws Exception {
-        return newsManager.managerFindNewsContent(id);
+    @RequestMapping(value = "/managerFindNewsContent",method = RequestMethod.POST)
+    public @ResponseBody Map<String,String> managerFindNewsContent(@RequestParam Integer id) throws Exception {
+        String content = newsManager.managerFindNewsContent(id);
+        Map<String,String> maps=new HashMap<String, String>();
+        maps.put("content",content);
+        return maps;
     }
 
 
