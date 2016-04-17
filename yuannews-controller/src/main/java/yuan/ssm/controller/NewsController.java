@@ -1,5 +1,8 @@
 package yuan.ssm.controller;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 /**
  * ==================================================
  * <p/>
@@ -20,5 +23,13 @@ package yuan.ssm.controller;
  * <p>
  * ==================================================
  */
+@Controller
+@RequestMapping("/manager")
 public class NewsController {
+
+
+
+
+
+
 }
