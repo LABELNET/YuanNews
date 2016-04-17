@@ -2,13 +2,17 @@ package yuan.ssm.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import yuan.ssm.common.config.ConfigConstant;
 import yuan.ssm.common.constant.ManagerConstant;
 import yuan.ssm.other.PageJo;
 import yuan.ssm.pojo.NewsPo;
 import yuan.ssm.service.manager.NewsManager;
+import yuan.ssm.vo.NewsVo;
 
 import java.util.List;
 
@@ -42,6 +46,12 @@ public class NewsController {
 
      private int pageNum= ConfigConstant.MANAGER_NEWS_PAGE_NUM;
 
+    /**
+     * 新闻管理主页
+     * @param p　当前页面
+     * @return
+     * @throws Exception
+     */
      @RequestMapping("/managerNewsPage")
      public ModelAndView managerNewsPage(Integer p) throws Exception {
          if(p<0){
@@ -59,7 +69,59 @@ public class NewsController {
          return mav;
      }
 
+    /**
+     * 添加新闻
+     * @param newsVo　新闻vo
+     * @return
+     * @throws Exception
+     */
+     @RequestMapping("/managerInsertNews")
+     public @ResponseBody Integer managerInsertNews(@ModelAttribute NewsVo newsVo) throws Exception {
+         return newsManager.managerInsertNews(newsVo);
+     }
 
+    /**
+     * 查询单条新闻
+     * @param id　新闻id
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/managerNewsOne")
+    public @ResponseBody NewsPo managerNewsOne(@RequestParam Integer id) throws Exception{
+        return newsManager.managerFindOne(id);
+    }
+
+    /**
+     * 删除新闻
+     * @param id　新闻id
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/managerDeleteNews")
+    public @ResponseBody Integer managerDeleteNews(@RequestParam Integer id) throws Exception {
+        return newsManager.managerDeleteOne(id);
+    }
+
+    /**
+     * 更新新闻
+     * @param newsPo　新闻模型
+     * @return
+     */
+    @RequestMapping("/managerUpdateNews")
+    public @ResponseBody Integer managerUpdateNews(@ModelAttribute NewsPo newsPo) throws Exception {
+       return newsManager.managerUpdateOne(newsPo);
+    }
+
+    /**
+     * 查询新闻内容
+     * @param id　新闻id
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/managerFindNewsContent")
+    public @ResponseBody String managerFindNewsContent(@RequestParam Integer id) throws Exception {
+        return newsManager.managerFindNewsContent(id);
+    }
 
 
 }

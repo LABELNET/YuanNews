@@ -124,4 +124,14 @@ public class NewsManagerImpl implements NewsManager{
         return newsManagerMapper.insertNews(newsVo);
     }
 
+    /**
+     * 根据新闻id ,查询新闻内容
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    public String managerFindNewsContent(Integer id) throws Exception {
+        return newsManagerMapper.findNewsContentById(id);
+    }
+
 }
