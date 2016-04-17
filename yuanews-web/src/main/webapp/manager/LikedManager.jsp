@@ -51,9 +51,46 @@
       });
     })(jQuery);
 
+    var baseUrl="<%=projectPath%>/manager/";
+    var likeDeleteUrl=sourceBaseUrl+"managerDeleteLiked.action";
+
+    //分页实现：　itemsOnPage 当前页面的item总数
+    $(function() {
+      $("#paginationpage").pagination({
+        items: ${count},
+        itemsOnPage: 10,
+        page:10,
+        hrefTextPrefix:"?p=",
+        cssStyle: 'light-theme',
+        prevText:"上一页",
+        nextText:"下一页",
+        currentPage:${currentPage}
+
+      });
+    });
+
+
+   function showDialog(id) {
+             $(".pop_bg").fadeIn();
+
+            //弹出：确认按钮
+             $(".trueBtn").click(function(){
+               $(".pop_bg").fadeOut();
+               var arr={
+                 id:id
+               };
+              dataRequest（likeDeleteUrl,arr,）
+             });
+
+             //弹出：取消
+             $(".falseBtn").click(function(){
+               $(".pop_bg").fadeOut();
+             });
+
+   }
 
     //网络请求方法提取
-    function dataRequest(typeurl,arr,type) {
+    function dataRequest(typeurl,arr) {
       console.log(arr);
       $.ajax({
          url:typeurl,
@@ -63,10 +100,7 @@
          dataType:'json',
          success:function (data,status) {
             console.log(data);
-            if(status=="success"){
-
-            }else {
-            }
+            window.location.reload()
          }
       });
     }
@@ -110,7 +144,7 @@
       <dl>
         <dt>评论信息</dt>
         <dd><a href="#">评论管理</a></dd>
-        <dd><a href="#">点赞管理</a></dd>
+        <dd><a href="<%=projectPath%>/manager/managerLikedPage.action?p=1">点赞管理</a></dd>
       </dl>
     </li>
     <li>
@@ -138,7 +172,68 @@
 <section class="rt_wrap content mCustomScrollbar">
   <div class="rt_content" style="margin-top: 10px;">
 
-   <h1> hi , 新闻推荐后台管理系统　v１.0 !</h1>
+    <section>
+      <div class="page_title">
+        <h2 class="fl">新闻点赞信息管理</h2>
+      </div>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>用户头像</th>
+            <th>昵称</th>
+            <th>新闻标题</th>
+            <th>点赞状态</th>
+            <th>操作</th>
+          </tr>
+       </thead>
+        <c:if test="${empty likedPos}">
+           <tr>
+             <td colspan="3">没有更多数据了</td>
+           </tr>
+        </c:if>
+        <c:if test="${!empty likedPos}">
+          <c:forEach items="${likedPos}" var="likedPo">
+            <tr>
+              <td>${likedPo.id}</td>
+              <td><img src="${likedPo.userVo.head}"/></td>
+              <td>${likedPo.userVo.nick}</td>
+              <td>${likedPo.newsVo.title}</td>
+              <td>${likedPo.status==1?"/image/icon/normalzan.png":"/image/icon/superzan.png"}</td>
+              <td>
+                <a class="inner_btn" onclick="showDialog(${likedPo.id})">删除信息</a>
+              </td>
+            </tr>
+          </c:forEach>
+        </c:if>
+
+        <tfoot>
+           <tr>
+             <td colspan="5">
+               <div id="paginationpage" style="float: right"></div>
+             </td>
+           </tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <!-- 弹出框 -->
+    <section class="pop_bg">
+    <div class="pop_cont">
+     <!--title-->
+     <h3 class="dialog_title">温馨提示</h3>
+     <!--以pop_cont_text分界-->
+     <div class="pop_cont_text">
+      你确定要删除该条点赞信息吗？
+     </div>
+     <!--bottom:operate->button-->
+     <div class="btm_btn">
+      <input type="button" value="确认" class="input_btn trueBtn"/>
+      <input type="button" value="关闭" class="input_btn falseBtn"/>
+     </div>
+    </div>
+    </section>
 
 
   </div>

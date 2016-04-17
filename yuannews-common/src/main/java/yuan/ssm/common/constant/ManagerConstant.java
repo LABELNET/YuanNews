@@ -27,4 +27,6 @@ public interface ManagerConstant {
 
     String MANAGER_CATE_PAGE="manager/CateManager"; //新闻分类管理页面
 
+    String MANAGER_LIKED_PAGE="manager/LikedManager"; //点赞管理页面
+
 }

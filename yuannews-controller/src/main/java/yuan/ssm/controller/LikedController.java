@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import yuan.ssm.common.config.ConfigConstant;
+import yuan.ssm.common.constant.ManagerConstant;
 import yuan.ssm.other.PageJo;
 import yuan.ssm.pojo.LikedPo;
 import yuan.ssm.service.manager.LikedManager;
@@ -60,8 +61,9 @@ public class LikedController {
         List<LikedPo> likedPos = likedManager.managerFindList(p, pageNum);
         PageJo pageJo = likedManager.managerFindCount();
         mav.addObject("likedPos",likedPos);
-        mav.addObject("currPage",currPage);
+        mav.addObject("currentPage",currPage);
         mav.addObject("count",pageJo.getAllCount());
+        mav.setViewName(ManagerConstant.MANAGER_LIKED_PAGE);
         return mav;
     }
 
