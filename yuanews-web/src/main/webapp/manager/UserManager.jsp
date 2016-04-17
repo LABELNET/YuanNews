@@ -272,7 +272,7 @@
       <dl>
         <dt>新闻信息</dt>
         <dd><a href="#">新闻列表</a></dd>
-        <dd><a href="#">分类管理</a></dd>
+        <dd><a href="<%=projectPath%>/manager/managerCatePage.action">分类管理</a></dd>
         <dd><a href="<%=projectPath%>/manager/managerSourcePage.action?p=1">来源管理</a></dd>
       </dl>
     </li>
