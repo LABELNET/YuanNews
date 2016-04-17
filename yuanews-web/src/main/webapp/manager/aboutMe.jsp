@@ -52,6 +52,25 @@
     })(jQuery);
 
 
+    //网络请求方法提取
+    function dataRequest(typeurl,arr,type) {
+      console.log(arr);
+      $.ajax({
+         url:typeurl,
+         data:arr,
+         type:'post',
+         cache:true,
+         dataType:'json',
+         success:function (data,status) {
+            console.log(data);
+            if(status=="success"){
+
+            }else {
+            }
+         }
+      });
+    }
+
   </script>
 </head>
 <body>
@@ -117,20 +136,15 @@
 <section class="rt_wrap content mCustomScrollbar">
   <div class="rt_content center" style="margin-top: 10px;">
 
-   <h1> 站点系统介绍　</h1>
-　　<div style="text-align: center;">
-     <p style="max-width: 500px;margin: 0 auto;">　　随着网络的快速发展，新闻成为我们生活中不可或缺的信息。但是在过量的新闻中，反而使得用户无法找到自己感兴趣的新闻。用户只能通过搜索工具或导航去盲目的查找自己感兴趣的新闻，而大多数的新闻门户网站向用户推荐的内容是热门或最新的新闻，并不符合用户自身的兴趣爱好的新闻。</p>
-   </div> <br>
-    <div style="text-align: center">
-       <p style="max-width: 500px;margin: 0 auto;">　　基于用户兴趣标签的新闻推荐系统根据用户自定义的兴趣标签，社交平台兴趣标签，来及时的，动态的分析并给用户推荐相关兴趣的新闻。利用自动分类，关键字分词提取，建立用户兴趣模型，推荐给用户感兴趣的新闻，并为用户生成用户兴趣的新闻浏览页面。</p>
-    </div>
-    <div style="text-align: center">
-      <p style="max-width: 500px;margin: 0 auto;">　
-         开发环境：idea , mysql , ssm ;
-      </p>
-    </div>
-      <br><br>
-   <h5>作者：　原明卓　　　编辑时间:　2016.04.17 　　更新时间：　2016.04.17</h5>
+    <h1>毕设设计题目： 基于用户兴趣标签的新闻推荐系统设计与实现</h1>
+
+    <h1>学院：　计算机学院</h1>
+    <h1>专业：　软件工程(.net) </h1>
+    <h1>姓名：　原明卓</h1>
+    <h1>班级：　12-1</h1>
+   　
+
+
   </div>
 </section>
 </body>
