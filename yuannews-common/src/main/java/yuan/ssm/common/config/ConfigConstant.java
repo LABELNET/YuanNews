@@ -54,5 +54,10 @@ public interface ConfigConstant {
      */
     Integer MANAGER_COMMENT_PAGE_NUM=8;
 
+    /**
+     *　新闻页面显示数量
+     */
+    Integer MANAGER_NEWS_PAGE_NUM=8;
+
 
 }

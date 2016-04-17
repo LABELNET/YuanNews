@@ -1,7 +1,16 @@
 package yuan.ssm.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+import yuan.ssm.common.config.ConfigConstant;
+import yuan.ssm.common.constant.ManagerConstant;
+import yuan.ssm.other.PageJo;
+import yuan.ssm.pojo.NewsPo;
+import yuan.ssm.service.manager.NewsManager;
+
+import java.util.List;
 
 /**
  * ==================================================
@@ -28,6 +37,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class NewsController {
 
 
+     @Autowired
+     private NewsManager newsManager;
+
+     private int pageNum= ConfigConstant.MANAGER_NEWS_PAGE_NUM;
+
+     @RequestMapping("/managerNewsPage")
+     public ModelAndView managerNewsPage(Integer p) throws Exception {
+         if(p<0){
+             p=1;
+         }
+         int currentPage=p;
+         p=pageNum*(p-1);
+         List<NewsPo> newsPos = newsManager.managerFindList(p, pageNum);
+         PageJo pageJo = newsManager.managerFindCount();
+         ModelAndView mav=new ModelAndView();
+         mav.addObject("count",pageJo.getAllCount());
+         mav.addObject("newsPos",newsPos);
+         mav.addObject("currentPage",currentPage);
+         mav.setViewName(ManagerConstant.MANAGER_NEWS_PAGE);
+         return mav;
+     }
 
 
 

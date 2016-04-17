@@ -31,4 +31,6 @@ public interface ManagerConstant {
 
     String MANAGER_COMMENT_PAGR="manager/CommentManager";//评论管理页面
 
+    String MANAGER_NEWS_PAGE="manager/NewsManager";//新闻管理页面
+
 }

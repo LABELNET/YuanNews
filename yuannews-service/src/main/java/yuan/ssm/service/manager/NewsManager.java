@@ -17,4 +17,6 @@ public interface NewsManager extends ManagerBase<NewsPo>{
     //添加新闻信息
     Integer managerInsertNews(NewsVo newsVo) throws Exception;
 
+    //根据新闻id，查询新闻内容
+
 }
