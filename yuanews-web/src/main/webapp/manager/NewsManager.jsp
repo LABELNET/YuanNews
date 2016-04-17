@@ -91,17 +91,15 @@
        }
 
 　　　　　if(type==1){
-//          $(".dialog_title").text("修改新闻来源信息");
-//          $(".pop_cont_input").show();
-//          $(".pop_cont_text").text("你确定要修改该来源信息吗？");
+          $(".dialog_title").text("修改新闻部分信息");
+          $(".pop_cont_input").show();
+          $(".pop_cont_text").text("你确定要修改该新闻吗？");
        }
 
         //弹出：确认按钮
         $(".trueBtn").click(function(){
           $(".pop_bg").fadeOut();
-          if(type==0){
-            insert();
-          }else if(type==1){
+    　　　　if(type==1){
             update(id);
           }else if(type==2){
             deleteIfo(id);
@@ -119,12 +117,21 @@
 
 　function update(id) {
 　  //修改:　提交修改type 3
-    var source=$(".dialog_label").val();
+    var title=$(".dialog_title").val();
+    var dt=$(".dialog_dt").val();
+    var rnum=$(".dialog_rnum").val();
+    var sid=$("#dialog_source").val();
+    var cid=$("#dialog_cate").val();
+
     var arr={
       id:id,
-      source:source
+      title:title,
+      dt:dt,
+      rnum:rnum,
+      sid:sid,
+      cid:cid
     }
-    dataRequest(newsDeleteUrl,arr,3);
+    dataRequest(newsUpdateUrl,arr,3);
 　}
 
 　function deleteIfo(id) {
@@ -170,12 +177,40 @@
              }else if(type==1){
                  showDialog(arr.id,type);
                  //初始化dialog　信息
+                 initDialog(data);
 
              }else{
                window.location.reload()
              }
          }
       });
+    }
+
+    function initDialog(data) {
+       $(".dialog_title").val(data.newsPo.title);
+       $(".dialog_dt").val(data.newsPo.dt);
+       $(".dialog_rnum").val(data.newsPo.rnum);
+       var sourceArr=data.sourceVos;
+       var cateArr=data.cates;
+       console.log(sourceArr.length);
+       console.log(cateArr.length);
+       var nhtml="";
+       for(var i=0;i<sourceArr.length;i++){
+         nhtml+="<option value="
+         +sourceArr[i].id+">"
+         +sourceArr[i].source+"</option>"
+       }
+       $("#dialog_source").html(nhtml);
+
+       nhtml="";
+       var cateArr=data.cates;
+       for(var j=0;j<cateArr.length;j++){
+         nhtml+="<option value="
+         +cateArr[j].id+">"
+         +cateArr[j].content+"</option>"
+       }
+       $("#dialog_cate").html(nhtml);
+
     }
 
   </script>
@@ -311,7 +346,26 @@
       <ul>
        <li>
         <span>标题信息：</span>
-        <input type="text" class="dialog_label" name="dialog_label" placeholder="标签内容" class="textbox"/>
+        <input type="text" class="dialog_title" name="dialog_title" placeholder="新闻标题" class="textbox"/>
+       </li>
+       <li>
+        <span>时间：</span>
+        <input type="text" class="dialog_dt" name="dialog_dt" placeholder="新闻发布时间" class="textbox"/>
+       </li>
+       <li>
+        <span>阅读量：</span>
+        <input type="text" class="dialog_rnum" name="dialog_rnum" placeholder="阅读量" class="textbox"/>
+       </li>
+       <li>
+         <span class="ttl">新闻来源</span>
+         <select  　class="select" id="dialog_source">
+         </select>
+       </li>
+       <li>
+         <span class="ttl">新闻分类</span>
+         <select  　class="select" id="dialog_cate">
+           <option value="0">男</option>
+         </select>
        </li>
       </ul>
      </div>
