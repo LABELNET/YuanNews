@@ -84,16 +84,16 @@
           $(".pop_cont_input").hide();
        }
 
+       if(type==2){
+         $(".dialog_title").text("温馨提醒");
+         $(".pop_cont_input").hide();
+         $(".pop_cont_text").text("你确定要删除该条新闻吗？");
+       }
+
 　　　　　if(type==1){
 //          $(".dialog_title").text("修改新闻来源信息");
 //          $(".pop_cont_input").show();
 //          $(".pop_cont_text").text("你确定要修改该来源信息吗？");
-       }
-
-       if(type==2){
-//         $(".dialog_title").text("温馨提醒");
-//         $(".pop_cont_input").hide();
-//         $(".pop_cont_text").text("你确定要删除该来源信息吗？");
        }
 
         //弹出：确认按钮
@@ -167,12 +167,13 @@
                  //查看新闻内容
                  showDialog(arr.id,type);
                  $(".pop_cont_text").text(data.content);
+             }else if(type==1){
+                 showDialog(arr.id,type);
+                 //初始化dialog　信息
+
+             }else{
+               window.location.reload()
              }
-
-
-
-              //window.location.reload()
-
          }
       });
     }
@@ -283,8 +284,8 @@
               <td>${newsPo.sourceStr}</td>
               <td>${newsPo.cateStr}</td>
               <td>
-                <button type="button" class="link_btn" onclick="dataRequestIfo(${sourceVo.id},1)">修改信息</button>
-                <a class="inner_btn" onclick="showDialog(${sourceVo.id},2)">删除信息</a>
+                <button type="button" class="link_btn" onclick="dataRequestIfo(${newsPo.id},1)">修改信息</button>
+                <a class="inner_btn" onclick="showDialog(${newsPo.id},2)">删除信息</a>
               </td>
             </tr>
           </c:forEach>
@@ -309,7 +310,7 @@
      <div class="pop_cont_input">
       <ul>
        <li>
-        <span>新闻来源内容：</span>
+        <span>标题信息：</span>
         <input type="text" class="dialog_label" name="dialog_label" placeholder="标签内容" class="textbox"/>
        </li>
       </ul>
