@@ -52,11 +52,11 @@
     })(jQuery);
 
 
-      var sourceBaseUrl="<%=projectPath%>/manager/";
-      var sourceInsertUrl=sourceBaseUrl+"managerSourceInsert.action";
-      var sourceUpdateUrl=sourceBaseUrl+"managerSourceUpdate.action";
-      var sourceDeleteUrl=sourceBaseUrl+"managerSourceDelete.action";
-      var sourceFindOne=sourceBaseUrl+"managerSourceFinds.action";
+      var cateBaseUrl="<%=projectPath%>/manager/";
+      var cateInsertUrl=cateBaseUrl+"managerCateInsert.action";
+      var cateUpdateUrl=cateBaseUrl+"managerCateUpdate.action";
+      var cateDeleteUrl=cateBaseUrl+"managerCateDelete.action";
+      var cateFindOne=cateBaseUrl+"managerCateFinds.action";
 
 
     //type: 0,添加　；２,删除　；１,修改 : ３，提交修改
@@ -103,21 +103,21 @@
 
   function insert() {
     //新添加
-    var source=$(".dialog_label").val();
+    var cate=$(".dialog_label").val();
     var arr={
-      source:source
+      cate:cate
     }
-    dataRequest(sourceInsertUrl,arr,0);
+    dataRequest(cateInsertUrl,arr,0);
   }
 
 　function update(id) {
 　  //修改:　提交修改type 3
-    var source=$(".dialog_label").val();
+    var cate=$(".dialog_label").val();
     var arr={
       id:id,
-      source:source
+      cate:cate
     }
-    dataRequest(sourceUpdateUrl,arr,3);
+    dataRequest(cateUpdateUrl,arr,3);
 　}
 
 　function deleteIfo(id) {
@@ -125,7 +125,7 @@
 　　var arr={
       id:id
     }
-    dataRequest(sourceDeleteUrl,arr,2);
+    dataRequest(cateDeleteUrl,arr,2);
 　}
 
 
@@ -134,7 +134,7 @@
         var arr={
           id:id
         }
-        dataRequest(sourceFindOne,arr,type);
+        dataRequest(cateFindOne,arr,type);
     }
 
 
@@ -151,7 +151,7 @@
             console.log(data);
             if(status=="success"){
                if(type==1){
-                 $(".dialog_label").val(data.source);
+                 $(".dialog_label").val(data.cate);
                  showDialog(arr.id,type);
                }else(
                  window.location.reload()
