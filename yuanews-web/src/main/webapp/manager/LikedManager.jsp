@@ -202,7 +202,7 @@
           <c:forEach items="${likedPos}" var="likedPo">
             <tr>
               <td>${likedPo.id}</td>
-              <td><img style="width:50px;" src="${likedPo.userVo.head}"/></td>
+              <td><img style="width:30px;" src="${likedPo.userVo.head}"/></td>
               <td>${likedPo.userVo.nick}</td>
               <td>${likedPo.newsVo.title}</td>
               <td><img style="width:50px;" src="${likedPo.status==1?"/image/icon/normalzan.png":"/image/icon/superzan.png"}" /></td>

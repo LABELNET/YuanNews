@@ -326,7 +326,7 @@
           <c:forEach items="${userVos}" var="userVo">
             <tr>
               <td>${userVo.id}</td>
-              <td><img src="${userVo.head}" style="max-width: 50px;max-height: 50px;"></td>
+              <td><img src="${userVo.head}" style="width:30px;"></td>
               <td>${userVo.unum}</td>
               <td>${userVo.nick}</td>
               <td>${userVo.sex==0?"男":"女"}</td>
