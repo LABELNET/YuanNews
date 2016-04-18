@@ -27,7 +27,7 @@ public interface ConfigConstant {
      * 根据文字生成图片，存放的基础路径，跟随着tomcat的变化而变化
      * 详见：　tomcat_home/conf/server.xml - Context
      */
-    String FONT_IMAGE_BASE_PATH="/mnt/JAVA/tomcatImageServer/";
+    String FONT_IMAGE_BASE_PATH="/mnt/JAVA/tomcatImageServer/head/";
 
     /**
      * 用户管理页面，每页加载的数量
