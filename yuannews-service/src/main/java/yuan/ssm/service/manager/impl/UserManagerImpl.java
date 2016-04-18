@@ -127,9 +127,9 @@ public class UserManagerImpl implements UserManager {
             String imgName = DateUtil.getDateFileName()+UUID.randomUUID() +".png";
             String font= StringUtil.getCharString(userVo.getNick());
             FontImageUtil.createImage(font,imgName);
-            userVo.setHead("/image/"+imgName);
+            userVo.setHead("/image/head/"+imgName);
         }catch (Exception e){
-            userVo.setHead("/images/moren.jpg");
+            userVo.setHead("/image/head/moren.jpg");
         }
         return userManagerMapper.insertUser(userVo);
     }
