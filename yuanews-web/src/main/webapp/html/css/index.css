@@ -1,0 +1,64 @@
+@charset "gb2312";
+.nav{width:100%;height:5em;position:fixed;top:0;left:0;background: #fff;z-index:50;}
+.banner { height : 280px; width : 670px; overflow : hidden; }
+.topnews { margin: 20px 0; }
+.topnews h2 { font-size: 16px; font-weight: bold; line-height: 36px; color: #333; border-bottom: #19a97b 4px solid; }
+.topnews h2 b { }
+.topnews h2 span { float: right; font-size: 12px; font-weight: normal; }
+.topnews h2 span a { display: inline-block; padding: 0 5px; }
+.topnews h2 span a:hover { color: #19a97b }
+.blogs { padding: 30px 0; position: relative; border-bottom: #CCC 1px solid; overflow: hidden }
+.blogs h3 { font-size: 16px; font-weight: bold; transition: all .5s; margin-bottom: 10px }
+.blogs h3 a { color: #474645; }
+.blogs h3 a:hover { color: #19a97b; }
+.blogs figure { float: left; width: 25%; overflow: hidden; }
+.blogs figure img { width: 100%; margin: auto; -moz-transition: all 0.5s; -webkit-transition: all 0.5s; -o-transition: all 0.5s; transition: all 0.5s; }
+.blogs figure:hover img { -moz-transform: scale(1.1); -webkit-transform: scale(1.1); -o-transform: scale(1.1); -ms-transform: scale(1.1); }
+.blogs ul { float: right; line-height: 22px; width: 72%; color: #756F71;}
+.autor { overflow: hidden; clear: both; margin: 10px 0; display: inline-block; color: #838383; width: 100%;  }
+.autor span { margin: 0 10px 0 0; padding-left: 20px }
+.autor span a { color: #19a97b; }
+.autor span a:hover { text-decoration: underline }
+.lm { background: url(../images/newsbg01.png) no-repeat left center }
+.dtime { background: url(../images/newsbg02.png) no-repeat left center }
+.viewnum { background: url(../images/newsbg04.png) no-repeat left center }
+.pingl { background: url(../images/newsbg03.png) no-repeat left center }
+.tit01 h3 { line-height: 40px; color: #38485A; font-size: 18px; border-bottom: 1px solid #E6E6E6; height: 40px }
+.gzwm ul { width: 100%; margin: 30px 0; overflow: hidden }
+.gzwm li { width: 52px; margin: 0 18px 0 5px; float: left; }
+.gzwm li a { color: #747F8C; width: 52px; text-align: center; padding-top: 60px; float: left; }
+.gzwm .rss { background: url(../images/ico_04_1.jpg) no-repeat scroll 0% 0% transparent; }
+.gzwm .rss:hover { color: #000; background: url(../images/ico_04.png) no-repeat scroll 0% 0% transparent; }
+.gzwm .xlwb { background: url(../images/ico_05_1.jpg) no-repeat scroll 0% 0% transparent; }
+.gzwm .xlwb:hover { color: #000; background: url(../images/ico_05.png) no-repeat scroll 0% 0% transparent; }
+.gzwm .txwb { background: url(../images/ico_06_1.jpg) no-repeat scroll 0% 0% transparent; }
+.gzwm .txwb:hover { color: #000; background: url(../images/ico_06.png) no-repeat scroll 0% 0% transparent; }
+.gzwm .wx { background: url(../images/ico_07_1.jpg) no-repeat scroll 0% 0% transparent; }
+.gzwm .wx:hover { color: #000; background: url(../images/ico_07.png) no-repeat scroll 0% 0% transparent; }
+.tuwen { width: 100%; clear: both; overflow: hidden; margin: 20px 0 }
+.tuwen h3 { line-height: 40px; color: #38485A; font-size: 18px; border-bottom: 1px solid #E6E6E6; height: 40px; margin-bottom: 30px }
+.tuwen li { overflow: hidden; clear: both; margin-bottom: 10px }
+.tuwen li img { width: 70px; float: left; margin-right: 15px }
+.tuwen li b { overflow: hidden; width: 100%; font-weight: normal; color: #333; font-size: 14px; line-height: 30px }
+.tuwen li a b:hover { text-decoration: underline; color: #F60 }
+.tuwen li span { color: #999; margin-right: 10px }
+.tuwen p { margin-top: 5px }
+.tulanmu { background: url(../images/lanmbq.png) no-repeat center left; padding-left: 17px }
+.tulanmu a { color: #999; }
+.tulanmu a:hover { color: #066 }
+.tutime { background: url(../images/datepng.png) no-repeat left center; padding-left: 15px }
+.tuwen li:hover { background: #f4f3f3 }
+.ad { width: 300px; overflow: hidden; margin: 30px 0 }
+.ad img { width: 300px; }
+.links { width: 100%; overflow: hidden; clear: both }
+.links h3 { line-height: 40px; color: #38485A; font-size: 18px; border-bottom: 1px solid #E6E6E6; height: 40px; margin-bottom: 20px }
+.links h3 span { float: right; font-size: 12px; }
+.links h3 span a { color: #999; padding: 0 5px }
+.links h3 span a:hover { color: #F60; text-decoration: underline }
+.links ul { background: #f9f9f9; padding: 10px; overflow: hidden; border: #e9e9e9 1px solid }
+.links ul li { float: left; padding: 5px 8px }
+.links ul li a:hover { color: #000 }
+#logoul{list-style:none;}
+#logoul lileft{width: 10%;height: 100%;border: 1px solid red;float:left;}
+#logoul licenter{width: 80%;height: 100%;border: 1px solid red;float:left;}
+#logoul liright{width: 10%;height: 100%;border: 1px solid red;float:left;}
