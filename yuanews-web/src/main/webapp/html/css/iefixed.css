@@ -1,0 +1,40 @@
+/*
+Powered by uimix.com;
+date:2013-09-11;
+*/
+
+
+
+/* service */
+.download-box .dl-wall a.funos span img.focus{display: none;}
+.download-box .dl-wall a.funos:hover span img.focus{display: block;}
+.download-box .dl-wall a.video span img.focus{display: none;}
+.download-box .dl-wall a.video:hover span img.focus{display: block;}
+
+.dl-mobile-slide a.prev,.dl-mobile-slide a.next{display: none;}
+.dl-mobile-slide a.prev.start,.dl-mobile-slide a.next.start{display: block;}
+.dl-service .dl-service ul li{float: left; width: 19%;}
+
+/* choose mobile */
+.choose-mb-nav ul li{*border-top-style:expression(this.previousSibling==null?'none':'solid');}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

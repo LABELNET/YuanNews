@@ -11,14 +11,18 @@
  * dao 层中的接口不要随意修改，如果需要修改，一定要要修改mapper中的参数！！
  * dao mapper中的参数不一定正确，注意看出错信息，已确定错误来源！！
  * controller中在返回值的时候，注意添加注解：@ResponseBody　！！
- * 注意事项，jsp页面中的img标签添加获取项目名路径　( request.getContextPath() )
+ * 注意事项，jsp页面中的img标签添加获取项目名路径　( request.getContextPath() )　
  *
+
+
+#2016.04.21
+ * 实现主页html (昨日任务)
 
 #2016.04.20
  * 主页html 集成　NProgress.js
  * 主页html 右扁栏　添加用户信息
  * 主页html 添加目录信息包括（分类和标签页分类）
- * 登陆/注册　设计实现
+ * 登陆/注册　设计实现（未实现）
 
 #2016.04.19
  * 客户端主页模板实现

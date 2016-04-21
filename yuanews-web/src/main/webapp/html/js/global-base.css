@@ -1,0 +1,73 @@
+/*--a-reset--*/
+::-moz-selection{background:#008cd6; color:#fff; text-shadow:none;}
+::selection{background:#008cd6; color:#fff; text-shadow:none;}
+html{overflow-x:hidden; overflow-y:auto; color:#000; background:#fff;}
+body{font-family:"Microsoft YaHei","tahoma"; font-size:75%; -webkit-font-smoothing: antialiased;}
+a{color:#999; text-decoration:none; cursor:pointer; outline: 0 none;}
+a:hover{color:#000; text-decoration:none;}
+a:focus{-moz-outline-style:none; border:0px;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0; padding:0;}
+ol,li,ul,dl,dt,dd{list-style:none;}
+fieldset,img{border:0;}
+h1,h2,h3,h4,h5,h6{font-size:inherit; font-weight:normal;}
+table{border-collapse:collapse; border-spacing:0;}
+sup{vertical-align:text-top;}
+sub{vertical-align:text-bottom;}
+input,textarea,select,button{font-family:inherit; font-size:inherit; font-weight:inherit; outline-style:none; outline-width:0pt; resize:none; padding: 0; margin: 0;}
+b,em,i{display:inline-block; vertical-align:middle; font-weight:normal; font-style:normal;}
+.cl:after { content: "."; display: block; height: 0; clear: both; visibility: hidden;} .cl{ zoom:1;}
+
+body.load{background: #fff url(../images/load.gif) center 200px no-repeat;}
+body.loaded{background: #fff;}
+#vivo-contain,#vivo-foot,#mobile-header,#mobile-contain{-webkit-transition: all .2s linear; -moz-transition: all .2s linear; -ms-transition: all .2s linear; transition: all .2s linear; -webkit-transform: translate3d(0,0,0); -moz-transform: translate3d(0,0,0); -ms-transform: translate3d(0,0,0); transform: translate3d(0,0,0);}
+body.load #vivo-contain,body.load #vivo-foot,body.load #mobile-header,body.load #mobile-contain{opacity: 0;}
+body.loaded #vivo-contain,body.loaded #vivo-foot,body.loaded #mobile-header,body.loaded #mobile-contain{opacity: 1;}
+/*--z-reset--*/
+
+/*--a-common--*/
+#vivo-airbox{width:100%; position:fixed; top:0; left:0; z-index:100; overflow:hidden;}
+#vivo-wrap,#vivo-head,#vivo-contain,#vivo-foot{z-index:1; position:relative; width:100%;}
+.search-user b{background:url(../images/vivo-head-ico.png) no-repeat; _background-image:url(../images/vivo-head-ico.gif) ;}
+#video_layer{width: 100%; min-height: 300px; background: #fff; background: rgba(255,255,255,.88); position: fixed; top: 0; left: 0; z-index: 1;}
+#video_layer .video-obox{width: 650px; height: 300px;  background1: #fff; position: absolute; top: 50%; left: 50%; margin-top: -200px; margin-left: -325px;}
+#video_layer .video-obox .videoo{margin: 10px; background1: #000;}
+#video_layer .video-obox a.close{width: 30px; height: 30px; overflow: hidden; position: absolute; top: 5px; right: -30px; background: url(../images/vivo-video-ico.png) no-repeat;}
+#video_layer .video-obox a.close:hover{background-position: 0 -30px;}
+/*--z-common--*/
+
+/*--a-navigation--*/
+#vivo-head{border-bottom:1px #e7e7e7 solid; border-bottom:1px rgba(0,0,0,.05) solid; z-index:99; background:#fff; position: relative;}
+#vivo-head .vivo-nav{width:1100px; height:60px; margin:auto; background:#fff; position:relative; z-index:999;}
+.vivo-nav a.vivo-logo{width:95px; height:60px; display:block; float:left; -webkit-transform:translate3d(0,0,0); -moz-transform:translate3d(0,0,0); -ms-transform:translate3d(0,0,0); transform:translate3d(0,0,0);}
+.vivo-nav ul{display:table; float:left; width:680px; height:60px; margin-left:50px; overflow: hidden;}
+.vivo-nav ul li{display:table-cell; width:16%; height:60px; overflow:hidden; text-align:center; *float: left; border-right:1px #f2f2f2 solid;}
+.vivo-nav ul li:first-child{border-left:1px #f2f2f2 solid;}
+.vivo-nav ul li a{display:block; line-height:60px; font-size:16px; color:#666; -webkit-transition:all .3s ease-in-out; -moz-transition:all .3s ease-in-out; -ms-transition:all .3s ease-in-out; transition:all .3s ease-in-out; -webkit-transform:translate3d(0,0,0); -moz-transform:translate3d(0,0,0); -ms-transform:translate3d(0,0,0); transform:translate3d(0,0,0);}
+.vivo-nav ul li a:hover,.vivo-nav ul li.current a,.vivo-nav ul li.current a:hover,.vivo-nav ul li.active a,.vivo-nav ul li.active a:hover{color:#fff; background:#008cd6; -webkit-transform:translate3d(0,0,0); -moz-transform:translate3d(0,0,0); -ms-transform:translate3d(0,0,0); transform:translate3d(0,0,0);}
+.vivo-nav .search-user{float:right; height:60px;}
+.search-user a{width:42px; height:42px; display:inline-block; margin-left:15px; position:relative; top:8px; border:1px #e7e7e7 solid; background:#fff; overflow:hidden; -webkit-border-radius:50%; -moz-border-radius:50%; -ms-border-radius:50%; border-radius:50%; -webkit-transition:all .3s ease-in-out; -moz-transition:all .3s ease-in-out; -ms-transition:all .3s ease-in-out; transition:all .3s ease-in-out; -webkit-transform:translate3d(0,0,0); -moz-transform:translate3d(0,0,0); -ms-transform:translate3d(0,0,0); transform:translate3d(0,0,0);}
+.search-user a:hover,.search-user a.current{border:1px #008cd6 solid; background:#008cd6;}
+.search-user a b{width:42px; height:42px; display:block; position:absolute; top:0; left:0; -webkit-transform:translate3d(0,0,0); -moz-transform:translate3d(0,0,0); -ms-transform:translate3d(0,0,0); transform:translate3d(0,0,0); -webkit-transition-delay:.1s; -moz-transition-delay:.1s; -ms-transition-delay:.1s; transition-delay:.1s;}
+.search-user a.search b{background-position:0 0;}
+.search-user a.search:hover b,.search-user a.search.current b{background-position:0 -43px;}
+.search-user a.user b{background-position:-43px 0;}
+.search-user a.user b img{width: 42px; height: 42px;}
+.search-user a.user:hover b,.search-user a.user.current b{background-position:-43px -43px;}
+
+#vivo-head .vivo-search{height:80px; width:100%; background:#202223; position:relative; z-index: 9999; display:none;}
+.vivo-search .search-box{width:700px; height:40px; position:absolute; top:20px; left:50%; margin-left:-350px; background:#666; -webkit-box-shadow:0 1px 2px rgb(0,0,0); -moz-box-shadow:0 1px 2px rgb(0,0,0); -ms-box-shadow:0 1px 2px rgb(0,0,0); box-shadow:0 1px 2px rgb(0,0,0); position: relative; z-index: 9999;}
+.vivo-search .search-box input{width:550px; height:20px; padding:10px 20px; font-size:14px; color:#555; border:none; background:#fff; overflow:hidden; vertical-align:middle;}
+.vivo-search .search-box button{width:110px; height:40px; overflow:hidden; text-align:center; font-size:14px; color:#fff; border:none; overflow:hidden; vertical-align:middle; background:#008cd6; outline:none; cursor:pointer; -webkit-transition:background .2s ease-in-out; -moz-transition:background .2s ease-in-out; -ms-transition:background .2s ease-in-out; transition:background .2s ease-in-out;}
+.vivo-search .search-box button:hover{background:#0074b2;}
+.vivo-search .search-box button:active{-webkit-box-shadow:0 1px 2px rgba(0,0,0,.3) inset; -moz-box-shadow:0 1px 2px rgba(0,0,0,.3) inset; -ms-box-shadow:0 1px 2px rgba(0,0,0,.3) inset; box-shadow:0 1px 2px rgba(0,0,0,.3) inset;}
+.vivo-search .search-box a.close{width:24px; height:24px; position:absolute; top:8px; right:-40px; background:url(../images/vivo-head-ico.png) -86px 0 no-repeat; _background-image:url(../images/vivo-head-ico.gif);}
+.vivo-search .search-box a.close:hover{background-position:-86px -25px;}
+.vivo-search .search-box .qk-results{width: 588px; position: absolute; left: 0; top: 40px; border: 1px #eee solid; border-top:none; display: none;}
+.vivo-search .search-box .qk-results ul li{display: block; position: relative; background: #fff; border-top: 1px #eee solid;}
+.vivo-search .search-box .qk-results ul li a{display: block; padding: 10px; position: relative; color: #666; -webkit-transition:all .3s ease-in-out; -moz-transition:all .3s ease-in-out; -ms-transition:all .3s ease-in-out; transition:all .3s ease-in-out;}
+.vivo-search .search-box .qk-results ul li a b{width: 60px; height: 60px; float: left; overflow: hidden; margin-right: 10px;}
+.vivo-search .search-box .qk-results ul li a h2{font-weight: bold; padding-bottom: 2px; margin-top: 12px;}
+.vivo-search .search-box .qk-results ul li a span{display: inline-block; position: absolute; right: 15px; top: 30px; font-size: 14px;}
+.vivo-search .search-box .qk-results ul li a:hover{color: #fff; background: #00aaff;}
+.vivo-search .search-box .qk-results .other-results{padding: 10px; background: #fff; border-top: 1px #eee solid;}
+.vivo-search .search-box .qk-results .other-results a{font-size: 14px; color:#00aaff; }

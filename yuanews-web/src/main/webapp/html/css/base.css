@@ -11,8 +11,8 @@ a:hover { text-decoration: none; }
 .clear { clear: both; }
 .blank { height: 5px; overflow: hidden; width: 100%; margin: auto; clear: both }
 .f_l { float: left }
-.f_r { float: right }
-.l_box { width: 670px; }
+.f_r { float: right;margin-right: 10%;}
+.l_box { width: 700px; }
 .r_box { width: 300px; }
 header { width: 1000px; margin: 20px auto; overflow: hidden; clear: both; }
 #topnav { width: 60%; background: #48AE15; height: 46px; line-height: 46px; text-align: center; border-radius: 46px; }
@@ -22,7 +22,7 @@ header { width: 1000px; margin: 20px auto; overflow: hidden; clear: both; }
 #topnav_current { background: #F3FF41; }
 a#topnav_current { color: #000 }
 article { width: 1000px; margin: 80px auto; }
-footer { background: #19a97b; width: 100%; clear: both; text-align: center; }
+footer { background: #19a97b; width: 100%; clear: both; text-align: center; height: 3em;}
 .ft-copyright { color: #fff; line-height: 24px; }
 .ft-list { background: url(../images/ft-wx-s.png) no-repeat right; height: 100px }
 *html { background-image: url(about:blank); background-attachment: fixed; }/*����IE6�¹�������������*/

@@ -1,29 +1,76 @@
-<!doctype html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="utf-8">
 <title>新闻管理</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=1200" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="css/base.css" rel="stylesheet">
 <link href="css/index.css" rel="stylesheet">
+<link href="css/global-base.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="css/default.css">
+<link rel="stylesheet" type="text/css" href="css/nalbase.css">
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/sliders.js"></script>
 <!--[if lt IE 9]>
 <script src="js/modernizr.js"></script>
+<script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
+<link href="css/iefixed.css" rel="stylesheet" type="text/css" />
 <![endif]-->
-<script type="text/javascript" src="js/up/jquery.js"></script>
-<script type="text/javascript" src="js/up/js.js"></script>
+<script type="text/javascript" src="js/vivo-common.js"></script>
+<script type="text/javascript" src="js/prefixfree.min.js"></script>
+
+
+
 
 </head>
-<body>
-<header>
-  <div class="logo f_l nav">
-    <a style="float:left;margin-left:10%;" href="/"><img style="width:120px;margin:5px;" src="images/logo.png"></a>
-    
+<body class="products">
+<!--header 开始-->
+    <div id="vivo-airbox"></div>
+    <div id="vivo-wrap">
+        <div id="vivo-head">
+            <div class="vivo-search">
+              <div class="search-box">
+                <form action='＃' method='get' style="background:#19a97b">
+                  <input type="text" placeholder="随便输入哦" name='q' style="height:40px;font-size:18px;" autocomplete="off">
+                  <button style="background:#800080;margin-left:15px;">搜索</button><a class="close"></a>
+                </form>
+                <div class="qk-results">
+                  <ul>
+                  </ul>
+                  <div class="other-results"><a href="#">其他搜索结果</a></div>
+                </div>
+              </div>
+            </div>
+            <div class="vivo-nav cl">
+                <a style="float:left;margin-left:12%;" href="/"><img style="width:120px;margin:5px;" src="images/logo.png"></a>
+              <div class="search-user"><a href="#" class="search"><b></b></a><a href="＃" class="user"><b></b></a></div>
+            </div>
+          </div>
+        </div>
+      <div id="vivo-contain"></div>
+    </div>
+<!--header 结束-->
+<!--菜单　开始-->
+<div class="r_box f_r">
+        <div class="nav">
+          <ul>
+            <li><a>网站首页</a></li>
+            <li><a>关于我们</a></li>
+            <li><a>产品中心</a></li>
+            <li><a>成功案例</a></li>
+            <li><a>联系我们</a></li>
+            <li><a>在线留言</a></li>
+          </ul>
+        </div>
+</div>
 
-  </div>
-</header>
+<!--菜单　-->
 <article>
   <div class="l_box f_l">
 
@@ -111,5 +158,7 @@
   <p class="ft-copyright">copyright yuan.update 2016.04.19</p>
   <div id="tbox"> <a id="togbook" href="/"></a> <a id="gotop" href="javascript:void(0)"></a> </div>
 </footer>
+<!--菜单点击效果-->
+<script type="text/javascript" src="js/nalbase.js"></script>
 </body>
 </html>
