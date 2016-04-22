@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="utf-8">
-<title>新闻管理</title>
+<title>新闻推荐</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -54,7 +54,7 @@
                 <a style="float:left;margin-left:12%;" href="/"><img style="width:120px;margin:5px;" src="images/logo.png"></a>
               <div class="search-user">
                 <a href="#" class="search"><b></b></a>
-                <a href="javascript:void(0)" class="user" onclick="onLoad()"><b></b></a>
+                <a href="javascript:void(0)" class="user" onclick="btnDialog()"><b></b></a>
               </div>
             </div>
           </div>
@@ -86,7 +86,7 @@
       <div class="blogs">
         <figure><img src="http://photocdn.sohu.com/20160419/Img444863306.jpeg"></figure>
         <ul>
-          <h3><a href="/">山东鲜蒜将上市蒜价回落 炒蒜的有人一单亏几十万</a></h3>
+          <h3><a href="detail.html">山东鲜蒜将上市蒜价回落 炒蒜的有人一单亏几十万</a></h3>
           <p>ͨ过去的一个多月中,大蒜再次引爆了有世界大蒜华尔街之称的金乡。但一阵喧嚣过后,还是回归目前的平静。2月底,原本平稳的大蒜价格扶摇直上,短短十几天的时间每市斤蒜价竟然创下了近20年来的最顶峰——6.5元 ...</p>
           <p class="autor"><span class="lm f_l"><a href="/">大蒜</a></span><span class="dtime f_l">201６-0４-19</span><span class="viewnum f_r">阅读(<a href="/">459</a>)</span><span class="pingl f_r">评论(<a href="/">30</a>)</span></p>
         </ul>
@@ -171,12 +171,14 @@
       $.DialogBySHF.Dialog({ Width: 1024, Height: 500, Title: "LABELNET", URL: 'login/index.html' });
     }
 
-   function onLoad() {
-     NProgess.start();
+   window.onload=function() {
+     $('body').show();
+     NProgress.start();
+     setTimeout(function() { NProgress.done(); $('.fade').removeClass('out'); }, 1000);
    }
 
-   function onDone() {
-     NProgress.done();
+   function doneIt() {
+      NProgress.done();
    }
 
 </script>

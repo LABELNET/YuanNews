@@ -37,7 +37,7 @@ body.loaded #vivo-contain,body.loaded #vivo-foot,body.loaded #mobile-header,body
 
 /*--a-navigation--*/
 #vivo-head{border-bottom:1px #e7e7e7 solid; border-bottom:1px rgba(0,0,0,.05) solid; z-index:99; background:#fff; position: relative;}
-#vivo-head .vivo-nav{width:100%;height:5em;top:0;left:0; margin:auto; background:#fff; position:fixed; z-index:999;}
+#vivo-head .vivo-nav{width:100%;height:5em;top:0;left:0; margin:auto; background:#fff; position:fixed; z-index:1;}
 .vivo-nav a.vivo-logo{width:95px; height:60px; display:block; float:left; -webkit-transform:translate3d(0,0,0); -moz-transform:translate3d(0,0,0); -ms-transform:translate3d(0,0,0); transform:translate3d(0,0,0);}
 .vivo-nav ul{display:table; float:left; width:680px; height:60px; margin-left:50px; overflow: hidden;}
 .vivo-nav ul li{display:table-cell; width:16%; height:60px; overflow:hidden; text-align:center; *float: left; border-right:1px #f2f2f2 solid;}

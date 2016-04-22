@@ -1,0 +1,8 @@
+.newsdetail{
+  min-height: 500px;
+}
+.newsdetail h1{
+  border-bottom: 1px solid #19a97b;
+  width: 100%;
+  margin-left: 10px;
+}
