@@ -15,6 +15,9 @@
 <link rel="stylesheet" type="text/css" href="css/normalize.css" />
 <link rel="stylesheet" type="text/css" href="css/default.css">
 <link rel="stylesheet" type="text/css" href="css/nalbase.css">
+<link rel="Stylesheet" type="text/css" href="css/DialogBySHF.css" />
+<link rel='stylesheet' href="css/nprogress.css"/>
+<script src="js/nprogress.js"></script>
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/sliders.js"></script>
 <!--[if lt IE 9]>
@@ -24,7 +27,7 @@
 <![endif]-->
 <script type="text/javascript" src="js/vivo-common.js"></script>
 <script type="text/javascript" src="js/prefixfree.min.js"></script>
-
+<script type="text/javascript" src="js/DialogBySHF.js"></script>
 
 
 
@@ -49,7 +52,10 @@
             </div>
             <div class="vivo-nav cl">
                 <a style="float:left;margin-left:12%;" href="/"><img style="width:120px;margin:5px;" src="images/logo.png"></a>
-              <div class="search-user"><a href="#" class="search"><b></b></a><a href="＃" class="user"><b></b></a></div>
+              <div class="search-user">
+                <a href="#" class="search"><b></b></a>
+                <a href="javascript:void(0)" class="user" onclick="onLoad()"><b></b></a>
+              </div>
             </div>
           </div>
         </div>
@@ -70,7 +76,7 @@
         </div>
 </div>
 
-<!--菜单　-->
+<!--菜单　-->１
 <article>
   <div class="l_box f_l">
 
@@ -160,5 +166,19 @@
 </footer>
 <!--菜单点击效果-->
 <script type="text/javascript" src="js/nalbase.js"></script>
+<script type="text/javascript">
+    function btnDialog() {
+      $.DialogBySHF.Dialog({ Width: 1024, Height: 500, Title: "LABELNET", URL: 'login/index.html' });
+    }
+
+   function onLoad() {
+     NProgess.start();
+   }
+
+   function onDone() {
+     NProgress.done();
+   }
+
+</script>
 </body>
 </html>

@@ -1,0 +1,116 @@
+﻿#DialogBySHFLayer
+{
+    width:100%;
+    height:100%;
+    left:0;
+    top:0;
+    position:fixed;
+    z-index:500;
+    background-color:#333333;
+    filter:alpha(Opacity=40);
+    -moz-opacity:0.4;
+    opacity: 0.4;
+
+}
+/*弹出的提示框*/
+#DialogBySHF
+{
+    position:absolute;
+    border-radius:3px;
+    box-shadow:0 0 8px rgba(0, 0, 0, .8);
+    background-color:#f2f2f2;
+    z-index:600;
+}
+#DialogBySHF #Title
+{
+    margin:0;
+    width:100%;
+    height:35px;
+    background-color:#19a97b;
+    color:#FFFFFF;
+    font-family: 'microsoft yahei';
+    font-size:18px;
+    text-align:center;
+    cursor:move;
+    line-height:35px;
+    border-radius:3px 3px 0 0;
+    -moz-user-select:none;
+    -webkit-user-select:none;
+    user-select:none;
+}
+#DialogBySHF #Close
+{
+    position:absolute;
+    right:7px;
+    top:6px;
+    height:21px;
+    line-height:21px;
+    width:21px;
+    cursor:pointer;
+    display:block;
+    border:1px solid #da8e02;
+    box-shadow:0 0 4px rgba(255, 255, 255, .9);
+    border-radius:3px;
+}
+#DialogBySHF #Container
+{
+    padding:0px 5px 5px 5px;
+    /*width:390px;
+    height:355px;*/
+}
+#DialogBySHF #Container table,#DialogBySHF #Container iframe
+{
+    width:100%;
+    height:100%;
+
+}
+#DialogBySHF #Container table td
+{
+    vertical-align:middle;
+}
+#DialogBySHF #Container table #TipLine
+{
+    padding:0 30px;
+    font-family: 'microsoft yahei';
+}
+#DialogBySHF #Container table #BtnLine
+{
+    height:60px;
+    text-align:center;
+}
+#DialogBySHF #Container table #BtnLine input
+{
+    margin:6px 11px;
+    -moz-user-select: none;
+    background-color:#F5F5F5;
+    background-image: -moz-linear-gradient(center top , #F5F5F5, #F1F1F1);
+    background-image:-ms-linear-gradient(rgb(245, 245, 245), rgb(241, 241, 241));
+    background-image:-webkit-linear-gradient(top,#f8f8f8,#f1f1f1);
+    border:1px solid rgba(0,0,0,0.1);
+    *border:1px solid #DDDDDD;
+    border:1px solid #DDDDDD\0;
+    border-radius:2px;
+    font-family: 'microsoft yahei';
+    color:#666666;
+    cursor:default;
+    font-size:12px;
+    font-weight:bold;
+    height:29px;
+    line-height:27px;
+    min-width:54px;
+    padding:0 8px;
+    text-align:center;
+}
+#DialogBySHF #Container table #BtnLine input:hover
+{
+    background-color: #F8F8F8;
+    background-image: -moz-linear-gradient(center top , #F8F8F8, #F1F1F1);
+    border: 1px solid #C6C6C6;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    color: #333333;
+}
+#DialogBySHF #Container table #BtnLine input:focus
+{
+    border: 1px solid #4D90FE;
+    outline: medium none;
+}

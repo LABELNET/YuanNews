@@ -1,17 +1,18 @@
 /*nav styles*/
 .nav ul {
-	background: white; border-top: 6px solid hsl(180, 40%, 60%);
-	width: 200px; margin: 8em auto;
+	background: white; border-top: 6px solid #19a97b;
+	width: 240px; margin: 10em auto;
 }
 .nav ul li {
 	list-style-type: none;
 	/*relative positioning for list items along with overflow hidden to contain the overflowing ripple*/
 	position: relative;
 	overflow: hidden;
+	border-bottom: 1px dashed #f9f7f6;
 }
 .nav ul li a {
 	font: normal 14px/28px Montserrat;
-	color: hsl(180, 40%, 40%);
+	color: #19a97b;
 	display: block;
 	padding: 10px 15px;
 	text-decoration: none;
@@ -26,7 +27,7 @@
 .nav .ink {
 	display: block;
 	position: absolute;
-	background: hsl(180, 40%, 80%);
+	background: #19a97b;
 	border-radius: 100%;
 	transform: scale(0);
 }

@@ -1,7 +1,7 @@
 @charset "utf-8";
 .banner { height : 280px; width : 670px; overflow : hidden; }
-.topnews { margin: 20px 0; }
-.topnews h2 { font-size: 16px; font-weight: bold; line-height: 36px; color: #333; border-bottom: #19a97b 4px solid; }
+.topnews { margin: 1em 0; }
+.topnews h2 { font-size: 16px; font-weight: bold; line-height: 36px; color: #333; border-bottom: #19a97b 6px solid; }
 .topnews h2 b { }
 .topnews h2 span { float: right; font-size: 12px; font-weight: normal; }
 .topnews h2 span a { display: inline-block; padding: 0 5px; }
