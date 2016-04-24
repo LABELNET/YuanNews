@@ -1,6 +1,6 @@
 package yuan.ssm.pojo;
 
-import java.util.List;
+import yuan.ssm.vo.NewsVo;
 
 /**
  * ==================================================
@@ -19,13 +19,29 @@ import java.util.List;
  * <p>
  * <p/>
  * 功能更新历史：
+ * 客户端：主界面新闻展示的数据 包括阅读数量,分类信息,新闻信息
  * <p>
  * ==================================================
  */
-public class NewsCustom {
+public class NewsCustom extends NewsVo{
 
+     private Integer cnum;//评论总数
 
-//    List<>
+     private Integer ccont;//分类信息
 
+    public Integer getCnum() {
+        return cnum;
+    }
 
+    public void setCnum(Integer cnum) {
+        this.cnum = cnum;
+    }
+
+    public Integer getCcont() {
+        return ccont;
+    }
+
+    public void setCcont(Integer ccont) {
+        this.ccont = ccont;
+    }
 }

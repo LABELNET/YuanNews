@@ -5,4 +5,33 @@
 
 <mapper namespace="yuan.ssm.dao.customer.NewsMapper">
 
+
+    <select id="findNewsCustom" resultType="yuan.ssm.pojo.NewsCustom">
+        SELECT
+           n.id AS id,
+           n.content As content,
+           n.title AS title,
+           n.dt AS dt,
+           n.img AS img,
+           n.rnum AS rnum,
+           cnum,
+           c.id AS cid,
+           c.content AS ccont
+        FROM
+           news n,
+           cate c,
+           (
+              SELECT
+                count(id)
+              FROM
+                comment
+              WHERE
+                nid=n.id
+               ) AS cnum
+        WHERE
+           n.cid=c.id
+        ORDER BY n.id DESC
+        Limit 0,10
+    </select>
+
 </mapper>

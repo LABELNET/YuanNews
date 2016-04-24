@@ -1,5 +1,6 @@
 package yuan.ssm.dao.customer;
 
+import org.apache.ibatis.annotations.Param;
 import yuan.ssm.pojo.NewsCustom;
 
 import java.util.List;
@@ -16,12 +17,14 @@ public interface NewsMapper {
     但是最基本的根据兴趣查询新闻，在此实现；　
     分页查询；　根据阅读量，进行从高到低排序　，阅读量大于５０的
      */
+//
+//    //单个兴趣查询
+//    List<NewsCustom> findNewsCustomByTaste(String taste,Integer start,Integer num);
+//
+//    //多个兴趣查询
+ //   List<NewsCustom> findNewsCustomByTastes(String taste, String taste1, Integer start, Integer num);
+//
 
-    //单个兴趣查询
-    List<NewsCustom> findNewsCustomByTaste(String taste,Integer start,Integer num);
-
-    //多个兴趣查询
-    List<NewsCustom> findNewsCustomByTastes(String taste,String taste1,Integer start,Integer num);
 
 
 
@@ -32,9 +35,18 @@ public interface NewsMapper {
      * ３．推荐　相关用户（看做不做）
      */
 
+
+
+    //--------------------------------上面是推荐的mapper,下面是普通信息展示----------------------------------
+
     /**
-     * 03.
+     * 新闻主界面信息显示查询，id排序
+     * @param start 开始
+     * @param num 总数
+     * @return List
+     * @throws Exception
      */
+    List<NewsCustom> findNewsCustom(@Param("start") Integer start,@Param("num") Integer num) throws Exception;
 
 
 
