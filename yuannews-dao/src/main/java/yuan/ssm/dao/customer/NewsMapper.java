@@ -41,15 +41,6 @@ public interface NewsMapper {
 
     //--------------------------------上面是推荐的mapper,下面是普通信息展示----------------------------------
 
-    /**
-     * 新闻主界面信息显示查询，id排序
-     * @param start 开始
-     * @param num 总数
-     * @return List
-     * @throws Exception
-     */
-    List<NewsCustom> findNewsCustom(@Param("start") Integer start,@Param("num") Integer num) throws Exception;
-
 
     /**
      * 查询所有的分类信息
@@ -63,6 +54,18 @@ public interface NewsMapper {
      * @throws Exception
      */
     List<SourceVo> findAllSources() throws Exception;
+
+
+
+    /**
+     * 新闻主界面信息显示查询，id排序
+     * @param start 开始
+     * @param num 总数
+     * @return List
+     * @throws Exception
+     */
+    List<NewsCustom> findNewsCustom(@Param("start") Integer start,@Param("num") Integer num) throws Exception;
+
 
 
     /**
@@ -85,7 +88,14 @@ public interface NewsMapper {
     List<NewsCustom> findNewsCustomByComment(@Param("start") Integer start,@Param("num") Integer num) throws Exception;
 
 
-
+    /**
+     * 按照阅读量进行排序
+     * @param start
+     * @param num
+     * @return
+     * @throws Exception
+     */
+    List<NewsCustom> findNewsCustomByRnum(@Param("start") Integer start,@Param("num") Integer num) throws Exception;
 
 
 }

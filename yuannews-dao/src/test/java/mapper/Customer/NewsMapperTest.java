@@ -65,6 +65,13 @@ public class NewsMapperTest extends CustomerBaseTest{
         LoggerUtil.printJSON(customByZan);
     }
 
+    @Test
+    public void findNewsCustomByRnumTest() throws Exception{
+        List<NewsCustom> customByZan = newsMapper.findNewsCustomByRnum(0, 10);
+        LoggerUtil.printJSON(customByZan);
+    }
+
+
 
 
 
