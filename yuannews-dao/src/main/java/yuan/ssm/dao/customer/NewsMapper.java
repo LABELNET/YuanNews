@@ -98,4 +98,9 @@ public interface NewsMapper {
     List<NewsCustom> findNewsCustomByRnum(@Param("start") Integer start,@Param("num") Integer num) throws Exception;
 
 
+  //------------------------------------新闻详情页面--------------------------------------------------
+
+
+
+
 }
