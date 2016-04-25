@@ -46,6 +46,13 @@
           cate
     </select>
 
+    <select id="findAllSources" resultType="yuan.ssm.vo.SourceVo">
+        SELECT
+          *
+          FROM
+          source
+    </select>
+
 
 
 

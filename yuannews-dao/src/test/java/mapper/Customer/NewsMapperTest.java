@@ -4,6 +4,7 @@ import org.junit.Test;
 import yuan.ssm.common.util.LoggerUtil;
 import yuan.ssm.pojo.NewsCustom;
 import yuan.ssm.vo.CateVo;
+import yuan.ssm.vo.SourceVo;
 
 import java.util.List;
 
@@ -44,6 +45,12 @@ public class NewsMapperTest extends CustomerBaseTest{
     public void findAllCates() throws Exception{
         List<CateVo> allCates = newsMapper.findAllCates();
         LoggerUtil.printJSON(allCates);
+    }
+
+    @Test
+    public void findAllSourcesTest() throws Exception{
+        List<SourceVo> allSources = newsMapper.findAllSources();
+        LoggerUtil.printJSON(allSources);
     }
 
 }

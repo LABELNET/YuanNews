@@ -3,6 +3,7 @@ package yuan.ssm.dao.customer;
 import org.apache.ibatis.annotations.Param;
 import yuan.ssm.pojo.NewsCustom;
 import yuan.ssm.vo.CateVo;
+import yuan.ssm.vo.SourceVo;
 
 import java.util.List;
 
@@ -55,6 +56,13 @@ public interface NewsMapper {
      *
      */
     List<CateVo> findAllCates() throws Exception;
+
+    /**
+     * 查询所有的来源信息
+     * @return
+     * @throws Exception
+     */
+    List<SourceVo> findAllSources() throws Exception;
 
 
 
