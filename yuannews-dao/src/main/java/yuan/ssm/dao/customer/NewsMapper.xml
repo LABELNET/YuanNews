@@ -37,4 +37,37 @@
         Limit #{start},#{num}
     </select>
 
+
+
+    <select id="findAllCates" resultType="yuan.ssm.vo.CateVo">
+        SELECT
+          *
+        FROM
+          cate
+    </select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </mapper>

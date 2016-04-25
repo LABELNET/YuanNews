@@ -3,6 +3,7 @@ package mapper.Customer;
 import org.junit.Test;
 import yuan.ssm.common.util.LoggerUtil;
 import yuan.ssm.pojo.NewsCustom;
+import yuan.ssm.vo.CateVo;
 
 import java.util.List;
 
@@ -37,6 +38,12 @@ public class NewsMapperTest extends CustomerBaseTest{
     public void findNewsCustomTest() throws Exception {
         List<NewsCustom> newsCustom = newsMapper.findNewsCustom(0, 10);
         LoggerUtil.printJSON(newsCustom);
+    }
+
+    @Test
+    public void findAllCates() throws Exception{
+        List<CateVo> allCates = newsMapper.findAllCates();
+        LoggerUtil.printJSON(allCates);
     }
 
 }

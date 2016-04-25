@@ -2,6 +2,7 @@ package yuan.ssm.dao.customer;
 
 import org.apache.ibatis.annotations.Param;
 import yuan.ssm.pojo.NewsCustom;
+import yuan.ssm.vo.CateVo;
 
 import java.util.List;
 
@@ -49,6 +50,11 @@ public interface NewsMapper {
     List<NewsCustom> findNewsCustom(@Param("start") Integer start,@Param("num") Integer num) throws Exception;
 
 
+    /**
+     * 查询所有的分类信息
+     *
+     */
+    List<CateVo> findAllCates() throws Exception;
 
 
 
