@@ -71,6 +71,19 @@ public class NewsMapperTest extends CustomerBaseTest{
         LoggerUtil.printJSON(customByZan);
     }
 
+    //---------------------------------分类查询-------------------------------------
+
+    @Test
+    public void findNewsByCateIdTest() throws Exception{
+        List<NewsCustom> customByZan = cateNewsMapper.findNewsByCateId(0,10,"人文");
+        LoggerUtil.printJSON(customByZan);
+    }
+
+    @Test
+    public void findNewsByCateZanTest() throws Exception{
+        List<NewsCustom> customByZan = cateNewsMapper.findNewsByCateZan(0,10,"社会");
+        LoggerUtil.printJSON(customByZan);
+    }
 
 
 

@@ -4,4 +4,146 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="yuan.ssm.dao.customer.CateNewsMapper">
+
+    <select id="findNewsByCateId" resultType="yuan.ssm.pojo.NewsCustom">
+        SELECT
+        n.id AS id,
+        n.title AS title,
+        n.dt AS dt,
+        n.content AS content,
+        n.img AS img,
+        n.rnum AS rnum,
+        co.cnum,
+        c.id AS cid,
+        c.content AS ccont
+        FROM
+        cate c,
+        news n
+        LEFT JOIN
+        (
+        SELECT
+        nid,
+        count(id) AS cnum
+        FROM
+        comment
+        GROUP BY nid
+        ) AS co
+        ON
+        co.nid=n.id
+        WHERE
+        n.cid=c.id
+        AND
+        c.content=#{cate}
+        ORDER BY n.id DESC
+        Limit #{start},#{num}
+    </select>
+
+    <select id="findNewsByCateZan" resultType="yuan.ssm.pojo.NewsCustom">
+        select
+        n.id id,
+        n.title title,
+        n.dt dt,
+        n.content content,
+        n.img img,
+        n.rnum rnum,
+        IFNULL(znum,0) znum,
+        c.id cid,
+        c.content ccont,
+        IFNULL(cnum,0) cnum
+        from
+        cate c,
+        news n
+        left join (
+        select
+        nid,
+        count(1) as znum
+        from
+        liked
+        group by
+        nid) as z
+        on
+        z.nid=n.id
+        left join (
+        select
+        nid,
+        count(1) as cnum
+        from
+        comment
+        group by nid) as co
+        on
+        co.nid=z.nid
+        where
+        c.id=n.cid
+        and
+        c.content=#{cate}
+        order by znum desc
+        limit #{start},#{num}
+    </select>
+
+    <select id="findNewsByCateComment" resultType="yuan.ssm.pojo.NewsCustom">
+        SELECT
+        n.id AS id,
+        n.title AS title,
+        n.dt AS dt,
+        n.content AS content,
+        n.img AS img,
+        n.rnum AS rnum,
+        co.cnum,
+        c.id AS cid,
+        c.content AS ccont
+        FROM
+        cate c,
+        news n
+        LEFT JOIN
+        (
+        SELECT
+        nid,
+        count(id) AS cnum
+        FROM
+        comment
+        GROUP BY nid
+        ) AS co
+        ON
+        co.nid=n.id
+        WHERE
+        n.cid=c.id
+        AND
+        c.content=#{cate}
+        ORDER BY cnum DESC
+        Limit #{start},#{num}
+    </select>
+
+    <select id="findNewsByCateRnum" resultType="yuan.ssm.pojo.NewsCustom">
+        SELECT
+        n.id AS id,
+        n.title AS title,
+        n.dt AS dt,
+        n.content AS content,
+        n.img AS img,
+        n.rnum AS rnum,
+        co.cnum,
+        c.id AS cid,
+        c.content AS ccont
+        FROM
+        cate c,
+        news n
+        LEFT JOIN
+        (
+        SELECT
+        nid,
+        count(id) AS cnum
+        FROM
+        comment
+        GROUP BY nid
+        ) AS co
+        ON
+        co.nid=n.id
+        WHERE
+        n.cid=c.id
+        AND
+        c.content=#{cate}
+        ORDER BY rnum DESC
+        Limit #{start},#{num}
+    </select>
+
 </mapper>
