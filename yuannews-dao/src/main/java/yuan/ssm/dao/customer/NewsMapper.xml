@@ -14,20 +14,23 @@
            n.dt AS dt,
            n.img AS img,
            n.rnum AS rnum,
-           cnum,
+           co.cnum,
            c.id AS cid,
            c.content AS ccont
         FROM
            news n,
-           cate c,
+           cate c
+        LEFT JOIN
            (
               SELECT
+                nid,
                 count(id)
               FROM
                 comment
-              WHERE
-                nid=n.id
-               ) AS cnum
+              GROUP BY nid
+               ) AS co
+        ON
+              co.nid=n.id
         WHERE
            n.cid=c.id
         ORDER BY n.id DESC

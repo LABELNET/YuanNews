@@ -15,7 +15,16 @@
  *
 
 
-#2015.04.24
+#2016.04.25
+ * 查询新闻数据及其评论数 sql语句实现
+ 示例sql :
+ ```
+ select n.id,n.title,IFNULL(cm.cnum,0) from news n left join (select nid,count(1) as cnum from comment group by nid) as cm on cm.nid=n.id;
+
+ ```
+
+
+#2016.04.24
  * 根据主页，实现主页数据分页加载
  * 实现用户登陆/注册交互
 
