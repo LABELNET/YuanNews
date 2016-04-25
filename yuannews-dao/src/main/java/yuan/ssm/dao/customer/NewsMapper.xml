@@ -9,22 +9,22 @@
     <select id="findNewsCustom" resultType="yuan.ssm.pojo.NewsCustom">
         SELECT
            n.id AS id,
-           n.content As content,
            n.title AS title,
            n.dt AS dt,
+           n.content AS content,
            n.img AS img,
            n.rnum AS rnum,
            co.cnum,
            c.id AS cid,
            c.content AS ccont
         FROM
-           news n,
-           cate c
+           cate c,
+           news n
         LEFT JOIN
            (
               SELECT
                 nid,
-                count(id)
+                count(id) AS cnum
               FROM
                 comment
               GROUP BY nid

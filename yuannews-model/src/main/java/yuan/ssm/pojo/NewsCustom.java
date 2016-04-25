@@ -27,7 +27,7 @@ public class NewsCustom extends NewsVo{
 
      private Integer cnum;//评论总数
 
-     private Integer ccont;//分类信息
+     private String ccont;//分类信息
 
     public Integer getCnum() {
         return cnum;
@@ -37,11 +37,12 @@ public class NewsCustom extends NewsVo{
         this.cnum = cnum;
     }
 
-    public Integer getCcont() {
+    public String getCcont() {
         return ccont;
     }
 
-    public void setCcont(Integer ccont) {
+    public void setCcont(String ccont) {
         this.ccont = ccont;
     }
+
 }
