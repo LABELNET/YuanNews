@@ -34,7 +34,7 @@
         WHERE
            n.cid=c.id
         ORDER BY n.id DESC
-        Limit 0,10
+        Limit #{start},#{num}
     </select>
 
 </mapper>
