@@ -95,6 +95,37 @@
 
 
 
+    <select id="findNewsCustomByComment" resultType="yuan.ssm.pojo.NewsCustom">
+        SELECT
+        n.id AS id,
+        n.title AS title,
+        n.dt AS dt,
+        n.content AS content,
+        n.img AS img,
+        n.rnum AS rnum,
+        co.cnum,
+        c.id AS cid,
+        c.content AS ccont
+        FROM
+        cate c,
+        news n
+        LEFT JOIN
+        (
+        SELECT
+        nid,
+        count(id) AS cnum
+        FROM
+        comment
+        GROUP BY nid
+        ) AS co
+        ON
+        co.nid=n.id
+        WHERE
+        n.cid=c.id
+        ORDER BY cnum DESC
+        Limit #{start},#{num}
+    </select>
+
 
 
 

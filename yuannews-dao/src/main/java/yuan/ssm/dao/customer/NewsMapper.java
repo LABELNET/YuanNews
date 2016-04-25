@@ -75,6 +75,15 @@ public interface NewsMapper {
     List<NewsCustom> findNewsCustomByZan(@Param("start") Integer start,@Param("num") Integer num) throws Exception;
 
 
+    /**
+     * 评论高低排序
+     * @param start
+     * @param num
+     * @return
+     * @throws Exception
+     */
+    List<NewsCustom> findNewsCustomByComment(@Param("start") Integer start,@Param("num") Integer num) throws Exception;
+
 
 
 

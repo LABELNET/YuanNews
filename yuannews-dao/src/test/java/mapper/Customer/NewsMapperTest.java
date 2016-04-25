@@ -59,6 +59,14 @@ public class NewsMapperTest extends CustomerBaseTest{
         LoggerUtil.printJSON(customByZan);
     }
 
+    @Test
+    public void findNewsCustomByCommentTest() throws Exception{
+        List<NewsCustom> customByZan = newsMapper.findNewsCustomByComment(0, 10);
+        LoggerUtil.printJSON(customByZan);
+    }
+
+
+
 
 
 }
