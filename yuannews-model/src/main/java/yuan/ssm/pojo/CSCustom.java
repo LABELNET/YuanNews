@@ -3,6 +3,8 @@ package yuan.ssm.pojo;
 import yuan.ssm.vo.CateVo;
 import yuan.ssm.vo.SourceVo;
 
+import java.util.List;
+
 /**
  * ==================================================
  * <p/>
@@ -25,22 +27,22 @@ import yuan.ssm.vo.SourceVo;
  */
 public class CSCustom {
 
-    private CateVo cateVo;
-    private SourceVo sourceVo;
+    private List<CateVo> cateVos;
+    private List<SourceVo> sourceVos;
 
-    public CateVo getCateVo() {
-        return cateVo;
+    public List<CateVo> getCateVos() {
+        return cateVos;
     }
 
-    public void setCateVo(CateVo cateVo) {
-        this.cateVo = cateVo;
+    public void setCateVos(List<CateVo> cateVos) {
+        this.cateVos = cateVos;
     }
 
-    public SourceVo getSourceVo() {
-        return sourceVo;
+    public List<SourceVo> getSourceVos() {
+        return sourceVos;
     }
 
-    public void setSourceVo(SourceVo sourceVo) {
-        this.sourceVo = sourceVo;
+    public void setSourceVos(List<SourceVo> sourceVos) {
+        this.sourceVos = sourceVos;
     }
 }
