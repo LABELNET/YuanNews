@@ -86,6 +86,13 @@ public class NewsMapperTest extends CustomerBaseTest{
     }
 
 
+    //----------------------------------分类查询---------------------------------------
+
+    @Test
+    public void findNewsBySourceIdTest() throws Exception{
+        List<NewsCustom> customByZan = sourceNewsMapper.findNewsBySourceId(0,10,"腾讯新闻");
+        LoggerUtil.printJSON(customByZan);
+    }
 
 
 
