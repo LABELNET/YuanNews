@@ -65,6 +65,18 @@ public interface NewsMapper {
     List<SourceVo> findAllSources() throws Exception;
 
 
+    /**
+     * 点赞高低排序查询
+     * @param start
+     * @param num
+     * @return
+     * @throws Exception
+     */
+    List<NewsCustom> findNewsCustomByZan(@Param("start") Integer start,@Param("num") Integer num) throws Exception;
+
+
+
+
 
 
 }

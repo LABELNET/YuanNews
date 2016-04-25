@@ -53,6 +53,46 @@
           source
     </select>
 
+    <select id="findNewsCustomByZan" resultType="yuan.ssm.pojo.NewsCustom">
+        select
+          n.id id,
+          n.title title,
+          n.dt dt,
+          n.content content,
+          n.img img,
+          n.rnum rnum,
+          IFNULL(znum,0) znum,
+          c.id cid,
+          c.content ccont,
+          IFNULL(cnum,0) cnum
+        from
+          cate c,
+          news n
+          left join (
+            select
+              nid,
+              count(1) as znum
+            from
+              liked
+            group by
+              nid) as z
+          on
+            z.nid=n.id
+          left join (
+            select
+              nid,
+              count(1) as cnum
+            from
+              comment
+            group by nid) as co
+          on
+            co.nid=z.nid
+          where
+            c.id=n.cid
+          order by znum desc
+          limit #{start},#{num}
+    </select>
+
 
 
 

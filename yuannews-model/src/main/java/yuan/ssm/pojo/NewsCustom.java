@@ -29,6 +29,8 @@ public class NewsCustom extends NewsVo{
 
      private String ccont;//分类信息
 
+     private Integer znum;//点赞总数
+
     public Integer getCnum() {
         return cnum;
     }
@@ -45,4 +47,11 @@ public class NewsCustom extends NewsVo{
         this.ccont = ccont;
     }
 
+    public Integer getZnum() {
+        return znum;
+    }
+
+    public void setZnum(Integer znum) {
+        this.znum = znum;
+    }
 }

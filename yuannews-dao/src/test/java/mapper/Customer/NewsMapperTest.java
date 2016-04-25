@@ -21,7 +21,7 @@ import java.util.List;
  * <p/>
  * 创建日期：　16-4-25 下午4:53
  * <p/>
- * 功能描述： TODO
+ * 功能描述： News界面数据测试类
  * <p>
  * <p/>
  * 功能更新历史：
@@ -52,5 +52,13 @@ public class NewsMapperTest extends CustomerBaseTest{
         List<SourceVo> allSources = newsMapper.findAllSources();
         LoggerUtil.printJSON(allSources);
     }
+
+    @Test
+    public void findNewsCustomByZanTest() throws Exception{
+        List<NewsCustom> customByZan = newsMapper.findNewsCustomByZan(0, 10);
+        LoggerUtil.printJSON(customByZan);
+    }
+
+
 
 }
