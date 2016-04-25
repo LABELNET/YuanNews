@@ -34,10 +34,10 @@ public interface CateNewsMapper {
 
     /**
      * 根据分类，查询新闻信息,id倒序输出
-     * @param start
-     * @param num
-     * @param cate
-     * @return
+     * @param start 开始
+     * @param num 数量
+     * @param cate 分类
+     * @return 新闻信息集合
      * @throws Exception
      */
     List<NewsCustom> findNewsByCateId(@Param("start") Integer start, @Param("num") Integer num,@Param("cate") String cate) throws Exception;
@@ -45,10 +45,10 @@ public interface CateNewsMapper {
 
     /**
      * 根据分类，查询新闻信息,点赞倒序输出
-     * @param start
-     * @param num
-     * @param cate
-     * @return
+     * @param start 开始
+     * @param num 数量
+     * @param cate 分类
+     * @return 新闻信息集合
      * @throws Exception
      */
     List<NewsCustom> findNewsByCateZan(@Param("start") Integer start, @Param("num") Integer num,@Param("cate") String cate) throws Exception;
@@ -56,10 +56,10 @@ public interface CateNewsMapper {
 
     /**
      * 根据分类，查询新闻信息,评论数倒序输出
-     * @param start
-     * @param num
-     * @param cate
-     * @return
+     * @param start 开始
+     * @param num 数量
+     * @param cate 分类
+     * @return 新闻信息集合
      * @throws Exception
      */
     List<NewsCustom> findNewsByCateComment(@Param("start") Integer start, @Param("num") Integer num,@Param("cate") String cate) throws Exception;
@@ -67,10 +67,10 @@ public interface CateNewsMapper {
 
     /**
      * 根据分类，查询新闻信息,阅读量倒序输出
-     * @param start
-     * @param num
-     * @param cate
-     * @return
+     * @param start 开始
+     * @param num 数量
+     * @param cate 分类
+     * @return 新闻信息集合
      * @throws Exception
      */
     List<NewsCustom> findNewsByCateRnum(@Param("start") Integer start, @Param("num") Integer num,@Param("cate") String cate) throws Exception;
