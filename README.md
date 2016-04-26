@@ -15,6 +15,11 @@
  *
 
 
+
+#2016.04.26
+ * 实现登陆注册的mapper
+ * 实现用户端service的实现
+
 #2016.04.25
  * 查询新闻数据及其评论数 sql语句实现
  示例sql :
@@ -22,6 +27,7 @@
  select n.id,n.title,IFNULL(cm.cnum,0) from news n left join (select nid,count(1) as cnum from comment group by nid) as cm on cm.nid=n.id;
 
  ```
+ * 实现数据mapper,包括主界面的mapper实现，除了登陆注册以外！
 
 
 #2016.04.24
