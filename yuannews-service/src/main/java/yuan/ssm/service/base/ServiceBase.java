@@ -1,5 +1,6 @@
 package yuan.ssm.service.base;
 
+import yuan.ssm.common.newsenum.ServiceEnum;
 import yuan.ssm.pojo.CSCustom;
 
 import java.util.List;
@@ -43,7 +44,7 @@ public interface ServiceBase<T> {
      * @return 数据
      * @throws Exception
      */
-    List<T> findCustomById(Integer start,Integer num,String cs) throws Exception;
+    List<T> findCustomById(Integer start, Integer num, String cs, ServiceEnum type) throws Exception;
 
 
     /**
@@ -54,7 +55,7 @@ public interface ServiceBase<T> {
      * @return 数据
      * @throws Exception
      */
-    List<T> findCustomByZan(Integer start,Integer num,String cs) throws Exception;
+    List<T> findCustomByZan(Integer start,Integer num,String cs,ServiceEnum type) throws Exception;
 
 
     /**
@@ -65,7 +66,7 @@ public interface ServiceBase<T> {
      * @return 数据
      * @throws Exception
      */
-    List<T> findCustomByComment(Integer start,Integer num,String cs) throws Exception;
+    List<T> findCustomByComment(Integer start,Integer num,String cs,ServiceEnum type) throws Exception;
 
 
     /**
@@ -76,6 +77,6 @@ public interface ServiceBase<T> {
      * @return 数据
      * @throws Exception
      */
-    List<T> findCustomByRnum(Integer start,Integer num,String cs) throws Exception;
+    List<T> findCustomByRnum(Integer start,Integer num,String cs,ServiceEnum type) throws Exception;
 
 }
