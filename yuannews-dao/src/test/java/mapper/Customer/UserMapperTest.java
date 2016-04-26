@@ -2,6 +2,7 @@ package mapper.Customer;
 
 import org.junit.Test;
 import yuan.ssm.common.util.LoggerUtil;
+import yuan.ssm.vo.UserVo;
 
 /**
  * ==================================================
@@ -26,6 +27,19 @@ import yuan.ssm.common.util.LoggerUtil;
 public class UserMapperTest extends CustomerBaseTest{
 
 
+    /**
+     * 测试数据 ：
+     * {
+     "head": "/image/head/2016041514302526219e9e283-b330-47bc-9150-fb416ecd1e46.png",
+     "id": 24,
+     "nick": "明天",
+     "pass": "123456",
+     "sex": 0,
+     "status": 1,
+     "unum": "15000000020"
+     }
+     */
+
     @Override
     public void setUp() {
         super.setUp();
@@ -36,6 +50,12 @@ public class UserMapperTest extends CustomerBaseTest{
     public void CheckUserUnumTest() throws Exception {
         Integer integer = userMapper.CheckUserUnum("15000000020");
         LoggerUtil.printJSON(integer);
+    }
+
+    @Test
+    public void loginCheckPassTest() throws Exception {
+        UserVo userVo = userMapper.loginCheckPass("15000000020", "123456");
+        LoggerUtil.printJSON(userVo);
     }
 
 }

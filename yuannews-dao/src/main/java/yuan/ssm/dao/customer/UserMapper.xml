@@ -14,4 +14,15 @@
           unum=#{unum}
     </select>
 
+    <select id="loginCheckPass" resultType="yuan.ssm.vo.UserVo">
+        SELECT
+          *
+        FROM
+          user
+        WHERE
+          unum=#{unum}
+        AND
+          pass=#{pass}
+    </select>
+
 </mapper>
