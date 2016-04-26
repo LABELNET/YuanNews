@@ -41,4 +41,125 @@
         Limit #{start},#{num}
     </select>
 
+    <select id="findNewsBySourceZan" resultType="yuan.ssm.pojo.NewsCustom">
+        select
+        n.id id,
+        n.title title,
+        n.dt dt,
+        n.content content,
+        n.img img,
+        n.rnum rnum,
+        IFNULL(znum,0) znum,
+        c.id cid,
+        c.content ccont,
+        IFNULL(cnum,0) cnum
+        from
+        source s,
+        cate c,
+        news n
+        left join (
+        select
+        nid,
+        count(1) as znum
+        from
+        liked
+        group by
+        nid) as z
+        on
+        z.nid=n.id
+        left join (
+        select
+        nid,
+        count(1) as cnum
+        from
+        comment
+        group by nid) as co
+        on
+        co.nid=z.nid
+        where
+        c.id=n.cid
+        and
+        n.sid=s.id
+        and
+        s.source=#{source}
+        order by znum desc
+        limit #{start},#{num}
+    </select>
+
+    <select id="findNewsBySourceComment" resultType="yuan.ssm.pojo.NewsCustom">
+        SELECT
+        n.id AS id,
+        n.title AS title,
+        n.dt AS dt,
+        n.content AS content,
+        n.img AS img,
+        n.rnum AS rnum,
+        co.cnum,
+        c.id AS cid,
+        c.content AS ccont
+        FROM
+        source s,
+        cate c,
+        news n
+        LEFT JOIN
+        (
+        SELECT
+        nid,
+        count(id) AS cnum
+        FROM
+        comment
+        GROUP BY nid
+        ) AS co
+        ON
+        co.nid=n.id
+        WHERE
+        n.cid=c.id
+        AND
+        s.id=n.sid
+        AND
+        s.source=#{source}
+        ORDER BY cnum DESC
+        Limit #{start},#{num}
+    </select>
+
+    <select id="findNewsBySourceRnum" resultType="yuan.ssm.pojo.NewsCustom">
+        SELECT
+        n.id AS id,
+        n.title AS title,
+        n.dt AS dt,
+        n.content AS content,
+        n.img AS img,
+        n.rnum AS rnum,
+        co.cnum,
+        c.id AS cid,
+        c.content AS ccont
+        FROM
+        source s,
+        cate c,
+        news n
+        LEFT JOIN
+        (
+        SELECT
+        nid,
+        count(id) AS cnum
+        FROM
+        comment
+        GROUP BY nid
+        ) AS co
+        ON
+        co.nid=n.id
+        WHERE
+        n.cid=c.id
+        AND
+        s.id=n.sid
+        AND
+        s.source=#{source}
+        ORDER BY rnum DESC
+        Limit #{start},#{num}
+    </select>
+
+
+
+
+
 </mapper>

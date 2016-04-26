@@ -86,7 +86,7 @@ public class NewsMapperTest extends CustomerBaseTest{
     }
 
 
-    //----------------------------------分类查询---------------------------------------
+    //----------------------------------来源查询---------------------------------------
 
     @Test
     public void findNewsBySourceIdTest() throws Exception{
@@ -94,6 +94,22 @@ public class NewsMapperTest extends CustomerBaseTest{
         LoggerUtil.printJSON(customByZan);
     }
 
+    @Test
+    public void findNewsBySourceZanTest() throws Exception{
+        List<NewsCustom> customByZan = sourceNewsMapper.findNewsBySourceZan(0,10,"搜狐新闻");
+        LoggerUtil.printJSON(customByZan);
+    }
 
+    @Test
+    public void findNewsBySourceCommentTest() throws Exception{
+        List<NewsCustom> customByZan = sourceNewsMapper.findNewsBySourceComment(0,10,"搜狐新闻");
+        LoggerUtil.printJSON(customByZan);
+    }
+
+    @Test
+    public void findNewsBySourceRnumTest() throws Exception{
+        List<NewsCustom> customByZan = sourceNewsMapper.findNewsBySourceRnum(0,10,"搜狐新闻");
+        LoggerUtil.printJSON(customByZan);
+    }
 
 }
