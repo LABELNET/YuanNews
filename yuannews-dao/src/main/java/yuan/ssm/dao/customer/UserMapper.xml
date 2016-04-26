@@ -69,5 +69,16 @@
          limit #{start},#{num}
     </select>
 
+    <insert id="userNewsZan">
+        INSERT INTO liked(uid,nid) VALUES (#{uid},#{nid})
+    </insert>
+
+    <update id="userNewsSuperZan">
+        UPDATE liked SET status=2 WHERE uid=#{uid} AND nid=#{nid}
+    </update>
+
+    <insert id="userNewsComment">
+        INSERT  INTO comment(uid,nid,content) VALUES (#{uid},#{nid},#{content})
+    </insert>
 
 </mapper>

@@ -98,5 +98,34 @@ public class UserMapperTest extends CustomerBaseTest{
         LoggerUtil.printJSON(tasteVos);
     }
 
+    /**
+     * 初次点赞，增加记录
+     * @throws Exception
+     */
+    @Test
+    public void userNewsZanTest() throws Exception {
+        Integer integer = userMapper.userNewsZan(24, 4);
+        LoggerUtil.printJSON(integer);
+    }
+
+    /**
+     * 根据新闻id和用户id ，进行修改状态为超赞 2
+     * @throws Exception
+     */
+    @Test
+    public void userNewsSuperZanTest() throws Exception {
+        Integer integer = userMapper.userNewsSuperZan(24, 4);
+        LoggerUtil.printJSON(integer);
+    }
+
+    @Test
+    public void userNewsCommentTest() throws Exception {
+        Integer integer = userMapper.userNewsComment(24,4,"这是一个好的评论");
+        LoggerUtil.printJSON(integer);
+    }
+
+
+
+
 
 }
