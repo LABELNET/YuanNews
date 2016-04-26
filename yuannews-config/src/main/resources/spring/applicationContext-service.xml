@@ -21,4 +21,8 @@
 
     <bean id="cateManagerImpl" class="yuan.ssm.service.manager.impl.CateManagerImpl"/>
 
+    <bean id="newsServiceImpl" class="yuan.ssm.service.customer.impl.NewsServiceImpl"/>
+
+    <bean id="userServiceImpl" class="yuan.ssm.service.customer.impl.UserServiceImpl"/>
+
 </beans>
