@@ -70,7 +70,7 @@
     </select>
 
     <insert id="userNewsZan">
-        INSERT INTO liked(uid,nid) VALUES (#{uid},#{nid})
+        INSERT INTO liked(uid,nid,status) VALUES (#{uid},#{nid},1)
     </insert>
 
     <update id="userNewsSuperZan">
