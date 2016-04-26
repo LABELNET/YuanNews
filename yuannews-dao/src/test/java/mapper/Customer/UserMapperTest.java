@@ -2,7 +2,10 @@ package mapper.Customer;
 
 import org.junit.Test;
 import yuan.ssm.common.util.LoggerUtil;
+import yuan.ssm.vo.TasteVo;
 import yuan.ssm.vo.UserVo;
+
+import java.util.List;
 
 /**
  * ==================================================
@@ -69,6 +72,24 @@ public class UserMapperTest extends CustomerBaseTest{
     public void userCheckTasteTest() throws Exception {
         Integer registerUser = userMapper.userCheckTaste("刘亦菲",1);
         LoggerUtil.printJSON(registerUser>0?"存在":"不存在");
+    }
+
+    @Test
+    public void userAddTasteLabelTest() throws Exception {
+        Integer registerUser = userMapper.userAddTasteLabel("刘亦菲",24);
+        LoggerUtil.printJSON(registerUser>0?"成":"fail");
+    }
+
+    @Test
+    public void userSelectTasteCountTest() throws Exception {
+        Integer registerUser = userMapper.userSelectTasteCount(24);
+        LoggerUtil.printJSON(registerUser);
+    }
+
+    @Test
+    public void userSelectTasteByIdTest() throws Exception {
+        List<TasteVo> tasteVos = userMapper.userSelectTasteById(3);
+        LoggerUtil.printJSON(tasteVos);
     }
 
 

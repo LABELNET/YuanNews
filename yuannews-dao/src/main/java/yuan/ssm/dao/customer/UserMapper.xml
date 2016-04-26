@@ -41,4 +41,25 @@
           label=#{label}
     </select>
 
+
+    <insert id="userAddTasteLabel">
+        INSERT INTO taste(label, uid) VALUES (#{label},#{id})
+    </insert>
+
+
+    <select id="userSelectTasteCount" resultType="java.lang.Integer">
+        SELECT count(1) FROM taste WHERE uid=#{id}
+    </select>
+
+    <select id="userSelectTasteById" resultType="yuan.ssm.vo.TasteVo">
+        SELECT
+         *
+        FROM
+         taste
+        WHERE
+         uid=#{id}
+    </select>
+
+
+
 </mapper>

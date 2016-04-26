@@ -110,7 +110,7 @@ public interface UserMapper {
 
 
     /**
-     * 分页查询兴趣标签
+     * 分页查询兴趣标签 ,id倒序输出
      * @param state 开始
      * @param num 总数
      * @return 当前页面的兴趣标签内容
