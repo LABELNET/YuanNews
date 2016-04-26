@@ -25,4 +25,10 @@
           pass=#{pass}
     </select>
 
+    <insert id="registerUser">
+        INSERT INTO user(nick,unum,pass) VALUES (#{nick},#{unum},#{pass})
+    </insert>
+
+
+
 </mapper>

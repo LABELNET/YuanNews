@@ -58,4 +58,10 @@ public class UserMapperTest extends CustomerBaseTest{
         LoggerUtil.printJSON(userVo);
     }
 
+    @Test
+    public void registerUserTest() throws Exception {
+        Integer registerUser = userMapper.registerUser("15000000120", "123456", "小明");
+        LoggerUtil.printJSON(registerUser>0?"成功":"失败");
+    }
+
 }
