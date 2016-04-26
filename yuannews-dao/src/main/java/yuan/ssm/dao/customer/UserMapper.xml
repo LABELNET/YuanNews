@@ -5,4 +5,13 @@
 
 <mapper namespace="yuan.ssm.dao.customer.UserMapper">
 
+    <select id="CheckUserUnum" resultType="java.lang.Integer">
+        SELECT
+          id
+         FROM
+          user
+         WHERE
+          unum=#{unum}
+    </select>
+
 </mapper>

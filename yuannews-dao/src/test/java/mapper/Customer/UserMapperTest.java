@@ -1,5 +1,8 @@
 package mapper.Customer;
 
+import org.junit.Test;
+import yuan.ssm.common.util.LoggerUtil;
+
 /**
  * ==================================================
  * <p/>
@@ -20,5 +23,19 @@ package mapper.Customer;
  * <p>
  * ==================================================
  */
-public class UserMapperTest {
+public class UserMapperTest extends CustomerBaseTest{
+
+
+    @Override
+    public void setUp() {
+        super.setUp();
+
+    }
+
+    @Test
+    public void CheckUserUnumTest() throws Exception {
+        Integer integer = userMapper.CheckUserUnum("15000000020");
+        LoggerUtil.printJSON(integer);
+    }
+
 }
