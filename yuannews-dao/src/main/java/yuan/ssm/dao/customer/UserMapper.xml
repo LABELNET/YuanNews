@@ -30,5 +30,15 @@
     </insert>
 
 
+    <select id="userCheckTaste" resultType="java.lang.Integer">
+        SELECT
+          id
+        FROM
+          taste
+        WHERE
+          uid=#{id}
+        AND
+          label=#{label}
+    </select>
 
 </mapper>

@@ -64,4 +64,12 @@ public class UserMapperTest extends CustomerBaseTest{
         LoggerUtil.printJSON(registerUser>0?"成功":"失败");
     }
 
+
+    @Test
+    public void userCheckTasteTest() throws Exception {
+        Integer registerUser = userMapper.userCheckTaste("刘亦菲",1);
+        LoggerUtil.printJSON(registerUser>0?"存在":"不存在");
+    }
+
+
 }
