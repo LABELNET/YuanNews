@@ -92,5 +92,11 @@ public class UserMapperTest extends CustomerBaseTest{
         LoggerUtil.printJSON(tasteVos);
     }
 
+    @Test
+    public void selectTasteTest() throws Exception {
+        List<TasteVo> tasteVos = userMapper.selectTaste(0,10);
+        LoggerUtil.printJSON(tasteVos);
+    }
+
 
 }

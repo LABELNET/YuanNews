@@ -115,7 +115,7 @@ public interface UserMapper {
      * @param num 总数
      * @return 当前页面的兴趣标签内容
      */
-    List<TasteVo> selectTaste(@Param("state") Integer state , @Param("num") Integer num) throws Exception;
+    List<TasteVo> selectTaste(@Param("start") Integer state , @Param("num") Integer num) throws Exception;
 
 
     //---------------------------------------- 点赞操作--------------------------------------------

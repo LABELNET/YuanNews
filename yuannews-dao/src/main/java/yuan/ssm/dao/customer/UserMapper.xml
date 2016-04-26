@@ -60,6 +60,14 @@
          uid=#{id}
     </select>
 
+    <select id="selectTaste" resultType="yuan.ssm.vo.TasteVo">
+        SELECT
+         *
+         FROM
+         taste
+         ORDER BY id DESC
+         limit #{start},#{num}
+    </select>
 
 
 </mapper>
