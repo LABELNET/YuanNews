@@ -33,8 +33,8 @@ public class NewsServiceImpl implements NewsService {
      */
     public CSCustom findCateSourceIfo() throws Exception {
         CSCustom csCustom=new CSCustom();
-        csCustom.setCateVos(csCustom.getCateVos());
-        csCustom.setSourceVos(csCustom.getSourceVos());
+        csCustom.setCateVos(newsMapper.findAllCates());
+        csCustom.setSourceVos(newsMapper.findAllSources());
         return csCustom;
     }
 
