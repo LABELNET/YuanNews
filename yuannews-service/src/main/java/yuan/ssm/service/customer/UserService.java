@@ -64,7 +64,7 @@ public interface UserService {
      * @return
      * @throws Exception
      */
-    Integer userCheckTaste(String label,Integer id) throws Exception;
+    boolean userCheckTaste(String label,Integer id) throws Exception;
 
     /**
      * 添加用户标签
@@ -76,7 +76,7 @@ public interface UserService {
     Integer userAddTasteLabel(String label,Integer id) throws Exception;
 
     /**
-     * 查询用户总数
+     * 查询用户标签总数
      * @param id　用户id
      * @return
      * @throws Exception
