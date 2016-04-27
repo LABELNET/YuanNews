@@ -118,6 +118,14 @@ public interface UserMapper {
     List<TasteVo> selectTaste(@Param("start") Integer state , @Param("num") Integer num) throws Exception;
 
 
+    /**
+     * 用户删除兴趣标签
+     * @param tid
+     * @return
+     * @throws Exception
+     */
+    Integer userDeleteTaste(@Param("tid") Integer tid) throws Exception;
+
     //---------------------------------------- 点赞操作--------------------------------------------
 
     /**

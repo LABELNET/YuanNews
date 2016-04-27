@@ -81,4 +81,9 @@
         INSERT  INTO comment(uid,nid,content) VALUES (#{uid},#{nid},#{content})
     </insert>
 
+
+    <delete id="userDeleteTaste">
+        DELETE FROM taste WHERE id=#{tid}
+    </delete>
+
 </mapper>

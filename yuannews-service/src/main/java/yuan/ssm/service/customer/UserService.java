@@ -92,10 +92,14 @@ public interface UserService {
      */
     List<TasteVo> userSelectTasteById(Integer id) throws Exception;
 
+
     /**
-     * 用户取消兴趣标签
+     * 用户取消兴趣标签删除
+     * @param tid
+     * @return
+     * @throws Exception
      */
-    Integer userDeleteTasteById(Integer id,Integer tid) throws Exception;
+    Integer userDeleteTasteById(Integer tid) throws Exception;
 
 
     /**
