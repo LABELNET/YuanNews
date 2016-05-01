@@ -15,7 +15,9 @@
         n.rnum AS rnum,
         co.cnum,
         c.id AS cid,
-        c.content AS ccont
+        c.content AS ccont,
+          s.id sid,
+        s.source scont
         FROM
         source s,
         cate c,
@@ -52,7 +54,9 @@
         IFNULL(znum,0) znum,
         c.id cid,
         c.content ccont,
-        IFNULL(cnum,0) cnum
+        IFNULL(cnum,0) cnum,
+          s.id sid,
+        s.source scont
         from
         source s,
         cate c,
@@ -96,7 +100,9 @@
         n.rnum AS rnum,
         co.cnum,
         c.id AS cid,
-        c.content AS ccont
+        c.content AS ccont,
+          s.id sid,
+        s.source scont
         FROM
         source s,
         cate c,
@@ -132,7 +138,9 @@
         n.rnum AS rnum,
         co.cnum,
         c.id AS cid,
-        c.content AS ccont
+        c.content AS ccont,
+          s.id sid,
+        s.source scont
         FROM
         source s,
         cate c,
