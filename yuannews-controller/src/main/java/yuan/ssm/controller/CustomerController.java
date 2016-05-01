@@ -3,6 +3,8 @@ package yuan.ssm.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import yuan.ssm.pojo.CSCustom;
+import yuan.ssm.service.customer.NewsService;
 
 /**
  * Created by yuan on 16-4-4.
@@ -20,18 +22,20 @@ public class CustomerController {
     //每页数量
     private final int PAGE_NUM=15;
 
+    private NewsService newsService;
+
 
 
     @RequestMapping("/pageIndex")
-    public ModelAndView pageIndex(){
+    public ModelAndView pageIndex(Integer start,Integer num,Integer p,) throws Exception {
 
         ModelAndView andView = new ModelAndView();
         //页面
         andView.setViewName(INDEX_PAGE);
         //list数据
+        CSCustom sourceIfo = newsService.findCateSourceIfo();
         //总数
         //分类/来源数据
-        
         return andView;
     }
 
