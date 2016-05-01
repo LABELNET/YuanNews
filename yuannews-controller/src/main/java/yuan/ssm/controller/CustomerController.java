@@ -37,6 +37,9 @@ public class CustomerController {
     //用户详情页面
     private final String USER_DETAIL="html/login/detail";
 
+    //用户注册页面
+    private final String USER_REGISTER="html/login/register";
+
     //每页数量
     private final int PAGE_NUM=15;
     //ID
@@ -162,6 +165,20 @@ public class CustomerController {
     @RequestMapping("login/userDetail")
     public String userDetail(){
         return USER_DETAIL;
+    }
+
+    /**
+     * 用户注册页面
+     * @return
+     */
+    @RequestMapping("login/userRegesterPage")
+    public String userRegesterPage(){
+        return USER_REGISTER;
+    }
+
+    @RequestMapping("login/userRegester")
+    public String userRegester(@ModelAttribute UserVo userVo){
+       userService.userRegister()
     }
 
 

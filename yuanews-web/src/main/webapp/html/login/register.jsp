@@ -1,12 +1,11 @@
-<%@ page import="yuan.ssm.vo.UserVo" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: yuan
-  Date: 16-5-1
-  Time: 下午8:20
+  Date: 16-5-2
+  Time: 上午12:30
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% UserVo userVo= (UserVo) session.getAttribute("user"); %>
 <%  String projectPath=request.getContextPath(); %>
 <!DOCTYPE html>
 <html>
@@ -38,7 +37,7 @@
     <div class="close"> </div>
     <div class="head-info">
         <span style="font-size: 20px;float: left;margin: 15px">
-            <a style="text-decoration:none;color: #0c9c6e;" href="javascript:void(0)" onclick="registerUser()">注册</a>
+            <a style="text-decoration:none;color: #0c9c6e;" href="javascript:void(0)" onclick="loginUser()">登陆</a>
         </span>
         <label class="lbl-1"> </label>
         <label class="lbl-2"> </label>
@@ -52,20 +51,23 @@
         <img src="images/avtar.png" />
     </div>
     <form onsubmit="return false">
-        <input type="text" class="text"  id="unum" value="username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}" >
+        <input type="text" class="text"  id="unum" value="电话" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '账户';}" >
         <div class="key">
-            <input type="password" id="pass" value="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+            <input type="password" id="pass" value="密码" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '密码';}">
+            <input type="password" id="passtwo" value="确认密码" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '确认密码';}">
         </div>
+        <input type="text" class="text"  id="nick" value="昵称" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '昵称';}" >
+
     </form>
     <div class="signin">
-        <input type="submit" value="登陆" onclick="userlogin()">
+        <input type="submit" value="注册" onclick="userRegister()">
     </div>
 </div>
 
 <script type="text/javascript">
 
-    var loginUrl="<%=projectPath%>/html/login/userLogin.action";
-    var registerPageUrl="<%=projectPath%>/html/login/userRegesterPage.action";
+    <%--var loginUrl="<%=projectPath%>/html/login/userLogin.action";--%>
+    <%--var registerPageUrl="<%=projectPath%>/html/login/userRegister.action";--%>
 
     window.onload=function() {
         $('body').show();
@@ -76,8 +78,8 @@
     function doneIt() {
         NProgress.done();
     }
-    
-    function userlogin() {
+
+    function userRegister() {
         NProgress.start();
         var unum=$("#unum").val()+"";
         if(unum.length!=11){
@@ -86,9 +88,23 @@
             return;
         }
         var pass=$("#pass").val();
+        var passtwo=$("#passtwo").val();
+        if(pass!=passtwo){
+            $("#show").text("密码两次不一样！");
+            doneIt();
+            return;
+        }
+
+        var nick=$("#nick").val();
+        if(unum.trim().length==0){
+            $("#show").text("请输入昵称！");
+            doneIt();
+            return;
+        }
         var arr={
             unum:unum,
-            pass:pass
+            pass:pass,
+            nick:nick
         };
         console.log(arr);
         dataRequest(loginUrl,arr,0);
@@ -121,12 +137,12 @@
             }
         });
     }
-    
-    function registerUser() {
+
+    function loginUser() {
         $.DialogBySHF.Dialog({
             Width: 1024,
             Height: 500,
-            Title: "注册",
+            Title: "登陆",
             URL: registerPageUrl
         });
     }
@@ -134,4 +150,3 @@
 </script>
 </body>
 </html>
-
