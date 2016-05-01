@@ -138,7 +138,10 @@
                         });
                     }else if(data==-1){
                         $("#show").text("账户已存在");
-                    }else {
+                    }else if(data==-2){
+                        $("#show").text("系统错误");
+                    }
+                    else {
                         $("#show").text("注册失败，请重试！");
                     }
                 }else {

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import yuan.ssm.common.util.LoggerUtil;
 import yuan.ssm.other.PageVo;
 import yuan.ssm.pojo.CSCustom;
 import yuan.ssm.pojo.NewsCustom;
@@ -178,6 +179,7 @@ public class CustomerController {
 
     @RequestMapping("login/userRegister")
     public @ResponseBody Integer userRegister(@ModelAttribute UserVo userVo) throws Exception {
+        LoggerUtil.print(userVo);
       return userService.userRegister(userVo.getUnum(),userVo.getPass(),userVo.getNick());
     }
 

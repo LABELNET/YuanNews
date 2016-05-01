@@ -24,7 +24,12 @@ public class UserServiceImpl implements UserService {
 
     //检查账户是否存在
     public boolean isCheckUnum(String unum) throws Exception {
-        return userMapper.CheckUserUnum(unum)>0;
+        Integer integer = userMapper.CheckUserUnum(unum);
+        if(integer==null){
+            return true;
+        }else {
+           return integer>0;
+        }
     }
 
     //用户登陆
@@ -37,6 +42,9 @@ public class UserServiceImpl implements UserService {
 
     //注册
     public Integer userRegister(String unum, String pass, String nick) throws Exception {
+        if(unum==null){
+            return -2;
+        }
         if(isCheckUnum(unum)){
             String  head="/image/head/moren.jpg";
             try {
