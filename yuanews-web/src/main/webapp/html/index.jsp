@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions"  prefix="fn"%>
 <% UserVo userVo= (UserVo) session.getAttribute("user"); %>
 <%  String projectPath=request.getContextPath(); %>
 
@@ -14,7 +15,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
-    <title><c:out value="${title}"/></title>
+    <title>新闻推荐-<c:out value="${title}"/></title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -85,7 +86,7 @@
             </div>
         </div>
         <div class="vivo-nav cl">
-            <a style="float:left;margin-left:12%;" href="/"><img style="width:120px;margin:5px;" src="images/logo.png"></a>
+            <a style="float:left;margin-left:12%;" href="<%=projectPath%>/html/pageIndex.action?p=1&type=2&nType=6"><img style="width:120px;margin:5px;" src="images/logo.png"></a>
             <div class="search-user">
                 <a href="#" class="search"><b></b></a>
                 <a href="javascript:void(0)" class="user" onclick="btnDialog()"><b></b></a>
@@ -100,9 +101,11 @@
 <div class="r_box f_r">
     <div class="nav">
         <ul>
-            <a href="<%=projectPath%>/html/pageIndex.action?p=1&type=2&nType=6">
-                推荐首页
-            </a>
+            <li>
+                <a href="<%=projectPath%>/html/pageIndex.action?p=1&type=2&nType=6">
+                    新闻推荐首页
+                </a>
+            </li>
             <c:if test="${!empty sourceIfo.cateVos}">
                 <c:forEach var="cate" items="${sourceIfo.cateVos}">
                     <li>
@@ -122,9 +125,11 @@
                     </li>
                 </c:forEach>
             </c:if>
-            <a href="<%=projectPath%>/html/pageIndex.action?p=1&type=2&nType=6">
-                标签页面
-            </a>
+            <li>
+                <a href="<%=projectPath%>/html/pageIndex.action?p=1&type=2&nType=6">
+                    关注标签
+                </a>
+            </li>
         </ul>
     </div>
 </div>
@@ -136,9 +141,9 @@
         <div class="topnews">
             <h2>
                 <span>
-                    <a href="<%=projectPath%>/html/pageIndex.action?p=1&title=${title}&type=4&nType=${ntype}" target="_blank">点赞</a> |
-                    <a href="<%=projectPath%>/html/pageIndex.action?p=1&title=${title}&type=3&nType=${ntype}" target="_blank">热度</a> |
-                    <a href="<%=projectPath%>/html/pageIndex.action?p=1&title=${title}&type=5&nType=${ntype}" target="_blank">评论</a>
+                    <a href="<%=projectPath%>/html/pageIndex.action?p=1&title=${title}&type=4&nType=${ntype}">点赞</a> |
+                    <a href="<%=projectPath%>/html/pageIndex.action?p=1&title=${title}&type=3&nType=${ntype}">热度</a> |
+                    <a href="<%=projectPath%>/html/pageIndex.action?p=1&title=${title}&type=5&nType=${ntype}">评论</a>
                 </span><b>新闻推荐网页版</b></h2>
 
            <c:if test="${empty customs}" >
@@ -152,7 +157,10 @@
                        <figure><img src="${custom.img}"></figure>
                        <ul>
                            <h3><a href="detail.html">${custom.title}</a></h3>
-                           <p>ͨ${custom.content}</p>
+                           <p>ͨ
+
+                             ${fn:substring(custom.content,0,90)}...
+
                            <p class="autor">
                                <span class="lm f_l">
                                     <a href="<%=projectPath%>/html/pageIndex.action?p=1&title=${custom.ccont}&type=2&nType=7">
@@ -168,7 +176,7 @@
                                <span class="dtime f_l">${custom.dt}</span>
                                <span class="viewnum f_r">阅读(${custom.rnum})</span>
                                <span class="pingl f_r">评论(${custom.cnum==null?0:custom.cnum})</span>
-                               <c:if test="${type==3}">
+                               <c:if test="${type==4}">
                                    <span>赞(${custom.znum==null?0:custom.znum})</span>
                                </c:if>
                            </p>
@@ -182,13 +190,15 @@
         </div>
         <div class="r_box f_r">
             <!--tit01 end-->
+            <c:if test="${!empty customs}">
+                <div id="paginationpage" style="float: right"></div>
+            </c:if>
             <!--r_box end -->
-
+        </div>
+    </div>
 </article>
 
-<c:if test="${!empty customs}">
-<div id="paginationpage" style="float: right"></div>
-</c:if>
+
 
 <footer>
     <p class="ft-copyright">copyright yuan.update 2016.04.19</p>

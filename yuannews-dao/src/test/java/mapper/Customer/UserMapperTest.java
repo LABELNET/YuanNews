@@ -63,7 +63,7 @@ public class UserMapperTest extends CustomerBaseTest{
 
     @Test
     public void registerUserTest() throws Exception {
-        Integer registerUser = userMapper.registerUser("15000000120", "123456", "小明");
+        Integer registerUser = userMapper.registerUser("15000000120", "123456", "小明","/image/head/moren.jpg");
         LoggerUtil.printJSON(registerUser>0?"成功":"失败");
     }
 
