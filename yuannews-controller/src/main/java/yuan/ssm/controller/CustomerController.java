@@ -34,6 +34,9 @@ public class CustomerController {
     //登陆页面
     private final String LOGIN_PAGE="html/login/login";
 
+    //用户详情页面
+    private final String USER_DETAIL="html/login/detail";
+
     //每页数量
     private final int PAGE_NUM=15;
     //ID
@@ -150,6 +153,15 @@ public class CustomerController {
     public @ResponseBody Integer userLoignout(HttpSession session){
         session.invalidate();
         return 0;
+    }
+
+    /**
+     * 用户详情页面
+     * @return
+     */
+    @RequestMapping("login/userDetail")
+    public String userDetail(){
+        return USER_DETAIL;
     }
 
 

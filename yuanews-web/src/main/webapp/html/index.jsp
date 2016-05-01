@@ -218,8 +218,25 @@
 <!--菜单点击效果-->
 <script type="text/javascript" src="js/nalbase.js"></script>
 <script type="text/javascript">
+
+    var loginUrl="<%=projectPath%>/html/login/userLoginPage.action";
+    var userDetalUrl="<%=projectPath%>/html/login/userDetail.action";
+
     function btnDialog(type) {
-        $.DialogBySHF.Dialog({ Width: 1024, Height: 500, Title: "LABELNET", URL: "<%=projectPath%>/html/login/userLoginPage.action" });
+        if(type==0) {
+            showDialog(loginUrl,"用户登陆");
+        }else{
+            showDialog(userDetalUrl,"用户详情");
+        }
+    }
+    
+    function showDialog(url,title) {
+        $.DialogBySHF.Dialog({
+            Width: 1024,
+            Height: 500,
+            Title: title,
+            URL: url
+        });
     }
 
     window.onload=function() {
