@@ -25,9 +25,17 @@ public class PageVo {
     private Integer start; //开始
     private Integer num; //数量
     private Integer p; //分页
-    private Integer type; //类型
+    private Integer type; //操作类型
     private String title; //title
+    private Integer nType; //新闻类型，normal,cata,source
 
+    public Integer getnType() {
+        return nType;
+    }
+
+    public void setnType(Integer nType) {
+        this.nType = nType;
+    }
 
     public Integer getStart() {
         return start;
