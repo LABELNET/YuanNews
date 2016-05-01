@@ -97,7 +97,7 @@
                 <%
                     }else{
                 %>
-                   <img src="<%=userVo.getHead()%>" style="width: 42px;height: 42px;round-clip: 21px;" onclick="btnDialog(1)"/>
+                   <img src="<%=userVo.getHead()%>" class="user" style="width: 42px;height: 42px;round-clip: 21px;" onclick="btnDialog(1)"/>
                 <%
                     }
                 %>

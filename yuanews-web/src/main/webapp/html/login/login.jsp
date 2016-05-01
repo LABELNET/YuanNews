@@ -42,21 +42,27 @@
         <label class="lbl-3"> </label>
     </div>
     <div class="clear"> </div>
+    <div>
+        <span id="tishi" style="color: white;"></span>
+    </div>
     <div class="avtar">
         <img src="images/avtar.png" />
     </div>
-    <form>
-        <input type="text" class="text" value="Username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}" >
+    <form onsubmit="return false">
+        <input type="text" class="text"  id="unum" value="username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}" >
         <div class="key">
-            <input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+            <input type="password" id="pass" value="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
         </div>
     </form>
     <div class="signin">
-        <input type="submit" value="登陆" >
+        <input type="submit" value="登陆" onclick="userlogin()">
     </div>
 </div>
 
 <script type="text/javascript">
+
+    var loginUrl="<%=projectPath%>/html/login/userLogin.action";
+
     window.onload=function() {
         $('body').show();
         NProgress.start();
@@ -66,6 +72,51 @@
     function doneIt() {
         NProgress.done();
     }
+    
+    function userlogin() {
+        NProgress.start();
+        var unum=$("#unum").val()+"";
+        if(unum.length!=11){
+            $("tishi").val("电话长度不对哦！");
+            doneIt();
+            return;
+        }
+        var pass=$("#pass").val();
+        var arr={
+            unum:unum,
+            pass:pass
+        };
+        console.log(arr);
+        dataRequest(loginUrl,arr,0);
+    }
+
+    //网络请求方法提取
+    function dataRequest(typeurl,arr,type) {
+
+        $.ajax({
+            url:typeurl,
+            data:arr,
+            type:'post',
+            cache:true,
+            dataType:'json',
+            success:function (data,status) {
+                doneIt();
+                if(status=="success"){
+                    if(data==1){
+                        $("tishi").val("");
+                        $('.login-form').fadeOut('slow', function(c){
+                            $('.login-form').remove();
+                        });
+                    }else{
+                        $("tishi").val("登陆失败！");
+                    }
+                }else {
+                    window.location.reload()
+                }
+            }
+        });
+    }
+
 </script>
 </body>
 </html>

@@ -4,12 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import yuan.ssm.other.PageVo;
 import yuan.ssm.pojo.CSCustom;
 import yuan.ssm.pojo.NewsCustom;
 import yuan.ssm.service.customer.NewsService;
+import yuan.ssm.service.customer.UserService;
+import yuan.ssm.vo.UserVo;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,6 +49,9 @@ public class CustomerController {
 
     @Autowired
     private NewsService newsService;
+
+    @Autowired
+    private UserService userService;
 
 
     /**
@@ -91,6 +99,7 @@ public class CustomerController {
             case commentType:
                 customByComment.addAll(newsService.getCommentNews(pageVo));
                 break;
+
         }
         andView.addObject("customs",customByComment);
         //总数
@@ -113,6 +122,24 @@ public class CustomerController {
         return LOGIN_PAGE;
     }
 
+    /**
+     * 用户登陆
+     * @param session
+     * @param unum
+     * @param pass
+     * @return 登陆成功 1 ，失败-1
+     * @throws Exception
+     */
+    @RequestMapping("login/userLogin")
+    public @ResponseBody Integer userLogin(HttpSession session, @RequestParam String unum,@RequestParam String pass) throws Exception {
+        UserVo vo = userService.userLogin(unum, pass);
+        if(vo!=null) {
+            session.setAttribute("user", vo);
+            return 1;
+        }else{
+            return -1;
+        }
+    }
 
 
 
