@@ -176,8 +176,8 @@ public class CustomerController {
         return USER_REGISTER;
     }
 
-    @RequestMapping("login/userRegester")
-    public @ResponseBody Integer userRegester(@ModelAttribute UserVo userVo) throws Exception {
+    @RequestMapping("login/userRegister")
+    public @ResponseBody Integer userRegister(@ModelAttribute UserVo userVo) throws Exception {
       return userService.userRegister(userVo.getUnum(),userVo.getPass(),userVo.getNick());
     }
 

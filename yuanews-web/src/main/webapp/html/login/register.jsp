@@ -79,13 +79,28 @@
 
     function userRegister() {
         NProgress.start();
+
+        var nick=$("#nick").val();
+        if(nick.trim().length==0){
+            $("#show").text("请输入昵称！");
+            doneIt();
+            return;
+        }
+
         var unum=$("#unum").val()+"";
         if(unum.length!=11){
             $("#show").text("电话长度不对哦！");
             doneIt();
             return;
         }
-        var pass=$("#pass").val();
+        var pass=$("#pass").val()+"";
+
+        if(pass.length==0){
+            $("#show").text("请输入密码！");
+            doneIt();
+            return;
+        }
+
         var passtwo=$("#passtwo").val();
         if(pass!=passtwo){
             $("#show").text("密码两次不一样！");
@@ -93,12 +108,7 @@
             return;
         }
 
-        var nick=$("#nick").val();
-        if(unum.trim().length==0){
-            $("#show").text("请输入昵称！");
-            doneIt();
-            return;
-        }
+
         var arr={
             unum:unum,
             pass:pass,
