@@ -26,7 +26,7 @@
     </select>
 
     <insert id="registerUser">
-        INSERT INTO user(nick,unum,pass) VALUES (#{nick},#{unum},#{pass})
+        INSERT INTO user(nick,unum,pass,head) VALUES (#{nick},#{unum},#{pass},#{head})
     </insert>
 
 

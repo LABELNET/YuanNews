@@ -57,7 +57,7 @@ public interface UserMapper {
      * @return 修改行数
      * @throws Exception
      */
-    Integer registerUser(@Param("unum") String unum,@Param("pass") String pass,@Param("nick") String nick) throws Exception;
+    Integer registerUser(@Param("unum") String unum,@Param("pass") String pass,@Param("nick") String nick,@Param("head") String head) throws Exception;
 
 
     //----------------------------------------兴趣标签操作--------------------------------
