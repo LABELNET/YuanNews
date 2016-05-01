@@ -1,7 +1,11 @@
 package yuan.ssm.service.customer;
 
+import yuan.ssm.other.PageJo;
+import yuan.ssm.other.PageVo;
 import yuan.ssm.pojo.NewsCustom;
 import yuan.ssm.service.base.ServiceBase;
+
+import java.util.List;
 
 /**
  * Created by yuan on 16-4-4.
@@ -14,5 +18,44 @@ public interface NewsService extends ServiceBase<NewsCustom> {
      * 1.搜索
      * 2.详情页
      */
+
+    /**
+     * 普通点赞
+     * @param pageVo
+     * @return
+     * @throws Exception
+     */
+    List<NewsCustom> getIdNews(PageVo pageVo) throws Exception;
+
+    /**
+     * 阅读
+     * @param pageVo
+     * @return
+     * @throws Exception
+     */
+    List<NewsCustom> getRnumNews(PageVo pageVo) throws Exception;
+
+    /**
+     * 评论
+     * @param pageVo
+     * @return
+     * @throws Exception
+     */
+    List<NewsCustom> getCommentNews(PageVo pageVo) throws Exception;
+
+    /**
+     * 点赞
+     * @param pageVo
+     * @return
+     * @throws Exception
+     */
+    List<NewsCustom> getZanNews(PageVo pageVo) throws Exception;
+
+    /**
+     * 总数
+     * @return
+     * @throws Exception
+     */
+    PageJo getNewsCount() throws Exception;
 
 }

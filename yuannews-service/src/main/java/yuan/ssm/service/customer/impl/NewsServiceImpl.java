@@ -5,6 +5,9 @@ import yuan.ssm.common.newsenum.ServiceEnum;
 import yuan.ssm.dao.customer.CateNewsMapper;
 import yuan.ssm.dao.customer.NewsMapper;
 import yuan.ssm.dao.customer.SourceNewsMapper;
+import yuan.ssm.dao.manager.ManagerCountMapper;
+import yuan.ssm.other.PageJo;
+import yuan.ssm.other.PageVo;
 import yuan.ssm.pojo.CSCustom;
 import yuan.ssm.pojo.NewsCustom;
 import yuan.ssm.service.customer.NewsService;
@@ -25,6 +28,14 @@ public class NewsServiceImpl implements NewsService {
 
     @Autowired
     private SourceNewsMapper sourceNewsMapper;
+
+    @Autowired
+    private ManagerCountMapper countMapper;
+
+
+    private final int newsNormalType=6; //正常类型
+    private final int newsCateType=7; //分类类型
+    private final int newsSourceType=8; //来源类型
 
     /**
      * 查询分类和来源信息
@@ -130,5 +141,103 @@ public class NewsServiceImpl implements NewsService {
         }
 
 
+    }
+
+    /**
+     * 普通查询
+     * @param pageVo
+     * @return
+     * @throws Exception
+     */
+    public List<NewsCustom> getIdNews(PageVo pageVo) throws Exception {
+
+        switch (pageVo.getnType()){
+            case newsNormalType:
+               return findId(pageVo,ServiceEnum.normal);
+            case newsCateType:
+                return findId(pageVo,ServiceEnum.cate);
+            case newsSourceType:
+                return findId(pageVo,ServiceEnum.source);
+            default:
+                return null;
+        }
+    }
+
+    private List<NewsCustom> findId(PageVo pageVo,ServiceEnum serviceEnum) throws Exception {
+       return findCustomById(pageVo.getStart(),pageVo.getNum(),pageVo.getTitle(),serviceEnum);
+    }
+
+    /**
+     * 阅读量查询
+     * @param pageVo
+     * @return
+     * @throws Exception
+     */
+    public List<NewsCustom> getRnumNews(PageVo pageVo) throws Exception {
+        switch (pageVo.getnType()){
+            case newsNormalType:
+                return  findRnum(pageVo,ServiceEnum.normal);
+            case newsCateType:
+                return  findRnum(pageVo,ServiceEnum.cate);
+            case newsSourceType:
+                return findRnum(pageVo,ServiceEnum.source);
+            default:
+                return null;
+        }
+    }
+
+    private List<NewsCustom> findRnum(PageVo pageVo, ServiceEnum cate) throws Exception {
+       return findCustomByRnum(pageVo.getStart(),pageVo.getNum(),pageVo.getTitle(),cate);
+    }
+
+
+    /**
+     * 评论数查询
+     * @param pageVo
+     * @return
+     * @throws Exception
+     */
+    public List<NewsCustom> getCommentNews(PageVo pageVo) throws Exception {
+        switch (pageVo.getnType()){
+            case newsNormalType:
+               return findComment(pageVo,ServiceEnum.normal);
+            case newsCateType:
+               return findComment(pageVo,ServiceEnum.cate);
+            case newsSourceType:
+               return findComment(pageVo,ServiceEnum.source);
+            default:
+                return null;
+        }
+    }
+
+    private List<NewsCustom> findComment(PageVo pageVo, ServiceEnum normal) throws Exception {
+        return findCustomByComment(pageVo.getStart(),pageVo.getNum(),pageVo.getTitle(),normal);
+    }
+
+    /**
+     * 点赞数
+     * @param pageVo
+     * @return
+     * @throws Exception
+     */
+    public List<NewsCustom> getZanNews(PageVo pageVo) throws Exception {
+        switch (pageVo.getnType()){
+            case newsNormalType:
+                return findZan(pageVo,ServiceEnum.normal);
+            case newsCateType:
+                return findZan(pageVo,ServiceEnum.cate);
+            case newsSourceType:
+                return findZan(pageVo,ServiceEnum.source);
+            default:
+                return null;
+        }
+    }
+
+    private List<NewsCustom> findZan(PageVo pageVo, ServiceEnum source) throws Exception {
+        return findCustomByZan(pageVo.getStart(),pageVo.getNum(),pageVo.getTitle(),source);
+    }
+
+    public PageJo getNewsCount() throws Exception {
+        return countMapper.findCount(2);
     }
 }

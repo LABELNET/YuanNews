@@ -37,72 +37,51 @@ public class CustomerController {
     //评论
     private final int commentType=5;
 
-    private final int newsNormalType=6; //正常类型
-    private final int newsCateType=7; //分类类型
-    private final int newsSourceType=8; //来源类型
 
 
     @Autowired
     private NewsService newsService;
 
 
-
     @RequestMapping("/pageIndex")
     public ModelAndView pageIndex(@ModelAttribute PageVo pageVo) throws Exception {
+
+        if(pageVo.getP()<0){
+            pageVo.setP(1);
+        }
+        int p=pageVo.getP();
+        pageVo.setStart((p-1)*PAGE_NUM);//开始页面
+        pageVo.setNum(PAGE_NUM);//每页总数
+
         ModelAndView andView = new ModelAndView();
+        //当前页面
+        andView.addObject("currectIndex",p); //当前页面
         //页面
-        andView.setViewName(INDEX_PAGE);
+        andView.setViewName(INDEX_PAGE);//页面对象
         List<NewsCustom> customByComment =new ArrayList<NewsCustom>();
         //list数据
         switch (pageVo.getType()){
             case idType:
-                customByComment.addAll(getIDNews(pageVo.getnType()));
+                customByComment.addAll(newsService.getIdNews(pageVo));
                 break;
             case rnumType:
+                customByComment.addAll(newsService.getRnumNews(pageVo));
                 break;
             case zanType:
+                customByComment.addAll(newsService.getZanNews(pageVo));
                 break;
             case commentType:
+                customByComment.addAll(newsService.getCommentNews(pageVo));
                 break;
         }
-
+        andView.addObject("customs",customByComment);
         //总数
-
+        andView.addObject("count",newsService.getNewsCount());
         //分类/来源数据
         CSCustom sourceIfo = newsService.findCateSourceIfo();
         andView.addObject("sourceIfo",sourceIfo);
         return andView;
     }
-
-
-    /**
-     * 正常类型数据查询
-     * @param nType
-     * @return
-     */
-    private List<NewsCustom> getIDNews(int nType) {
-        List<NewsCustom> customByComment =new ArrayList<NewsCustom>();
-        switch (nType){
-            case newsNormalType:
-                break;
-            case newsCateType:
-                break;
-            case newsSourceType:
-                break;
-        }
-       return customByComment;
-    }
-
-
-    public ModelAndView cateIndex(){
-      return null;
-    }
-
-    public ModelAndView sourceIndex(){
-        return  null;
-    }
-
-
 
 
 }
