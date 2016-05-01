@@ -97,7 +97,7 @@
                 <%
                     }else{
                 %>
-                   <img src="<%=%>userVo.getHead()%>" style="width: 42px;height: 42px;round-clip: 21px;" onclick="btnDialog(1)"/>
+                   <img src="<%=userVo.getHead()%>" style="width: 42px;height: 42px;round-clip: 21px;" onclick="btnDialog(1)"/>
                 <%
                     }
                 %>
@@ -219,7 +219,7 @@
 <script type="text/javascript" src="js/nalbase.js"></script>
 <script type="text/javascript">
     function btnDialog(type) {
-        $.DialogBySHF.Dialog({ Width: 1024, Height: 500, Title: "LABELNET", URL: 'login/index.html' });
+        $.DialogBySHF.Dialog({ Width: 1024, Height: 500, Title: "LABELNET", URL: "<%=projectPath%>/html/login/userLoginPage.action" });
     }
 
     window.onload=function() {

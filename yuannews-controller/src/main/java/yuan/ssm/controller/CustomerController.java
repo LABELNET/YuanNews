@@ -26,6 +26,9 @@ public class CustomerController {
     //主页
     private final String INDEX_PAGE="html/index";
 
+    //登陆页面
+    private final String LOGIN_PAGE="html/login/login";
+
     //每页数量
     private final int PAGE_NUM=15;
     //ID
@@ -100,6 +103,17 @@ public class CustomerController {
         andView.addObject("type",pageVo.getType());
         return andView;
     }
+
+    /**
+     * 用户登陆页面
+     * @return
+     */
+    @RequestMapping("login/userLoginPage")
+    public String userLoginPage(){
+        return LOGIN_PAGE;
+    }
+
+
 
 
 }
