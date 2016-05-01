@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
             }catch (Exception e){
                 head="/image/head/moren.jpg";
             }
-           return userMapper.registerUser(unum,pass,nick);
+           return userMapper.registerUser(unum,pass,nick,head);
         }
         return -1;
     }
