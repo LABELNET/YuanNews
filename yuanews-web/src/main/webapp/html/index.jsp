@@ -89,7 +89,18 @@
             <a style="float:left;margin-left:12%;" href="<%=projectPath%>/html/pageIndex.action?p=1&type=2&nType=6"><img style="width:120px;margin:5px;" src="images/logo.png"></a>
             <div class="search-user">
                 <a href="#" class="search"><b></b></a>
-                <a href="javascript:void(0)" class="user" onclick="btnDialog()"><b></b></a>
+                <%
+                  if(userVo==null){
+
+                %>
+                <a href="javascript:void(0)" class="user" onclick="btnDialog(0)"><b></b></a>
+                <%
+                    }else{
+                %>
+                   <img src="<%=%>userVo.getHead()%>" style="width: 42px;height: 42px;round-clip: 21px;" onclick="btnDialog(1)"/>
+                <%
+                    }
+                %>
             </div>
         </div>
     </div>
@@ -207,7 +218,7 @@
 <!--菜单点击效果-->
 <script type="text/javascript" src="js/nalbase.js"></script>
 <script type="text/javascript">
-    function btnDialog() {
+    function btnDialog(type) {
         $.DialogBySHF.Dialog({ Width: 1024, Height: 500, Title: "LABELNET", URL: 'login/index.html' });
     }
 
