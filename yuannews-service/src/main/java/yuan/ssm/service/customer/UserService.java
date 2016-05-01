@@ -54,7 +54,7 @@ public interface UserService {
      * @return 影响行数
      * @throws Exception
      */
-    Integer userRegister(String unum,String pass,String nick,String head) throws Exception;
+    Integer userRegister(String unum,String pass,String nick) throws Exception;
 
 
     /**

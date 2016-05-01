@@ -36,15 +36,15 @@ public class UserServiceImpl implements UserService {
     }
 
     //注册
-    public Integer userRegister(String unum, String pass, String nick,String head) throws Exception {
+    public Integer userRegister(String unum, String pass, String nick) throws Exception {
         if(isCheckUnum(unum)){
+            String  head="/image/head/moren.jpg";
             try {
                 String imgName = DateUtil.getDateFileName()+ UUID.randomUUID() +".png";
                 String font= StringUtil.getCharString(nick);
                 FontImageUtil.createImage(font,imgName);
                 head="/image/head/"+imgName;
             }catch (Exception e){
-                head="/image/head/moren.jpg";
             }
            return userMapper.registerUser(unum,pass,nick,head);
         }
