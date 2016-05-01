@@ -1,12 +1,16 @@
 package yuan.ssm.service.customer.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import yuan.ssm.common.util.DateUtil;
+import yuan.ssm.common.util.FontImageUtil;
+import yuan.ssm.common.util.StringUtil;
 import yuan.ssm.dao.customer.UserMapper;
 import yuan.ssm.service.customer.UserService;
 import yuan.ssm.vo.TasteVo;
 import yuan.ssm.vo.UserVo;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by yuan on 16-4-4.
@@ -32,8 +36,16 @@ public class UserServiceImpl implements UserService {
     }
 
     //注册
-    public Integer userRegister(String unum, String pass, String nick) throws Exception {
+    public Integer userRegister(String unum, String pass, String nick,String head) throws Exception {
         if(isCheckUnum(unum)){
+            try {
+                String imgName = DateUtil.getDateFileName()+ UUID.randomUUID() +".png";
+                String font= StringUtil.getCharString(nick);
+                FontImageUtil.createImage(font,imgName);
+                head="/image/head/"+imgName;
+            }catch (Exception e){
+                head="/image/head/moren.jpg";
+            }
            return userMapper.registerUser(unum,pass,nick);
         }
         return -1;
