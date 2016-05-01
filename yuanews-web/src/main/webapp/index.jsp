@@ -17,6 +17,9 @@
     <t1>当前工程： <%=projectPath%></t1> <br/>
     <a href="<%=projectPath %>/manager/managerIndex.action"> 后台管理 </a>
 
+     <hr>
+    <a href="<%=projectPath%>/html/pageIndex.action?p=1&type=2&nType=6">主页</a>
+
 
 </body>
 </html>

@@ -1,4 +1,4 @@
-<%--
+<%@ page import="yuan.ssm.vo.UserVo" %><%--
   Created by IntelliJ IDEA.
   User: yuan
   Date: 16-5-1
@@ -6,13 +6,15 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<% UserVo userVo= (UserVo) session.getAttribute("user"); %>
 <%  String projectPath=request.getContextPath(); %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
-    <title>新闻推荐</title>
+    <title><c:out value="${title}"/></title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -38,6 +40,28 @@
     <script type="text/javascript" src="js/vivo-common.js"></script>
     <script type="text/javascript" src="js/prefixfree.min.js"></script>
     <script type="text/javascript" src="js/DialogBySHF.js"></script>
+
+    <!-- 分页插件－simplePagination -->
+    <link  rel="stylesheet" type="text/css" href="css/simplePagination.css" />
+    <script src="js/simplePagination.js"></script>
+
+    <script type="text/javascript">
+        //分页实现：　itemsOnPage 当前页面的item总数
+        $(function() {
+            $("#paginationpage").pagination({
+                items: ${count},
+                itemsOnPage: 10,
+                page:10,
+                hrefTextPrefix:"?p=",
+                cssStyle: 'light-theme',
+                prevText:"上一页",
+                nextText:"下一页",
+                currentPage:${currectIndex}
+
+            });
+        });
+
+    </script>
 
 
 
@@ -76,12 +100,31 @@
 <div class="r_box f_r">
     <div class="nav">
         <ul>
-            <li><a>网站首页</a></li>
-            <li><a>关于我们</a></li>
-            <li><a>产品中心</a></li>
-            <li><a>成功案例</a></li>
-            <li><a>联系我们</a></li>
-            <li><a>在线留言</a></li>
+            <a href="<%=projectPath%>/html/pageIndex.action?p=1&type=2&nType=6">
+                推荐首页
+            </a>
+            <c:if test="${!empty sourceIfo.cateVos}">
+                <c:forEach var="cate" items="${sourceIfo.cateVos}">
+                    <li>
+                        <a href="<%=projectPath%>/html/pageIndex.action?p=1&title=${cate.content}&type=2&nType=7">
+                        <c:out value="${cate.content}"/>
+                        </a>
+                    </li>
+                </c:forEach>
+            </c:if>
+
+            <c:if test="${!empty sourceIfo.sourceVos}">
+                <c:forEach var="s" items="${sourceIfo.sourceVos}">
+                    <li>
+                        <a href="<%=projectPath%>/html/pageIndex.action?p=1&title=${s.source}&type=2&nType=8">
+                            <c:out value="${s.source}"/>
+                        </a>
+                    </li>
+                </c:forEach>
+            </c:if>
+            <a href="<%=projectPath%>/html/pageIndex.action?p=1&type=2&nType=6">
+                标签页面
+            </a>
         </ul>
     </div>
 </div>
@@ -91,85 +134,51 @@
     <div class="l_box f_l">
 
         <div class="topnews">
-            <h2><span><a href="/" target="_blank">点赞</a> | <a href="/" target="_blank">热度</a> | <a href="/" target="_blank">评论</a></span><b>新闻推荐网页版</b></h2>
+            <h2>
+                <span>
+                    <a href="<%=projectPath%>/html/pageIndex.action?p=1&title=${title}&type=4&nType=${ntype}" target="_blank">点赞</a> |
+                    <a href="<%=projectPath%>/html/pageIndex.action?p=1&title=${title}&type=3&nType=${ntype}" target="_blank">热度</a> |
+                    <a href="<%=projectPath%>/html/pageIndex.action?p=1&title=${title}&type=5&nType=${ntype}" target="_blank">评论</a>
+                </span><b>新闻推荐网页版</b></h2>
 
+           <c:if test="${empty customs}" >
             <div class="blogs">
-                <figure><img src="http://photocdn.sohu.com/20160419/Img444863306.jpeg"></figure>
-                <ul>
-                    <h3><a href="detail.html">山东鲜蒜将上市蒜价回落 炒蒜的有人一单亏几十万</a></h3>
-                    <p>ͨ过去的一个多月中,大蒜再次引爆了有世界大蒜华尔街之称的金乡。但一阵喧嚣过后,还是回归目前的平静。2月底,原本平稳的大蒜价格扶摇直上,短短十几天的时间每市斤蒜价竟然创下了近20年来的最顶峰——6.5元 ...</p>
-                    <p class="autor"><span class="lm f_l"><a href="/">大蒜</a></span><span class="dtime f_l">201６-0４-19</span><span class="viewnum f_r">阅读(<a href="/">459</a>)</span><span class="pingl f_r">评论(<a href="/">30</a>)</span></p>
-                </ul>
+                没有更多数据
             </div>
+           </c:if>
+           <c:if test="${!empty customs}">
+               <c:forEach var="custom" items="${customs}">
+                   <div class="blogs">
+                       <figure><img src="${custom.img}"></figure>
+                       <ul>
+                           <h3><a href="detail.html">${custom.title}</a></h3>
+                           <p>ͨ${custom.content}</p>
+                           <p class="autor">
+                               <span class="lm f_l">
+                                    <a href="<%=projectPath%>/html/pageIndex.action?p=1&title=${custom.ccont}&type=2&nType=7">
+                                        <c:out value="${custom.ccont}"/>
+                                    </a>
+                               </span>
+                               <span class="dtime f_l">${custom.dt}</span>
+                               <span class="viewnum f_r">阅读(${custom.rnum})</span>
+                               <span class="pingl f_r">评论(${custom.cnum})</span></p>
+                       </ul>
+                   </div>
 
-            <div class="blogs">
-                <figure><img src="http://photocdn.sohu.com/20160419/Img444863306.jpeg"></figure>
-                <ul>
-                    <h3><a href="/">山东鲜蒜将上市蒜价回落 炒蒜的有人一单亏几十万</a></h3>
-                    <p>ͨ过去的一个多月中,大蒜再次引爆了有世界大蒜华尔街之称的金乡。但一阵喧嚣过后,还是回归目前的平静。2月底,原本平稳的大蒜价格扶摇直上,短短十几天的时间每市斤蒜价竟然创下了近20年来的最顶峰——6.5元 ...</p>
-                    <p class="autor"><span class="lm f_l"><a href="/">大蒜</a></span><span class="dtime f_l">201６-0４-19</span><span class="viewnum f_r">阅读(<a href="/">459</a>)</span><span class="pingl f_r">评论(<a href="/">30</a>)</span></p>
-                </ul>
-            </div>
-
-            <div class="blogs">
-                <figure><img src="http://photocdn.sohu.com/20160419/Img444863306.jpeg"></figure>
-                <ul>
-                    <h3><a href="/">山东鲜蒜将上市蒜价回落 炒蒜的有人一单亏几十万</a></h3>
-                    <p>ͨ过去的一个多月中,大蒜再次引爆了有世界大蒜华尔街之称的金乡。但一阵喧嚣过后,还是回归目前的平静。2月底,原本平稳的大蒜价格扶摇直上,短短十几天的时间每市斤蒜价竟然创下了近20年来的最顶峰——6.5元 ...</p>
-                    <p class="autor"><span class="lm f_l"><a href="/">大蒜</a></span><span class="dtime f_l">201６-0４-19</span><span class="viewnum f_r">阅读(<a href="/">459</a>)</span><span class="pingl f_r">评论(<a href="/">30</a>)</span></p>
-                </ul>
-            </div>
-
-            <div class="blogs">
-                <figure><img src="http://photocdn.sohu.com/20160419/Img444863306.jpeg"></figure>
-                <ul>
-                    <h3><a href="/">山东鲜蒜将上市蒜价回落 炒蒜的有人一单亏几十万</a></h3>
-                    <p>ͨ过去的一个多月中,大蒜再次引爆了有世界大蒜华尔街之称的金乡。但一阵喧嚣过后,还是回归目前的平静。2月底,原本平稳的大蒜价格扶摇直上,短短十几天的时间每市斤蒜价竟然创下了近20年来的最顶峰——6.5元 ...</p>
-                    <p class="autor"><span class="lm f_l"><a href="/">大蒜</a></span><span class="dtime f_l">201６-0４-19</span><span class="viewnum f_r">阅读(<a href="/">459</a>)</span><span class="pingl f_r">评论(<a href="/">30</a>)</span></p>
-                </ul>
-            </div>
-
-            <div class="blogs">
-                <figure><img src="http://photocdn.sohu.com/20160419/Img444863306.jpeg"></figure>
-                <ul>
-                    <h3><a href="/">山东鲜蒜将上市蒜价回落 炒蒜的有人一单亏几十万</a></h3>
-                    <p>ͨ过去的一个多月中,大蒜再次引爆了有世界大蒜华尔街之称的金乡。但一阵喧嚣过后,还是回归目前的平静。2月底,原本平稳的大蒜价格扶摇直上,短短十几天的时间每市斤蒜价竟然创下了近20年来的最顶峰——6.5元 ...</p>
-                    <p class="autor"><span class="lm f_l"><a href="/">大蒜</a></span><span class="dtime f_l">201６-0４-19</span><span class="viewnum f_r">阅读(<a href="/">459</a>)</span><span class="pingl f_r">评论(<a href="/">30</a>)</span></p>
-                </ul>
-            </div>
-
-            <div class="blogs">
-                <figure><img src="http://photocdn.sohu.com/20160419/Img444863306.jpeg"></figure>
-                <ul>
-                    <h3><a href="/">山东鲜蒜将上市蒜价回落 炒蒜的有人一单亏几十万</a></h3>
-                    <p>ͨ过去的一个多月中,大蒜再次引爆了有世界大蒜华尔街之称的金乡。但一阵喧嚣过后,还是回归目前的平静。2月底,原本平稳的大蒜价格扶摇直上,短短十几天的时间每市斤蒜价竟然创下了近20年来的最顶峰——6.5元 ...</p>
-                    <p class="autor"><span class="lm f_l"><a href="/">大蒜</a></span><span class="dtime f_l">201６-0４-19</span><span class="viewnum f_r">阅读(<a href="/">459</a>)</span><span class="pingl f_r">评论(<a href="/">30</a>)</span></p>
-                </ul>
-            </div>
-
-            <div class="blogs">
-                <figure><img src="http://photocdn.sohu.com/20160419/Img444863306.jpeg"></figure>
-                <ul>
-                    <h3><a href="/">山东鲜蒜将上市蒜价回落 炒蒜的有人一单亏几十万</a></h3>
-                    <p>ͨ过去的一个多月中,大蒜再次引爆了有世界大蒜华尔街之称的金乡。但一阵喧嚣过后,还是回归目前的平静。2月底,原本平稳的大蒜价格扶摇直上,短短十几天的时间每市斤蒜价竟然创下了近20年来的最顶峰——6.5元 ...</p>
-                    <p class="autor"><span class="lm f_l"><a href="/">大蒜</a></span><span class="dtime f_l">201６-0４-19</span><span class="viewnum f_r">阅读(<a href="/">459</a>)</span><span class="pingl f_r">评论(<a href="/">30</a>)</span></p>
-                </ul>
-            </div>
-
-            <div class="blogs">
-                <figure><img src="http://photocdn.sohu.com/20160419/Img444863306.jpeg"></figure>
-                <ul>
-                    <h3><a href="/">山东鲜蒜将上市蒜价回落 炒蒜的有人一单亏几十万</a></h3>
-                    <p>ͨ过去的一个多月中,大蒜再次引爆了有世界大蒜华尔街之称的金乡。但一阵喧嚣过后,还是回归目前的平静。2月底,原本平稳的大蒜价格扶摇直上,短短十几天的时间每市斤蒜价竟然创下了近20年来的最顶峰——6.5元 ...</p>
-                    <p class="autor"><span class="lm f_l"><a href="/">大蒜</a></span><span class="dtime f_l">201６-0４-19</span><span class="viewnum f_r">阅读(<a href="/">459</a>)</span><span class="pingl f_r">评论(<a href="/">30</a>)</span></p>
-                </ul>
-            </div>
+               </c:forEach>
+           </c:if>
 
         </div>
         <div class="r_box f_r">
             <!--tit01 end-->
             <!--r_box end -->
+
 </article>
+
+<c:if test="${!empty customs}">
+<div id="paginationpage" style="float: right"></div>
+</c:if>
+
 <footer>
     <p class="ft-copyright">copyright yuan.update 2016.04.19</p>
     <div id="tbox"> <a id="togbook" href="/"></a> <a id="gotop" href="javascript:void(0)"></a> </div>

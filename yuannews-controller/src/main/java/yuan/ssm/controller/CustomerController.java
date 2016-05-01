@@ -20,11 +20,11 @@ import java.util.List;
  */
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/html")
 public class CustomerController {
 
     //主页
-    private final String INDEX_PAGE="index";
+    private final String INDEX_PAGE="html/index";
 
     //每页数量
     private final int PAGE_NUM=15;
@@ -43,6 +43,20 @@ public class CustomerController {
     private NewsService newsService;
 
 
+    /**
+     * 新闻有关的列表页面
+     * 包括：
+     * 显示页面；
+     * 当前页面；
+     * 新闻总数；
+     * 当前类型：普通，分类，来源；
+     * 列表数据；
+     * 页面标题；
+     * 分类和来源信息；
+     * @param pageVo
+     * @return
+     * @throws Exception
+     */
     @RequestMapping("/pageIndex")
     public ModelAndView pageIndex(@ModelAttribute PageVo pageVo) throws Exception {
 
@@ -76,10 +90,12 @@ public class CustomerController {
         }
         andView.addObject("customs",customByComment);
         //总数
-        andView.addObject("count",newsService.getNewsCount());
+        andView.addObject("count",newsService.getNewsCount().getAllCount());
         //分类/来源数据
         CSCustom sourceIfo = newsService.findCateSourceIfo();
         andView.addObject("sourceIfo",sourceIfo);
+        andView.addObject("title",pageVo.getTitle()==null?"新闻推荐":pageVo.getTitle());
+        andView.addObject("ntype",pageVo.getnType());
         return andView;
     }
 
