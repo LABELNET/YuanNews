@@ -53,6 +53,8 @@ body.loaded #vivo-contain,body.loaded #vivo-foot,body.loaded #mobile-header,body
 .search-user a.user b{background-position:-43px 0;}
 .search-user a.user b img{width: 42px; height: 42px;}
 .search-user a.user:hover b,.search-user a.user.current b{background-position:-43px -43px;}
+#indexuser{float: right;width: 42px;height: 42px;border:1px #808080 solid;border-radius:21px;margin-top:8px;margin-left: 20px;}
+#indexuser:hover{border:1px #19a97b solid;cursor:pointer;}
 
 #vivo-head .vivo-search{height:80px; width:100%; background:#19a97b; position:relative; z-index: 9999; display:none;}
 .vivo-search .search-box{width:700px; height:40px; position:absolute; top:20px; left:50%; margin-left:-350px; background:#666; -webkit-box-shadow:0 1px 2px rgb(0,0,0); -moz-box-shadow:0 1px 2px rgb(0,0,0); -ms-box-shadow:0 1px 2px rgb(0,0,0); box-shadow:0 1px 2px rgb(0,0,0); position: relative; z-index: 9999;}
