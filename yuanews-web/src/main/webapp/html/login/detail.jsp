@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: yuan
   Date: 16-5-1
-  Time: 下午8:20
+  Time: 下午11:35
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -48,15 +48,11 @@
     <div class="avtar">
         <img src="images/avtar.png" />
     </div>
-    <form onsubmit="return false">
-        <input type="text" class="text"  id="unum" value="username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}" >
-        <div class="key">
-            <input type="password" id="pass" value="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
-        </div>
-    </form>
-    <div class="signin">
-        <input type="submit" value="登陆" onclick="userlogin()">
-    </div>
+    <table>
+        <th>
+            个人信息
+        </th>
+    </table>
 </div>
 
 <script type="text/javascript">
@@ -72,7 +68,7 @@
     function doneIt() {
         NProgress.done();
     }
-    
+
     function userlogin() {
         NProgress.start();
         var unum=$("#unum").val()+"";
@@ -120,4 +116,3 @@
 </script>
 </body>
 </html>
-

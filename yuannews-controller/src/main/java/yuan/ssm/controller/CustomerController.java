@@ -141,6 +141,17 @@ public class CustomerController {
         }
     }
 
+    /**
+     * 用户登出
+     * @param session
+     * @return
+     */
+    @RequestMapping("login/userLoignout")
+    public @ResponseBody Integer userLoignout(HttpSession session){
+        session.invalidate();
+        return 0;
+    }
+
 
 
 }
