@@ -25,6 +25,15 @@
     <script src="../js/nprogress.js"></script>
 </head>
 <body>
+
+<div>
+    <span id="show" style="color: purple;margin: 10%;float: left;"></span>
+</div>
+
+<div class="signin" style="width: 100px;float: right;margin: 20% 10%;">
+    <input type="submit" value="注册" onclick="userRegister()">
+</div>
+
 <script>$(document).ready(function(c) {
     $('.close').on('click', function(c){
         $('.login-form').fadeOut('slow', function(c){
@@ -44,18 +53,13 @@
         <label class="lbl-3"> </label>
     </div>
     <div class="clear"> </div>
-    <div>
-        <span id="show" style="color: white;"></span>
-    </div>
     <form onsubmit="return false" style="height: 400px;">
         <input type="text" style="height: 10px;" class="text"  id="nick" value="昵称" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '昵称';}" />
-        <input type="text" style="height: 10px;" class="text"  id="unum" value="电话" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '账户';}" />
+        <input type="text" style="height: 10px;" class="text"  id="unum" value="电话" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '电话';}" />
         <input type="text" style="height:10px;" id="pass" value="密码" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '密码';}"/>
         <input type="text" style="height: 10px;" id="passtwo" value="确认密码" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '确认密码';}"/>
     </form>
-    <div class="signin">
-        <input type="submit" value="注册" onclick="userRegister()">
-    </div>
+
 </div>
 
 <script type="text/javascript">

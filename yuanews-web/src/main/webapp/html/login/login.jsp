@@ -26,6 +26,11 @@
     <script src="../js/nprogress.js"></script>
 </head>
 <body>
+
+<div>
+    <span id="show" style="color: purple;margin: 10%;float: left;"></span>
+</div>
+
 <script>$(document).ready(function(c) {
     $('.close').on('click', function(c){
         $('.login-form').fadeOut('slow', function(c){
@@ -45,9 +50,7 @@
         <label class="lbl-3"> </label>
     </div>
     <div class="clear"> </div>
-    <div>
-        <span id="show" style="color: white;"></span>
-    </div>
+
     <div class="avtar">
         <img src="images/avtar.png" />
     </div>
