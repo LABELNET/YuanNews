@@ -123,12 +123,7 @@
     }
     
     function registerUser() {
-        $.DialogBySHF.Dialog({
-            Width: 1024,
-            Height: 500,
-            Title: "注册",
-            URL: registerPageUrl
-        });
+        window.location.href=registerPageUrl;
     }
 
 </script>

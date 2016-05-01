@@ -47,17 +47,11 @@
     <div>
         <span id="show" style="color: white;"></span>
     </div>
-    <div class="avtar">
-        <img src="images/avtar.png" />
-    </div>
-    <form onsubmit="return false">
-        <input type="text" class="text"  id="unum" value="电话" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '账户';}" >
-        <div class="key">
-            <input type="password" id="pass" value="密码" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '密码';}">
-            <input type="password" id="passtwo" value="确认密码" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '确认密码';}">
-        </div>
-        <input type="text" class="text"  id="nick" value="昵称" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '昵称';}" >
-
+    <form onsubmit="return false" style="height: 400px;">
+        <input type="text" style="height: 10px;" class="text"  id="nick" value="昵称" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '昵称';}" />
+        <input type="text" style="height: 10px;" class="text"  id="unum" value="电话" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '账户';}" />
+        <input type="text" style="height:10px;" id="pass" value="密码" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '密码';}"/>
+        <input type="text" style="height: 10px;" id="passtwo" value="确认密码" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '确认密码';}"/>
     </form>
     <div class="signin">
         <input type="submit" value="注册" onclick="userRegister()">
@@ -66,8 +60,8 @@
 
 <script type="text/javascript">
 
-    <%--var loginUrl="<%=projectPath%>/html/login/userLogin.action";--%>
-    <%--var registerPageUrl="<%=projectPath%>/html/login/userRegister.action";--%>
+    var loginPageUrl="<%=projectPath%>/html/login/userLoginPage.action";
+    var registerUrl="<%=projectPath%>/html/login/userRegister.action";
 
     window.onload=function() {
         $('body').show();
@@ -107,7 +101,7 @@
             nick:nick
         };
         console.log(arr);
-        dataRequest(loginUrl,arr,0);
+        dataRequest(registerUrl,arr,0);
     }
 
     //网络请求方法提取
@@ -129,7 +123,9 @@
                             $('.login-form').remove();
                         });
                     }else if(data==-1){
-                        $("#show").text("登陆失败！");
+                        $("#show").text("账户已存在");
+                    }else {
+                        $("#show").text("注册失败，请重试！");
                     }
                 }else {
                     window.location.reload()
@@ -139,12 +135,7 @@
     }
 
     function loginUser() {
-        $.DialogBySHF.Dialog({
-            Width: 1024,
-            Height: 500,
-            Title: "登陆",
-            URL: registerPageUrl
-        });
+        window.location.href=loginPageUrl;
     }
 
 </script>
