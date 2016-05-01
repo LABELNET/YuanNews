@@ -43,7 +43,7 @@
     </div>
     <div class="clear"> </div>
     <div>
-        <span id="tishi" style="color: white;"></span>
+        <span id="show" style="color: white;"></span>
     </div>
     <div class="avtar">
         <img src="images/avtar.png" />
@@ -77,7 +77,7 @@
         NProgress.start();
         var unum=$("#unum").val()+"";
         if(unum.length!=11){
-            $("tishi").val("电话长度不对哦！");
+            $("#show").text("电话长度不对哦！");
             doneIt();
             return;
         }
@@ -101,14 +101,15 @@
             dataType:'json',
             success:function (data,status) {
                 doneIt();
+                console.log(data);
                 if(status=="success"){
                     if(data==1){
-                        $("tishi").val("");
+                        $("#show").text("");
                         $('.login-form').fadeOut('slow',function(c){
                             $('.login-form').remove();
                         });
-                    }else{
-                        $("tishi").val("登陆失败！");
+                    }else if(data==-1){
+                        $("#show").text("登陆失败！");
                     }
                 }else {
                     window.location.reload()
