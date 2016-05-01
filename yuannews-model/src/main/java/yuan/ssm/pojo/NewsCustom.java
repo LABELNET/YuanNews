@@ -31,6 +31,8 @@ public class NewsCustom extends NewsVo{
 
      private Integer znum;//点赞总数
 
+     private String scont;
+
     public Integer getCnum() {
         return cnum;
     }
@@ -53,5 +55,13 @@ public class NewsCustom extends NewsVo{
 
     public void setZnum(Integer znum) {
         this.znum = znum;
+    }
+
+    public String getScont() {
+        return scont;
+    }
+
+    public void setScont(String scont) {
+        this.scont = scont;
     }
 }

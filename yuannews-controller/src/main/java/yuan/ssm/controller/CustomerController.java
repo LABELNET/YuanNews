@@ -53,6 +53,7 @@ public class CustomerController {
      * 列表数据；
      * 页面标题；
      * 分类和来源信息；
+     * 当前加载的类型：点赞，阅读，评论，普通
      * @param pageVo
      * @return
      * @throws Exception
@@ -96,6 +97,7 @@ public class CustomerController {
         andView.addObject("sourceIfo",sourceIfo);
         andView.addObject("title",pageVo.getTitle()==null?"新闻推荐":pageVo.getTitle());
         andView.addObject("ntype",pageVo.getnType());
+        andView.addObject("type",pageVo.getType());
         return andView;
     }
 

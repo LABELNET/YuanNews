@@ -16,9 +16,12 @@
            n.rnum AS rnum,
            co.cnum,
            c.id AS cid,
-           c.content AS ccont
+           c.content AS ccont,
+           s.id AS sid,
+           s.source scont
         FROM
            cate c,
+           source s,
            news n
         LEFT JOIN
            (
@@ -33,6 +36,8 @@
               co.nid=n.id
         WHERE
            n.cid=c.id
+        AND
+           s.id=n.sid
         ORDER BY n.id DESC
         Limit #{start},#{num}
     </select>

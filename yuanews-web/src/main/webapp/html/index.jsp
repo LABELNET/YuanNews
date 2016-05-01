@@ -158,10 +158,21 @@
                                     <a href="<%=projectPath%>/html/pageIndex.action?p=1&title=${custom.ccont}&type=2&nType=7">
                                         <c:out value="${custom.ccont}"/>
                                     </a>
+                                   <c:if test="${!empty custom.scont}">
+                                         ,
+                                       <a href="<%=projectPath%>/html/pageIndex.action?p=1&title=${custom.scont}&type=2&nType=8">
+                                           <c:out value="${custom.scont}"/>
+                                       </a>
+                                   </c:if>
                                </span>
                                <span class="dtime f_l">${custom.dt}</span>
                                <span class="viewnum f_r">阅读(${custom.rnum})</span>
-                               <span class="pingl f_r">评论(${custom.cnum})</span></p>
+                               <span class="pingl f_r">评论(${custom.cnum==null?0:custom.cnum})</span>
+                               <c:if test="${type==3}">
+                                   <span>赞(${custom.znum==null?0:custom.znum})</span>
+                               </c:if>
+                           </p>
+
                        </ul>
                    </div>
 
