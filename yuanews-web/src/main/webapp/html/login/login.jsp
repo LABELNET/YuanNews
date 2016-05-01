@@ -24,6 +24,7 @@
     <script src="http://ajax.useso.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <link rel='stylesheet' href="../css/nprogress.css"/>
     <script src="../js/nprogress.js"></script>
+
 </head>
 <body>
 
@@ -69,6 +70,7 @@
 
     var loginUrl="<%=projectPath%>/html/login/userLogin.action";
     var registerPageUrl="<%=projectPath%>/html/login/userRegesterPage.action";
+    var userDetailUrl="<%=projectPath%>/html/login/userDetail.action";
 
     window.onload=function() {
         $('body').show();
@@ -111,10 +113,7 @@
                 console.log(data);
                 if(status=="success"){
                     if(data==1){
-                        $("#show").text("");
-                        $('.login-form').fadeOut('slow',function(c){
-                            $('.login-form').remove();
-                        });
+                        userCenter();
                     }else if(data==-1){
                         $("#show").text("登陆失败！");
                     }
@@ -127,6 +126,10 @@
     
     function registerUser() {
         window.location.href=registerPageUrl;
+    }
+
+    function userCenter() {
+        window.location.href=userDetailUrl;
     }
 
 </script>

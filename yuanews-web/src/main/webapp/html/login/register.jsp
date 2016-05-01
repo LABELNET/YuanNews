@@ -132,10 +132,7 @@
                 console.log(data);
                 if(status=="success"){
                     if(data==1){
-                        $("#show").text("");
-                        $('.login-form').fadeOut('slow',function(c){
-                            $('.login-form').remove();
-                        });
+                        loginUser();
                     }else if(data==-1){
                         $("#show").text("账户已存在");
                     }else if(data==-2){

@@ -24,16 +24,26 @@
     <script src="http://ajax.useso.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <link rel='stylesheet' href="../css/nprogress.css"/>
     <script src="../js/nprogress.js"></script>
+    <link rel="Stylesheet" type="text/css" href="../css/DialogBySHF.css" />
+    <script type="text/javascript" src="../js/DialogBySHF.js"></script>
 </head>
 <body>
-<script>$(document).ready(function(c) {
-    $('.close').on('click', function(c){
-        $('.login-form').fadeOut('slow', function(c){
-            $('.login-form').remove();
-        });
-    });
-});
+<script>
+    $(document).ready(
+        function (c) {
+            $('.close').on('click', function(c){
+                $('.login-form').fadeOut('slow', function(c){
+                    $('.login-form').remove();
+                });
+       });
+   });
 </script>
+<table>
+    <th>
+        个人信息
+        <a href="javascript:void(0)" onclick="userOut()">腾出</a>
+    </th>
+</table>
 <div class="login-form">
     <div class="close"> </div>
     <div class="head-info">
@@ -48,16 +58,12 @@
     <div class="avtar">
         <img src="images/avtar.png" />
     </div>
-    <table>
-        <th>
-            个人信息
-        </th>
-    </table>
+
 </div>
 
 <script type="text/javascript">
 
-    var loginUrl="<%=projectPath%>/html/login/userLogin.action";
+    var loginOutUrl="<%=projectPath%>/html/login/userLoignout.action";
 
     window.onload=function() {
         $('body').show();
@@ -69,21 +75,9 @@
         NProgress.done();
     }
 
-    function userlogin() {
-        NProgress.start();
-        var unum=$("#unum").val()+"";
-        if(unum.length!=11){
-            $("tishi").val("电话长度不对哦！");
-            doneIt();
-            return;
-        }
-        var pass=$("#pass").val();
-        var arr={
-            unum:unum,
-            pass:pass
-        };
-        console.log(arr);
-        dataRequest(loginUrl,arr,0);
+    
+    function userOut() {
+        dataRequest(loginOutUrl,new Array(),0);
     }
 
     //网络请求方法提取
@@ -98,13 +92,8 @@
             success:function (data,status) {
                 doneIt();
                 if(status=="success"){
-                    if(data==1){
-                        $("tishi").val("");
-                        $('.login-form').fadeOut('slow',function(c){
-                            $('.login-form').remove();
-                        });
-                    }else{
-                        $("tishi").val("登陆失败！");
+                    if(data==0){
+                        $.DialogBySHF.Close();
                     }
                 }else {
                     window.location.reload()

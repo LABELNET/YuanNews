@@ -224,17 +224,17 @@
 
     function btnDialog(type) {
         if(type==0) {
-            showDialog(loginUrl,"用户登陆");
+            showDialog(loginUrl);
         }else{
-            showDialog(userDetalUrl,"用户详情");
+            showDialog(userDetalUrl);
         }
     }
     
-    function showDialog(url,title) {
+    function showDialog(url) {
         $.DialogBySHF.Dialog({
             Width: 1024,
             Height: 500,
-            Title: title,
+            Title: "个人中心",
             URL: url
         });
     }
