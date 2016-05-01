@@ -69,8 +69,11 @@
           IFNULL(znum,0) znum,
           c.id cid,
           c.content ccont,
-          IFNULL(cnum,0) cnum
+          IFNULL(cnum,0) cnum,
+           s.id AS sid,
+           s.source scont
         from
+          source s,
           cate c,
           news n
           left join (
@@ -94,6 +97,8 @@
             co.nid=z.nid
           where
             c.id=n.cid
+          AND
+            s.id=n.sid
           order by znum desc
           limit #{start},#{num}
     </select>
@@ -110,8 +115,11 @@
         n.rnum AS rnum,
         co.cnum,
         c.id AS cid,
-        c.content AS ccont
+        c.content AS ccont,
+             s.id AS sid,
+           s.source scont
         FROM
+        source s,
         cate c,
         news n
         LEFT JOIN
@@ -127,6 +135,8 @@
         co.nid=n.id
         WHERE
         n.cid=c.id
+        AND
+        n.sid=s.id
         ORDER BY cnum DESC
         Limit #{start},#{num}
     </select>
@@ -142,8 +152,11 @@
         n.rnum AS rnum,
         co.cnum,
         c.id AS cid,
-        c.content AS ccont
+        c.content AS ccont,
+        s.id AS sid,
+        s.source scont
         FROM
+        source s,
         cate c,
         news n
         LEFT JOIN
@@ -159,6 +172,8 @@
         co.nid=n.id
         WHERE
         n.cid=c.id
+        AND
+        s.id=n.sid
         ORDER BY rnum DESC
         Limit #{start},#{num}
     </select>
