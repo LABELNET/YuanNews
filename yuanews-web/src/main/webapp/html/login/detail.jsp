@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% UserVo userVo= (UserVo) session.getAttribute("user"); %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%  String projectPath=request.getContextPath(); %>
 <!DOCTYPE html>
 <html>
@@ -59,7 +60,7 @@
                 <%
                   if(userVo.getStatus()==1){
                 %>
-                <input type="button" value="后台管理" onclick="managerNews()">
+                <a href="<%=projectPath %>/manager/managerIndex.action" target="_blank">后台管理</a>
                 <%
                     }
                 %>
@@ -71,8 +72,15 @@
                 <div class="label_left">
                     <h3>兴趣标签</h3>
                     <div class="labels">
-                        <c
-                        <label>刘亦菲<img src="images/icon_exit.png"> </label>
+                        <c:if test="${empty tasteVos}">
+                            没有兴趣标签
+                            <label style="font-size: 20px;text-align: center" onclick="addLabel()">+</label>
+                        </c:if>
+                        <c:if test="${!empty tasteVos}">
+                           <c:forEach var="taste" items="${tasteVos}">
+                             <label>${taste.label}<img src="images/icon_exit.png" onclick="deleteLabel(${taste.id})"> </label>
+                           </c:forEach>
+                        </c:if>
                     </div>
                 </div>
         </div>
@@ -143,6 +151,16 @@
 
                 })('');
     };
+
+    //删除标签
+    function deleteLabel(id) {
+
+    }
+
+    //添加标签
+    function addLabel() {
+        
+    }
 
 </script>
 </body>
