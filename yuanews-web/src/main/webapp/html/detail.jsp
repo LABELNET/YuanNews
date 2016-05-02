@@ -30,6 +30,7 @@
     <link rel="stylesheet" type="text/css" href="css/nalbase.css">
     <link rel="Stylesheet" type="text/css" href="css/DialogBySHF.css" />
     <link rel='stylesheet' href="css/nprogress.css"/>
+    <link rel='stylesheet' href="css/detail.css"/>
     <script src="js/nprogress.js"></script>
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/sliders.js"></script>
@@ -41,6 +42,7 @@
     <script type="text/javascript" src="js/vivo-common.js"></script>
     <script type="text/javascript" src="js/prefixfree.min.js"></script>
     <script type="text/javascript" src="js/DialogBySHF.js"></script>
+
 
     <!-- 分页插件－simplePagination -->
     <link  rel="stylesheet" type="text/css" href="css/simplePagination.css" />
@@ -149,7 +151,32 @@
 <article>
     <div class="l_box f_l">
 
-        新闻详情页面
+        <div class="content_top">
+            <%--标题，来源，分类等--%>
+            <h1>落马官员曾被评为全国劳模 国家给奖金都不要</h1>
+            <hr>
+
+                <label>时间：2016.05.02</label>　｜
+                <label>分类：社会</label>　｜
+                <label>来源：腾讯新闻</label>　｜
+                <label>阅读(2016)</label>
+        </div>
+
+        <div class="content_center">
+            图片，新闻内容
+        </div>
+
+        <div class="content_bottom">
+             点赞
+        </div>
+
+        <div class="content_footer">
+            评论,分页
+        </div>
+
+        <div class="content_comment">
+            评论框评论
+        </div>
 
     </div>
 </article>
