@@ -59,7 +59,7 @@
                 cssStyle: 'light-theme',
                 prevText:"上一页",
                 nextText:"下一页",
-                currentPage:currentPage
+                currentPage:${currentPage}
 
             });
         });
@@ -169,7 +169,7 @@
 
         <div class="content_bottom">
              <div class="bottom_top">
-                    <img src="<%=projectPath%>/image/icon/superzan.png" />
+                    <img id="zan" onclick="zanClick()" src="<%=projectPath%>/image/icon/zan.png" />
              </div>
 
             <div class="bottom_bottom">
@@ -238,6 +238,9 @@
 
     var loginUrl="<%=projectPath%>/html/login/userLoginPage.action";
     var userDetalUrl="<%=projectPath%>/html/login/userDetail.action";
+    var normalZan="<%=projectPath%>/image/icon/normalzan.png";
+    var superZan="<%=projectPath%>/image/icon/superzan.png";
+    var zan="<%=projectPath%>/image/icon/zan.png";
 
     function btnDialog(type) {
         if(type==0) {
@@ -264,6 +267,19 @@
 
     function doneIt() {
         NProgress.done();
+    }
+
+    function zanClick() {
+        var uid=<%=userVo==null?0:userVo.getId()%>;
+        var nid=${newsCustom.id};
+        if(uid==0){
+            btnDialog(0);
+            return;
+        }
+
+
+
+        console.log(uid);
     }
 
 </script>

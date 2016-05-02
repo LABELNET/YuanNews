@@ -131,6 +131,12 @@ public class UserMapperTest extends CustomerBaseTest{
         LoggerUtil.printJSON(integer);
     }
 
+    @Test
+    public void userLikedStatusTast() throws Exception{
+        Integer integer = userMapper.userZanStatus(1,8);
+        LoggerUtil.printJSON(integer);
+    }
+
 
 
 }

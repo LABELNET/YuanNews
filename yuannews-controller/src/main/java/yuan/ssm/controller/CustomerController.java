@@ -271,5 +271,10 @@ public class CustomerController {
         return andView;
     }
 
+    @RequestMapping("/getLikedStatus")
+    public Integer getLikedStatus(@RequestParam Integer uid,@RequestParam Integer nid){
+        return 0;
+    }
+
 
 }

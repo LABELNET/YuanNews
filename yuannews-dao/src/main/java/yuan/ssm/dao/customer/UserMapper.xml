@@ -86,4 +86,15 @@
         DELETE FROM taste WHERE id=#{tid}
     </delete>
 
+    <select id="userZanStatus" resultType="java.lang.Integer">
+        SELECT
+          status
+         FROM
+          liked
+         WHERE
+           uid=#{uid}
+          AND
+           nid=#{nid}
+    </select>
+
 </mapper>

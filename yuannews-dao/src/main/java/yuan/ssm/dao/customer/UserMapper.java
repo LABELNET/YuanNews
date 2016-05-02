@@ -155,6 +155,14 @@ public interface UserMapper {
     Integer userNewsSuperZan(@Param("uid") Integer uid,@Param("nid") Integer nid) throws Exception;
 
 
+    /**
+     * 查询用户的点赞状态，从而进行界面初始化
+     * @param uid
+     * @param nid
+     * @return
+     * @throws Exception
+     */
+    Integer userZanStatus(@Param("uid") Integer uid,@Param("nid") Integer nid) throws Exception;
 
 
     //---------------------------------------- 评论操作--------------------------------------------
