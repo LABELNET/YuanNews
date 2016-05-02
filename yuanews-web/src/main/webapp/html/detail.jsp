@@ -149,63 +149,8 @@
 <article>
     <div class="l_box f_l">
 
-        <div class="topnews">
-            <h2>
-                <span>
-                    <a href="<%=projectPath%>/html/pageIndex.action?p=1&title=${title}&type=4&nType=${ntype}">点赞</a> |
-                    <a href="<%=projectPath%>/html/pageIndex.action?p=1&title=${title}&type=3&nType=${ntype}">热度</a> |
-                    <a href="<%=projectPath%>/html/pageIndex.action?p=1&title=${title}&type=5&nType=${ntype}">评论</a>
-                </span><b>新闻推荐网页版</b></h2>
+        新闻详情页面
 
-            <c:if test="${empty customs}" >
-                <div class="blogs">
-                    没有更多数据
-                </div>
-            </c:if>
-            <c:if test="${!empty customs}">
-                <c:forEach var="custom" items="${customs}">
-                    <div class="blogs">
-                        <figure><img src="${custom.img}"></figure>
-                        <ul>
-                            <h3><a href="detail.html">${custom.title}</a></h3>
-                            <p>ͨ
-
-                                    ${fn:substring(custom.content,0,90)}...
-
-                            <p class="autor">
-                               <span class="lm f_l">
-                                    <a href="<%=projectPath%>/html/pageIndex.action?p=1&title=${custom.ccont}&type=2&nType=7">
-                                        <c:out value="${custom.ccont}"/>
-                                    </a>
-                                   <c:if test="${!empty custom.scont}">
-                                       ,
-                                       <a href="<%=projectPath%>/html/pageIndex.action?p=1&title=${custom.scont}&type=2&nType=8">
-                                           <c:out value="${custom.scont}"/>
-                                       </a>
-                                   </c:if>
-                               </span>
-                                <span class="dtime f_l">${custom.dt}</span>
-                                <span class="viewnum f_r">阅读(${custom.rnum})</span>
-                                <span class="pingl f_r">评论(${custom.cnum==null?0:custom.cnum})</span>
-                                <c:if test="${type==4}">
-                                    <span>赞(${custom.znum==null?0:custom.znum})</span>
-                                </c:if>
-                            </p>
-
-                        </ul>
-                    </div>
-
-                </c:forEach>
-            </c:if>
-
-        </div>
-        <div class="r_box f_r">
-            <!--tit01 end-->
-            <c:if test="${!empty customs}">
-                <div id="paginationpage" style="float: right"></div>
-            </c:if>
-            <!--r_box end -->
-        </div>
     </div>
 </article>
 

@@ -42,6 +42,9 @@ public class CustomerController {
     //用户注册页面
     private final String USER_REGISTER="html/login/register";
 
+    //新闻详情页面
+    private final String NEWS_DETAIL_PAGE="html/detail";
+
     //每页数量
     private final int PAGE_NUM=15;
     //ID
@@ -185,17 +188,36 @@ public class CustomerController {
         return USER_REGISTER;
     }
 
+    /**
+     * 用户注册
+     * @param userVo
+     * @return
+     * @throws Exception
+     */
     @RequestMapping("login/userRegister")
     public @ResponseBody Integer userRegister(@ModelAttribute UserVo userVo) throws Exception {
         LoggerUtil.print(userVo);
       return userService.userRegister(userVo.getUnum(),userVo.getPass(),userVo.getNick());
     }
 
+    /**
+     * 删除兴趣标签
+     * @param id
+     * @return
+     * @throws Exception
+     */
     @RequestMapping("login/userEditLabel")
     public @ResponseBody Integer userEditLabel(@RequestParam Integer id) throws Exception {
         return userService.userDeleteTasteById(id);
     }
 
+    /**
+     * 添加兴趣标签
+     * @param session
+     * @param label
+     * @return
+     * @throws Exception
+     */
     @RequestMapping("login/userAddLabel")
     public @ResponseBody Integer userAddLabel(HttpSession session,@RequestParam String label) throws Exception{
         UserVo vo= (UserVo) session.getAttribute("user");
@@ -204,6 +226,13 @@ public class CustomerController {
             return -1;
         }
        return userService.userAddTasteLabel(label,id);
+    }
+
+    @RequestMapping("/newsDetailPage")
+    public ModelAndView newsDetailPage(){
+        ModelAndView andView = new ModelAndView();
+        andView.setViewName(NEWS_DETAIL_PAGE);
+        return andView;
     }
 
 
