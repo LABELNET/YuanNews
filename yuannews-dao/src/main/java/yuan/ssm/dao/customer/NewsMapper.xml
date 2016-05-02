@@ -250,7 +250,7 @@
     </select>
 
     <update id="updateNewsRnum">
-        update news set  rnum+1 where id=#{nid};
+        update news set  rnum=rnum+1 where id=#{nid};
     </update>
 
 
