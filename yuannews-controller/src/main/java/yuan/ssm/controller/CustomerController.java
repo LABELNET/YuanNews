@@ -228,10 +228,27 @@ public class CustomerController {
        return userService.userAddTasteLabel(label,id);
     }
 
+    /**
+     * 新闻详情页面
+     *  需要数据：
+     *   新闻详情
+     *   点赞状态
+     *   评论分页
+     *   评论总数（已经有了）
+     *   点赞的前5个人（超赞优先）
+     *   阅读量+1
+     *   分类和来源信息
+     *   评论业务
+     * @return
+     */
     @RequestMapping("/newsDetailPage")
-    public ModelAndView newsDetailPage(){
+    public ModelAndView newsDetailPage() throws Exception {
         ModelAndView andView = new ModelAndView();
         andView.setViewName(NEWS_DETAIL_PAGE);
+        //分类/来源数据
+        CSCustom sourceIfo = newsService.findCateSourceIfo();
+        andView.addObject("sourceIfo",sourceIfo);
+        andView.addObject("count",100);
         return andView;
     }
 

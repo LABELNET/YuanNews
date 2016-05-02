@@ -1,4 +1,4 @@
-<%--
+<%@ page import="yuan.ssm.vo.UserVo" %><%--
   Created by IntelliJ IDEA.
   User: yuan
   Date: 16-5-2
@@ -15,7 +15,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
-    <title>新闻推荐-<c:out value="${title}"/></title>
+    <title>新闻详情</title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -57,7 +57,7 @@
                 cssStyle: 'light-theme',
                 prevText:"上一页",
                 nextText:"下一页",
-                currentPage:${currectIndex}
+                currentPage:1
 
             });
         });
