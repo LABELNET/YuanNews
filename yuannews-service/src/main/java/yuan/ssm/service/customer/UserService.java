@@ -1,5 +1,7 @@
 package yuan.ssm.service.customer;
 
+import yuan.ssm.other.CommentJo;
+import yuan.ssm.pojo.NewsCustom;
 import yuan.ssm.vo.TasteVo;
 import yuan.ssm.vo.UserVo;
 
@@ -131,5 +133,32 @@ public interface UserService {
      * @throws Exception
      */
     Integer userCommentNews(Integer uid,Integer nid,String content) throws Exception;
+
+    /**
+     * 根据新闻id查询新闻
+     * @param nid 新闻id
+     * @return
+     * @throws Exception
+     */
+    NewsCustom selectNewsDetailById(Integer nid) throws Exception;
+
+    /**
+     * 根据新闻id，查询点赞人的头像
+     * @param nid 新闻id
+     * @return
+     * @throws Exception
+     */
+    List<String> selectLikedByNid(Integer nid) throws Exception;
+
+
+    /**
+     * 根据新闻id，分页查询评论信息
+     * @param start 开始
+     * @param num 数量
+     * @param nid 新闻id
+     * @return
+     * @throws Exception
+     */
+    List<CommentJo> selectComments(Integer start,Integer num,Integer nid) throws Exception;
 
 }

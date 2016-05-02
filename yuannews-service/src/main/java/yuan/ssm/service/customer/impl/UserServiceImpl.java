@@ -4,7 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import yuan.ssm.common.util.DateUtil;
 import yuan.ssm.common.util.FontImageUtil;
 import yuan.ssm.common.util.StringUtil;
+import yuan.ssm.dao.customer.NewsMapper;
 import yuan.ssm.dao.customer.UserMapper;
+import yuan.ssm.other.CommentJo;
+import yuan.ssm.pojo.NewsCustom;
 import yuan.ssm.service.customer.UserService;
 import yuan.ssm.vo.TasteVo;
 import yuan.ssm.vo.UserVo;
@@ -21,6 +24,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private NewsMapper newsMapper;
 
     //检查账户是否存在
     public boolean isCheckUnum(String unum) throws Exception {
@@ -108,5 +114,17 @@ public class UserServiceImpl implements UserService {
     //评论
     public Integer userCommentNews(Integer uid, Integer nid, String content) throws Exception {
         return userMapper.userNewsComment(uid, nid, content);
+    }
+
+    public NewsCustom selectNewsDetailById(Integer nid) throws Exception {
+        return newsMapper.findNewsDetailById(nid);
+    }
+
+    public List<String> selectLikedByNid(Integer nid) throws Exception {
+        return newsMapper.findLikedByNid(nid);
+    }
+
+    public List<CommentJo> selectComments(Integer start, Integer num, Integer nid) throws Exception {
+        return newsMapper.findComment(start, num, nid);
     }
 }
