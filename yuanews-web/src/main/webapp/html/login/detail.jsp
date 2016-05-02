@@ -70,11 +70,11 @@
 
         <div class="top_right">
                 <div class="label_left">
-                    <h3>兴趣标签</h3>
+                    <h3><a class="ha2" onclick="showAdd()" href="javascript:void(0)"> + </a>兴趣标签 <a class="ha1" onclick="editLabel()" href="javascript:void(0)">编辑</a></h3>
+
                     <div class="labels">
                         <c:if test="${empty tasteVos}">
-                            没有兴趣标签
-                            <label style="font-size: 20px;text-align: center" onclick="addLabel()">+</label>
+                            没有兴趣标签，可以点击左上角的‘+’添加哦！
                         </c:if>
                         <c:if test="${!empty tasteVos}">
                            <c:forEach var="taste" items="${tasteVos}">
@@ -89,10 +89,19 @@
 
 
 </div>
+
+<div class="add">
+    <input type="text" id="textlabel" placeholder="输入兴趣"/>
+    <input type="button" value="确定" style="height:40px;margin-top: 10px" onclick="addLabel()"/>
+    <input type="button" value="取消" style="height:40px;margin-top: 10px" onclick="hideAdd()"/>
+
+</div>
+
 <script type="text/javascript">
 
     var loginOutUrl="<%=projectPath%>/html/login/userLoignout.action";
     var managerNews="<%=projectPath %>/manager/managerIndex.action";
+    var editlabel="<%=projectPath%>/html/login/userEditLabel.action";
 
     window.onload=function() {
         $('body').show();
@@ -100,12 +109,28 @@
         setTimeout(function() { NProgress.done(); $('.fade').removeClass('out'); }, 1000);
     }
 
+    //隐藏add
+    function hideAdd() {
+        $("#textlabel").val("");
+        $(".add").hide();
+    }
+
+    //显示add
+    function showAdd() {
+        $(".add").show();
+    }
 
 
+
+    //停止进度条
     function doneIt() {
         NProgress.done();
     }
 
+    //编辑
+    function editLabel() {
+        $(".labels label img").show();
+    }
 
     //用户登出
     function userOut() {
@@ -128,33 +153,17 @@
             dataType:'json',
             success:function (data,status) {
                 doneIt();
-                if(status=="success"){
-                    if(data==0){
-                        $.DialogBySHF.Close();
-                    }
-                }else {
-                    window.location.reload()
-                }
+                window.location.reload()
             }
         });
     }
 
-    //获取随机颜色 - 标签颜色
-    var getRandomColor = function(){
-        return  '#' +
-
-                (function(color){
-
-                    return (color +=  '0123456789abcdef'[Math.floor(Math.random()*16)])
-
-                    && (color.length == 6) ?  color : arguments.callee(color);
-
-                })('');
-    };
-
     //删除标签
     function deleteLabel(id) {
-
+        var arr={
+            id:id
+        };
+        dataRequest(editlabel,arr,1);
     }
 
     //添加标签

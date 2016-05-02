@@ -125,6 +125,11 @@ public class UserMapperTest extends CustomerBaseTest{
     }
 
 
+    @Test
+    public void userDeleteTast() throws Exception{
+        Integer integer = userMapper.userDeleteTaste(9);
+        LoggerUtil.printJSON(integer);
+    }
 
 
 

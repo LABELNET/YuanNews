@@ -191,6 +191,11 @@ public class CustomerController {
       return userService.userRegister(userVo.getUnum(),userVo.getPass(),userVo.getNick());
     }
 
+    @RequestMapping("login/userEditLabel")
+    public @ResponseBody Integer userEditLabel(@RequestParam Integer id) throws Exception {
+        return userService.userDeleteTasteById(id);
+    }
+
 
 
 }
