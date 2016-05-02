@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import yuan.ssm.common.util.LoggerUtil;
+import yuan.ssm.other.CommentJo;
 import yuan.ssm.other.PageVo;
 import yuan.ssm.pojo.CSCustom;
 import yuan.ssm.pojo.NewsCustom;
@@ -46,7 +47,7 @@ public class CustomerController {
     private final String NEWS_DETAIL_PAGE="html/detail";
 
     //每页数量
-    private final int PAGE_NUM=15;
+    private final int PAGE_NUM=10;
     //ID
     private final int idType=2;
     //阅读
@@ -232,23 +233,41 @@ public class CustomerController {
      * 新闻详情页面
      *  需要数据：
      *   新闻详情
-     *   点赞状态
+     *   点赞状态（状态当前用户点赞状态（只能异步获取））
      *   评论分页
-     *   评论总数（已经有了）
-     *   点赞的前5个人（超赞优先）
+     *   评论总数
+     *   点赞的用户信息
      *   阅读量+1
      *   分类和来源信息
      *   评论业务
      * @return
      */
     @RequestMapping("/newsDetailPage")
-    public ModelAndView newsDetailPage() throws Exception {
+    public ModelAndView newsDetailPage(@RequestParam Integer p,@RequestParam Integer nid) throws Exception {
+        if(p<0){
+            p=1;
+        }
+        int currentPage=p;
+        p=PAGE_NUM*(p-1);
+
         ModelAndView andView = new ModelAndView();
         andView.setViewName(NEWS_DETAIL_PAGE);
         //分类/来源数据
         CSCustom sourceIfo = newsService.findCateSourceIfo();
         andView.addObject("sourceIfo",sourceIfo);
-        andView.addObject("count",100);
+        //新闻详情
+        NewsCustom newsCustom = userService.selectNewsDetailById(nid);
+        andView.addObject("newsCustom",newsCustom);
+        //评论总数
+        andView.addObject("count",newsCustom.getCnum());
+        //当前页
+        andView.addObject("currentPage",currentPage);
+        //评论
+        List<CommentJo> commentJos = userService.selectComments(p, PAGE_NUM, nid);
+        andView.addObject("commentJos",commentJos);
+        //点赞人信息
+        List<String> heads = userService.selectLikedByNid(nid);
+        andView.addObject("heads",heads);
         return andView;
     }
 

@@ -59,7 +59,7 @@
                 cssStyle: 'light-theme',
                 prevText:"上一页",
                 nextText:"下一页",
-                currentPage:1
+                currentPage:currentPage
 
             });
         });
