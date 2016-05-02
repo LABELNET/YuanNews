@@ -2,6 +2,7 @@ package mapper.Customer;
 
 import org.junit.Test;
 import yuan.ssm.common.util.LoggerUtil;
+import yuan.ssm.other.CommentJo;
 import yuan.ssm.pojo.NewsCustom;
 import yuan.ssm.vo.CateVo;
 import yuan.ssm.vo.SourceVo;
@@ -111,5 +112,26 @@ public class NewsMapperTest extends CustomerBaseTest{
         List<NewsCustom> customByZan = sourceNewsMapper.findNewsBySourceRnum(0,10,"搜狐新闻");
         LoggerUtil.printJSON(customByZan);
     }
+
+    //----------------------------------------新闻详情测试-----------------------------------------
+
+    @Test
+    public void findNewsDetailByIdTest() throws Exception{
+        NewsCustom detailById = newsMapper.findNewsDetailById(2);
+        LoggerUtil.printJSON(detailById);
+    }
+
+    @Test
+    public void findLikedByNidTest() throws Exception{
+        List<String> likedByNid = newsMapper.findLikedByNid(2);
+        LoggerUtil.printJSON(likedByNid);
+    }
+
+    @Test
+    public void findCommentTest() throws Exception{
+        List<CommentJo> comment = newsMapper.findComment(0, 10, 2);
+        LoggerUtil.printJSON(comment);
+    }
+
 
 }

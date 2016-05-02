@@ -105,6 +105,7 @@ public interface NewsMapper {
      * 查询策略：
      *   1.不分，直接根据id查询，返回NewsCustom对象
      *   2.查询新闻的点赞的用户头像
+     *   3.评论内容
      */
 
     /**
@@ -113,7 +114,7 @@ public interface NewsMapper {
      * @return
      * @throws Exception
      */
-    NewsCustom findNewsById(Integer nid) throws Exception;
+    NewsCustom findNewsDetailById(@Param("nid") Integer nid) throws Exception;
 
 
     /**
@@ -122,7 +123,7 @@ public interface NewsMapper {
      * @return
      * @throws Exception
      */
-    List<String> findLikedByNid(Integer nid) throws Exception;
+    List<String> findLikedByNid(@Param("nid")Integer nid) throws Exception;
 
     /**
      * 根据新闻
@@ -132,16 +133,7 @@ public interface NewsMapper {
      * @return
      * @throws Exception
      */
-    List<CommentJo> findComment(Integer start, Integer num, Integer nid) throws Exception;
-
-
-    /**
-     * 查询某条新闻的总数
-     * @param nid 新闻id
-     * @return
-     * @throws Exception
-     */
-    Integer findCommentCount(Integer nid) throws Exception;
+    List<CommentJo> findComment(@Param("start")Integer start, @Param("num")Integer num, @Param("nid")Integer nid) throws Exception;
 
 
 

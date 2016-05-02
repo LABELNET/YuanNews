@@ -181,11 +181,72 @@
 
 
 
+    <select id="findNewsDetailById" resultType="yuan.ssm.pojo.NewsCustom">
+        select
+        n.id id,
+        n.title title,
+        n.dt dt,
+        n.content content,
+        n.img img,
+        n.rnum rnum,
+        IFNULL(znum,0) znum,
+        c.id cid,
+        c.content ccont,
+        IFNULL(cnum,0) cnum,
+        s.id AS sid,
+        s.source scont
+        from
+        source s,
+        cate c,
+        news n
+        left join (
+        select
+        nid,
+        count(1) as znum
+        from
+        liked
+        group by
+        nid) as z
+        on
+        z.nid=n.id
+        left join (
+        select
+        nid,
+        count(1) as cnum
+        from
+        comment
+        group by nid) as co
+        on
+        co.nid=z.nid
+        where
+        c.id=n.cid
+        AND
+        s.id=n.sid
+        AND
+        n.id=#{nid}
+    </select>
 
 
+    <select id="findLikedByNid" resultType="java.lang.String">
+        select u.head from user u left join(select uid,nid  from liked group by uid) as l on l.uid=u.id where l.nid=#{nid}
+    </select>
 
 
-
+    <select id="findComment" resultType="yuan.ssm.other.CommentJo">
+     select
+              c.id AS id,
+               c.content AS content,
+               c.status AS status,
+               n.nick AS nick,
+               n.head AS head
+             FROM
+              comment c,
+               user n
+             WHERE
+               n.id=c.uid
+             AND
+               c.nid=#{nid}
+    </select>
 
 
 
