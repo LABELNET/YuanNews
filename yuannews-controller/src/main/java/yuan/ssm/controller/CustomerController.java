@@ -272,8 +272,13 @@ public class CustomerController {
     }
 
     @RequestMapping("/getLikedStatus")
-    public Integer getLikedStatus(@RequestParam Integer uid,@RequestParam Integer nid) throws Exception {
+    public @ResponseBody Integer getLikedStatus(@RequestParam Integer uid,@RequestParam Integer nid) throws Exception {
         return userService.selectZanStatus(uid,nid);
+    }
+
+    @RequestMapping("/userZan")
+    public @ResponseBody Integer userZan(@RequestParam Integer uid,@RequestParam Integer nid,@RequestParam Integer status) throws Exception {
+        return userService.userZanNews(uid, nid, status);
     }
 
 

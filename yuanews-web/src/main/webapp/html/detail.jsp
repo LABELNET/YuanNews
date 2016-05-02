@@ -244,7 +244,9 @@
 
     var uid=<%=userVo==null?0:userVo.getId()%>;
     var nid=${newsCustom.id};
+    var zstatus=0;
     var loadZanStatusUrl="<%=projectPath%>/html/getLikedStatus.action";
+    var userZanUrl="<%=projectPath%>/html/userZan.action";
 
     function btnDialog(type) {
         if(type==0) {
@@ -279,7 +281,7 @@
         }
          var arr={
              uid:uid,
-             nid:nid
+             nid:nid,
          };
         dataRequest(loadZanStatusUrl,arr,0);
     }
@@ -295,9 +297,10 @@
         }
         var arr={
             uid:uid,
-            nid:nid
+            nid:nid,
+            status:zstatus
         };
-        dataRequest(loadZanStatusUrl,arr,0);
+        dataRequest(userZanUrl,arr,1);
     }
 
 
@@ -312,9 +315,26 @@
             dataType:'json',
             success:function (data,status) {
                 doneIt();
-                window.location.reload()
+                if(type==0){
+                    //初次加载，初始化界面
+                    initZan(data);
+                }else if(type==1){
+                    window.location.reload()
+                }
             }
         });
+    }
+
+    function initZan(status) {
+         zstatus=status;
+         if(status==0){
+             //没有点赞
+             $("#zan").src(zan);
+         }else if(status==1){
+             $("#zan").src(normalZan);
+         }else if(status==2){
+             $("#zan").src(superZan);
+         }
     }
 
 </script>

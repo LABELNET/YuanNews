@@ -249,6 +249,10 @@
               ORDER BY c.id DESC
     </select>
 
+    <update id="updateNewsRnum">
+        update news set  rnum+1 where id=#{nid};
+    </update>
+
 
 
 

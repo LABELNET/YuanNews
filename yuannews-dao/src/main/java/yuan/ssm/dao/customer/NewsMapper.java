@@ -136,5 +136,7 @@ public interface NewsMapper {
     List<CommentJo> findComment(@Param("start")Integer start, @Param("num")Integer num, @Param("nid")Integer nid) throws Exception;
 
 
+    Integer updateNewsRnum(@Param("nid") Integer nid) throws Exception;
+
 
 }
