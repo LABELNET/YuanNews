@@ -61,7 +61,12 @@ public class UserServiceImpl implements UserService {
 
     //查询兴趣标签是否存在
     public boolean userCheckTaste(String label, Integer id) throws Exception {
-        return userMapper.userCheckTaste(label,id)>0;
+        Integer integer = userMapper.userCheckTaste(label, id);
+        if(integer==null){
+            return false;
+        }else{
+            return integer>0;
+        }
     }
 
     //添加兴趣标签

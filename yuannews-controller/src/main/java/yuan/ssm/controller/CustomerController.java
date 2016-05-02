@@ -196,6 +196,15 @@ public class CustomerController {
         return userService.userDeleteTasteById(id);
     }
 
+    @RequestMapping("login/userAddLabel")
+    public @ResponseBody Integer userAddLabel(HttpSession session,@RequestParam String label) throws Exception{
+        UserVo vo= (UserVo) session.getAttribute("user");
+        int id = vo.getId();
+        if(userService.userCheckTaste(label,id)){
+            return -1;
+        }
+       return userService.userAddTasteLabel(label,id);
+    }
 
 
 }

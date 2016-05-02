@@ -70,7 +70,7 @@
 
         <div class="top_right">
                 <div class="label_left">
-                    <h3><a class="ha2" onclick="showAdd()" href="javascript:void(0)"> + </a>兴趣标签 <a class="ha1" onclick="editLabel()" href="javascript:void(0)">编辑</a></h3>
+                    <h3><a class="ha2" onclick="showAdd()" href="javascript:void(0)"> + </a>兴趣标签（30个） <a class="ha1" onclick="editLabel()" href="javascript:void(0)">编辑</a></h3>
 
                     <div class="labels">
                         <c:if test="${empty tasteVos}">
@@ -94,7 +94,7 @@
     <input type="text" id="textlabel" placeholder="输入兴趣"/>
     <input type="button" value="确定" style="height:40px;margin-top: 10px" onclick="addLabel()"/>
     <input type="button" value="取消" style="height:40px;margin-top: 10px" onclick="hideAdd()"/>
-
+    <label class="showIfo"></label>提示信息</label>
 </div>
 
 <script type="text/javascript">
@@ -102,6 +102,7 @@
     var loginOutUrl="<%=projectPath%>/html/login/userLoignout.action";
     var managerNews="<%=projectPath %>/manager/managerIndex.action";
     var editlabel="<%=projectPath%>/html/login/userEditLabel.action";
+    var addlabel="<%=projectPath%>/html/login/userAddLabel.action";
 
     window.onload=function() {
         $('body').show();
@@ -153,6 +154,10 @@
             dataType:'json',
             success:function (data,status) {
                 doneIt();
+                if(type==2&&data==-1){
+                    $(".showIfo").text("标签以存在！");
+                    return;
+                }
                 window.location.reload()
             }
         });
@@ -168,7 +173,30 @@
 
     //添加标签
     function addLabel() {
-        
+
+        var labelSize=$(".labels label img").length;
+        if(labelSize>30){
+            $(".showIfo").text("标签总数不能超过30个！");
+            return;
+        }
+
+       var label=$("#textlabel").val()+"";
+       if(label.trim().length==0){
+           $(".showIfo").text("标签不能为空！");
+           return;
+       }
+
+        if(label.trim().length>15){
+            $(".showIfo").text("标签长度不能超过15字！");
+            return;
+        }
+
+
+
+        var arr={
+           label:label
+        };
+        dataRequest(addlabel,arr,2);
     }
 
 </script>
