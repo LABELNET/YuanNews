@@ -242,6 +242,10 @@
     var superZan="<%=projectPath%>/image/icon/superzan.png";
     var zan="<%=projectPath%>/image/icon/zan.png";
 
+    var uid=<%=userVo==null?0:userVo.getId()%>;
+    var nid=${newsCustom.id};
+    var loadZanStatusUrl="<%=projectPath%>/html/getLikedStatus.action";
+
     function btnDialog(type) {
         if(type==0) {
             showDialog(loginUrl);
@@ -263,6 +267,21 @@
         $('body').show();
         NProgress.start();
         setTimeout(function() { NProgress.done(); $('.fade').removeClass('out'); }, 1000);
+
+
+        onloadZanStatus();
+    }
+
+    //加载当前用户点赞状态
+    function onloadZanStatus() {
+        if(uid==0){
+            return;
+        }
+         var arr={
+             uid:uid,
+             nid:nid
+         };
+        dataRequest(loadZanStatusUrl,arr,0);
     }
 
     function doneIt() {
@@ -270,16 +289,32 @@
     }
 
     function zanClick() {
-        var uid=<%=userVo==null?0:userVo.getId()%>;
-        var nid=${newsCustom.id};
         if(uid==0){
             btnDialog(0);
             return;
         }
+        var arr={
+            uid:uid,
+            nid:nid
+        };
+        dataRequest(loadZanStatusUrl,arr,0);
+    }
 
 
+    //网络请求方法提取
+    function dataRequest(typeurl,arr,type) {
 
-        console.log(uid);
+        $.ajax({
+            url:typeurl,
+            data:arr,
+            type:'post',
+            cache:true,
+            dataType:'json',
+            success:function (data,status) {
+                doneIt();
+                window.location.reload()
+            }
+        });
     }
 
 </script>

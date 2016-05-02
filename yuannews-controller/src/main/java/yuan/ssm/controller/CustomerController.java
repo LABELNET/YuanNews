@@ -272,8 +272,8 @@ public class CustomerController {
     }
 
     @RequestMapping("/getLikedStatus")
-    public Integer getLikedStatus(@RequestParam Integer uid,@RequestParam Integer nid){
-        return 0;
+    public Integer getLikedStatus(@RequestParam Integer uid,@RequestParam Integer nid) throws Exception {
+        return userService.selectZanStatus(uid,nid);
     }
 
 

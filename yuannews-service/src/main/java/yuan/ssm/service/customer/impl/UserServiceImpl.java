@@ -127,4 +127,13 @@ public class UserServiceImpl implements UserService {
     public List<CommentJo> selectComments(Integer start, Integer num, Integer nid) throws Exception {
         return newsMapper.findComment(start, num, nid);
     }
+
+    public Integer selectZanStatus(Integer uid, Integer nid) throws Exception {
+        Integer integer = userMapper.userZanStatus(uid, nid);
+        if(integer==null){
+            return 0;
+        }else{
+            return integer;
+        }
+    }
 }

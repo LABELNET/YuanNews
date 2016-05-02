@@ -161,4 +161,13 @@ public interface UserService {
      */
     List<CommentJo> selectComments(Integer start,Integer num,Integer nid) throws Exception;
 
+    /**
+     * 点赞状态获取
+     * @param uid
+     * @param nid
+     * @return
+     * @throws Exception
+     */
+    Integer selectZanStatus(Integer uid,Integer nid) throws Exception;
+
 }
