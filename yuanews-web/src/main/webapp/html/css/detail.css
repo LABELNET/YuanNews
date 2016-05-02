@@ -1,3 +1,31 @@
 .content_top{width: 100%;margin-top: 20px;}
 .content_top h1{width: 100%;text-align: center;}
 .content_top label{margin-left: 10px;}
+.content_top label a{text-decoration: none;color: #0c9c6e}
+
+.content_center{margin-top: 30px;text-align: center;}
+.content_center img{max-width: 90%;max-height: 250px;margin: 0px auto;}
+.content_center p{text-align: left;max-width: 90%;margin: 20px auto;font-size: 16px;}
+
+.content_bottom{margin-top: 30px;}
+.content_bottom .bottom_top{width: 100%;height: 100px;}
+.content_bottom .bottom_top img{width: 80px;height: 80px;margin: 0px auto;}
+.content_bottom .bottom_top img:hover{cursor: pointer;}
+.content_bottom .bottom_bottom{width: 50%;height: 80px;margin: 10px auto;text-align: center}
+.content_bottom .bottom_bottom img{margin-top: 10px;margin-left:10px;float: left;width: 30px;height: 30px;border-radius: 30px;}
+
+.content_footer{margin-top: 30px;}
+.content_footer label{margin-left: 10px;}
+.content_footer .footer_item{width: 90%;max-height: 150px;margin: 20px auto;}
+.content_footer .footer_item img{float: left;width: 30px;height: 30px;border-radius: 30px;}
+.content_footer .footer_item span{margin-left: 15px;width: 80%;float: left}
+.content_footer .footer_item p{clear: both;width: 85%;margin: 10px auto}
+.content_footer .footer_item hr{clear: both;width: 100%;margin: 20px auto}
+.content_footer .paginationpage{float: right}
+
+.content_comment{clear: both;margin-top: 50px;}
+.content_comment label{margin-left: 10px;}
+.content_comment .comment_commit{width: 90%;height: 150px;margin: 10px auto}
+.content_comment .comment_commit textarea{width: 100%;height: 80px;}
+.content_comment .comment_commit .commit{background-color: #BBBBBB;color:#000000;border: 1px solid #c1c1c1;width: 100%;height: 40px;margin-top: 1px;text-align: center;line-height: 40px;}
+.content_comment .comment_commit .commit:hover{cursor: pointer;background-color: #0c9c6e;color: white;}

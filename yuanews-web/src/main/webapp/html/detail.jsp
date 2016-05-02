@@ -51,7 +51,7 @@
     <script type="text/javascript">
         //分页实现：　itemsOnPage 当前页面的item总数
         $(function() {
-            $("#paginationpage").pagination({
+            $(".paginationpage").pagination({
                 items: ${count},
                 itemsOnPage: 10,
                 page:10,
@@ -157,26 +157,99 @@
             <hr>
 
                 <label>时间：2016.05.02</label>　｜
-                <label>分类：社会</label>　｜
-                <label>来源：腾讯新闻</label>　｜
+                <label>分类：<a href="#">社会</a></label>　｜
+                <label>来源：<a href="#">腾讯新闻</a></label>　｜
                 <label>阅读(2016)</label>
         </div>
 
         <div class="content_center">
-            图片，新闻内容
+            <%--图片，新闻内容--%>
+            <img src="http://himg2.huanqiu.com/attachment2010/2016/0502/20160502070914738.png"/>
+            <p>
+                2000年，陈明宪被任命为湖南省交通厅副厅长；2008年，被任命为交通厅党组书记。主政湖南交通系统期间，正是湖南高速公路迅猛发展之时。
+                　　他先后主持了广东南海力江大桥、妹沙湘江北大桥、安徽铜陵长江大桥一南昌新八一大桥、南京长江第二大桥、岳阳洞庭湖大桥等一批大型、特大型桥梁的施工建设,26次获得国家和省部级科技成果奖和a项国家专利,荣获湖南省最高科技奖一一“光召科技奖”他以严格、科学的管理,营造了一支路桥建设铁军—“路侨湘军’,开创了省级地方队伍在长江中下游承建大型桥梁的先河,成为全国交通行业的佼佼者。
+            </p>
+            <hr>
         </div>
 
         <div class="content_bottom">
-             点赞
-        </div>
+             <%--点赞--%>
+             <div class="bottom_top">
+                    <img src="<%=projectPath%>/image/icon/superzan.png" />
+             </div>
 
-        <div class="content_footer">
-            评论,分页
+            <div class="bottom_bottom">
+                <img src="<%=projectPath%>/image/head/moren.png" />
+                <img src="<%=projectPath%>/image/head/moren.png" />
+                <img src="<%=projectPath%>/image/head/moren.png" />
+                <img src="<%=projectPath%>/image/head/moren.png" />
+                <img src="<%=projectPath%>/image/head/moren.png" />
+                <img src="<%=projectPath%>/image/head/moren.png" />
+                <img src="<%=projectPath%>/image/head/moren.png" />
+                <img src="<%=projectPath%>/image/head/moren.png" />
+                <img src="<%=projectPath%>/image/head/moren.png" />
+                <img src="<%=projectPath%>/image/head/moren.png" />
+                <img src="<%=projectPath%>/image/head/moren.png" />
+                <img src="<%=projectPath%>/image/head/moren.png" />
+                <img src="<%=projectPath%>/image/head/moren.png" />
+                <img src="<%=projectPath%>/image/head/moren.png" />
+                <img src="<%=projectPath%>/image/head/moren.png" />
+                <img src="<%=projectPath%>/image/head/moren.png" />
+            </div>
+
         </div>
 
         <div class="content_comment">
-            评论框评论
+            <hr>
+            <label>发表评论</label>
+            <div class="comment_commit">
+                 <textarea id="comment">
+                 </textarea>
+                <div class="commit">
+                    发表评论
+                </div>
+            </div>
+
         </div>
+
+        <div class="content_footer">
+            <hr>
+            <label>评论(2000)</label>
+            <%--评论,分页--%>
+            <div class="footer_item">
+                  <img src="<%=projectPath%>/image/head/moren.png"/>
+                  <span>LABELNET</span>
+                  <p>制度害人，好人也会被诱骗蜕变成腐败分子，这些人就是铁证。不从制度改革入手堵塞产生腐败的根源，贪官只会“野火烧不尽，春风吹又生”。</p>
+
+                  <hr>
+            </div>
+            <div class="footer_item">
+                <img src="<%=projectPath%>/image/head/moren.png"/>
+                <span>LABELNET</span>
+                <p>制度害人，好人也会被诱骗蜕变成腐败分子，这些人就是铁证。不从制度改革入手堵塞产生腐败的根源，贪官只会“野火烧不尽，春风吹又生”。</p>
+
+                <hr>
+            </div>
+            <div class="footer_item">
+                <img src="<%=projectPath%>/image/head/moren.png"/>
+                <span>LABELNET</span>
+                <p>制度害人，好人也会被诱骗蜕变成腐败分子，这些人就是铁证。不从制度改革入手堵塞产生腐败的根源，贪官只会“野火烧不尽，春风吹又生”。</p>
+
+                <hr>
+            </div>
+            <div class="footer_item">
+                <img src="<%=projectPath%>/image/head/moren.png"/>
+                <span>LABELNET</span>
+                <p>制度害人，好人也会被诱骗蜕变成腐败分子，这些人就是铁证。不从制度改革入手堵塞产生腐败的根源，贪官只会“野火烧不尽，春风吹又生”。</p>
+
+                <hr>
+            </div>
+
+            <div class="paginationpage"></div>
+
+        </div>
+
+
 
     </div>
 </article>
