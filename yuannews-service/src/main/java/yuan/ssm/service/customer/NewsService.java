@@ -58,4 +58,12 @@ public interface NewsService extends ServiceBase<NewsCustom> {
      */
     PageJo getNewsCount() throws Exception;
 
+    /**
+     * 某个新闻的阅读量+1
+     * @param nid 新闻id
+     * @return
+     * @throws Exception
+     */
+    Integer updateNewsRnum(Integer nid) throws Exception;
+
 }

@@ -240,4 +240,8 @@ public class NewsServiceImpl implements NewsService {
     public PageJo getNewsCount() throws Exception {
         return countMapper.findCount(2);
     }
+
+    public Integer updateNewsRnum(Integer nid) throws Exception {
+        return newsMapper.updateNewsRnum(nid);
+    }
 }
