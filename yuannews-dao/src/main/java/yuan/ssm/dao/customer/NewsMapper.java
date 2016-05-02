@@ -1,6 +1,7 @@
 package yuan.ssm.dao.customer;
 
 import org.apache.ibatis.annotations.Param;
+import yuan.ssm.pojo.CommentPo;
 import yuan.ssm.pojo.NewsCustom;
 import yuan.ssm.vo.CateVo;
 import yuan.ssm.vo.SourceVo;
@@ -100,6 +101,38 @@ public interface NewsMapper {
 
   //------------------------------------新闻详情页面--------------------------------------------------
 
+    /**
+     * 查询策略：
+     *   1.不分，直接根据id查询，返回NewsCustom对象
+     *   2.查询新闻的点赞的用户头像
+     */
+
+    /**
+     * 根据id查询新闻
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    NewsCustom findNewsById(Integer nid) throws Exception;
+
+
+    /**
+     * 根据新闻id，查询所有的点赞用户头像
+     * @param nid
+     * @return
+     * @throws Exception
+     */
+    List<String> findLikedByNid(Integer nid) throws Exception;
+
+    /**
+     * 根据新闻
+     * @param start
+     * @param num
+     * @param nid
+     * @return
+     * @throws Exception
+     */
+    List<CommentPo> findComment(Integer start,Integer num,Integer nid) throws Exception;
 
 
 
