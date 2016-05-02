@@ -8,9 +8,10 @@
 .content_center p{text-align: left;max-width: 90%;margin: 20px auto;font-size: 16px;}
 
 .content_bottom{margin-top: 30px;}
-.content_bottom .bottom_top{width: 100%;height: 100px;}
+.content_bottom .bottom_top{width: 100%;height: 100px;text-align: center;}
 .content_bottom .bottom_top img{width: 80px;height: 80px;margin: 0px auto;}
 .content_bottom .bottom_top img:hover{cursor: pointer;}
+.content_bottom .bottom_top label{color: #BBBBBB;margin-top: 10px;}
 .content_bottom .bottom_bottom{width: 50%;height: 80px;margin: 10px auto;text-align: center}
 .content_bottom .bottom_bottom img{margin-top: 10px;margin-left:10px;float: left;width: 30px;height: 30px;border-radius: 30px;border: 1px solid #0c9c6e;}
 

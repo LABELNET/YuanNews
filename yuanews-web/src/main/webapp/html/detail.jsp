@@ -169,8 +169,9 @@
 
         <div class="content_bottom">
              <div class="bottom_top">
-                    <img id="zan" onclick="zanClick()" src="<%=projectPath%>/image/icon/zan.png" />
-             </div>
+                     <img id="zan" onclick="zanClick()" src="<%=projectPath%>/image/icon/zan.png" />
+                     <label id="zantext"></label>
+              </div>
 
             <div class="bottom_bottom">
                 <c:if test="${!empty heads}">
@@ -295,6 +296,12 @@
             btnDialog(0);
             return;
         }
+
+        if(zstatus==2){
+            initZan(zstatus);
+            return;
+        }
+
         var arr={
             uid:uid,
             nid:nid,
@@ -329,11 +336,14 @@
          zstatus=status;
          if(status==0){
              //没有点赞
-             $("#zan").src(zan);
+             $("#zan").attr("src",zan);
+             $("#zantext").text("点点点赞啦");
          }else if(status==1){
-             $("#zan").src(normalZan);
+             $("#zan").attr("src",normalZan);
+             $("#zantext").text("你已经赞过了");
          }else if(status==2){
-             $("#zan").src(superZan);
+             $("#zan").attr("src",superZan);
+             $("#zantext").text("哇，你居然超赞了！");
          }
     }
 
