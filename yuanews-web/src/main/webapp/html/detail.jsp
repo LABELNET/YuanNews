@@ -157,7 +157,7 @@
 
 
 <footer>
-    <p class="ft-copyright">copyright yuan.update 2016.04.19</p>
+    <p class="ft-copyright">copyright yuan.update 2016.05.02</p>
     <div id="tbox"> <a id="togbook" href="/"></a> <a id="gotop" href="javascript:void(0)"></a> </div>
 </footer>
 <!--菜单点击效果-->

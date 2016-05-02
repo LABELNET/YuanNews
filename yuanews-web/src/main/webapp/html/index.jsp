@@ -167,7 +167,7 @@
                    <div class="blogs">
                        <figure><img src="${custom.img}"></figure>
                        <ul>
-                           <h3><a href="detail.html">${custom.title}</a></h3>
+                           <h3><a href="<%=projectPath%>/html/newsDetailPage.action?p=1">${custom.title}</a></h3>
                            <p>ͨ
 
                              ${fn:substring(custom.content,0,90)}...

@@ -55,6 +55,7 @@
 #DialogBySHF #Container
 {
     padding:0px 5px 5px 5px;
+    overflow-y:auto;
     /*width:390px;
     height:355px;*/
 }
