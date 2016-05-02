@@ -17,6 +17,7 @@
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <meta name="keywords" content="Flat Dark Web Login Form Responsive Templates, Iphone Widget Template, Smartphone login forms,Login form, Widget Template, Responsive Templates, a Ipad 404 Templates, Flat Responsive Templates" />
     <link href="css/style.css" rel='stylesheet' type='text/css' />
+    <link href="css/detail.css" rel='stylesheet' type='text/css' />
     <!--webfonts-->
     <link href='http://fonts.useso.com/css?family=PT+Sans:400,700,400italic,700italic|Oswald:400,300,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.useso.com/css?family=Exo+2' rel='stylesheet' type='text/css'>
@@ -24,8 +25,8 @@
     <script src="http://ajax.useso.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <link rel='stylesheet' href="../css/nprogress.css"/>
     <script src="../js/nprogress.js"></script>
-    <link rel="Stylesheet" type="text/css" href="../css/DialogBySHF.css" />
-    <script type="text/javascript" src="../js/DialogBySHF.js"></script>
+
+
 </head>
 <body>
 <script>
@@ -44,22 +45,6 @@
         <a href="javascript:void(0)" onclick="userOut()">腾出</a>
     </th>
 </table>
-<div class="login-form">
-    <div class="close"> </div>
-    <div class="head-info">
-        <label class="lbl-1"> </label>
-        <label class="lbl-2"> </label>
-        <label class="lbl-3"> </label>
-    </div>
-    <div class="clear"> </div>
-    <div>
-        <span id="tishi" style="color: white;"></span>
-    </div>
-    <div class="avtar">
-        <img src="images/avtar.png" />
-    </div>
-
-</div>
 
 <script type="text/javascript">
 
