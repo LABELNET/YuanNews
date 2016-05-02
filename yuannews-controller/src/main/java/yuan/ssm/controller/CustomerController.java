@@ -268,14 +268,33 @@ public class CustomerController {
         //点赞人信息
         List<String> heads = userService.selectLikedByNid(nid);
         andView.addObject("heads",heads);
+
+        //阅读数+1
+        newsService.updateNewsRnum(nid);
+
         return andView;
     }
 
+    /**
+     * 获取点赞状态
+     * @param uid 用户id
+     * @param nid 新闻id
+     * @return
+     * @throws Exception
+     */
     @RequestMapping("/getLikedStatus")
     public @ResponseBody Integer getLikedStatus(@RequestParam Integer uid,@RequestParam Integer nid) throws Exception {
         return userService.selectZanStatus(uid,nid);
     }
 
+    /**
+     * 点赞
+     * @param uid 用户id
+     * @param nid 新闻id
+     * @param status 当前状态
+     * @return
+     * @throws Exception
+     */
     @RequestMapping("/userZan")
     public @ResponseBody Integer userZan(@RequestParam Integer uid,@RequestParam Integer nid,@RequestParam Integer status) throws Exception {
         return userService.userZanNews(uid, nid, status);
