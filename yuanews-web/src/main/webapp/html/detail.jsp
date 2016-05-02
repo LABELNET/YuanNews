@@ -1,8 +1,8 @@
-<%@ page import="yuan.ssm.vo.UserVo" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: yuan
-  Date: 16-5-1
-  Time: 下午2:27
+  Date: 16-5-2
+  Time: 下午4:47
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -90,14 +90,14 @@
             <div class="search-user">
                 <a href="#" class="search"><b></b></a>
                 <%
-                  if(userVo==null){
+                    if(userVo==null){
 
                 %>
                 <a href="javascript:void(0)" class="user" onclick="btnDialog(0)"><b></b></a>
                 <%
-                    }else{
+                }else{
                 %>
-                   <img src="<%=userVo.getHead()%>" id="indexuser" style="" onclick="btnDialog(1)"/>
+                <img src="<%=userVo.getHead()%>" id="indexuser" style="" onclick="btnDialog(1)"/>
                 <%
                     }
                 %>
@@ -121,7 +121,7 @@
                 <c:forEach var="cate" items="${sourceIfo.cateVos}">
                     <li>
                         <a href="<%=projectPath%>/html/pageIndex.action?p=1&title=${cate.content}&type=2&nType=7">
-                        <c:out value="${cate.content}"/>
+                            <c:out value="${cate.content}"/>
                         </a>
                     </li>
                 </c:forEach>
@@ -157,46 +157,46 @@
                     <a href="<%=projectPath%>/html/pageIndex.action?p=1&title=${title}&type=5&nType=${ntype}">评论</a>
                 </span><b>新闻推荐网页版</b></h2>
 
-           <c:if test="${empty customs}" >
-            <div class="blogs">
-                没有更多数据
-            </div>
-           </c:if>
-           <c:if test="${!empty customs}">
-               <c:forEach var="custom" items="${customs}">
-                   <div class="blogs">
-                       <figure><img src="${custom.img}"></figure>
-                       <ul>
-                           <h3><a href="detail.html">${custom.title}</a></h3>
-                           <p>ͨ
+            <c:if test="${empty customs}" >
+                <div class="blogs">
+                    没有更多数据
+                </div>
+            </c:if>
+            <c:if test="${!empty customs}">
+                <c:forEach var="custom" items="${customs}">
+                    <div class="blogs">
+                        <figure><img src="${custom.img}"></figure>
+                        <ul>
+                            <h3><a href="detail.html">${custom.title}</a></h3>
+                            <p>ͨ
 
-                             ${fn:substring(custom.content,0,90)}...
+                                    ${fn:substring(custom.content,0,90)}...
 
-                           <p class="autor">
+                            <p class="autor">
                                <span class="lm f_l">
                                     <a href="<%=projectPath%>/html/pageIndex.action?p=1&title=${custom.ccont}&type=2&nType=7">
                                         <c:out value="${custom.ccont}"/>
                                     </a>
                                    <c:if test="${!empty custom.scont}">
-                                         ,
+                                       ,
                                        <a href="<%=projectPath%>/html/pageIndex.action?p=1&title=${custom.scont}&type=2&nType=8">
                                            <c:out value="${custom.scont}"/>
                                        </a>
                                    </c:if>
                                </span>
-                               <span class="dtime f_l">${custom.dt}</span>
-                               <span class="viewnum f_r">阅读(${custom.rnum})</span>
-                               <span class="pingl f_r">评论(${custom.cnum==null?0:custom.cnum})</span>
-                               <c:if test="${type==4}">
-                                   <span>赞(${custom.znum==null?0:custom.znum})</span>
-                               </c:if>
-                           </p>
+                                <span class="dtime f_l">${custom.dt}</span>
+                                <span class="viewnum f_r">阅读(${custom.rnum})</span>
+                                <span class="pingl f_r">评论(${custom.cnum==null?0:custom.cnum})</span>
+                                <c:if test="${type==4}">
+                                    <span>赞(${custom.znum==null?0:custom.znum})</span>
+                                </c:if>
+                            </p>
 
-                       </ul>
-                   </div>
+                        </ul>
+                    </div>
 
-               </c:forEach>
-           </c:if>
+                </c:forEach>
+            </c:if>
 
         </div>
         <div class="r_box f_r">
@@ -229,7 +229,7 @@
             showDialog(userDetalUrl);
         }
     }
-    
+
     function showDialog(url) {
         $.DialogBySHF.Dialog({
             Width: 1024,
