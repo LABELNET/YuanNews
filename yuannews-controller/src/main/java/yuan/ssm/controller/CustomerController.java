@@ -13,6 +13,7 @@ import yuan.ssm.pojo.CSCustom;
 import yuan.ssm.pojo.NewsCustom;
 import yuan.ssm.service.customer.NewsService;
 import yuan.ssm.service.customer.UserService;
+import yuan.ssm.vo.TasteVo;
 import yuan.ssm.vo.UserVo;
 
 import javax.servlet.http.HttpSession;
@@ -164,8 +165,15 @@ public class CustomerController {
      * @return
      */
     @RequestMapping("login/userDetail")
-    public String userDetail(){
-        return USER_DETAIL;
+    public ModelAndView userDetail(HttpSession session) throws Exception {
+        //查询标签数据
+        UserVo vo= (UserVo) session.getAttribute("user");
+        int id = vo.getId();
+        List<TasteVo> tasteVos = userService.userSelectTasteById(id);
+        ModelAndView andView=new ModelAndView();
+        andView.addObject("tasteVos",tasteVos);
+        andView.setViewName(USER_DETAIL);
+        return andView;
     }
 
     /**

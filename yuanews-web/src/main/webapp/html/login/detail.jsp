@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login</title>
+    <title>个人中心</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -47,15 +47,22 @@
         <div class="top_left">
             <h3>个人信息</h3>
             <div class="left_img">
-                <img src="http://localhost:8088/image/head/moren.jpg">
-                <h3>LABELNET</h3>
+                <img src="<%=userVo.getHead()%>">
+                <h3><%=userVo.getNick()%></h3>
                 <input type="button" value="安全退出" onclick="userOut()">
             </div>
 
             <div class="left_ifo">
-                <h4>电话：150000000000</h4>
-                <h4>性别：男</h4>
-                <h4>权限：</h4>
+                <h4>电话：<%=userVo.getUnum()%></h4>
+                <h4>性别：<%=userVo.getSex()==0?"男":"女"%></h4>
+                <h4>权限：<%=userVo.getStatus()==0?"普通用户":"管理员"%></h4>
+                <%
+                  if(userVo.getStatus()==1){
+                %>
+                <input type="button" value="后台管理" onclick="managerNews()">
+                <%
+                    }
+                %>
             </div>
 
         </div>
@@ -64,7 +71,8 @@
                 <div class="label_left">
                     <h3>兴趣标签</h3>
                     <div class="labels">
-                        <label>刘亦菲</label>
+                        <c
+                        <label>刘亦菲<img src="images/icon_exit.png"> </label>
                     </div>
                 </div>
         </div>
@@ -76,6 +84,7 @@
 <script type="text/javascript">
 
     var loginOutUrl="<%=projectPath%>/html/login/userLoignout.action";
+    var managerNews="<%=projectPath %>/manager/managerIndex.action";
 
     window.onload=function() {
         $('body').show();
@@ -89,9 +98,15 @@
         NProgress.done();
     }
 
-    
+
+    //用户登出
     function userOut() {
         dataRequest(loginOutUrl,new Array(),0);
+    }
+
+    //后台管理
+    function managerNews() {
+       window.location.href=managerNews;
     }
 
     //网络请求方法提取
