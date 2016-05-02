@@ -39,13 +39,40 @@
        });
    });
 </script>
-<table>
-    <th>
-        个人信息
-        <a href="javascript:void(0)" onclick="userOut()">腾出</a>
-    </th>
-</table>
 
+<div class="content">
+
+    <div class="content_top">
+
+        <div class="top_left">
+            <h3>个人信息</h3>
+            <div class="left_img">
+                <img src="http://localhost:8088/image/head/moren.jpg">
+                <h3>LABELNET</h3>
+                <input type="button" value="安全退出" onclick="userOut()">
+            </div>
+
+            <div class="left_ifo">
+                <h4>电话：150000000000</h4>
+                <h4>性别：男</h4>
+                <h4>权限：</h4>
+            </div>
+
+        </div>
+
+        <div class="top_right">
+                <div class="label_left">
+                    <h3>兴趣标签</h3>
+                    <div class="labels">
+                        <label>刘亦菲</label>
+                    </div>
+                </div>
+        </div>
+
+    </div>
+
+
+</div>
 <script type="text/javascript">
 
     var loginOutUrl="<%=projectPath%>/html/login/userLoignout.action";
@@ -55,6 +82,8 @@
         NProgress.start();
         setTimeout(function() { NProgress.done(); $('.fade').removeClass('out'); }, 1000);
     }
+
+
 
     function doneIt() {
         NProgress.done();
@@ -86,6 +115,19 @@
             }
         });
     }
+
+    //获取随机颜色 - 标签颜色
+    var getRandomColor = function(){
+        return  '#' +
+
+                (function(color){
+
+                    return (color +=  '0123456789abcdef'[Math.floor(Math.random()*16)])
+
+                    && (color.length == 6) ?  color : arguments.callee(color);
+
+                })('');
+    };
 
 </script>
 </body>
