@@ -1,7 +1,7 @@
 package yuan.ssm.dao.customer;
 
 import org.apache.ibatis.annotations.Param;
-import yuan.ssm.pojo.CommentPo;
+import yuan.ssm.other.CommentJo;
 import yuan.ssm.pojo.NewsCustom;
 import yuan.ssm.vo.CateVo;
 import yuan.ssm.vo.SourceVo;
@@ -109,7 +109,7 @@ public interface NewsMapper {
 
     /**
      * 根据id查询新闻
-     * @param id
+     * @param nid 新闻id
      * @return
      * @throws Exception
      */
@@ -118,7 +118,7 @@ public interface NewsMapper {
 
     /**
      * 根据新闻id，查询所有的点赞用户头像
-     * @param nid
+     * @param nid 新闻id
      * @return
      * @throws Exception
      */
@@ -126,13 +126,22 @@ public interface NewsMapper {
 
     /**
      * 根据新闻
-     * @param start
-     * @param num
-     * @param nid
+     * @param start 开始
+     * @param num 数量
+     * @param nid 新闻id
      * @return
      * @throws Exception
      */
-    List<CommentPo> findComment(Integer start,Integer num,Integer nid) throws Exception;
+    List<CommentJo> findComment(Integer start, Integer num, Integer nid) throws Exception;
+
+
+    /**
+     * 查询某条新闻的总数
+     * @param nid 新闻id
+     * @return
+     * @throws Exception
+     */
+    Integer findCommentCount(Integer nid) throws Exception;
 
 
 
