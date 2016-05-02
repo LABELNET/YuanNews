@@ -246,6 +246,7 @@
                n.id=c.uid
              AND
                c.nid=#{nid}
+              ORDER BY c.id DESC
     </select>
 
 
