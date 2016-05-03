@@ -264,13 +264,13 @@ public class NewsServiceImpl implements NewsService {
     }
 
     /**
-     * 获取新闻的列表
+     * 获取新闻的列表-根据id，批量查询
      * @param nids 新闻id
      * @return
      * @throws Exception
      */
     public List<NewsCustom> getNidsNews(List<Integer> nids) throws Exception {
-        return null;
+        return newsMapper.findNewsByIds(nids);
     }
 
 
