@@ -5,12 +5,14 @@ import yuan.ssm.common.util.*;
 import yuan.ssm.dao.customer.NewsMapper;
 import yuan.ssm.dao.customer.UserMapper;
 import yuan.ssm.dao.manager.ManagerCountMapper;
+import yuan.ssm.dao.manager.TasteManagerMapper;
 import yuan.ssm.other.CommentJo;
 import yuan.ssm.pojo.NewsCustom;
 import yuan.ssm.service.customer.UserService;
 import yuan.ssm.vo.TasteVo;
 import yuan.ssm.vo.UserVo;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
@@ -30,6 +32,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private ManagerCountMapper managerCountMapper;
+
+    @Autowired
+    private TasteManagerMapper tasteManagerMapper;
 
     //检查账户是否存在
     public boolean isCheckUnum(String unum) throws Exception {
@@ -173,11 +178,35 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 用户推荐的新闻id,并进行持久化实现
-     * @param uid
+     * @param uid 用户id : 自己的推荐算法实现
      */
     private synchronized void promoteNewsIds(Integer uid){
 
-        FileTool.createNewFile(1,"Hi ， FileTool");
+        //1.查询查询用户兴趣
+        try {
+            List<TasteVo> tasteVos = userSelectTasteById(uid);
+            //2.根据兴趣查询用户id
+            Set<Integer> uids=new HashSet<Integer>();
+            for(TasteVo tasteVo : tasteVos){
+                uids.addAll(tasteManagerMapper.findTasteByLabel(tasteVo.getLabel()));
+            }
+            //3.根据相关用户的id，从点赞中获取相关的新闻id
+            Set<Integer> nids=new HashSet<Integer>();
 
+            for (Integer id : uids){
+                //sql 需实现：根据用户id,查询新闻id Set集合
+            }
+
+            //4.根据相关用户的id,从评论表中获取新闻id
+            for(Integer id:uids){
+                //sql 需实现：根据用户id ，查询新闻id Set集合
+            }
+
+            //5.持久化存储新闻nids
+            FileTool.createNewFile(uid,nids);
+
+        } catch (Exception e) {
+            LoggerUtil.print("推荐算法：持久化新闻id失败！");
+        }
     }
 }

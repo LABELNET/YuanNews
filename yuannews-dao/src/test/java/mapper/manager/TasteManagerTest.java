@@ -1,14 +1,13 @@
 package mapper.manager;
 
 import common.ManagerBaseTest;
-import common.MapperContanst;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import yuan.ssm.dao.manager.TasteManagerMapper;
 import yuan.ssm.vo.TasteVo;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by yuan on 16-4-1.
@@ -58,7 +57,7 @@ public class TasteManagerTest extends ManagerBaseTest{
 
     @Test
     public void findTasteByLabel() throws Exception{
-        List<Integer> tasteByLabel = tasteManagerMapper.findTasteByLabel("小米");
+        Set<Integer> tasteByLabel = tasteManagerMapper.findTasteByLabel("大米");
         System.out.printf("兴趣管理测试结果 ： "+tasteByLabel.toString());
     }
 

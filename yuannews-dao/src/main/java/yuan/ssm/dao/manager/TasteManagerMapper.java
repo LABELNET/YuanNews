@@ -2,7 +2,9 @@ package yuan.ssm.dao.manager;
 
 import org.apache.ibatis.annotations.Param;
 import yuan.ssm.vo.TasteVo;
+
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by yuan on 16-4-1.
@@ -24,7 +26,7 @@ public interface TasteManagerMapper {
     //分页查询所有兴趣信息
     List<TasteVo> findTasteList(Integer start, Integer num) throws Exception;
     //根据兴趣查询 兴趣信息 返回多个用户id , id 进行从小到大排序
-    List<Integer> findTasteByLabel(@Param("label") String label) throws Exception;
+    Set<Integer> findTasteByLabel(@Param("label") String label) throws Exception;
     //根据兴趣信息和用户id 查询是否具有改兴趣 , 查询id即可
     Integer findTasteByUidAndLabel(@Param("label") String label,@Param("uid") Integer uid) throws Exception;
 
