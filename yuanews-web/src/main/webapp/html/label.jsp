@@ -29,6 +29,7 @@
     <link rel="stylesheet" type="text/css" href="css/default.css">
     <link rel="stylesheet" type="text/css" href="css/nalbase.css">
     <link rel="Stylesheet" type="text/css" href="css/DialogBySHF.css" />
+    <link rel="Stylesheet" type="text/css" href="css/label.css" />
     <link rel='stylesheet' href="css/nprogress.css"/>
     <script src="js/nprogress.js"></script>
     <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -144,12 +145,24 @@
         </ul>
     </div>
 </div>
+<!--菜单　-->
+<article>
+    <div class="l_box f_l">
+        <div class="label_top">
 
-<div>
+            <h3>可以选择你要关注的兴趣标签(最多30个)</h3>
+            <hr>
+            <label>兴趣标签总数：100 </label>
+            <label style="float: right;margin-right: 20px;color: #0c9c6e;">登陆/已关注（20）</label>
+        </div>
+        <div class="label_center">
 
-    标签页面
+        </div>
+        <div class="label_bottom">
 
-</div>
+        </div>
+    </div>
+</article>
 
 
 
