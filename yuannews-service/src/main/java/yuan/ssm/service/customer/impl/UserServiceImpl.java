@@ -195,14 +195,21 @@ public class UserServiceImpl implements UserService {
 
             for (Integer id : uids){
                 //sql 需实现：根据用户id,查询新闻id Set集合
+                nids.addAll(newsMapper.findZanNid(id));
             }
 
             //4.根据相关用户的id,从评论表中获取新闻id
             for(Integer id:uids){
                 //sql 需实现：根据用户id ，查询新闻id Set集合
+                nids.addAll(newsMapper.findCommentNid(id));
             }
 
-            //5.持久化存储新闻nids
+            //5.根据用户的兴趣进行模糊查询新闻id
+            for(TasteVo tasteVo : tasteVos){
+                nids.addAll(newsMapper.findNewsByLabel(tasteVo.getLabel()));
+            }
+
+            //6.持久化存储新闻nids
             FileTool.createNewFile(uid,nids);
 
         } catch (Exception e) {
