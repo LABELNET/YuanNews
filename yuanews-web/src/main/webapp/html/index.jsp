@@ -137,7 +137,7 @@
                 </c:forEach>
             </c:if>
             <li>
-                <a href="<%=projectPath%>/html/userLabelPage.action?p=1">
+                <a style="color: purple;" href="<%=projectPath%>/html/userLabelPage.action?p=1">
                     关注标签
                 </a>
             </li>
