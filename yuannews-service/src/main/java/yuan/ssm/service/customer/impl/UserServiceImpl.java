@@ -160,4 +160,12 @@ public class UserServiceImpl implements UserService {
             return integer;
         }
     }
+
+    /**
+     * 用户推荐的新闻id,并进行持久化实现
+     * @param uid
+     */
+    private void promoteNewsIds(Integer uid){
+
+    }
 }

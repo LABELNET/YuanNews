@@ -30,6 +30,11 @@ public interface ConfigConstant {
     String FONT_IMAGE_BASE_PATH="/mnt/JAVA/tomcatImageServer/head/";
 
     /**
+     * 推荐的新闻id存储绝对路径
+     */
+    String JSON_IDS_BASE_PATH="/mnt/JAVA/tomcatImageServer/ids/";
+
+    /**
      * 用户管理页面，每页加载的数量
      */
     Integer MAGAGER_USER_PAGE_NUM=8;
