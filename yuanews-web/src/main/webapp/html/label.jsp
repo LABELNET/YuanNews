@@ -179,7 +179,7 @@
 
         <div class="label_bottom">
             <hr>
-            <c:if test="${count>24}">
+            <c:if test="${count-labelCount>24}">
                 <div id="paginationpage"></div>
             </c:if>
         </div>
