@@ -14,6 +14,7 @@ import yuan.ssm.vo.TasteVo;
 import yuan.ssm.vo.UserVo;
 
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -101,7 +102,7 @@ public class UserServiceImpl implements UserService {
 
 
     //分页查询所有兴趣标签
-    public List<TasteVo> selectTaste(Integer start, Integer num,Integer uid) throws Exception {
+    public Set<String> selectTaste(Integer start, Integer num, Integer uid) throws Exception {
         return userMapper.selectTaste(start,num,uid);
     }
 

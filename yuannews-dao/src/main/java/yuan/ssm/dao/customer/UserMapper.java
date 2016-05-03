@@ -5,6 +5,7 @@ import yuan.ssm.vo.TasteVo;
 import yuan.ssm.vo.UserVo;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by yuan on 16-4-4.
@@ -113,9 +114,9 @@ public interface UserMapper {
      * 分页查询兴趣标签 ,id倒序输出
      * @param state 开始
      * @param num 总数
-     * @return 当前页面的兴趣标签内容
+     * @return 当前页面的兴趣标签内容 ，标签内容不重复
      */
-    List<TasteVo> selectTaste(@Param("start") Integer state , @Param("num") Integer num,@Param("uid")Integer uid) throws Exception;
+    Set<String> selectTaste(@Param("start") Integer state , @Param("num") Integer num, @Param("uid")Integer uid) throws Exception;
 
 
     /**

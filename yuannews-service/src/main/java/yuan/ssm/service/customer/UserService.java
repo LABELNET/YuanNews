@@ -6,6 +6,7 @@ import yuan.ssm.vo.TasteVo;
 import yuan.ssm.vo.UserVo;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by yuan on 16-4-4.
@@ -111,7 +112,7 @@ public interface UserService {
      * @return
      * @throws Exception
      */
-    List<TasteVo> selectTaste(Integer start,Integer num,Integer uid) throws Exception;
+    Set<String> selectTaste(Integer start, Integer num, Integer uid) throws Exception;
 
 
     /**

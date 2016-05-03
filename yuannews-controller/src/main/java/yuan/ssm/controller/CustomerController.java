@@ -20,6 +20,7 @@ import yuan.ssm.vo.UserVo;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by yuan on 16-4-4.
@@ -356,8 +357,8 @@ public class CustomerController {
         Integer count = userService.selectTasteCount();
         andView.addObject("count",count);
         //当前的数据的信息
-        List<TasteVo> tasteVos = userService.selectTaste(p, PAGE_LABEL_NUM,vo.getId());
-        andView.addObject("tasteVos",tasteVos);
+        Set<String> tastes = userService.selectTaste(p, PAGE_LABEL_NUM, vo.getId());
+        andView.addObject("tasteVos",tastes);
         //当前用户已经关注的总数
         if(vo.getId()==0){
             andView.addObject("labelCount",-1);
@@ -368,5 +369,10 @@ public class CustomerController {
         return andView;
     }
 
+
+    public Integer likedLabel(){
+//        userService.
+        return 0;
+    }
 
 }

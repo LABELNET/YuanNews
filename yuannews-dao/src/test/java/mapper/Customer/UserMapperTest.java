@@ -6,6 +6,7 @@ import yuan.ssm.vo.TasteVo;
 import yuan.ssm.vo.UserVo;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * ==================================================
@@ -94,8 +95,8 @@ public class UserMapperTest extends CustomerBaseTest{
 
     @Test
     public void selectTasteTest() throws Exception {
-        List<TasteVo> tasteVos = userMapper.selectTaste(0,10,1);
-        LoggerUtil.printJSON(tasteVos);
+        Set<String> stringSet = userMapper.selectTaste(0, 10, 1);
+        LoggerUtil.printJSON(stringSet);
     }
 
     /**

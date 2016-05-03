@@ -60,9 +60,9 @@
          uid=#{id}
     </select>
 
-    <select id="selectTaste" resultType="yuan.ssm.vo.TasteVo">
+    <select id="selectTaste" resultType="java.lang.String">
         SELECT
-         *
+         label
          FROM
          taste
              <where>

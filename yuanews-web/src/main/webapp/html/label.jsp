@@ -15,7 +15,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
-    <title>新闻推荐-<c:out value="${title}"/></title>
+    <title>新闻推荐-关注兴趣</title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -150,10 +150,10 @@
     <div class="l_box f_l">
         <div class="label_top">
 
-            <h3>可以选择你要关注的兴趣标签(最多30个)</h3>
+            <h3>可以选择你要关注的兴趣标签(<label  class="label_show" style="color: #0c9c6e;font-size: 12px;">最多30个</label>)</h3>
             <hr>
             <label>兴趣标签总数：${count} </label>
-            <label style="float: right;margin-right: 20px;color: #0c9c6e;">
+            <label class="label_show" style="float: right;margin-right: 20px;color: #0c9c6e;">
                 <c:if test="${labelCount==-1}">
                    <a href="javascript:void(0)" onclick="btnDialog(0)">登陆?</a>
                 </c:if>
@@ -170,8 +170,8 @@
             <c:if test="${!empty tasteVos}">
                 <c:forEach var="taste" items="${tasteVos}">
                     <div class="center_item">
-                        <label>${taste.label}</label>
-                        <a href="javascript:void(0)" onclick="likeLabel(${taste.id})">关注</a>
+                        <label>${taste}</label>
+                        <a href="javascript:void(0)" onclick="likeLabel(${taste})">关注</a>
                     </div>
                 </c:forEach>
             </c:if>
@@ -200,6 +200,8 @@
 
     var loginUrl="<%=projectPath%>/html/login/userLoginPage.action";
     var userDetalUrl="<%=projectPath%>/html/login/userDetail.action";
+    var labelCount=${labelCount};
+    var uid=<%=userVo==null?0:userVo.getId()%>;
 
     function btnDialog(type) {
         if(type==0) {
@@ -209,7 +211,24 @@
         }
     }
 
-    function likeLabel(id) {
+    function likeLabel(label) {
+
+        alert(label);
+        if(uid==0){
+            btnDialog(0);
+            return;
+        }
+
+        if(labelCount==-1){
+            btnDialog(0);
+            return;
+        }
+
+        if(labelCount>=30){
+            $(".label_show").css("color","#ff0000");
+        }
+
+
 
     }
     
