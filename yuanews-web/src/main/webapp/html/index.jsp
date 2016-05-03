@@ -137,7 +137,7 @@
                 </c:forEach>
             </c:if>
             <li>
-                <a href="<%=projectPath%>/html/pageIndex.action?p=1&type=2&nType=6">
+                <a href="<%=projectPath%>/html/userLabelPage.action?p=1">
                     关注标签
                 </a>
             </li>
