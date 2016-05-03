@@ -1,8 +1,8 @@
 .label_top{margin: 20px auto;width: 100%;height: 100px;}
-.label_top label{margin-left: 10px;}
-.label_top h3{width: 100%;text-align: center;font-size: 18px;}
+.label_top label{margin-left: 10px;color: #0c9c6e;}
+.label_top h3{width: 100%;text-align: left;font-size: 18px;}
 
-.label_center{width: 90%;margin: 20px auto;text-align: center;}
+.label_center{width: 90%;margin: 10px auto;text-align: center;}
 .label_center .center_item{float: left;width: 20%;height: 100px;margin-left:3%;margin-top: 20px;border: solid 1px white;text-align: center;padding: 1px;}
 .label_center .center_item:hover{border: 1px solid #0c9c6e;cursor: pointer;}
 .label_center .center_item label{display: block;width:100%;height: 60%; background-color: #2fa0ec;color: white;text-align: center;line-height: 60px;margin-bottom: 10px; }

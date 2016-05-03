@@ -51,6 +51,8 @@ public class CustomerController {
 
     //每页数量
     private final int PAGE_NUM=10;
+    //标签每页显示数量
+    private final int PAGE_LABEL_NUM=24;
     //ID
     private final int idType=2;
     //阅读
@@ -341,7 +343,7 @@ public class CustomerController {
             p=1;
         }
         int currentPage=p;
-        p=(currentPage-1)*PAGE_NUM;
+        p=(currentPage-1)*PAGE_LABEL_NUM;
 
         ModelAndView andView = new ModelAndView();
         andView.setViewName(USER_LABEL_PAGE);
@@ -354,8 +356,15 @@ public class CustomerController {
         Integer count = userService.selectTasteCount();
         andView.addObject("count",count);
         //当前的数据的信息
-        List<TasteVo> tasteVos = userService.selectTaste(p, PAGE_NUM,vo.getId());
+        List<TasteVo> tasteVos = userService.selectTaste(p, PAGE_LABEL_NUM,vo.getId());
         andView.addObject("tasteVos",tasteVos);
+        //当前用户已经关注的总数
+        if(vo.getId()==0){
+            andView.addObject("labelCount",-1);
+        }else{
+            Integer tasteCount = userService.userSelectTasteCount(vo.getId());
+            andView.addObject("labelCount",tasteCount);
+        }
         return andView;
     }
 

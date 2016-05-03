@@ -52,7 +52,7 @@
         $(function() {
             $("#paginationpage").pagination({
                 items: ${count},
-                itemsOnPage: 10,
+                itemsOnPage: 64,
                 page:10,
                 hrefTextPrefix:"?p=",
                 cssStyle: 'light-theme',
@@ -152,54 +152,36 @@
 
             <h3>可以选择你要关注的兴趣标签(最多30个)</h3>
             <hr>
-            <label>兴趣标签总数：100 </label>
-            <label style="float: right;margin-right: 20px;color: #0c9c6e;">登陆/已关注（20）</label>
+            <label>兴趣标签总数：${count} </label>
+            <label style="float: right;margin-right: 20px;color: #0c9c6e;">
+                <c:if test="${labelCount==-1}">
+                   <a href="javascript:void(0)" onclick="btnDialog(0)">登陆</a>
+                </c:if>
+                <c:if test="${labelCount>-1}">
+                    已关注（${labelCount}）
+                </c:if>
+            </label>
         </div>
         <div class="label_center">
 
-            <div class="center_item">
-                <label>围棋</label>
-                <a href="#">关注</a>
-            </div>
-
-            <div class="center_item">
-                <label>围棋</label>
-                <a href="#">关注</a>
-            </div>
-
-            <div class="center_item">
-                <label>围棋</label>
-                <a href="#">关注</a>
-            </div>
-
-            <div class="center_item">
-                <label>围棋</label>
-                <a href="#">关注</a>
-            </div>
-
-            <div class="center_item">
-                <label>围棋</label>
-                <a href="#">关注</a>
-            </div>
-
-            <div class="center_item">
-                <label>围棋</label>
-                <a href="#">关注</a>
-            </div>
-
-            <div class="center_item">
-                <label>围棋</label>
-                <a href="#">关注</a>
-            </div>
-
-            <div class="center_item">
-                <label>围棋</label>
-                <a href="#">关注</a>
-            </div>
+            <c:if test="${empty tasteVos}">
+                没有更多兴趣标签了
+            </c:if>
+            <c:if test="${!empty tasteVos}">
+                <c:forEach var="taste" items="${tasteVos}">
+                    <div class="center_item">
+                        <label>${taste.label}</label>
+                        <a href="javascript:void(0)" onclick="likeLabel(${taste.id})">关注</a>
+                    </div>
+                </c:forEach>
+            </c:if>
         </div>
+
         <div class="label_bottom">
             <hr>
-            <div id="paginationpage"></div>
+            <c:if test="${count>64}">
+                <div id="paginationpage"></div>
+            </c:if>
         </div>
     </div>
 </article>
@@ -225,6 +207,10 @@
         }else{
             showDialog(userDetalUrl);
         }
+    }
+
+    function likeLabel(id) {
+
     }
     
     function showDialog(url) {
