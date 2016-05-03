@@ -202,7 +202,9 @@
         <div class="r_box f_r">
             <!--tit01 end-->
             <c:if test="${!empty customs}">
-                <div id="paginationpage" style="float: right"></div>
+                <c:if test="${fn:length(customs)>10}">
+                        <div id="paginationpage" style="float: right"></div>
+                </c:if>
             </c:if>
             <!--r_box end -->
         </div>
