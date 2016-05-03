@@ -254,8 +254,84 @@
     </update>
 
 
+    <select id="findZanNid" resultType="java.lang.Integer">
+        SELECT
+           nid
+         FROM
+           liked
+         WHERE
+           uid=#{uid}
+    </select>
+
+    <select id="findCommentNid" resultType="java.lang.Integer">
+        SELECT
+           nid
+        FROM
+           comment
+        WHERE
+           uid=#{uid}
+    </select>
+
+    <select id="findNewsByLabel" resultType="java.lang.Integer">
+        SELECT
+           id
+        FROM
+          news
+        WHERE
+          title LIKE '%${label}%'
+        OR
+          content LIKE '%${label}%'
+    </select>
 
 
+    <select id="findNewsByIds" parameterType="java.util.List" resultType="yuan.ssm.pojo.NewsCustom">
+        select
+        n.id id,
+        n.title title,
+        n.dt dt,
+        n.content content,
+        n.img img,
+        n.rnum rnum,
+        IFNULL(znum,0) znum,
+        c.id cid,
+        c.content ccont,
+        IFNULL(cnum,0) cnum,
+        s.id AS sid,
+        s.source scont
+        from
+        source s,
+        cate c,
+        news n
+        left join (
+        select
+        nid,
+        count(1) as znum
+        from
+        liked
+        group by
+        nid) as z
+        on
+        z.nid=n.id
+        left join (
+        select
+        nid,
+        count(1) as cnum
+        from
+        comment
+        group by nid) as co
+        on
+        co.nid=z.nid
+        where
+        c.id=n.cid
+        AND
+        s.id=n.sid
+        AND
+        n.id IN
+        <foreach collection="list" index="index" item="id"  open="(" close=")"
+                 separator=",">
+              #{id}
+        </foreach>
+    </select>
 
 
 

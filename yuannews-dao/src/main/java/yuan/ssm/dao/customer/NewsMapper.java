@@ -38,15 +38,15 @@ public interface NewsMapper {
      * @return
      * @throws Exception
      */
-    Set<Integer> findCommentNid(@Param("nid") Integer uid) throws Exception;
+    Set<Integer> findCommentNid(@Param("uid") Integer uid) throws Exception;
 
     /**
      * 03.新闻表：根据用户兴趣，模糊查询新闻id
-     * @param uid
+     * @param label 兴趣标签
      * @return
      * @throws Exception
      */
-    Set<Integer> findNewsByLabel(@Param("label") Integer uid) throws Exception;
+    Set<Integer> findNewsByLabel(@Param("label") String label) throws Exception;
 
     /**
      * 04.根据新闻ids，批量查询新闻

@@ -7,7 +7,9 @@ import yuan.ssm.pojo.NewsCustom;
 import yuan.ssm.vo.CateVo;
 import yuan.ssm.vo.SourceVo;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * ==================================================
@@ -37,10 +39,43 @@ public class NewsMapperTest extends CustomerBaseTest{
     }
 
     @Test
+    public void findZanNidTest() throws Exception {
+        Set<Integer> zanNid = newsMapper.findZanNid(1);
+        LoggerUtil.printJSON(zanNid);
+    }
+
+    @Test
+    public void findCommentNidTest() throws Exception {
+        Set<Integer> zanNid = newsMapper.findCommentNid(1);
+        LoggerUtil.printJSON(zanNid);
+    }
+
+    @Test
+    public void findNewsByLabelTest() throws Exception {
+        Set<Integer> zanNid = newsMapper.findNewsByLabel("据悉");
+        LoggerUtil.printJSON(zanNid);
+    }
+
+    @Test
+    public void findNewsByIdsTest() throws Exception {
+        List<Integer> ids=new ArrayList<Integer>();
+        ids.add(2);
+        ids.add(3);
+        ids.add(11);
+        List<NewsCustom> newsCustoms = newsMapper.findNewsByIds(ids);
+        LoggerUtil.printJSON(newsCustoms);
+    }
+
+
+    //------------------------上面是推荐测试-----------------------------
+
+
+    @Test
     public void findNewsCustomTest() throws Exception {
         List<NewsCustom> newsCustom = newsMapper.findNewsCustom(0, 10);
         LoggerUtil.printJSON(newsCustom);
     }
+
 
     @Test
     public void findAllCates() throws Exception{
