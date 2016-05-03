@@ -2,7 +2,6 @@ package yuan.ssm.exception;
 
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
-import yuan.ssm.exception.CustomException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,7 +27,7 @@ public class CustomExceptionResover implements HandlerExceptionResolver{
         String msg=customException.getMsg();
         ModelAndView andView = new ModelAndView();
         andView.addObject("msg", msg);
-        andView.setViewName("/error.jsp");
+        andView.setViewName("/error");
         return andView;
     }
 }
