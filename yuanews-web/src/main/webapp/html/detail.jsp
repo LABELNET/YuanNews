@@ -359,7 +359,7 @@
              $("#zantext").text("你已经赞过了");
          }else if(status==2){
              $("#zan").attr("src",superZan);
-             $("#zantext").text("哇，你居然超赞了！");
+             $("#zantext").text("哇塞，你居然超赞了耶！");
          }
     }
 
