@@ -227,6 +227,7 @@
 
         if(labelCount>=30){
             $(".label_show").css("color","#ff0000");
+            return;
         }
         var arr={
            label:label
