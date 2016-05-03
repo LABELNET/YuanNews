@@ -228,7 +228,7 @@
 
 
     <select id="findLikedByNid" resultType="java.lang.String">
-        select u.head from user u,liked l where u.id=l.uid and l.nid=#{nid}
+        select u.head from user u,liked l where u.id=l.uid and l.nid=#{nid} ORDER BY l.id DESC
     </select>
 
 
