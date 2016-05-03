@@ -233,15 +233,45 @@ public class NewsServiceImpl implements NewsService {
         }
     }
 
+    /**
+     * 点赞查询
+     * @param pageVo
+     * @param source
+     * @return
+     * @throws Exception
+     */
     private List<NewsCustom> findZan(PageVo pageVo, ServiceEnum source) throws Exception {
         return findCustomByZan(pageVo.getStart(),pageVo.getNum(),pageVo.getTitle(),source);
     }
 
+    /**
+     * 获取新闻总数
+     * @return
+     * @throws Exception
+     */
     public PageJo getNewsCount() throws Exception {
         return countMapper.findCount(2);
     }
 
+    /**
+     * 修改新闻的阅读量
+     * @param nid 新闻id
+     * @return
+     * @throws Exception
+     */
     public Integer updateNewsRnum(Integer nid) throws Exception {
         return newsMapper.updateNewsRnum(nid);
     }
+
+    /**
+     * 获取新闻的列表
+     * @param nids 新闻id
+     * @return
+     * @throws Exception
+     */
+    public List<NewsCustom> getNidsNews(List<Integer> nids) throws Exception {
+        return null;
+    }
+
+
 }

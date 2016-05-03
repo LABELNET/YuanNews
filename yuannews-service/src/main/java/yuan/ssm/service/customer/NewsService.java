@@ -66,4 +66,14 @@ public interface NewsService extends ServiceBase<NewsCustom> {
      */
     Integer updateNewsRnum(Integer nid) throws Exception;
 
+
+    /**
+     * 根据新闻的id进行批量查询
+     * @param nids
+     * @return
+     * @throws Exception
+     */
+    List<NewsCustom> getNidsNews(List<Integer> nids) throws Exception;
+
+
 }
