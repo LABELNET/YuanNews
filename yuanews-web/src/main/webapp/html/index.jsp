@@ -88,7 +88,7 @@
         <div class="vivo-nav cl">
             <a style="float:left;margin-left:12%;" href="<%=projectPath%>/html/pageIndex.action?p=1&type=2&nType=6"><img style="width:120px;margin:5px;" src="images/logo.png"></a>
             <div class="search-user">
-                <a href="#" class="search"><b></b></a>
+                <%--<a href="#" class="search"><b></b></a>--%>
                 <%
                   if(userVo==null){
 
