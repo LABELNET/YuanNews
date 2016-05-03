@@ -369,10 +369,4 @@ public class CustomerController {
         return andView;
     }
 
-
-    public Integer likedLabel(){
-//        userService.
-        return 0;
-    }
-
 }

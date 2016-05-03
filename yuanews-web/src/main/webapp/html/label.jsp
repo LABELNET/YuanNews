@@ -171,7 +171,7 @@
                 <c:forEach var="taste" items="${tasteVos}">
                     <div class="center_item">
                         <label>${taste}</label>
-                        <a href="javascript:void(0)" onclick="likeLabel(${taste})">关注</a>
+                        <a href="javascript:void(0)" onclick="likeLabel('${taste}')">关注</a>
                     </div>
                 </c:forEach>
             </c:if>
@@ -202,6 +202,7 @@
     var userDetalUrl="<%=projectPath%>/html/login/userDetail.action";
     var labelCount=${labelCount};
     var uid=<%=userVo==null?0:userVo.getId()%>;
+    var userAddLabel="<%=projectPath%>/html/login/userAddLabel.action";
 
     function btnDialog(type) {
         if(type==0) {
@@ -227,9 +228,10 @@
         if(labelCount>=30){
             $(".label_show").css("color","#ff0000");
         }
-
-
-
+        var arr={
+           label:label
+        }
+        dataRequest(userAddLabel,arr,1);
     }
     
     function showDialog(url) {
@@ -249,6 +251,26 @@
 
     function doneIt() {
         NProgress.done();
+    }
+
+    //网络请求方法提取
+    function dataRequest(typeurl,arr,type) {
+
+        $.ajax({
+            url:typeurl,
+            data:arr,
+            type:'post',
+            cache:true,
+            dataType:'json',
+            success:function (data,status) {
+                doneIt();
+                if(type==1 && data==-1){
+                    alert("你关注的标签以存在！");
+                }else{
+                    window.location.reload()
+                }
+            }
+        });
     }
 
 </script>
