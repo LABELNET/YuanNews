@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import yuan.ssm.common.util.FileTool;
 import yuan.ssm.common.util.LoggerUtil;
 import yuan.ssm.other.CommentJo;
 import yuan.ssm.other.PageVo;
@@ -71,6 +72,8 @@ public class CustomerController {
     @Autowired
     private UserService userService;
 
+    private int idsSize=0;
+
 
     /**
      * 主页面包括两个内容： 1.新闻展示列表；2.新闻推荐模块；
@@ -88,49 +91,75 @@ public class CustomerController {
      *
      * 2.推荐模块
      *  (1)读取本地用户的推荐新闻id
-     *  (2)文件没有
+     *  (2)文件没有,返回null,执行 normal, 用户没有登陆执行normal
+     *  (3)文件存在,根据p;来判断；if start>size normal
+     *  (4)推荐下，不进行点赞/热度/评论
      * @param pageVo
      * @return
      * @throws Exception
      */
     @RequestMapping("/pageIndex")
-    public ModelAndView pageIndex(@ModelAttribute PageVo pageVo) throws Exception {
-
-//        FileTool
-
-        ModelAndView andView = getNormalModelAndView(pageVo);
-        return andView;
-    }
-
-    private ModelAndView getNormalModelAndView(@ModelAttribute PageVo pageVo) throws Exception {
+    public ModelAndView pageIndex(HttpSession session,@ModelAttribute PageVo pageVo) throws Exception {
         if(pageVo.getP()<0){
             pageVo.setP(1);
         }
-        int p=pageVo.getP();
-        pageVo.setStart((p-1)*PAGE_NUM);//开始页面
+        pageVo.setStart((pageVo.getP()-1)*PAGE_NUM);//开始页面
         pageVo.setNum(PAGE_NUM);//每页总数
 
+
+        UserVo vo= (UserVo) session.getAttribute("user");
+        if(vo==null){
+            return getModelAndView(1,pageVo);
+        }else{
+            List<Integer> nids = FileTool.readData(vo.getId());
+            if(nids==null){
+                return getModelAndView(1,pageVo);
+            }else{
+                idsSize=nids.size();
+
+                if(pageVo.getStart()>nids.size()){
+                    return getModelAndView(1,pageVo);
+                }else{
+                    if(idsSize<PAGE_NUM){
+                        pageVo.setNids(nids);
+                        //长度小于PAGE_NUM
+                        pageVo.setNum(PAGE_NUM-idsSize); //获取剩下长度的集合
+                        return getModelAndView(2,pageVo);
+                    }else {
+                        //分页操作
+                        List<Integer> newsIds=nids.subList(pageVo.getStart(),pageVo.getNum());
+                        pageVo.setNids(newsIds); //推荐新闻ids
+                        return getModelAndView(3,pageVo);
+                    }
+                }
+            }
+        }
+
+    }
+
+    /**
+     * 正常的读取操作
+     * @param pageVo 页面操作对象
+     * @return
+     * @throws Exception
+     */
+    private ModelAndView getModelAndView(int type,@ModelAttribute PageVo pageVo) throws Exception {
         ModelAndView andView = new ModelAndView();
         //当前页面
-        andView.addObject("currectIndex",p); //当前页面
+        andView.addObject("currectIndex",pageVo.getP()); //当前页面
         //页面
         andView.setViewName(INDEX_PAGE);//页面对象
-        List<NewsCustom> customByComment =new ArrayList<NewsCustom>();
-        //list数据
-        switch (pageVo.getType()){
-            case idType:
-                customByComment.addAll(newsService.getIdNews(pageVo));
-                break;
-            case rnumType:
-                customByComment.addAll(newsService.getRnumNews(pageVo));
-                break;
-            case zanType:
-                customByComment.addAll(newsService.getZanNews(pageVo));
-                break;
-            case commentType:
-                customByComment.addAll(newsService.getCommentNews(pageVo));
-                break;
-
+        List<NewsCustom> customByComment = new ArrayList<NewsCustom>();
+        if(type==1) {
+            //普通类型
+            customByComment.addAll(getNormalNews(pageVo));
+        }else if(type==3){
+//            推荐类型
+            customByComment.addAll(getPromoteNews(pageVo));
+        }else if(type==2){
+            //推荐类型和其他类型都有
+            customByComment.addAll(getPromoteNews(pageVo));
+            customByComment.addAll(getNormalNews(pageVo));
         }
         andView.addObject("customs",customByComment);
         //总数
@@ -142,6 +171,39 @@ public class CustomerController {
         andView.addObject("ntype",pageVo.getnType());
         andView.addObject("type",pageVo.getType());
         return andView;
+    }
+
+
+    /**
+     * 正常的获取类型
+     * @param pageVo
+     * @return
+     * @throws Exception
+     */
+    private List<NewsCustom>  getNormalNews(@ModelAttribute PageVo pageVo) throws Exception {
+        //list数据
+        switch (pageVo.getType()) {
+            case idType:
+                return newsService.getIdNews(pageVo);
+            case rnumType:
+                return newsService.getRnumNews(pageVo);
+            case zanType:
+                return newsService.getZanNews(pageVo);
+            case commentType:
+                return newsService.getCommentNews(pageVo);
+            default:
+                return null;
+        }
+    }
+
+    /**
+     * 推荐类型
+     * @param pageVo
+     * @return
+     * @throws Exception
+     */
+    private List<NewsCustom> getPromoteNews(@ModelAttribute PageVo pageVo) throws Exception{
+        return newsService.getNidsNews(pageVo.getNids());
     }
 
     /**

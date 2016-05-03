@@ -1,5 +1,7 @@
 package yuan.ssm.other;
 
+import java.util.List;
+
 /**
  * ==================================================
  * <p/>
@@ -28,6 +30,15 @@ public class PageVo {
     private Integer type; //操作类型
     private String title; //title
     private Integer nType; //新闻类型，normal,cata,source
+    private List<Integer> nids; //新闻id
+
+    public List<Integer> getNids() {
+        return nids;
+    }
+
+    public void setNids(List<Integer> nids) {
+        this.nids = nids;
+    }
 
     public Integer getnType() {
         return nType;
