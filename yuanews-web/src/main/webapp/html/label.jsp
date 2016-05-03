@@ -52,7 +52,7 @@
         $(function() {
             $("#paginationpage").pagination({
                 items: ${count},
-                itemsOnPage: 64,
+                itemsOnPage: 24,
                 page:10,
                 hrefTextPrefix:"?p=",
                 cssStyle: 'light-theme',
@@ -155,7 +155,7 @@
             <label>兴趣标签总数：${count} </label>
             <label style="float: right;margin-right: 20px;color: #0c9c6e;">
                 <c:if test="${labelCount==-1}">
-                   <a href="javascript:void(0)" onclick="btnDialog(0)">登陆</a>
+                   <a href="javascript:void(0)" onclick="btnDialog(0)">登陆?</a>
                 </c:if>
                 <c:if test="${labelCount>-1}">
                     已关注（${labelCount}）
@@ -179,7 +179,7 @@
 
         <div class="label_bottom">
             <hr>
-            <c:if test="${count>64}">
+            <c:if test="${count>24}">
                 <div id="paginationpage"></div>
             </c:if>
         </div>
