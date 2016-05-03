@@ -103,6 +103,7 @@
     var managerNews="<%=projectPath %>/manager/managerIndex.action";
     var editlabel="<%=projectPath%>/html/login/userEditLabel.action";
     var addlabel="<%=projectPath%>/html/login/userAddLabel.action";
+    var loginPageUrl="<%=projectPath%>/html/login/userLoginPage.action";
 
     window.onload=function() {
         $('body').show();
@@ -156,6 +157,10 @@
                 doneIt();
                 if(type==2&&data==-1){
                     $(".showIfo").text("标签以存在！");
+                    return;
+                }else if(type==0){
+                    //安全退出
+                    window.location.href=loginPageUrl;
                     return;
                 }
                 window.location.reload()
