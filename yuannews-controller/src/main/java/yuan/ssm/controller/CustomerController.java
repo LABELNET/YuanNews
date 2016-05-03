@@ -325,7 +325,13 @@ public class CustomerController {
      * @throws Exception
      */
     @RequestMapping("/userLabelPage")
-    public ModelAndView userLabelPage(@RequestParam Integer p) throws Exception {
+    public ModelAndView userLabelPage(HttpSession session,@RequestParam Integer p) throws Exception {
+
+        UserVo vo= (UserVo) session.getAttribute("user");
+        if(vo==null){
+            vo=new UserVo();
+            vo.setId(0);
+        }
 
         if(p==null){
             p=1;
@@ -348,7 +354,7 @@ public class CustomerController {
         Integer count = userService.selectTasteCount();
         andView.addObject("count",count);
         //当前的数据的信息
-        List<TasteVo> tasteVos = userService.selectTaste(p, PAGE_NUM);
+        List<TasteVo> tasteVos = userService.selectTaste(p, PAGE_NUM,vo.getId());
         andView.addObject("tasteVos",tasteVos);
         return andView;
     }

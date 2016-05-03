@@ -101,8 +101,8 @@ public class UserServiceImpl implements UserService {
 
 
     //分页查询所有兴趣标签
-    public List<TasteVo> selectTaste(Integer start, Integer num) throws Exception {
-        return userMapper.selectTaste(start,num);
+    public List<TasteVo> selectTaste(Integer start, Integer num,Integer uid) throws Exception {
+        return userMapper.selectTaste(start,num,uid);
     }
 
     /**

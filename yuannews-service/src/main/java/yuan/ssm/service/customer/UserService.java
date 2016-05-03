@@ -111,7 +111,7 @@ public interface UserService {
      * @return
      * @throws Exception
      */
-    List<TasteVo> selectTaste(Integer start,Integer num) throws Exception;
+    List<TasteVo> selectTaste(Integer start,Integer num,Integer uid) throws Exception;
 
 
     /**

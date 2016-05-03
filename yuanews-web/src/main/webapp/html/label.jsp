@@ -196,14 +196,10 @@
                 <label>围棋</label>
                 <a href="#">关注</a>
             </div>
-
-
         </div>
         <div class="label_bottom">
-
             <hr>
-
-            <div id="paginationpage" style="float: right"></div>
+            <div id="paginationpage"></div>
         </div>
     </div>
 </article>

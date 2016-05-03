@@ -65,6 +65,9 @@
          *
          FROM
          taste
+             <where>
+                 uid!=#{uid}
+             </where>
          ORDER BY id DESC
          limit #{start},#{num}
     </select>
