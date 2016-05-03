@@ -158,14 +158,52 @@
         <div class="label_center">
 
             <div class="center_item">
-
+                <label>围棋</label>
+                <a href="#">关注</a>
             </div>
 
-            <hr>
+            <div class="center_item">
+                <label>围棋</label>
+                <a href="#">关注</a>
+            </div>
+
+            <div class="center_item">
+                <label>围棋</label>
+                <a href="#">关注</a>
+            </div>
+
+            <div class="center_item">
+                <label>围棋</label>
+                <a href="#">关注</a>
+            </div>
+
+            <div class="center_item">
+                <label>围棋</label>
+                <a href="#">关注</a>
+            </div>
+
+            <div class="center_item">
+                <label>围棋</label>
+                <a href="#">关注</a>
+            </div>
+
+            <div class="center_item">
+                <label>围棋</label>
+                <a href="#">关注</a>
+            </div>
+
+            <div class="center_item">
+                <label>围棋</label>
+                <a href="#">关注</a>
+            </div>
+
 
         </div>
         <div class="label_bottom">
 
+            <hr>
+
+            <div id="paginationpage" style="float: right"></div>
         </div>
     </div>
 </article>
