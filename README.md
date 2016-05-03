@@ -14,6 +14,19 @@
  * 注意事项，jsp页面中的img标签添加获取项目名路径　( request.getContextPath() )　
  *
 
+#2016.05.03
+ * 修改评论表（去除外键约束，否则无法进行评论数据的添加）
+  ```
+    create table comment(
+       id int(11) not null primary key auto_increment,
+       content text not null,
+       uid int(11) not null default '0',
+       nid int(11) not null default '0' ,
+       status int(4) not null default '0'
+    )DEFAULT CHARSET=utf8;
+
+  ```
+
 
 #2016.05.02
  * 网页端，用户详情页实现和新闻详情页实现

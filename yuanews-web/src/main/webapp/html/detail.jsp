@@ -170,7 +170,7 @@
         <div class="content_bottom">
              <div class="bottom_top">
                      <img id="zan" onclick="zanClick()" src="<%=projectPath%>/image/icon/zan.png" />
-                     <label id="zantext"></label>
+                     <label id="zantext">登陆后，才能点赞哦！</label>
               </div>
 
             <div class="bottom_bottom">
@@ -192,7 +192,7 @@
             <div class="comment_commit">
                  <textarea id="comment">
                  </textarea>
-                <div class="commit">
+                <div class="commit" onclick="commitComment()">
                     发表评论
                 </div>
             </div>
@@ -248,6 +248,7 @@
     var zstatus=0;
     var loadZanStatusUrl="<%=projectPath%>/html/getLikedStatus.action";
     var userZanUrl="<%=projectPath%>/html/userZan.action";
+    var userCommentUrl="<%=projectPath%>/html/userComment.action";
 
     function btnDialog(type) {
         if(type==0) {
@@ -255,6 +256,19 @@
         }else{
             showDialog(userDetalUrl);
         }
+    }
+
+    function commitComment() {
+        var text=$("#comment").val();
+        if(text.trim().length==0){
+            return;
+        }
+        var arr={
+            uid:uid,
+            nid:nid,
+            content:text
+        }
+        dataRequest(userCommentUrl,arr,2);
     }
 
     function showDialog(url) {
@@ -282,7 +296,7 @@
         }
          var arr={
              uid:uid,
-             nid:nid,
+             nid:nid
          };
         dataRequest(loadZanStatusUrl,arr,0);
     }
@@ -326,6 +340,8 @@
                     //初次加载，初始化界面
                     initZan(data);
                 }else if(type==1){
+                    window.location.reload()
+                }else if(type==2){
                     window.location.reload()
                 }
             }

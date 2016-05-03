@@ -300,5 +300,18 @@ public class CustomerController {
         return userService.userZanNews(uid, nid, status);
     }
 
+    /**
+     * 用户评论实现
+     * @param uid
+     * @param nid
+     * @param content
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/userComment")
+    public @ResponseBody Integer userComment(@RequestParam Integer uid,@RequestParam Integer nid,@RequestParam String content) throws Exception {
+       return userService.userCommentNews(uid,nid,content);
+    }
+
 
 }
