@@ -2,4 +2,7 @@
 .label_top label{margin-left: 10px;}
 .label_top h3{width: 100%;text-align: center;font-size: 18px;}
 
-.label_center{width: 90%;margin: 20px auto;}
+.label_center{width: 90%;margin: 20px auto;text-align: center;}
+.label_center .center_item{width: 20%;height: 100px;margin-left:10px;margin-top: 10px;border: solid 1px white;}
+.label_center .center_item:hover{border: 1px solid #0c9c6e;background-color: white;cursor: pointer;}
+.label_center hr{margin-top: 20px;}

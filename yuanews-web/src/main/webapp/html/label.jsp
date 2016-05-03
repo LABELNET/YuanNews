@@ -157,6 +157,12 @@
         </div>
         <div class="label_center">
 
+            <div class="center_item">
+
+            </div>
+
+            <hr>
+
         </div>
         <div class="label_bottom">
 

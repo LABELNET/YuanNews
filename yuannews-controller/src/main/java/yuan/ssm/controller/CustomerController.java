@@ -319,6 +319,7 @@ public class CustomerController {
 
     /**
      * 标签页面内容
+     * 策略：如果用户没有登陆，查询全部，如果用户登陆了，查询不是用户的标签
      * @param p 当前页面
      * @return
      * @throws Exception
