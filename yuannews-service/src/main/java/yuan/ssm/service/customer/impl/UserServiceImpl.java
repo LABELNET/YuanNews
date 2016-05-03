@@ -103,7 +103,17 @@ public class UserServiceImpl implements UserService {
 
     //分页查询所有兴趣标签
     public Set<String> selectTaste(Integer start, Integer num, Integer uid) throws Exception {
-        return userMapper.selectTaste(start,num,uid);
+        Set<String> tastes = userMapper.selectTaste(start, num, uid);
+        if(uid!=0){
+            //根据用户的兴趣进行全部兴趣的去重操作
+            List<TasteVo> tasteVos = userSelectTasteById(uid);
+            for (TasteVo tasteVo: tasteVos){
+                if(tastes.contains(tasteVo.getLabel())){
+                    tastes.remove(tasteVo.getLabel());
+                }
+            }
+        }
+        return tastes;
     }
 
     /**
