@@ -1,9 +1,7 @@
 package yuan.ssm.service.customer.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import yuan.ssm.common.util.DateUtil;
-import yuan.ssm.common.util.FontImageUtil;
-import yuan.ssm.common.util.StringUtil;
+import yuan.ssm.common.util.*;
 import yuan.ssm.dao.customer.NewsMapper;
 import yuan.ssm.dao.customer.UserMapper;
 import yuan.ssm.dao.manager.ManagerCountMapper;
@@ -35,16 +33,28 @@ public class UserServiceImpl implements UserService {
 
     //检查账户是否存在
     public boolean isCheckUnum(String unum) throws Exception {
-        Integer integer = userMapper.CheckUserUnum(unum);
+        final Integer integer = userMapper.CheckUserUnum(unum);
         if(integer==null){
             return true;
         }else {
+            //开启子线程进行
+            final int uid=integer;
+            if(integer>0) {
+                new Thread(new Runnable() {
+                    public void run() {
+                       synchronized (this){
+                           promoteNewsIds(uid);
+                       }
+                    }
+                }).start();
+            }
            return integer>0;
         }
     }
 
     //用户登陆
     public UserVo userLogin(String unum, String pass) throws Exception {
+
         if(isCheckUnum(unum)){
             return userMapper.loginCheckPass(unum,pass);
         }
@@ -165,7 +175,9 @@ public class UserServiceImpl implements UserService {
      * 用户推荐的新闻id,并进行持久化实现
      * @param uid
      */
-    private void promoteNewsIds(Integer uid){
+    private synchronized void promoteNewsIds(Integer uid){
+
+        FileTool.createNewFile(1,"Hi ， FileTool");
 
     }
 }

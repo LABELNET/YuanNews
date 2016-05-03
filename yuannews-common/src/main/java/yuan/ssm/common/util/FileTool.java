@@ -20,7 +20,7 @@ public class FileTool {
 
     private static final Logger log = Logger.getLogger(FileTool.class);
 
-    private final String BASE_PATH= ConfigConstant.JSON_IDS_BASE_PATH;
+    private static final String BASE_PATH= ConfigConstant.JSON_IDS_BASE_PATH;
 
 
     /**
@@ -52,9 +52,7 @@ public class FileTool {
         try {
             String fileNameTemp =getFilePath(uid);
             File filePath = new File(fileNameTemp);
-            if (!filePath.exists()) {
-                filePath.createNewFile();
-            }
+            filePath.createNewFile();
             FileWriter fw = new FileWriter(filePath);
             PrintWriter pw = new PrintWriter(fw);
             String strContent = content;
