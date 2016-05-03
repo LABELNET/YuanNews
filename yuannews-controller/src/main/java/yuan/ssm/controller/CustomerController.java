@@ -73,7 +73,9 @@ public class CustomerController {
 
 
     /**
-     * 新闻有关的列表页面
+     * 主页面包括两个内容： 1.新闻展示列表；2.新闻推荐模块；
+     *
+     * 1.新闻有关的列表页面
      * 包括：
      * 显示页面；
      * 当前页面；
@@ -83,6 +85,10 @@ public class CustomerController {
      * 页面标题；
      * 分类和来源信息；
      * 当前加载的类型：点赞，阅读，评论，普通
+     *
+     * 2.推荐模块
+     *  (1)读取本地用户的推荐新闻id
+     *  (2)文件没有
      * @param pageVo
      * @return
      * @throws Exception
@@ -90,6 +96,13 @@ public class CustomerController {
     @RequestMapping("/pageIndex")
     public ModelAndView pageIndex(@ModelAttribute PageVo pageVo) throws Exception {
 
+//        FileTool
+
+        ModelAndView andView = getNormalModelAndView(pageVo);
+        return andView;
+    }
+
+    private ModelAndView getNormalModelAndView(@ModelAttribute PageVo pageVo) throws Exception {
         if(pageVo.getP()<0){
             pageVo.setP(1);
         }

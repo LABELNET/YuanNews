@@ -94,17 +94,21 @@ public class FileTool {
      * @throws Exception
      */
     public static List<Integer> readData(Integer uid) throws Exception{
-
         StringBuffer buffer=new StringBuffer();
         String path=getFilePath(uid);
-        InputStreamReader inputStream=new InputStreamReader(new FileInputStream(path));
-        BufferedReader bufferedReader = new BufferedReader(inputStream);
-        String lineTxt = null;
-        while((lineTxt = bufferedReader.readLine()) != null){
-            buffer.append(lineTxt);
+        File file=new File(path);
+        if(file.exists()) {
+            InputStreamReader inputStream = new InputStreamReader(new FileInputStream(file));
+            BufferedReader bufferedReader = new BufferedReader(inputStream);
+            String lineTxt = null;
+            while ((lineTxt = bufferedReader.readLine()) != null) {
+                buffer.append(lineTxt);
+            }
+            List<Integer> ids = JSON.parseArray(buffer.toString(), Integer.class);
+            return ids;
+        }else{
+            return null;
         }
-        List<Integer> ids = JSON.parseArray(buffer.toString(), Integer.class);
-        return ids;
     }
     
     /**
