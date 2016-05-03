@@ -115,6 +115,13 @@ public interface UserService {
 
 
     /**
+     * 查询兴趣标签总数
+     * @return
+     * @throws Exception
+     */
+    Integer selectTasteCount() throws Exception;
+
+    /**
      *　用户点赞操作
      * @param uid 　用户id
      * @param nid 新闻id

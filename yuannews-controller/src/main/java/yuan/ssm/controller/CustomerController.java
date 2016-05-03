@@ -46,6 +46,9 @@ public class CustomerController {
     //新闻详情页面
     private final String NEWS_DETAIL_PAGE="html/detail";
 
+    //标签页面
+    private final String USER_LABEL_PAGE="html/label";
+
     //每页数量
     private final int PAGE_NUM=10;
     //ID
@@ -311,6 +314,42 @@ public class CustomerController {
     @RequestMapping("/userComment")
     public @ResponseBody Integer userComment(@RequestParam Integer uid,@RequestParam Integer nid,@RequestParam String content) throws Exception {
        return userService.userCommentNews(uid,nid,content);
+    }
+
+
+    /**
+     * 标签页面内容
+     * @param p 当前页面
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/userLabelPage")
+    public ModelAndView userLabelPage(@RequestParam Integer p) throws Exception {
+
+        if(p==null){
+            p=1;
+        }
+
+        if(p<0){
+            p=1;
+        }
+        int currentPage=p;
+        p=(currentPage-1)*PAGE_NUM;
+
+        ModelAndView andView = new ModelAndView();
+        andView.setViewName(USER_LABEL_PAGE);
+        //分类/来源数据
+        CSCustom sourceIfo = newsService.findCateSourceIfo();
+        andView.addObject("sourceIfo",sourceIfo);
+        //当前页面
+        andView.addObject("currentPage",currentPage);
+        //总数
+        Integer count = userService.selectTasteCount();
+        andView.addObject("count",count);
+        //当前的数据的信息
+        List<TasteVo> tasteVos = userService.selectTaste(p, PAGE_NUM);
+        andView.addObject("tasteVos",tasteVos);
+        return andView;
     }
 
 

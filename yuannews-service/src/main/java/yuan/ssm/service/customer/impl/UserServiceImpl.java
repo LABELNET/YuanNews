@@ -6,6 +6,7 @@ import yuan.ssm.common.util.FontImageUtil;
 import yuan.ssm.common.util.StringUtil;
 import yuan.ssm.dao.customer.NewsMapper;
 import yuan.ssm.dao.customer.UserMapper;
+import yuan.ssm.dao.manager.ManagerCountMapper;
 import yuan.ssm.other.CommentJo;
 import yuan.ssm.pojo.NewsCustom;
 import yuan.ssm.service.customer.UserService;
@@ -27,6 +28,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private NewsMapper newsMapper;
+
+    @Autowired
+    private ManagerCountMapper managerCountMapper;
 
     //检查账户是否存在
     public boolean isCheckUnum(String unum) throws Exception {
@@ -98,7 +102,16 @@ public class UserServiceImpl implements UserService {
 
     //分页查询所有兴趣标签
     public List<TasteVo> selectTaste(Integer start, Integer num) throws Exception {
-        return null;
+        return userMapper.selectTaste(start,num);
+    }
+
+    /**
+     * 查询总数
+     * @return
+     * @throws Exception
+     */
+    public Integer selectTasteCount() throws Exception {
+        return managerCountMapper.findCount(5).getAllCount();
     }
 
     //点赞
