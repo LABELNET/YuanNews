@@ -107,6 +107,13 @@ public class CustomerController {
         pageVo.setNum(PAGE_NUM);//每页总数
 
 
+        LoggerUtil.printJSON(pageVo);
+        LoggerUtil.printJSON(pageVo.getnType());
+
+        if(pageVo.getnType()>6){
+            return getModelAndView(1,pageVo);
+        }
+
         UserVo vo= (UserVo) session.getAttribute("user");
         if(vo==null){
             return getModelAndView(1,pageVo);

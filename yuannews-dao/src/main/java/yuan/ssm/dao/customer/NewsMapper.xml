@@ -331,6 +331,7 @@
                  separator=",">
               #{id}
         </foreach>
+        ORDER BY n.id DESC
     </select>
 
 

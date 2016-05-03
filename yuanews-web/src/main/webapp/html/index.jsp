@@ -51,7 +51,7 @@
         $(function() {
             $("#paginationpage").pagination({
                 items: ${count},
-                itemsOnPage: 10,
+                itemsOnPage: 9,
                 page:10,
                 hrefTextPrefix:"?p=",
                 cssStyle: 'light-theme',
