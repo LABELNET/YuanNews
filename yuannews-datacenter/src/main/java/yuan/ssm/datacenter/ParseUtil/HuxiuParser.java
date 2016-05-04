@@ -2,15 +2,11 @@ package yuan.ssm.datacenter.ParseUtil;
 
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import yuan.ssm.common.util.LoggerUtil;
 import yuan.ssm.datacenter.base.ParserBase;
 import yuan.ssm.datacenter.base.SourceEnum;
 import yuan.ssm.datacenter.common.CSCommon;
 import yuan.ssm.vo.NewsVo;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.io.InputStream;
 
 /**
