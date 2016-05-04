@@ -1,7 +1,6 @@
 package yuan.ssm.datacenter;
 
 import yuan.ssm.datacenter.LoadUtil.HuxiuLoader;
-import yuan.ssm.datacenter.ParseUtil.HuxiuParser;
 import yuan.ssm.datacenter.base.ThreadPoolHttpClient;
 
 /**

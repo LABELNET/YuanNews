@@ -2,6 +2,7 @@ package yuan.ssm.datacenter.data;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import yuan.ssm.datacenter.ParseUtil.HuxiuParser;
 import yuan.ssm.datacenter.base.GetDataBase;
 import yuan.ssm.datacenter.base.ParserBase;
 
@@ -33,13 +34,16 @@ public class HuxiuGetData extends GetDataBase{
         super(httpClient, httpget);
     }
 
-    protected void parserDetailToDb(ParserBase parserBase) {
-
-    }
-
+    //初始化解析类
     protected ParserBase parserDetailMethod(InputStream stream, String url) {
-        return null;
+        return new HuxiuParser(stream,url);
     }
+
+    protected void parserDetailToDb(ParserBase parserBase) {
+        parserBase.toMysql();
+    }
+
+
 
 
 }

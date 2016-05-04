@@ -63,7 +63,7 @@ public abstract class ParserBase {
     /**
      * 存储到mysql数据库
      */
-    protected void toMysql(){
+    public void toMysql(){
         //TODO 存储到mysql中
         LoggerUtil.printJSON(" ToMysql : "+parserDetailPage());
     }
