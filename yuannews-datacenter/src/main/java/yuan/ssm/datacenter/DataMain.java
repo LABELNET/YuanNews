@@ -1,6 +1,7 @@
 package yuan.ssm.datacenter;
 
 import yuan.ssm.datacenter.LoadUtil.HuxiuLoader;
+import yuan.ssm.datacenter.ParseUtil.HuxiuParser;
 import yuan.ssm.datacenter.base.ThreadPoolHttpClient;
 
 /**
@@ -28,11 +29,17 @@ public class DataMain {
     //环球网
     private final String HuanQiuUrl="http://huanqiu.com/";
 
+    //虎嗅网
+    private final String HUXIUURL="http://www.huxiu.com/";
+
     public static void main(String [] args){
        //总调度类
 
         //1.实现主页加载类
-        HuxiuLoader huxiuLoader=new HuxiuLoader();
+        HuxiuLoader huxiuLoader=new HuxiuLoader(HUXIUURL);
+
+        //2.实现解析详情的Parser
+        HuxiuParser huxiuParser=new HuxiuParser()
 
         //2.实现线程池
         ThreadPoolHttpClient threadPoolHttpClient=new ThreadPoolHttpClient(huxiuLoader);
