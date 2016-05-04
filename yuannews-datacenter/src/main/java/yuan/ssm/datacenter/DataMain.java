@@ -38,9 +38,6 @@ public class DataMain {
         //1.实现主页加载类
         HuxiuLoader huxiuLoader=new HuxiuLoader(HUXIUURL);
 
-        //2.实现解析详情的Parser
-        HuxiuParser huxiuParser=new HuxiuParser()
-
         //2.实现线程池
         ThreadPoolHttpClient threadPoolHttpClient=new ThreadPoolHttpClient(huxiuLoader);
 

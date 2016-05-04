@@ -11,6 +11,7 @@ import yuan.ssm.common.util.LoggerUtil;
 
 import java.io.InputStream;
 
+
 /**
  * ==================================================
  * <p/>
@@ -40,13 +41,11 @@ public abstract class GetDataBase implements Runnable{
     private final HttpClient httpClient;
     private final HttpContext context;
     private final HttpGet httpget;
-    private final ParserBase parserBase;
 
-    public GetDataBase(HttpClient httpClient, HttpGet httpget,ParserBase parserBase) {
+    public GetDataBase(HttpClient httpClient, HttpGet httpget) {
         this.httpClient = httpClient;
         this.context = new BasicHttpContext();
         this.httpget = httpget;
-        this.parserBase=parserBase;
     }
     public void run(){
         try {
@@ -65,8 +64,8 @@ public abstract class GetDataBase implements Runnable{
             if (entity != null) {
                 LoggerUtil.printJSON(this.httpget.getURI()+": status"+response.getStatusLine().toString());
                 if(response.getStatusLine().getStatusCode()==SUCCESS_CODE){
-                    //执行解析
-                    parserDetailToDb(entity.getContent(), String.valueOf(this.httpget.getURI()),parserBase);
+                    //执行解析:传入解析类对象
+                    parserDetailToDb(parserDetailMethod(entity.getContent(),this.httpget.getURI().toString()));
                 }else {
                     LoggerUtil.printJSON(this.httpget.getURI()+": response code : "+response.getStatusLine().getStatusCode());
                 }
@@ -83,9 +82,17 @@ public abstract class GetDataBase implements Runnable{
     }
 
     /**
-     * 解析的抽象方法
-     * @param stream
+     * 执行的存储操作，多种存储方式
+     * @param parserBase 解析基类
      */
-    protected abstract void parserDetailToDb(InputStream stream,String url,ParserBase parserBase);
+    protected abstract void parserDetailToDb(ParserBase parserBase);
+
+    /**
+     * 详情请求类是公共类，所以提供抽象方法，让用户自己提供解析方法
+     * @param stream 数据流
+     * @param url 当前地址
+     * @return
+     */
+    protected abstract ParserBase parserDetailMethod(InputStream stream,String url);
 
 }

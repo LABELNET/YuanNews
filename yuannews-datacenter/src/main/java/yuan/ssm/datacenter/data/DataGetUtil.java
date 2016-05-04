@@ -2,7 +2,6 @@ package yuan.ssm.datacenter.data;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import yuan.ssm.datacenter.base.ParserBase;
 import yuan.ssm.datacenter.base.SourceEnum;
 
 /**
@@ -28,14 +27,14 @@ import yuan.ssm.datacenter.base.SourceEnum;
  */
 public class DataGetUtil {
 
-    public synchronized static Runnable getRunnable(HttpClient httpClient, HttpGet httpget, SourceEnum sourceEnum, ParserBase parserBase){
+    public synchronized static Runnable getRunnable(HttpClient httpClient, HttpGet httpget, SourceEnum sourceEnum){
         switch (sourceEnum){
             case huanqiu:
-                return new HuanQiuGetData(httpClient, httpget,parserBase);
+                return new HuanQiuGetData(httpClient, httpget);
             case cctv:
                 break;
             case huxiu:
-                 return new HuxiuGetData(httpClient, httpget,parserBase);
+                 return new HuxiuGetData(httpClient, httpget);
             default:
                 return null;
         }

@@ -2,13 +2,9 @@ package yuan.ssm.datacenter.data;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import yuan.ssm.common.util.LoggerUtil;
 import yuan.ssm.datacenter.base.GetDataBase;
 import yuan.ssm.datacenter.base.ParserBase;
 
-import java.io.IOException;
 import java.io.InputStream;
 
 /**
@@ -33,16 +29,17 @@ import java.io.InputStream;
  */
 public class HuxiuGetData extends GetDataBase{
 
-    public HuxiuGetData(HttpClient httpClient, HttpGet httpget,ParserBase parserBase) {
-        super(httpClient, httpget,parserBase);
+    public HuxiuGetData(HttpClient httpClient, HttpGet httpget) {
+        super(httpClient, httpget);
     }
 
-    protected void parserDetailToDb(InputStream stream, String url, ParserBase parserBase) {
-        try {
-            Document doc = Jsoup.parse(stream, ENCODE_CODE, url);
-        } catch (IOException e) {
-            LoggerUtil.printJSON("HuxiuGetData parserDetailData IOException");
-            e.printStackTrace();
-        }
+    protected void parserDetailToDb(ParserBase parserBase) {
+
     }
+
+    protected ParserBase parserDetailMethod(InputStream stream, String url) {
+        return null;
+    }
+
+
 }

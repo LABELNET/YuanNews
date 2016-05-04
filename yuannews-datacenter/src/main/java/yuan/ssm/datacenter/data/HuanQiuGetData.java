@@ -30,12 +30,17 @@ import java.io.InputStream;
 public class HuanQiuGetData extends GetDataBase{
 
 
-    public HuanQiuGetData(HttpClient httpClient, HttpGet httpget,ParserBase parserBase) {
-        super(httpClient, httpget,parserBase);
+    public HuanQiuGetData(HttpClient httpClient, HttpGet httpget) {
+        super(httpClient, httpget);
     }
 
-    protected void parserDetailToDb(InputStream stream, String url, ParserBase parserBase) {
+    protected void parserDetailToDb(ParserBase parserBase) {
 
     }
+
+    protected ParserBase parserDetailMethod(InputStream stream, String url) {
+        return null;
+    }
+
 
 }

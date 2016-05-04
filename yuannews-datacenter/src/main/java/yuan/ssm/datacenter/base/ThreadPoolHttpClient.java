@@ -45,15 +45,11 @@ public class ThreadPoolHttpClient {
     // 线程池的容量
     private static final int POOL_SIZE = 20;
 
-    //添加详情页解析类和存储到mysql操作
-    private ParserBase parserBase=null;
-
     //兴趣主页加载父类：为了适应各个来源的加载
     private LoaderBase loaderBase=null;
 
-    public ThreadPoolHttpClient(LoaderBase loaderBase,ParserBase parserBase) {
+    public ThreadPoolHttpClient(LoaderBase loaderBase) {
         this.loaderBase = loaderBase;
-        this.parserBase =  parserBase;
     }
     public void start(){
         exe = Executors.newFixedThreadPool(POOL_SIZE);
@@ -77,7 +73,7 @@ public class ThreadPoolHttpClient {
             List<String> urls = loaderBase.getUrls();
             for (String url:urls) {
                 HttpGet httpget = new HttpGet(url);
-                Runnable runnable = DataGetUtil.getRunnable(httpClient, httpget, loaderBase.getType(),parserBase);
+                Runnable runnable = DataGetUtil.getRunnable(httpClient, httpget, loaderBase.getType());
                 if(runnable!=null){
                     exe.execute(runnable);
                 }else{

@@ -1,7 +1,6 @@
 package yuan.ssm.datacenter.ParseUtil;
 
 import org.apache.commons.io.FileUtils;
-import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import yuan.ssm.common.util.LoggerUtil;
 import yuan.ssm.datacenter.base.ParserBase;
@@ -9,6 +8,7 @@ import yuan.ssm.vo.NewsVo;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,11 +37,20 @@ import java.util.List;
 public class HuxiuParser extends ParserBase{
 
 
-    public HuxiuParser(String url, Document doc) {
-        super(url, doc);
+    /**
+     * 初始化
+     * @param inputStream 数据流
+     * @param url 当前url
+     */
+    public HuxiuParser(InputStream inputStream, String url) {
+        super(inputStream, url);
     }
 
-    protected NewsVo parserDetailPage(String url, Document document) {
+    /**
+     * 解析操作
+     * @return
+     */
+    protected NewsVo parserDetailPage() {
 
         List<String> yuliao= new ArrayList<String>();
         Elements title= doc.select("title");//主题
