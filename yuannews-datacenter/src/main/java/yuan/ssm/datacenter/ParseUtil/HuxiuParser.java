@@ -1,9 +1,11 @@
 package yuan.ssm.datacenter.ParseUtil;
 
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import yuan.ssm.common.util.LoggerUtil;
 import yuan.ssm.datacenter.base.ParserBase;
-import yuan.ssm.datacenter.common.CateCommon;
+import yuan.ssm.datacenter.base.SourceEnum;
+import yuan.ssm.datacenter.common.CSCommon;
 import yuan.ssm.vo.NewsVo;
 
 import java.io.File;
@@ -59,15 +61,23 @@ public class HuxiuParser extends ParserBase{
                 replace("-观点-@虎嗅网", "").replace("-读点-@虎嗅网", "");
         String dt=doc.select(".article-time").text();  // 发帖时间
         String content= doc.select("#article_content").get(0).text();//内容
-        String img=doc.select(".article-img-box").tagName("img").get(0).attr("src");//图片
+        String img="默认";
 
+        Elements imgs = doc.select("img");
+
+        for (Element element:imgs){
+            String attr = element.attr("src");
+            if(attr.contains("w/800/h/450")){
+                img=attr;
+            }
+        }
         newsVo.setTitle(str);
         newsVo.setDt(dt);
         newsVo.setImg(img);
         newsVo.setContent(content);
         newsVo.setRnum(100);
-        newsVo.setCid(CateCommon.getCateId(HUXIU_WORD));
-        newsVo.setSid(1);
+        newsVo.setCid(CSCommon.getCateId(SourceEnum.huxiu));
+        newsVo.setSid(CSCommon.getSourceId(SourceEnum.huxiu));
 
         LoggerUtil.printJSON(newsVo);
 

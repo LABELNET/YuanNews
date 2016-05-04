@@ -1,5 +1,7 @@
 package yuan.ssm.datacenter.common;
 
+import yuan.ssm.datacenter.base.SourceEnum;
+
 /**
  * ==================================================
  * <p/>
@@ -23,16 +25,26 @@ package yuan.ssm.datacenter.common;
  * <p>
  * ==================================================
  */
-public class CateCommon {
+public class CSCommon {
 
-    public static int getCateId(String word){
-
-        //虎嗅
-        if(UrlsContanst.HUXIU_BASE_URL.contains(word)){
-            return 1;
+    public static int getSourceId(SourceEnum word){
+        switch (word){
+            case huxiu:
+                return 8;
+            case huanqiu:
+                return 9;
+            default:
+                return 0;
         }
+    }
 
-        //环球
+    public static int getCateId(SourceEnum word){
+        switch (word){
+            case huxiu:
+                return 13;
+            case huanqiu:
+                return 9;
+        }
         return 0;
     }
 
