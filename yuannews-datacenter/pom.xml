@@ -11,5 +11,27 @@
 
     <artifactId>yuannews-datacenter</artifactId>
 
+    <dependencies>
+
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.9.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.edu.hpu.yuannews</groupId>
+            <artifactId>yuannews-dao</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.edu.hpu.yuannews</groupId>
+            <artifactId>yuannews-model</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+    </dependencies>
+
 
 </project>
