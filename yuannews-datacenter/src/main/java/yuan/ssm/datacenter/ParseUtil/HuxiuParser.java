@@ -3,9 +3,12 @@ package yuan.ssm.datacenter.ParseUtil;
 import org.jsoup.select.Elements;
 import yuan.ssm.common.util.LoggerUtil;
 import yuan.ssm.datacenter.base.ParserBase;
+import yuan.ssm.datacenter.common.CateCommon;
 import yuan.ssm.vo.NewsVo;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
 
 /**
@@ -32,6 +35,7 @@ import java.io.InputStream;
  */
 public class HuxiuParser extends ParserBase{
 
+    private final String HUXIU_WORD="1.html";
 
     /**
      * 初始化
@@ -48,26 +52,53 @@ public class HuxiuParser extends ParserBase{
      */
     protected NewsVo parserDetailPage() {
 
+        NewsVo newsVo=new NewsVo();
+
         Elements title= doc.select("title");//主题
         String str = title.first().text().replace("-看点-@虎嗅网", "").
                 replace("-观点-@虎嗅网", "").replace("-读点-@虎嗅网", "");
-        System.out.println("title： "+str);
-        Elements userAndTime = doc.select(".author-name");   // 发帖时间
-        Elements content= doc.select("#article_content");//内容
+        String dt=doc.select(".article-time").text();  // 发帖时间
+        String content= doc.select("#article_content").get(0).text();//内容
+        String img=doc.select(".article-img-box").tagName("img").attr("src");//图片
         if(str.contains("提示信息 - 虎嗅网"))
         {
             LoggerUtil.printJSON("HuxiuParser parserDetail : 文章被删除 ");
             return null;
         }
-//        yuliao.add(str);
-//        yuliao.add(url);
-//        yuliao.add(userAndTime.get(0).select(".fc1").text());
-//        yuliao.add(userAndTime.get(1).text());
-//        yuliao.add(content.get(0).text());
 
-        File file = new File("/mnt/JAVA/tomcatImageServer/ids/"+str+".txt");
+        newsVo.setTitle(str);
+        newsVo.setDt(dt);
+        newsVo.setImg(img);
+        newsVo.setContent(content);
+        newsVo.setRnum(100);
+        newsVo.setCid(CateCommon.getCateId(HUXIU_WORD));
+        newsVo.setSid(1);
 
-        return null;
+        LoggerUtil.printJSON(newsVo);
+
+        File file = new File("/mnt/JAVA/tomcatImageServer/ids/Huxiu.txt");
+        if(!file.exists()){
+
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                LoggerUtil.printJSON("HuxiuParser parserDetailPage File Exception");
+                e.printStackTrace();
+            }
+
+        }
+
+        try {
+            FileWriter writer=new FileWriter(file,true);
+            writer.write(newsVo.toString());
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
+            LoggerUtil.printJSON("HuxiuParser parserDetailPage FileWriter Exception");
+            e.printStackTrace();
+        }
+
+        return newsVo;
     }
 
 
