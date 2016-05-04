@@ -50,7 +50,7 @@ public class ThreadPoolHttpClient {
 
     public ThreadPoolHttpClient(LoaderBase loaderBase) {
         this.loaderBase = loaderBase;
-        threadPool=new ThreadPoolExecutor(100,500,3, SECONDS,
+        threadPool=new ThreadPoolExecutor(100,500,5, SECONDS,
                 new ArrayBlockingQueue<Runnable>(10000),
                 new ThreadPoolExecutor.DiscardOldestPolicy());
     }

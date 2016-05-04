@@ -1,18 +1,16 @@
 package yuan.ssm.datacenter.base;
 
-import org.apache.http.client.HttpClient;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import yuan.ssm.common.util.LoggerUtil;
 import yuan.ssm.dao.manager.NewsManagerMapper;
+import yuan.ssm.datacenter.DownUtil.ImageDown;
 import yuan.ssm.vo.NewsVo;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.UUID;
 
 /**
  * ==================================================
@@ -54,12 +52,11 @@ public abstract class ParserBase {
     //编码
     protected final String ENCODEING_CODE="utf-8";
 
-    //本地硬盘存储位置
-    private static final String LOCAL_IMAGE_PATH="/mnt/JAVA/tomcatImageServer/";
-
     private final String MOREN_IMGAE="/image/head/moren.png";
 
-    private static HttpClient httpClient;
+
+    //图片下载器
+    private ImageDown imageDown;
 
     //数据源
     protected Document doc;
@@ -79,7 +76,24 @@ public abstract class ParserBase {
             LoggerUtil.printJSON("ParserBase ParserBase IOException");
             e.printStackTrace();
         }
-        httpClient=new DefaultHttpClient();
+    }
+
+    /**
+     * 清除NewsVo中的图片属性，将图片下载到本地，服务器存储当前的地址;
+     * @return NewsVo
+     */
+    private NewsVo cleanNewsVo() {
+        NewsVo newsVo=parserDetailPage();
+        imageDown=new ImageDown(getType().toString(),newsVo.getImg());
+        String imgName=imageDown.getImageName();
+        if(newsVo.getImg().length()==0){
+            //没有图片
+            newsVo.setImg(MOREN_IMGAE);
+        }else{
+            newsVo.setImg(imageDown.getNetPath(imgName));
+            imageDown.downloadImage(imgName);
+        }
+        return newsVo;
     }
 
     /**
@@ -98,16 +112,8 @@ public abstract class ParserBase {
      * 存储到mysql数据库
      */
     public void toMysql(){
-        NewsVo newsVo = parserDetailPage();
+        NewsVo newsVo = cleanNewsVo();
         try {
-            String imgName=MOREN_IMGAE;
-            if(newsVo.getImg().length()==0){
-                newsVo.setImg(MOREN_IMGAE);
-            }else{
-                imgName=getType().toString()+"/"+ UUID.randomUUID()+".jpg";
-                newsVo.setImg("/image/"+imgName);
-                downloadImage(newsVo.getImg(),imgName);
-            }
             newsManagerMapper.insertNews(newsVo);
         } catch (Exception e) {
             LoggerUtil.printJSON("ParserBase NewsManagerMapper toMysql");
@@ -115,19 +121,11 @@ public abstract class ParserBase {
         }
     }
 
+
     /**
      * 文件存储
      */
     public void toFile(){
-    }
-
-
-    /**
-     * 下载图片并存储到本地硬盘
-     * @param imgName 图片名称
-     */
-    private void downloadImage(String imgUrl,String imgName){
-
     }
 
 }
