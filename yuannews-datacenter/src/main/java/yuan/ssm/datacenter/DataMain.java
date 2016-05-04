@@ -7,6 +7,7 @@ import org.jsoup.select.Elements;
 import yuan.ssm.common.util.LoggerUtil;
 import yuan.ssm.datacenter.LoadUtil.HuxiuLoader;
 import yuan.ssm.datacenter.base.ThreadPoolHttpClient;
+import yuan.ssm.datacenter.common.IDataNotify;
 import yuan.ssm.datacenter.common.UrlsContanst;
 
 import java.io.IOException;
@@ -41,19 +42,26 @@ public class DataMain {
     //虎嗅网
     private static final String HUXIUURL="http://www.huxiu.com";
 
-    public static void main(String [] args) throws IOException {
-       //总调度类
-        getData(HUXIUURL);
+    private static final String HUXIUURL_CAR="http://www.huxiu.com/mobility.html";
 
+    public static void main(String [] args) throws IOException, InterruptedException {
+
+        DataMain dataMain=new DataMain();
+
+       //总调度类
+//        dataMain.getData(HUXIUURL);
+
+
+        dataMain.getData(HUXIUURL_CAR);
 
 
         //测试虎嗅主页
 //        testHuXiuIndexPage();
     }
 
-    private static void getData(String url) {
+    private void getData(String url) {
         //1.实现主页加载类
-        HuxiuLoader huxiuLoader=new HuxiuLoader(HUXIUURL);
+        HuxiuLoader huxiuLoader=new HuxiuLoader(url);
 
         //2.实现线程池
         ThreadPoolHttpClient threadPoolHttpClient=new ThreadPoolHttpClient(huxiuLoader);
@@ -76,4 +84,5 @@ public class DataMain {
         }
         LoggerUtil.printJSON(urls);
     }
+
 }

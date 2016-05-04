@@ -11,6 +11,7 @@ import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import yuan.ssm.common.util.LoggerUtil;
+import yuan.ssm.datacenter.common.IDataNotify;
 import yuan.ssm.datacenter.data.DataGetUtil;
 
 import java.util.Set;
@@ -47,6 +48,7 @@ public class ThreadPoolHttpClient {
 
     //线程池
     private ThreadPoolExecutor threadPool=null;
+
 
     public ThreadPoolHttpClient(LoaderBase loaderBase) {
         this.loaderBase = loaderBase;

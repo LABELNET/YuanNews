@@ -21,4 +21,6 @@ package yuan.ssm.datacenter.common;
  * ==================================================
  */
 public interface IDataNotify {
+
+    void notifyMain();
 }
