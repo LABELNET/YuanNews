@@ -40,7 +40,7 @@ public abstract class LoaderBase {
 
     protected Document getDoc(){
         try {
-            return Jsoup.connect(url).timeout(100000).get();
+            return Jsoup.connect(url).timeout(200000).get();
         } catch (IOException e) {
             LoggerUtil.printJSON("LoaderBase  getDoc Exception Url : "+url);
             e.printStackTrace();

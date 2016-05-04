@@ -1,7 +1,9 @@
 package yuan.ssm.datacenter.ParseUtil;
 
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import yuan.ssm.common.util.LoggerUtil;
 import yuan.ssm.datacenter.common.UrlsContanst;
 
 import java.util.ArrayList;
@@ -38,10 +40,14 @@ public class ParseIndex {
      */
     public static List<String> getHuXiuPageUrls(Document doc){
         List<String> urls=new ArrayList<String>();
-        Elements a = doc.getElementsByTag("a");
-        String href = a.attr("href");
-        if(href.contains("1.html")){
-            urls.add(UrlsContanst.HUXIU_BASE_URL+href);
+        Elements as = doc.getElementsByTag("a");
+        for (Element a:as) {
+            String href = a.attr("href");
+            if(href.contains("1.html")){
+                String url=UrlsContanst.HUXIU_BASE_URL+href;
+                urls.add(url);
+                LoggerUtil.printJSON(url);
+            }
         }
         return urls;
     }
