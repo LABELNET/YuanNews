@@ -53,7 +53,7 @@
                 items: ${count},
                 itemsOnPage: 9,
                 page:10,
-                hrefTextPrefix:"?p=",
+                hrefTextPrefix:"?type=${type}&nType=${ntype}&p=",
                 cssStyle: 'light-theme',
                 prevText:"上一页",
                 nextText:"下一页",
@@ -202,9 +202,7 @@
         <div class="r_box f_r">
             <!--tit01 end-->
             <c:if test="${!empty customs}">
-                <c:if test="${fn:length(customs)>10}">
                         <div id="paginationpage" style="float: right"></div>
-                </c:if>
             </c:if>
             <!--r_box end -->
         </div>
