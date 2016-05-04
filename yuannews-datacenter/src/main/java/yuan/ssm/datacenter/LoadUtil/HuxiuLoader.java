@@ -1,10 +1,9 @@
 package yuan.ssm.datacenter.LoadUtil;
 
-import org.jsoup.nodes.Document;
+import yuan.ssm.datacenter.ParseUtil.ParseIndex;
 import yuan.ssm.datacenter.base.LoaderBase;
 import yuan.ssm.datacenter.base.SourceEnum;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,15 +35,7 @@ public class HuxiuLoader extends LoaderBase{
     }
 
     protected List<String> getUrls() {
-        Document doc = super.getDoc();
-
-        List<String> urls=new ArrayList<String>();
-        urls.add("http://www.huxiu.com/article/147523/1.html");
-        urls.add("http://www.huxiu.com/article/147512/1.html");
-        urls.add("http://www.huxiu.com/article/147525/1.html");
-        urls.add("http://www.huxiu.com/article/147470/1.html");
-        urls.add("http://www.huxiu.com/article/147509/1.html");
-        return urls;
+        return ParseIndex.getHuXiuPageUrls(super.getDoc());
     }
 
     protected SourceEnum getType() {

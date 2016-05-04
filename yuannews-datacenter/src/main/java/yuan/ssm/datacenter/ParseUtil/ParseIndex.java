@@ -1,7 +1,10 @@
 package yuan.ssm.datacenter.ParseUtil;
 
 import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
+import yuan.ssm.datacenter.common.UrlsContanst;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,15 +31,21 @@ import java.util.List;
  */
 public class ParseIndex {
 
-
     /**
      * 解析虎嗅主页的新闻链接
      * @param doc 主页新闻对象
      * @return
      */
     public static List<String> getHuXiuPageUrls(Document doc){
-
-        return null;
+        List<String> urls=new ArrayList<String>();
+        Elements a = doc.getElementsByTag("a");
+        String href = a.attr("href");
+        if(href.contains("1.html")){
+            urls.add(UrlsContanst.HUXIU_BASE_URL+href);
+        }
+        return urls;
     }
+
+    //
 
 }
