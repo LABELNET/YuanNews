@@ -32,25 +32,29 @@ public class FileTool {
        return BASE_PATH+uid+".json";
     }
 
+    private static String getFilePath(String name){
+        return BASE_PATH+name+".json";
+    }
+
     /**
      * 新建文件
      * @param uid 用户id
      * @param t 新闻id集合
      */
     public static void createNewFile(Integer uid,Set<Integer> t){
-         createNewFile(uid, JSON.toJSONString(t));
+         createNewFile(getFilePath(uid),JSON.toJSONString(t));
     }
+
 
     /**
      * 新建文件
-     * @param uid Integer 当前用户id
+     * @param fileNameTemp String 文件路径
      *
      * @param content
      *            String 文件内容
      */
-    public static void createNewFile(Integer uid, String content) {
+    public static void createNewFile(String fileNameTemp,String content) {
         try {
-            String fileNameTemp =getFilePath(uid);
             File filePath = new File(fileNameTemp);
             filePath.createNewFile();
             FileWriter fw = new FileWriter(filePath);
@@ -66,14 +70,38 @@ public class FileTool {
         }
 
     }
-    
+
+    /**
+     * 新建文件
+     * @param name 文件名
+     * @param urls 地址
+     */
+    public static void createNewFile(String name,Set<String> urls){
+        createNewFile(getFilePath(name),JSON.toJSONString(urls));
+    }
+
+    /**
+     * 删除-文件名
+     * @param name
+     */
+    public static void deleteFile(String name){
+        delFile(getFilePath(name));
+    }
+
+    /**
+     * 删除-用户id
+     * @param uid
+     */
+    public static void deleteFile(Integer uid){
+        delFile(getFilePath(uid));
+    }
+
+
     /**
      * 删除文件
-     * @param uid 用户id
      */
-    public static void delFile(Integer uid) {
+    private static void delFile(String filePath) {
         try {
-            String filePath = getFilePath(uid);
             java.io.File delFile = new java.io.File(filePath);
             if(delFile.exists()){
                 delFile.delete();
@@ -85,7 +113,27 @@ public class FileTool {
             e.printStackTrace();
         }
     }
-    
+
+
+    /**
+     * 读取用户id
+     * @param uid
+     * @return
+     * @throws Exception
+     */
+    public static List<Integer> readData(Integer uid) throws Exception{
+        return JSON.parseArray(readData(getFilePath(uid),uid),Integer.class);
+    }
+
+    /**
+     * 读取urls
+     * @param name
+     * @return
+     * @throws Exception
+     */
+    public static Set<String> readData(String name) throws Exception{
+        return (Set<String>) JSON.parseArray(readData(getFilePath(name),0),String.class);
+    }
 
 
     /**
@@ -93,9 +141,8 @@ public class FileTool {
      * @return
      * @throws Exception
      */
-    public static List<Integer> readData(Integer uid) throws Exception{
+    private static String readData(String path,Integer uid) throws Exception{
         StringBuffer buffer=new StringBuffer();
-        String path=getFilePath(uid);
         File file=new File(path);
         if(file.exists()) {
             InputStreamReader inputStream = new InputStreamReader(new FileInputStream(file));
@@ -104,30 +151,10 @@ public class FileTool {
             while ((lineTxt = bufferedReader.readLine()) != null) {
                 buffer.append(lineTxt);
             }
-            List<Integer> ids = JSON.parseArray(buffer.toString(), Integer.class);
-            return ids;
+            return buffer.toString();
         }else{
             return null;
         }
     }
     
-    /**
-     * 一行一行读取文件，适合字符读取，若读取中文字符时会出现乱码
-     * 
-     * @param path
-     * @return
-     * @throws Exception
-     */
-    public static Set<String> readFile(String path) throws Exception{
-        Set<String> datas=new HashSet<String>();
-        FileReader fr=new FileReader(path);
-        BufferedReader br=new BufferedReader(fr);
-        String line=null;
-        while ((line=br.readLine())!=null) {
-            datas.add(line);
-        }
-        br.close();
-        fr.close();
-        return datas;
-    }
 }
