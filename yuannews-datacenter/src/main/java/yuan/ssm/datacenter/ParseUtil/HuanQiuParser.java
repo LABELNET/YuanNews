@@ -1,4 +1,7 @@
-package yuan.ssm.datacenter.LoadUtil;
+package yuan.ssm.datacenter.ParseUtil;
+
+import yuan.ssm.vo.NewsVo;
+import org.jsoup.nodes.Document;
 
 /**
  * ==================================================
@@ -13,12 +16,28 @@ package yuan.ssm.datacenter.LoadUtil;
  * <p/>
  * 创建日期：　16-5-4 上午9:57
  * <p/>
- * 功能描述：TODO 百度新闻主页加载类
+ * 功能描述：  环球网新闻解析类
+ *
  * <p>
  * <p/>
  * 功能更新历史：
  * <p>
  * ==================================================
  */
-public class BaiduLoader {
+public class HuanQiuParser {
+
+
+    /**
+     * 新闻详情页解析类
+     * @return 新闻对象
+     */
+    public synchronized  NewsVo newsDetailParser(Document document){
+
+
+
+
+
+        return null;
+    }
+
 }

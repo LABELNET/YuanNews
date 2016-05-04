@@ -20,14 +20,14 @@ import java.io.IOException;
  * <p/>
  * 创建日期：　16-5-4 上午9:52
  * <p/>
- * 功能描述：百度新闻爬去数据执行类
+ * 功能描述：环球网新闻爬去数据执行类
  * <p>
  * <p/>
  * 功能更新历史：
  * <p>
  * ==================================================
  */
-public class BaiDuGetData implements Runnable{
+public class HuanQiuGetData implements Runnable{
 
 
     //默认值
@@ -36,7 +36,7 @@ public class BaiDuGetData implements Runnable{
     //详情页url
     private String detailUrl=NO_URL;
 
-    public BaiDuGetData(String detailUrl) {
+    public HuanQiuGetData(String detailUrl) {
         this.detailUrl=detailUrl;
         new Thread(this,"百度新闻详情： "+detailUrl).start();
     }
@@ -58,7 +58,7 @@ public class BaiDuGetData implements Runnable{
         }
         try {
             Document document = Jsoup.connect(detailUrl).timeout(100000).get();
-              
+
         } catch (IOException e) {
             LoggerUtil.printJSON("数据获取失败： "+detailUrl);
             e.printStackTrace();

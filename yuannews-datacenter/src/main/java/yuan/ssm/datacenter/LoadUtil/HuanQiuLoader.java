@@ -1,4 +1,4 @@
-package yuan.ssm.datacenter.ParseUtil;
+package yuan.ssm.datacenter.LoadUtil;
 
 /**
  * ==================================================
@@ -13,12 +13,12 @@ package yuan.ssm.datacenter.ParseUtil;
  * <p/>
  * 创建日期：　16-5-4 上午9:57
  * <p/>
- * 功能描述： TODO 百度新闻解析类
+ * 功能描述：环球新闻主页加载类
  * <p>
  * <p/>
  * 功能更新历史：
  * <p>
  * ==================================================
  */
-public class BaiduParser {
+public class HuanQiuLoader {
 }
