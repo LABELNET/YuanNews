@@ -1,6 +1,7 @@
 package yuan.ssm.datacenter.ParseUtil;
 
 import yuan.ssm.datacenter.base.ParserBase;
+import yuan.ssm.datacenter.base.SourceEnum;
 import yuan.ssm.vo.NewsVo;
 
 import java.io.InputStream;
@@ -35,5 +36,9 @@ public class HuanQiuParser extends ParserBase{
 
     protected NewsVo parserDetailPage() {
         return null;
+    }
+
+    protected SourceEnum getType() {
+        return SourceEnum.huanqiu;
     }
 }

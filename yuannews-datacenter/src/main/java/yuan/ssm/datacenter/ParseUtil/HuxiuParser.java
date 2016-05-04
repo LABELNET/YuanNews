@@ -76,5 +76,9 @@ public class HuxiuParser extends ParserBase{
         return newsVo;
     }
 
+    protected SourceEnum getType() {
+        return SourceEnum.huxiu;
+    }
+
 
 }

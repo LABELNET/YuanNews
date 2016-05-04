@@ -10,6 +10,7 @@ import yuan.ssm.vo.NewsVo;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.UUID;
 
 /**
  * ==================================================
@@ -28,6 +29,7 @@ import java.io.InputStream;
  * 1.解析主页 List<String>，静态类，静态加载
  * 2.解析详情页 ， 返回 NewsVo
  * 3.解析详情页，进行数据存储操作 - > mysql
+ * 4.下载图片存储到本地；
  *
  * 4.TODO 可拓展性高，如果需要存储在不同的地方或形式，可以在此拓展实现；
  * <p>
@@ -49,6 +51,9 @@ public abstract class ParserBase {
 
     //编码
     protected final String ENCODEING_CODE="utf-8";
+
+    //本地硬盘存储位置
+    private final String LOCAL_IMAGE_PATH="/mnt/JAVA/tomcatImageServer/";
 
     //数据源
     protected Document doc;
@@ -74,12 +79,21 @@ public abstract class ParserBase {
     protected abstract NewsVo parserDetailPage();
 
     /**
+     * 获取当前执行类型
+     * @return
+     */
+    protected  abstract SourceEnum getType();
+
+    /**
      * 存储到mysql数据库
      */
     public void toMysql(){
         NewsVo newsVo = parserDetailPage();
         try {
             newsManagerMapper.insertNews(newsVo);
+
+            String imgName=getType().toString()+"/"+ UUID.randomUUID()+".jpg";
+
         } catch (Exception e) {
             LoggerUtil.printJSON("ParserBase NewsManagerMapper toMysql");
             e.printStackTrace();
@@ -92,5 +106,13 @@ public abstract class ParserBase {
     public void toFile(){
     }
 
+
+    /**
+     * 下载图片并存储到本地硬盘
+     * @param imgName
+     */
+    private void downloadImage(String imgUrl,String imgName){
+        String imgPath=LOCAL_IMAGE_PATH+imgName;
+    }
 
 }
