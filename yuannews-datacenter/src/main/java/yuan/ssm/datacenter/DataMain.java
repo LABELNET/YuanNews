@@ -43,14 +43,15 @@ public class DataMain {
 
     public static void main(String [] args) throws IOException {
        //总调度类
-        getData();
+        getData(HUXIUURL);
+
+
 
         //测试虎嗅主页
 //        testHuXiuIndexPage();
-
     }
 
-    private static void getData() {
+    private static void getData(String url) {
         //1.实现主页加载类
         HuxiuLoader huxiuLoader=new HuxiuLoader(HUXIUURL);
 
