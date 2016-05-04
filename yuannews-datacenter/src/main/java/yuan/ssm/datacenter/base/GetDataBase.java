@@ -1,4 +1,4 @@
-package yuan.ssm.datacenter.data;
+package yuan.ssm.datacenter.base;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -7,12 +7,9 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.EntityUtils;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 import yuan.ssm.common.util.LoggerUtil;
-import yuan.ssm.vo.NewsVo;
 
-import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * ==================================================
@@ -25,29 +22,26 @@ import java.io.IOException;
  * <p/>
  * 版本：　1.0
  * <p/>
- * 创建日期：　16-5-4 上午9:52
+ * 创建日期：　16-5-4 下午1:35
  * <p/>
- * 功能描述：环球网新闻爬去数据执行类
+ * 功能描述： 抽象出请求类，添加解析抽象方法
  * <p>
  * <p/>
  * 功能更新历史：
  * <p>
  * ==================================================
  */
-public class HuanQiuGetData implements Runnable{
+public abstract class GetDataBase implements Runnable{
 
+
+    private final int SUCCESS_CODE=200;
     private final HttpClient httpClient;
     private final HttpContext context;
     private final HttpGet httpget;
-
     //默认值
     private final String NO_URL=" NO ";
 
-    //详情页url
-    private String detailUrl=NO_URL;
-
-
-    public HuanQiuGetData(HttpClient httpClient, HttpGet httpget) {
+    public GetDataBase(HttpClient httpClient, HttpGet httpget) {
         this.httpClient = httpClient;
         this.context = new BasicHttpContext();
         this.httpget = httpget;
@@ -68,9 +62,16 @@ public class HuanQiuGetData implements Runnable{
             HttpEntity entity = response.getEntity();
             if (entity != null) {
                 LoggerUtil.printJSON(this.httpget.getURI()+": status"+response.getStatusLine().toString());
+                if(response.getStatusLine().getStatusCode()==SUCCESS_CODE){
+                    //执行解析
+                    parserDetailData(entity.getContent());
+                }else {
+                    LoggerUtil.printJSON(this.httpget.getURI()+": response code : "+response.getStatusLine().getStatusCode());
+                }
             }else {
+                LoggerUtil.printJSON(this.httpget.getURI()+": HttpEntity is null");
             }
-            // 关闭刘操作
+            // 回收
             EntityUtils.consume(entity);
         } catch (Exception ex) {
             this.httpget.abort();
@@ -80,26 +81,9 @@ public class HuanQiuGetData implements Runnable{
     }
 
     /**
-     * 执行加载详情和存储到mysql操作
+     * 解析的抽象方法
+     * @param stream
      */
-    private NewsVo loadDetailToMysql(){
-        if(NO_URL.equals(detailUrl)){
-            LoggerUtil.printJSON("没有URL");
-            return null;
-        }
-        try {
-            Document document = Jsoup.connect(detailUrl).timeout(100000).get();
-
-        } catch (IOException e) {
-            LoggerUtil.printJSON("数据获取失败： "+detailUrl);
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-
-
-
-
+    protected abstract void parserDetailData(InputStream stream);
 
 }
