@@ -90,7 +90,7 @@ public class HuxiuParser extends ParserBase{
 
         try {
             FileWriter writer=new FileWriter(file,true);
-            writer.write(newsVo.toString());
+            writer.write(newsVo.getTitle() +" : "+ url+" \n ");
             writer.flush();
             writer.close();
         } catch (IOException e) {

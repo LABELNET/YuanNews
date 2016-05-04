@@ -23,9 +23,9 @@ package yuan.ssm.datacenter.common;
 public interface UrlsContanst {
 
     /**
-     * 虎嗅网基地址
+     * 虎嗅网基地址 最后不填加 斜杠
      */
-    String HUXIU_BASE_URL="http://www.huxiu.com/";
+    String HUXIU_BASE_URL="http://www.huxiu.com";
 
 
 }
