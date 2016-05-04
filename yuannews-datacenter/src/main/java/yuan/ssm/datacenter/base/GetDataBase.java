@@ -38,8 +38,6 @@ public abstract class GetDataBase implements Runnable{
     private final HttpClient httpClient;
     private final HttpContext context;
     private final HttpGet httpget;
-    //默认值
-    private final String NO_URL=" NO ";
 
     public GetDataBase(HttpClient httpClient, HttpGet httpget) {
         this.httpClient = httpClient;

@@ -33,6 +33,8 @@ public class DataGetUtil {
                 return new HuanQiuGetData(httpClient, httpget);
             case cctv:
                 break;
+            case huxiu:
+                 return new HuxiuGetData(httpClient, httpget);
             default:
                 return null;
         }

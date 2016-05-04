@@ -31,7 +31,7 @@ public class HuanQiuParser {
      * 新闻详情页解析类
      * @return 新闻对象
      */
-    public synchronized  NewsVo newsDetailParser(Document document){
+    public static synchronized  NewsVo newsDetailParser(Document document){
 
 
 

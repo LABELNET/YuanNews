@@ -17,28 +17,22 @@ import java.io.InputStream;
  * <p/>
  * 版本：　1.0
  * <p/>
- * 创建日期：　16-5-4 上午9:52
+ * 创建日期：　16-5-4 下午1:49
  * <p/>
- * 功能描述：环球网新闻爬去数据执行类
+ * 功能描述： TODO
  * <p>
  * <p/>
  * 功能更新历史：
  * <p>
  * ==================================================
  */
-public class HuanQiuGetData extends GetDataBase{
+public class HuxiuGetData extends GetDataBase{
 
-
-    public HuanQiuGetData(HttpClient httpClient, HttpGet httpget) {
+    public HuxiuGetData(HttpClient httpClient, HttpGet httpget) {
         super(httpClient, httpget);
     }
 
-    /**
-     * 解析新闻详情操作
-     * @param stream 新闻内容数据流
-     */
     protected void parserDetailData(InputStream stream) {
-        //调用PatseUtil进行解析并进行存储
 
     }
 }
