@@ -35,6 +35,9 @@ public class HuxiuLoader extends LoaderBase{
     }
 
     protected Set<String> getUrls() {
+
+
+
         return ParseIndex.getHuXiuPageUrls(super.getDoc());
     }
 

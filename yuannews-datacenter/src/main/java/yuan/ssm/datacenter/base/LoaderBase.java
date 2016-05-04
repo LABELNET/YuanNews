@@ -5,6 +5,7 @@ import org.jsoup.nodes.Document;
 import yuan.ssm.common.util.LoggerUtil;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -26,6 +27,9 @@ import java.util.Set;
  * <p>
  * <p/>
  * 功能更新历史：
+ *
+ * url去脏操作-循环比较上一天的url,去除后进行返回
+ *
  * <p>
  * ==================================================
  */
@@ -46,6 +50,18 @@ public abstract class LoaderBase {
             e.printStackTrace();
         }
         return null;
+    }
+
+    /**
+     * 去除重复的urls
+     * 策略： 如果url大于1000,则不进行操作，直接删除文件，存储目前最新的urls
+     * @return 最新的urls
+     */
+    protected Set<String> cleanUrls(Set<String> newUrls){
+        Set<String> bigUrls=new HashSet<String>();
+
+
+        return bigUrls;
     }
 
     /**
