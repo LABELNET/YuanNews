@@ -37,8 +37,8 @@ public class HuanQiuGetData extends GetDataBase{
      * 解析新闻详情操作
      * @param stream 新闻内容数据流
      */
-    protected void parserDetailData(InputStream stream) {
-        //调用PatseUtil进行解析并进行存储
+    protected void parserDetailData(InputStream stream, String url) {
 
     }
+
 }
