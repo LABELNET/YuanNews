@@ -1,4 +1,4 @@
-package yuan.ssm.datacenter;
+package yuan.ssm.datacenter.base;
 
 /**
  * ==================================================
@@ -11,14 +11,14 @@ package yuan.ssm.datacenter;
  * <p/>
  * 版本：　1.0
  * <p/>
- * 创建日期：　16-5-4 上午9:47
+ * 创建日期：　16-5-4 上午9:51
  * <p/>
- * 功能描述： TODO
+ * 功能描述： 数据爬虫基础类
  * <p>
  * <p/>
  * 功能更新历史：
  * <p>
  * ==================================================
  */
-public class LoadUtil {
+public class DataBase {
 }
