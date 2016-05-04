@@ -26,10 +26,10 @@ import yuan.ssm.datacenter.base.ThreadPoolHttpClient;
 public class DataMain {
 
     //环球网
-    private final String HuanQiuUrl="http://huanqiu.com/";
+    private static final String HuanQiuUrl="http://huanqiu.com/";
 
     //虎嗅网
-    private final String HUXIUURL="http://www.huxiu.com/";
+    private static final String HUXIUURL="http://www.huxiu.com/";
 
     public static void main(String [] args){
        //总调度类

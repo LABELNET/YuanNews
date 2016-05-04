@@ -28,6 +28,9 @@ import java.util.List;
 public class HuanQiuLoader extends LoaderBase {
 
 
+    public HuanQiuLoader(String url) {
+        super(url);
+    }
 
     protected List<String> getUrls() {
         return null;
