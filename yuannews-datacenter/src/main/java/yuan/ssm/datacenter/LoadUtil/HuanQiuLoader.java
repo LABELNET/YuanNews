@@ -1,5 +1,9 @@
 package yuan.ssm.datacenter.LoadUtil;
 
+import yuan.ssm.datacenter.base.LoaderBase;
+
+import java.util.List;
+
 /**
  * ==================================================
  * <p/>
@@ -13,12 +17,20 @@ package yuan.ssm.datacenter.LoadUtil;
  * <p/>
  * 创建日期：　16-5-4 上午9:57
  * <p/>
- * 功能描述：环球新闻主页加载类
+ * 功能描述：环球新闻主页加载类,返回urls
  * <p>
  * <p/>
  * 功能更新历史：
  * <p>
  * ==================================================
  */
-public class HuanQiuLoader {
+public class HuanQiuLoader extends LoaderBase {
+
+
+
+    protected List<String> getUrls() {
+        return null;
+    }
+
+
 }

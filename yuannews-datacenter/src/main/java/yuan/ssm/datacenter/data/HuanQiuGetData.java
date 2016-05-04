@@ -1,5 +1,12 @@
 package yuan.ssm.datacenter.data;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.protocol.BasicHttpContext;
+import org.apache.http.protocol.HttpContext;
+import org.apache.http.util.EntityUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import yuan.ssm.common.util.LoggerUtil;
@@ -29,6 +36,9 @@ import java.io.IOException;
  */
 public class HuanQiuGetData implements Runnable{
 
+    private final HttpClient httpClient;
+    private final HttpContext context;
+    private final HttpGet httpget;
 
     //默认值
     private final String NO_URL=" NO ";
@@ -36,15 +46,35 @@ public class HuanQiuGetData implements Runnable{
     //详情页url
     private String detailUrl=NO_URL;
 
-    public HuanQiuGetData(String detailUrl) {
-        this.detailUrl=detailUrl;
-        new Thread(this,"百度新闻详情： "+detailUrl).start();
+
+    public HuanQiuGetData(HttpClient httpClient, HttpGet httpget) {
+        this.httpClient = httpClient;
+        this.context = new BasicHttpContext();
+        this.httpget = httpget;
+    }
+    public void run(){
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            LoggerUtil.printJSON("HuanQiuGetData Thread.sleep Exception");
+            e.printStackTrace();
+        }
+        get();
     }
 
-    public void run() {
-        NewsVo newsVo = loadDetailToMysql();
-        if(newsVo!=null){
-            //执行存储
+    public void get() {
+        try {
+            HttpResponse response = this.httpClient.execute(this.httpget, this.context);
+            HttpEntity entity = response.getEntity();
+            if (entity != null) {
+                System.out.println(this.httpget.getURI()+": status"+response.getStatusLine().toString());
+            }
+            // ensure the connection gets released to the manager
+            EntityUtils.consume(entity);
+        } catch (Exception ex) {
+            this.httpget.abort();
+        }finally{
+            httpget.releaseConnection();
         }
     }
 
@@ -65,5 +95,10 @@ public class HuanQiuGetData implements Runnable{
         }
         return null;
     }
+
+
+
+
+
 
 }
