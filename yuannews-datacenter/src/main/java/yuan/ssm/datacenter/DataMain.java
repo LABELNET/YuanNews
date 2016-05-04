@@ -1,5 +1,7 @@
 package yuan.ssm.datacenter;
 
+import yuan.ssm.datacenter.LoadUtil.HuxiuLoader;
+
 /**
  * ==================================================
  * <p/>
@@ -27,6 +29,9 @@ public class DataMain {
 
     public static void main(String [] args){
        //总调度类
+
+        //1.实现主页加载类
+        HuxiuLoader huxiuLoader=new HuxiuLoader();
 
     }
 }

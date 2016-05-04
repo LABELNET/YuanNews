@@ -5,6 +5,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import yuan.ssm.common.util.LoggerUtil;
+import yuan.ssm.datacenter.ParseUtil.HuxiuParser;
 import yuan.ssm.datacenter.base.GetDataBase;
 
 import java.io.IOException;
@@ -40,7 +41,7 @@ public class HuxiuGetData extends GetDataBase{
 
         try {
             Document doc = Jsoup.parse(stream, ENCODE_CODE, url);
-
+            HuxiuParser.parserDetail(doc,url);
         } catch (IOException e) {
             LoggerUtil.printJSON("HuxiuGetData parserDetailData IOException");
             e.printStackTrace();
