@@ -2,7 +2,10 @@ package yuan.ssm.datacenter.base;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import yuan.ssm.common.util.LoggerUtil;
+import yuan.ssm.dao.manager.NewsManagerMapper;
 import yuan.ssm.vo.NewsVo;
 
 import java.io.IOException;
@@ -26,7 +29,7 @@ import java.io.InputStream;
  * 2.解析详情页 ， 返回 NewsVo
  * 3.解析详情页，进行数据存储操作 - > mysql
  *
- * 4.可拓展性高，如果需要存储在不同的地方或形式，可以在此拓展实现；
+ * 4.TODO 可拓展性高，如果需要存储在不同的地方或形式，可以在此拓展实现；
  * <p>
  * <p/>
  * 功能更新历史：
@@ -35,6 +38,14 @@ import java.io.InputStream;
  */
 public abstract class ParserBase {
 
+
+    /**
+     * mapper存储对象
+     */
+    private NewsManagerMapper newsManagerMapper;
+
+    //dao
+    private final String APPLIACTION_CONTEXT_LOCATION="classpath:spring/applicationContext-dao.xml";
 
     //编码
     protected final String ENCODEING_CODE="utf-8";
@@ -45,6 +56,8 @@ public abstract class ParserBase {
     protected String url;
 
     public ParserBase(InputStream inputStream, String url) {
+        final ApplicationContext context=new ClassPathXmlApplicationContext(APPLIACTION_CONTEXT_LOCATION);
+        newsManagerMapper= (NewsManagerMapper) context.getBean("newsManagerMapper");
         this.url = url;
         try {
              doc = Jsoup.parse(inputStream, ENCODEING_CODE, url);
@@ -56,7 +69,7 @@ public abstract class ParserBase {
 
     /**
      * 解析新闻详情页面，返回的新闻对象
-     * @return
+     * @return 新闻对象
      */
     protected abstract NewsVo parserDetailPage();
 
@@ -64,8 +77,19 @@ public abstract class ParserBase {
      * 存储到mysql数据库
      */
     public void toMysql(){
-        //TODO 存储到mysql中
-        LoggerUtil.printJSON(" ToMysql : "+parserDetailPage());
+        NewsVo newsVo = parserDetailPage();
+        try {
+            newsManagerMapper.insertNews(newsVo);
+        } catch (Exception e) {
+            LoggerUtil.printJSON("ParserBase NewsManagerMapper toMysql");
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 文件存储
+     */
+    public void toFile(){
     }
 
 
