@@ -1,5 +1,10 @@
 package yuan.ssm.datacenter.base;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import yuan.ssm.common.util.LoggerUtil;
+
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -25,6 +30,23 @@ import java.util.List;
  * ==================================================
  */
 public abstract class LoaderBase {
+
+    private String url=null;
+
+
+    public LoaderBase(String url) {
+        this.url = url;
+    }
+
+    protected Document getDoc(){
+        try {
+            return Jsoup.connect(url).get();
+        } catch (IOException e) {
+            LoggerUtil.printJSON("LoaderBase  getDoc Exception Url : "+url);
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     /**
      * 获取某个新闻来源上的主页urls

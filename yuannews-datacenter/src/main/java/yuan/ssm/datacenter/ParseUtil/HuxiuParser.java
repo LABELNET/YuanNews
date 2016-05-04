@@ -4,6 +4,8 @@ import org.apache.commons.io.FileUtils;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import yuan.ssm.common.util.LoggerUtil;
+import yuan.ssm.datacenter.base.ParserBase;
+import yuan.ssm.vo.NewsVo;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,13 +34,15 @@ import java.util.List;
  * <p>
  * ==================================================
  */
-public class HuxiuParser {
+public class HuxiuParser extends ParserBase{
 
-    public static void parserIndex(Document doc){
 
+    public HuxiuParser(String url, Document doc) {
+        super(url, doc);
     }
 
-    public static void parserDetail(Document doc,String url) throws IOException {
+    protected NewsVo parserDetailPage(String url, Document document) {
+
         List<String> yuliao= new ArrayList<String>();
         Elements title= doc.select("title");//主题
         String str = title.first().text().replace("-看点-@虎嗅网", "").
@@ -49,7 +53,7 @@ public class HuxiuParser {
         if(str.contains("提示信息 - 虎嗅网"))
         {
             LoggerUtil.printJSON("HuxiuParser parserDetail : 文章被删除 ");
-            return;
+            return null;
         }
         yuliao.add(str);
         yuliao.add(url);
@@ -57,9 +61,18 @@ public class HuxiuParser {
         yuliao.add(userAndTime.get(1).text());
         yuliao.add(content.get(0).text());
         File file = new File("/mnt/JAVA/tomcatImageServer/ids/"+str+".txt");
-        FileUtils.writeLines(file, yuliao);
+        try {
+            FileUtils.writeLines(file, yuliao);
+        } catch (IOException e) {
+            LoggerUtil.printJSON("HuxiuParser parserDetail : FileUtils  IOException");
+            e.printStackTrace();
+        }
         yuliao.clear();
+
+        return null;
     }
 
-
+    protected List<String> parserIndexPage(String url, Document document) {
+        return null;
+    }
 }

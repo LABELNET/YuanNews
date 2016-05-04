@@ -41,7 +41,6 @@ public class HuxiuGetData extends GetDataBase{
 
         try {
             Document doc = Jsoup.parse(stream, ENCODE_CODE, url);
-            HuxiuParser.parserDetail(doc,url);
         } catch (IOException e) {
             LoggerUtil.printJSON("HuxiuGetData parserDetailData IOException");
             e.printStackTrace();

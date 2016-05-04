@@ -1,5 +1,6 @@
 package yuan.ssm.datacenter.LoadUtil;
 
+import org.jsoup.nodes.Document;
 import yuan.ssm.datacenter.base.LoaderBase;
 import yuan.ssm.datacenter.base.SourceEnum;
 
@@ -29,8 +30,13 @@ import java.util.List;
 public class HuxiuLoader extends LoaderBase{
 
 
+    public HuxiuLoader(String url) {
+        super(url);
+    }
 
     protected List<String> getUrls() {
+        Document doc = super.getDoc();
+
         List<String> urls=new ArrayList<String>();
         urls.add("http://www.huxiu.com/article/147523/1.html");
         urls.add("http://www.huxiu.com/article/147512/1.html");
