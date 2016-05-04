@@ -34,9 +34,6 @@ import java.io.InputStream;
  */
 public abstract class GetDataBase implements Runnable{
 
-
-    public final String ENCODE_CODE="utf-8";
-
     private final int SUCCESS_CODE=200;
     private final HttpClient httpClient;
     private final HttpContext context;
