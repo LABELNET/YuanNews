@@ -1,6 +1,7 @@
 package yuan.ssm.datacenter;
 
 import yuan.ssm.datacenter.LoadUtil.HuxiuLoader;
+import yuan.ssm.datacenter.base.ThreadPoolHttpClient;
 
 /**
  * ==================================================
@@ -33,5 +34,10 @@ public class DataMain {
         //1.实现主页加载类
         HuxiuLoader huxiuLoader=new HuxiuLoader();
 
+        //2.实现线程池
+        ThreadPoolHttpClient threadPoolHttpClient=new ThreadPoolHttpClient(huxiuLoader);
+
+        //3.执行开始操作
+        threadPoolHttpClient.start();
     }
 }

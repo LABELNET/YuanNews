@@ -53,7 +53,7 @@ public class ThreadPoolHttpClient {
     public ThreadPoolHttpClient(LoaderBase loaderBase) {
         this.loaderBase = loaderBase;
     }
-    public void init(){
+    public void start(){
         exe = Executors.newFixedThreadPool(POOL_SIZE);
         HttpParams params =new BasicHttpParams();
         /* 从连接池中取连接的超时时间 */ 
