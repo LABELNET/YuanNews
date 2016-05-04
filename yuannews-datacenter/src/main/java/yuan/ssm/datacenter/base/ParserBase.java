@@ -1,5 +1,7 @@
 package yuan.ssm.datacenter.base;
 
+import org.apache.http.client.HttpClient;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.context.ApplicationContext;
@@ -53,7 +55,11 @@ public abstract class ParserBase {
     protected final String ENCODEING_CODE="utf-8";
 
     //本地硬盘存储位置
-    private final String LOCAL_IMAGE_PATH="/mnt/JAVA/tomcatImageServer/";
+    private static final String LOCAL_IMAGE_PATH="/mnt/JAVA/tomcatImageServer/";
+
+    private final String MOREN_IMGAE="/image/head/moren.png";
+
+    private static HttpClient httpClient;
 
     //数据源
     protected Document doc;
@@ -61,15 +67,19 @@ public abstract class ParserBase {
     protected String url;
 
     public ParserBase(InputStream inputStream, String url) {
+        //初始化mysql存储对象
         final ApplicationContext context=new ClassPathXmlApplicationContext(APPLIACTION_CONTEXT_LOCATION);
         newsManagerMapper= (NewsManagerMapper) context.getBean("newsManagerMapper");
+
         this.url = url;
+
         try {
              doc = Jsoup.parse(inputStream, ENCODEING_CODE, url);
         } catch (IOException e) {
             LoggerUtil.printJSON("ParserBase ParserBase IOException");
             e.printStackTrace();
         }
+        httpClient=new DefaultHttpClient();
     }
 
     /**
@@ -90,10 +100,15 @@ public abstract class ParserBase {
     public void toMysql(){
         NewsVo newsVo = parserDetailPage();
         try {
+            String imgName=MOREN_IMGAE;
+            if(newsVo.getImg().length()==0){
+                newsVo.setImg(MOREN_IMGAE);
+            }else{
+                imgName=getType().toString()+"/"+ UUID.randomUUID()+".jpg";
+                newsVo.setImg("/image/"+imgName);
+                downloadImage(newsVo.getImg(),imgName);
+            }
             newsManagerMapper.insertNews(newsVo);
-
-            String imgName=getType().toString()+"/"+ UUID.randomUUID()+".jpg";
-
         } catch (Exception e) {
             LoggerUtil.printJSON("ParserBase NewsManagerMapper toMysql");
             e.printStackTrace();
@@ -109,10 +124,10 @@ public abstract class ParserBase {
 
     /**
      * 下载图片并存储到本地硬盘
-     * @param imgName
+     * @param imgName 图片名称
      */
     private void downloadImage(String imgUrl,String imgName){
-        String imgPath=LOCAL_IMAGE_PATH+imgName;
+
     }
 
 }
