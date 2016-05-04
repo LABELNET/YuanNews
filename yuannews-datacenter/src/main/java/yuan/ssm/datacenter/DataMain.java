@@ -22,6 +22,10 @@ package yuan.ssm.datacenter;
  */
 public class DataMain {
 
+    //环球网
+    private final String HuanQiuUrl="http://huanqiu.com/";
+
+
     public static void main(String [] args){
        //总调度类
 
