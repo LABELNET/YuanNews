@@ -3,7 +3,7 @@ package yuan.ssm.datacenter.LoadUtil;
 import yuan.ssm.datacenter.base.LoaderBase;
 import yuan.ssm.datacenter.base.SourceEnum;
 
-import java.util.List;
+import java.util.Set;
 
 /**
  * ==================================================
@@ -32,7 +32,7 @@ public class HuanQiuLoader extends LoaderBase {
         super(url);
     }
 
-    protected List<String> getUrls() {
+    protected Set<String> getUrls() {
         return null;
     }
 

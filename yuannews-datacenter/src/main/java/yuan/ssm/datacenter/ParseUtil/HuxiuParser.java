@@ -59,7 +59,7 @@ public class HuxiuParser extends ParserBase{
                 replace("-观点-@虎嗅网", "").replace("-读点-@虎嗅网", "");
         String dt=doc.select(".article-time").text();  // 发帖时间
         String content= doc.select("#article_content").get(0).text();//内容
-        String img=doc.select(".article-img-box").tagName("img").attr("src");//图片
+        String img=doc.select(".article-img-box").tagName("img").get(0).attr("src");//图片
         if(str.contains("提示信息 - 虎嗅网"))
         {
             LoggerUtil.printJSON("HuxiuParser parserDetail : 文章被删除 ");
