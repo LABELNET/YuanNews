@@ -168,7 +168,7 @@
                        <figure><img src="${custom.img}"></figure>
                        <ul>
                            <h3><a href="<%=projectPath%>/html/newsDetailPage.action?p=1&nid=${custom.id}">${custom.title}</a></h3>
-                           <p>ͨ
+                           <p style="text-align: left;line-height:30px;letter-spacimg:1.5">ͨ
 
                              ${fn:substring(custom.content,0,90)}...
 
