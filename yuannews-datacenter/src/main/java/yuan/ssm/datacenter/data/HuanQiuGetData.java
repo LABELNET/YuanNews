@@ -2,6 +2,7 @@ package yuan.ssm.datacenter.data;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import yuan.ssm.datacenter.ParseUtil.HuanQiuParser;
 import yuan.ssm.datacenter.base.GetDataBase;
 import yuan.ssm.datacenter.base.ParserBase;
 
@@ -39,7 +40,7 @@ public class HuanQiuGetData extends GetDataBase{
     }
 
     protected ParserBase parserDetailMethod(InputStream stream, String url) {
-        return null;
+        return new HuanQiuParser(stream,url);
     }
 
 

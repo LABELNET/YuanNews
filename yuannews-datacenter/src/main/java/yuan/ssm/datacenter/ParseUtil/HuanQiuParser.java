@@ -2,7 +2,8 @@ package yuan.ssm.datacenter.ParseUtil;
 
 import yuan.ssm.datacenter.base.ParserBase;
 import yuan.ssm.vo.NewsVo;
-import org.jsoup.nodes.Document;
+
+import java.io.InputStream;
 
 
 /**
@@ -28,13 +29,11 @@ import org.jsoup.nodes.Document;
  */
 public class HuanQiuParser extends ParserBase{
 
-
-    public HuanQiuParser(String url, Document doc) {
-        super(url, doc);
+    public HuanQiuParser(InputStream inputStream, String url) {
+        super(inputStream, url);
     }
 
-    protected NewsVo parserDetailPage(String url, Document doc) {
+    protected NewsVo parserDetailPage() {
         return null;
     }
-
 }
