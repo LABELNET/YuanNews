@@ -37,7 +37,7 @@ public class HuxiuLoader extends LoaderBase{
         urls.add("http://www.huxiu.com/article/147525/1.html");
         urls.add("http://www.huxiu.com/article/147470/1.html");
         urls.add("http://www.huxiu.com/article/147509/1.html");
-        return null;
+        return urls;
     }
 
     protected SourceEnum getType() {
