@@ -4,7 +4,7 @@ import yuan.ssm.datacenter.ParseUtil.ParseIndex;
 import yuan.ssm.datacenter.base.LoaderBase;
 import yuan.ssm.datacenter.base.SourceEnum;
 
-import java.util.List;
+import java.util.Set;
 
 /**
  * ==================================================
@@ -34,7 +34,7 @@ public class HuxiuLoader extends LoaderBase{
         super(url);
     }
 
-    protected List<String> getUrls() {
+    protected Set<String> getUrls() {
         return ParseIndex.getHuXiuPageUrls(super.getDoc());
     }
 

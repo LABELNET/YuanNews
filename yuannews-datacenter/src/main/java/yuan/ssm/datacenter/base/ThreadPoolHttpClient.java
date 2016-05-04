@@ -14,7 +14,7 @@ import org.apache.http.params.HttpParams;
 import yuan.ssm.common.util.LoggerUtil;
 import yuan.ssm.datacenter.data.DataGetUtil;
 
-import java.util.List;
+import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -70,7 +70,7 @@ public class ThreadPoolHttpClient {
 
 
         if(loaderBase!=null){
-            List<String> urls = loaderBase.getUrls();
+            Set<String> urls = loaderBase.getUrls();
             for (String url:urls) {
                 HttpGet httpget = new HttpGet(url);
                 Runnable runnable = DataGetUtil.getRunnable(httpClient, httpget, loaderBase.getType());

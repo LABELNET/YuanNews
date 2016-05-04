@@ -5,7 +5,7 @@ import org.jsoup.nodes.Document;
 import yuan.ssm.common.util.LoggerUtil;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.Set;
 
 /**
  * ==================================================
@@ -52,7 +52,7 @@ public abstract class LoaderBase {
      * 获取某个新闻来源上的主页urls
      * @return url集合
      */
-    protected abstract List<String> getUrls();
+    protected abstract Set<String> getUrls();
 
     /**
      * 获取某个新闻来源的类型

@@ -6,8 +6,8 @@ import org.jsoup.select.Elements;
 import yuan.ssm.common.util.LoggerUtil;
 import yuan.ssm.datacenter.common.UrlsContanst;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * ==================================================
@@ -36,11 +36,11 @@ public class ParseIndex {
     /**
      * 解析虎嗅主页的新闻链接
      * @param doc 主页新闻对象
-     * @return
+     * @return Set<String> 去重url
      */
-    public static List<String> getHuXiuPageUrls(Document doc){
-        List<String> urls=new ArrayList<String>();
-        Elements as = doc.getElementsByTag("a");
+    public static Set<String> getHuXiuPageUrls(Document doc){
+        Set<String> urls=new HashSet<String>();
+        Elements as = doc.select("a");
         for (Element a:as) {
             String href = a.attr("href");
             if(href.contains("1.html")){
