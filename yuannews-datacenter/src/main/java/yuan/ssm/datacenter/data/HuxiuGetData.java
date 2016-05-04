@@ -2,8 +2,12 @@ package yuan.ssm.datacenter.data;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import yuan.ssm.common.util.LoggerUtil;
 import yuan.ssm.datacenter.base.GetDataBase;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 /**
@@ -19,7 +23,7 @@ import java.io.InputStream;
  * <p/>
  * 创建日期：　16-5-4 下午1:49
  * <p/>
- * 功能描述： TODO
+ * 功能描述： 虎嗅网数据获取类，返回虎嗅网详情页内容
  * <p>
  * <p/>
  * 功能更新历史：
@@ -32,7 +36,15 @@ public class HuxiuGetData extends GetDataBase{
         super(httpClient, httpget);
     }
 
-    protected void parserDetailData(InputStream stream) {
+    protected void parserDetailData(InputStream stream,String url) {
+
+        try {
+            Document doc = Jsoup.parse(stream, ENCODE_CODE, url);
+
+        } catch (IOException e) {
+            LoggerUtil.printJSON("HuxiuGetData parserDetailData IOException");
+            e.printStackTrace();
+        }
 
     }
 }

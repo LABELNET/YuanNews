@@ -34,6 +34,8 @@ import java.io.InputStream;
 public abstract class GetDataBase implements Runnable{
 
 
+    public final String ENCODE_CODE="utf-8";
+
     private final int SUCCESS_CODE=200;
     private final HttpClient httpClient;
     private final HttpContext context;
@@ -62,7 +64,7 @@ public abstract class GetDataBase implements Runnable{
                 LoggerUtil.printJSON(this.httpget.getURI()+": status"+response.getStatusLine().toString());
                 if(response.getStatusLine().getStatusCode()==SUCCESS_CODE){
                     //执行解析
-                    parserDetailData(entity.getContent());
+                    parserDetailData(entity.getContent(), String.valueOf(this.httpget.getURI()));
                 }else {
                     LoggerUtil.printJSON(this.httpget.getURI()+": response code : "+response.getStatusLine().getStatusCode());
                 }
@@ -82,6 +84,6 @@ public abstract class GetDataBase implements Runnable{
      * 解析的抽象方法
      * @param stream
      */
-    protected abstract void parserDetailData(InputStream stream);
+    protected abstract void parserDetailData(InputStream stream,String url);
 
 }
