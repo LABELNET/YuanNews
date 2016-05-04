@@ -13,7 +13,7 @@ package yuan.ssm.datacenter.LoadUtil;
  * <p/>
  * 创建日期：　16-5-4 上午9:57
  * <p/>
- * 功能描述：TODO 百度新闻加载类
+ * 功能描述：TODO 百度新闻主页加载类
  * <p>
  * <p/>
  * 功能更新历史：

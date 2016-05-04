@@ -14,7 +14,6 @@
     <orderEntry type="library" name="Maven: org.jsoup:jsoup:1.9.1" level="project" />
     <orderEntry type="module" module-name="yuannews-dao" />
     <orderEntry type="module" module-name="yuannews-model" />
-    <orderEntry type="module" module-name="yuannews-config" />
     <orderEntry type="library" name="Maven: org.springframework:spring-core:4.0.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-web:4.0.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-oxm:4.0.2.RELEASE" level="project" />
@@ -45,6 +44,7 @@
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-entitymanager:3.6.10.Final" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-validator:5.2.1.Final" level="project" />
     <orderEntry type="library" name="Maven: org.aspectj:aspectjweaver:1.6.11" level="project" />
+    <orderEntry type="module" module-name="yuannews-config" />
     <orderEntry type="module" module-name="yuannews-common" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.11" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
