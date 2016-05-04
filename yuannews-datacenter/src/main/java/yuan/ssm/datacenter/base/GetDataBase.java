@@ -40,11 +40,13 @@ public abstract class GetDataBase implements Runnable{
     private final HttpClient httpClient;
     private final HttpContext context;
     private final HttpGet httpget;
+    private final ParserBase parserBase;
 
-    public GetDataBase(HttpClient httpClient, HttpGet httpget) {
+    public GetDataBase(HttpClient httpClient, HttpGet httpget,ParserBase parserBase) {
         this.httpClient = httpClient;
         this.context = new BasicHttpContext();
         this.httpget = httpget;
+        this.parserBase=parserBase;
     }
     public void run(){
         try {
@@ -64,7 +66,7 @@ public abstract class GetDataBase implements Runnable{
                 LoggerUtil.printJSON(this.httpget.getURI()+": status"+response.getStatusLine().toString());
                 if(response.getStatusLine().getStatusCode()==SUCCESS_CODE){
                     //执行解析
-                    parserDetailData(entity.getContent(), String.valueOf(this.httpget.getURI()));
+                    parserDetailToDb(entity.getContent(), String.valueOf(this.httpget.getURI()),parserBase);
                 }else {
                     LoggerUtil.printJSON(this.httpget.getURI()+": response code : "+response.getStatusLine().getStatusCode());
                 }
@@ -84,6 +86,6 @@ public abstract class GetDataBase implements Runnable{
      * 解析的抽象方法
      * @param stream
      */
-    protected abstract void parserDetailData(InputStream stream,String url);
+    protected abstract void parserDetailToDb(InputStream stream,String url,ParserBase parserBase);
 
 }

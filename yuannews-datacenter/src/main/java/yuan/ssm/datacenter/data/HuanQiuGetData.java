@@ -3,6 +3,7 @@ package yuan.ssm.datacenter.data;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import yuan.ssm.datacenter.base.GetDataBase;
+import yuan.ssm.datacenter.base.ParserBase;
 
 import java.io.InputStream;
 
@@ -29,15 +30,11 @@ import java.io.InputStream;
 public class HuanQiuGetData extends GetDataBase{
 
 
-    public HuanQiuGetData(HttpClient httpClient, HttpGet httpget) {
-        super(httpClient, httpget);
+    public HuanQiuGetData(HttpClient httpClient, HttpGet httpget,ParserBase parserBase) {
+        super(httpClient, httpget,parserBase);
     }
 
-    /**
-     * 解析新闻详情操作
-     * @param stream 新闻内容数据流
-     */
-    protected void parserDetailData(InputStream stream, String url) {
+    protected void parserDetailToDb(InputStream stream, String url, ParserBase parserBase) {
 
     }
 
