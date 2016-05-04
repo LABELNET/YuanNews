@@ -37,8 +37,6 @@ import java.io.InputStream;
  */
 public class HuxiuParser extends ParserBase{
 
-    private final String HUXIU_WORD="1.html";
-
     /**
      * 初始化
      * @param inputStream 数据流
@@ -78,30 +76,6 @@ public class HuxiuParser extends ParserBase{
         newsVo.setRnum(100);
         newsVo.setCid(CSCommon.getCateId(SourceEnum.huxiu));
         newsVo.setSid(CSCommon.getSourceId(SourceEnum.huxiu));
-
-        LoggerUtil.printJSON(newsVo);
-
-        File file = new File("/mnt/JAVA/tomcatImageServer/ids/Huxiu.txt");
-        if(!file.exists()){
-
-            try {
-                file.createNewFile();
-            } catch (IOException e) {
-                LoggerUtil.printJSON("HuxiuParser parserDetailPage File Exception");
-                e.printStackTrace();
-            }
-
-        }
-
-        try {
-            FileWriter writer=new FileWriter(file,true);
-            writer.write(newsVo.getTitle() +" : "+ url+" \n ");
-            writer.flush();
-            writer.close();
-        } catch (IOException e) {
-            LoggerUtil.printJSON("HuxiuParser parserDetailPage FileWriter Exception");
-            e.printStackTrace();
-        }
 
         return newsVo;
     }

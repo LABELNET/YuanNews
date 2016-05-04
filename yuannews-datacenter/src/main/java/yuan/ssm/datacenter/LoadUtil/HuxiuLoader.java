@@ -34,11 +34,12 @@ public class HuxiuLoader extends LoaderBase{
         super(url);
     }
 
+    /**
+     * 注意，在进行返回url的时候，需求去重复的url，防止多余的爬虫和数据
+     * @return
+     */
     protected Set<String> getUrls() {
-
-
-
-        return ParseIndex.getHuXiuPageUrls(super.getDoc());
+        return cleanUrls(ParseIndex.getHuXiuPageUrls(super.getDoc()),SourceEnum.huxiu.toString());
     }
 
     protected SourceEnum getType() {

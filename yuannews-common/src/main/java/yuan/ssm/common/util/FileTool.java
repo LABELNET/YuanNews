@@ -5,7 +5,6 @@ import org.apache.log4j.Logger;
 import yuan.ssm.common.config.ConfigConstant;
 
 import java.io.*;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -53,7 +52,7 @@ public class FileTool {
      * @param content
      *            String 文件内容
      */
-    public static void createNewFile(String fileNameTemp,String content) {
+    private static void createNewFile(String fileNameTemp,String content) {
         try {
             File filePath = new File(fileNameTemp);
             filePath.createNewFile();
@@ -131,8 +130,8 @@ public class FileTool {
      * @return
      * @throws Exception
      */
-    public static Set<String> readData(String name) throws Exception{
-        return (Set<String>) JSON.parseArray(readData(getFilePath(name),0),String.class);
+    public static List<String> readData(String name) throws Exception{
+        return JSON.parseArray(readData(getFilePath(name),0),String.class);
     }
 
 
@@ -157,4 +156,5 @@ public class FileTool {
         }
     }
     
+
 }

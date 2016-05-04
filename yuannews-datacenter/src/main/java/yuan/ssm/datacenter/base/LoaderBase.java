@@ -2,10 +2,12 @@ package yuan.ssm.datacenter.base;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import yuan.ssm.common.util.FileTool;
 import yuan.ssm.common.util.LoggerUtil;
 
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -57,12 +59,41 @@ public abstract class LoaderBase {
      * 策略： 如果url大于1000,则不进行操作，直接删除文件，存储目前最新的urls
      * @return 最新的urls
      */
-    protected Set<String> cleanUrls(Set<String> newUrls){
+    protected Set<String> cleanUrls(Set<String> newUrls,String filename){
         Set<String> bigUrls=new HashSet<String>();
+        try {
+            List<String> oldUrls = FileTool.readData(filename);
+            if(oldUrls==null){
+                FileTool.createNewFile(filename,newUrls);//存储最新的地址链接
+                return newUrls;//返回最新的地址链接
+            }else{
+                if(oldUrls.size()==0){
+                    FileTool.createNewFile(filename,newUrls);//存储最新的地址链接
+                    return newUrls;//返回最新的地址链接
+                }else{
+                    if(oldUrls.size()>=1000){
+                        FileTool.createNewFile(filename,newUrls);//存储最新的地址链接
+                        return newUrls;//返回最新的地址链接
+                    }else{
+                        bigUrls.addAll(oldUrls);
+                        //去除已经爬去的urls
+                        for (String url :oldUrls) {
+                            if(newUrls.contains(url)){
+                                newUrls.remove(url); //去除重复的
+                            }else{
+                                oldUrls.add(url); //添加最新的
+                            }
+                        }
+                        FileTool.createNewFile(filename,bigUrls); //存储最新爬取过的url
+                    }
+                }
+            }
 
-
-
-        return bigUrls;
+        } catch (Exception e) {
+            LoggerUtil.printJSON("LoaderBase  cleanUrls Exception ");
+            e.printStackTrace();
+        }
+        return newUrls;
     }
 
     /**
