@@ -1,7 +1,17 @@
 package yuan.ssm.datacenter;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+import yuan.ssm.common.util.LoggerUtil;
 import yuan.ssm.datacenter.LoadUtil.HuxiuLoader;
 import yuan.ssm.datacenter.base.ThreadPoolHttpClient;
+import yuan.ssm.datacenter.common.UrlsContanst;
+
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * ==================================================
@@ -31,9 +41,16 @@ public class DataMain {
     //虎嗅网
     private static final String HUXIUURL="http://www.huxiu.com";
 
-    public static void main(String [] args){
+    public static void main(String [] args) throws IOException {
        //总调度类
+        getData();
 
+        //测试虎嗅主页
+//        testHuXiuIndexPage();
+
+    }
+
+    private static void getData() {
         //1.实现主页加载类
         HuxiuLoader huxiuLoader=new HuxiuLoader(HUXIUURL);
 
@@ -42,5 +59,20 @@ public class DataMain {
 
         //3.执行开始操作
         threadPoolHttpClient.start();
+    }
+
+
+    private static void testHuXiuIndexPage() throws IOException {
+        Document doc = Jsoup.connect(HUXIUURL).timeout(100000).get();
+        Set<String> urls=new HashSet<String>();
+        Elements as = doc.select("a");
+        for (Element a : as) {
+            String href = a.attr("href");
+            if(href.contains("/1.html")){
+                String url= UrlsContanst.HUXIU_BASE_URL+href;
+                urls.add(url);
+            }
+        }
+        LoggerUtil.printJSON(urls);
     }
 }

@@ -43,7 +43,7 @@ public class ParseIndex {
         Elements as = doc.select("a");
         for (Element a:as) {
             String href = a.attr("href");
-            if(href.contains("1.html")){
+            if(href.contains("/1.html")){
                 String url=UrlsContanst.HUXIU_BASE_URL+href;
                 urls.add(url);
                 LoggerUtil.printJSON(url);
