@@ -1,6 +1,7 @@
 package yuan.ssm.datacenter.LoadUtil;
 
 import yuan.ssm.datacenter.base.LoaderBase;
+import yuan.ssm.datacenter.base.SourceEnum;
 
 import java.util.List;
 
@@ -29,6 +30,10 @@ public class HuanQiuLoader extends LoaderBase {
 
 
     protected List<String> getUrls() {
+        return null;
+    }
+
+    protected SourceEnum getType() {
         return null;
     }
 
