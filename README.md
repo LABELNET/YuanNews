@@ -14,6 +14,11 @@
  * 注意事项，jsp页面中的img标签添加获取项目名路径　( request.getContextPath() )　
  *
 
+
+#2016.05.05
+ * 数据API基本实现-Postman测试
+ * Android 客户的框架搭建
+
 #2016.05.04
   * 用户端基本优化完毕：功能添加搜索框舍弃不做；
   * 数据API基本实现-Postman测试
