@@ -72,7 +72,5 @@ public class HuxiuParser extends ParserBase{
         return null;
     }
 
-    protected List<String> parserIndexPage(String url, Document document) {
-        return null;
-    }
+
 }

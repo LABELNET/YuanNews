@@ -3,8 +3,6 @@ package yuan.ssm.datacenter.base;
 import org.jsoup.nodes.Document;
 import yuan.ssm.vo.NewsVo;
 
-import java.util.List;
-
 /**
  * ==================================================
  * <p/>
@@ -19,7 +17,7 @@ import java.util.List;
  * 创建日期：　16-5-4 下午2:25
  * <p/>
  * 功能描述： 解析抽象类，所有的解析类，包含两个方法
- * 1.解析主页 List<String>
+ * 1.解析主页 List<String>，静态类，静态加载
  * 2.解析详情页 ， 返回 NewsVo
  * 3.解析详情页，进行数据存储操作 - > mysql
  * <p>
@@ -38,10 +36,18 @@ public abstract class ParserBase {
         this.doc = doc;
     }
 
+    /**
+     * 解析新闻详情页面，返回的新闻对象
+     * @param url
+     * @param doc
+     * @return
+     */
     protected abstract NewsVo parserDetailPage(String url, Document doc);
 
-    protected abstract List<String> parserIndexPage(String url, Document doc);
 
+    /**
+     * 存储到mysql数据库
+     */
     protected void toMysql(){
         //TODO 存储到mysql中
     }

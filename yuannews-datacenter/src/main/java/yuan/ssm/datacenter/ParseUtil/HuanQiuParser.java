@@ -4,7 +4,6 @@ import yuan.ssm.datacenter.base.ParserBase;
 import yuan.ssm.vo.NewsVo;
 import org.jsoup.nodes.Document;
 
-import java.util.List;
 
 /**
  * ==================================================
@@ -38,7 +37,4 @@ public class HuanQiuParser extends ParserBase{
         return null;
     }
 
-    protected List<String> parserIndexPage(String url, Document doc) {
-        return null;
-    }
 }
