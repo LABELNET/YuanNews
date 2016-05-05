@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import yuan.ssm.other.DataBean;
 import yuan.ssm.service.customer.UserService;
+import yuan.ssm.service.manager.UserManager;
 import yuan.ssm.vo.UserVo;
 
 /**
@@ -36,7 +37,10 @@ import yuan.ssm.vo.UserVo;
 public class AndroidController {
 
     @Autowired
-    private UserService userService;
+    private UserService userService; //用户service
+
+    @Autowired
+    private UserManager userManager;//用户manager
 
     /**
      * 用户登录接口

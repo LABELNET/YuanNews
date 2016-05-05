@@ -124,6 +124,13 @@
             <td>api/login</td>
          </tr>
          <tr>
+           <td>参数类型：</td>
+           <td>
+               unum : String 账户 <br>
+               pass : String 密码
+           </td>
+         </tr>
+         <tr>
             <td>返回数据：</td>
             <td>
               {<br>
@@ -175,6 +182,13 @@
         <td>api/login</td>
       </tr>
       <tr>
+        <td>参数类型：</td>
+        <td>
+          unum : String 账户 <br>
+          pass : String 密码
+        </td>
+      </tr>
+      <tr>
         <td>返回数据：</td>
         <td>
           {<br>
@@ -224,6 +238,13 @@
       <tr>
         <td>接口地址 ：</td>
         <td>api/login</td>
+      </tr>
+      <tr>
+        <td>参数类型：</td>
+        <td>
+          unum : String 账户 <br>
+          pass : String 密码
+        </td>
       </tr>
       <tr>
         <td>返回数据：</td>
