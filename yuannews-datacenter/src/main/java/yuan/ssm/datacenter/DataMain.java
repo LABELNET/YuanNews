@@ -1,8 +1,9 @@
 package yuan.ssm.datacenter;
 
+import yuan.ssm.common.util.LoggerUtil;
 import yuan.ssm.datacenter.LoadUtil.HuxiuLoader;
 import yuan.ssm.datacenter.base.ThreadPoolHttpClient;
-import yuan.ssm.datacenter.datasource.HuanQiuSource;
+import yuan.ssm.datacenter.common.CSCommon;
 
 import java.io.IOException;
 import java.util.List;
@@ -37,7 +38,9 @@ public class DataMain {
 //        getData(HuxiuSource.getHuxiuIndexUrl(),"虎嗅主页");//虎嗅主页爬取
 
 //          getData(HuanQiuSource.getHuanQiuIndexUrl(),"环球网主页");
-        HuanQiuSource.testHuXiuIndexPage();
+//        HuanQiuSource.testHuXiuIndexPage();
+
+        LoggerUtil.printJSON(CSCommon.getCateId());
 
     }
 

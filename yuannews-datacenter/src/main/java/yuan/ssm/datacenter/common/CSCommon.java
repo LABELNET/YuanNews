@@ -4,6 +4,7 @@ import yuan.ssm.datacenter.base.SourceEnum;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 /**
  * ==================================================
@@ -30,6 +31,7 @@ import java.util.Map;
  */
 public class CSCommon {
 
+    private static Random random=new Random();
     private static Map<String,Integer> cates=new HashMap<String, Integer>();
 
     static {
@@ -39,6 +41,10 @@ public class CSCommon {
         cates.put("创业维艰",18);
         cates.put("生活腔调",19);
         cates.put("社会百科",20);
+        cates.put("时局政治",21);
+        cates.put("科技先行",22);
+        cates.put("体育先锋",23);
+        random=new Random();
     }
 
     /**
@@ -64,6 +70,10 @@ public class CSCommon {
             return 20; //默认分类为社会百科
         }
         return cateId;
+    }
+
+    public static int getCateId(){
+        return random.nextInt(8)+16;
     }
 
 }

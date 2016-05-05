@@ -34,6 +34,8 @@ public class HuanQiuSource {
     //环球网：主页
     private static final String HuanQiuUrl="http://huanqiu.com";
 
+    //
+    private static final String HuanQiuUrl_AUTO="http://auto.huanqiu.com/"; //汽车-分类 车与出行
 
     public static String getHuanQiuIndexUrl(){
         return HuanQiuUrl;
