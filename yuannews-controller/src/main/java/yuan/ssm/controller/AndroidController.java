@@ -1,6 +1,7 @@
 package yuan.ssm.controller;
 
 import com.alibaba.fastjson.JSON;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -28,18 +29,17 @@ import yuan.ssm.vo.UserVo;
  * ==================================================
  */
 
-@RequestMapping("Api/")
+@Controller
+@RequestMapping("api/")
 public class AndroidController {
-
 
 
     @RequestMapping("login")
     public @ResponseBody String login(@ModelAttribute UserVo userVo){
         DataBean<UserVo> bean = new DataBean<UserVo>();
-        bean.setT(userVo);
+        bean.setData(userVo);
         return JSON.toJSONString(bean);
     }
-
 
 
 }

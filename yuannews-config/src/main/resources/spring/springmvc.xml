@@ -11,7 +11,17 @@
     <!-- 静态资源(js、image等)的访问 -->
     <mvc:default-servlet-handler/>
 
-    <mvc:annotation-driven conversion-service="conversionService" validator="validator"></mvc:annotation-driven>
+    <mvc:annotation-driven conversion-service="conversionService" validator="validator">
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>application/json;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>

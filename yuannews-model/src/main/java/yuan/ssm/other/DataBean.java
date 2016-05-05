@@ -23,8 +23,8 @@ package yuan.ssm.other;
 public class DataBean<T> {
 
     private int code;
-    private String msg;
-    private T t;
+    private String msg="成功";
+    private T data;
 
     public int getCode() {
         return code;
@@ -42,11 +42,12 @@ public class DataBean<T> {
         this.msg = msg;
     }
 
-    public T getT() {
-        return t;
+    public T getData() {
+        return data;
     }
 
-    public void setT(T t) {
-        this.t = t;
+    public void setData(T data) {
+        this.data = data;
     }
+
 }
