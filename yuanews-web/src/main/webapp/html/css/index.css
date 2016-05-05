@@ -11,7 +11,7 @@
 .blogs h3 a { color: #474645; }
 .blogs h3 a:hover { color: #19a97b; }
 .blogs figure { float: left; width: 25%; overflow: hidden; }
-.blogs figure img { width: 100%; margin: auto; -moz-transition: all 0.5s; -webkit-transition: all 0.5s; -o-transition: all 0.5s; transition: all 0.5s; }
+.blogs figure img {max-height: 200px; width: 100%; margin: auto; -moz-transition: all 0.5s; -webkit-transition: all 0.5s; -o-transition: all 0.5s; transition: all 0.5s; }
 .blogs figure:hover img { -moz-transform: scale(1.1); -webkit-transform: scale(1.1); -o-transform: scale(1.1); -ms-transform: scale(1.1); }
 .blogs ul { float: right; line-height: 22px; width: 72%; color: #756F71;}
 .autor { overflow: hidden; clear: both; margin: 10px 0; display: inline-block; color: #838383; width: 100%;  }

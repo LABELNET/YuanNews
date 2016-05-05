@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import yuan.ssm.common.util.FileTool;
 import yuan.ssm.common.util.LoggerUtil;
 import yuan.ssm.other.CommentJo;
 import yuan.ssm.other.PageVo;
@@ -105,43 +104,8 @@ public class CustomerController {
         }
         pageVo.setStart((pageVo.getP()-1)*PAGE_NUM);//开始页面
         pageVo.setNum(PAGE_NUM);//每页总数
-
-
         LoggerUtil.printJSON(pageVo);
-        LoggerUtil.printJSON(pageVo.getnType());
-
-        if(pageVo.getnType()>6){
-            return getModelAndView(1,pageVo);
-        }
-
-        UserVo vo= (UserVo) session.getAttribute("user");
-        if(vo==null){
-            return getModelAndView(1,pageVo);
-        }else{
-            List<Integer> nids = FileTool.readData(vo.getId());
-            if(nids==null){
-                return getModelAndView(1,pageVo);
-            }else{
-                idsSize=nids.size();
-
-                if(pageVo.getStart()>nids.size()){
-                    return getModelAndView(1,pageVo);
-                }else{
-                    if(idsSize<PAGE_NUM){
-                        pageVo.setNids(nids);
-                        //长度小于PAGE_NUM
-                        pageVo.setNum(PAGE_NUM-idsSize); //获取剩下长度的集合
-                        return getModelAndView(2,pageVo);
-                    }else {
-                        //分页操作
-                        List<Integer> newsIds=nids.subList(pageVo.getStart(),pageVo.getNum());
-                        pageVo.setNids(newsIds); //推荐新闻ids
-                        return getModelAndView(3,pageVo);
-                    }
-                }
-            }
-        }
-
+       return getModelAndView(pageVo);
     }
 
     /**
@@ -150,24 +114,13 @@ public class CustomerController {
      * @return
      * @throws Exception
      */
-    private ModelAndView getModelAndView(int type,@ModelAttribute PageVo pageVo) throws Exception {
+    private ModelAndView getModelAndView(@ModelAttribute PageVo pageVo) throws Exception {
         ModelAndView andView = new ModelAndView();
         //当前页面
         andView.addObject("currectIndex",pageVo.getP()); //当前页面
         //页面
         andView.setViewName(INDEX_PAGE);//页面对象
-        List<NewsCustom> customByComment = new ArrayList<NewsCustom>();
-        if(type==1) {
-            //普通类型
-            customByComment.addAll(getNormalNews(pageVo));
-        }else if(type==3){
-//            推荐类型
-            customByComment.addAll(getPromoteNews(pageVo));
-        }else if(type==2){
-            //推荐类型和其他类型都有
-            customByComment.addAll(getPromoteNews(pageVo));
-            customByComment.addAll(getNormalNews(pageVo));
-        }
+        List<NewsCustom> customByComment = getNormalNews(pageVo);
         andView.addObject("customs",customByComment);
         //总数
         andView.addObject("count",newsService.getNewsCount().getAllCount());
@@ -204,13 +157,20 @@ public class CustomerController {
     }
 
     /**
+     * TODO 推荐先不做，底层已经实现！
      * 推荐类型
      * @param pageVo
      * @return
      * @throws Exception
      */
     private List<NewsCustom> getPromoteNews(@ModelAttribute PageVo pageVo) throws Exception{
-        return newsService.getNidsNews(pageVo.getNids());
+        List<Integer> nids = pageVo.getNids();
+        if(nids!=null){
+            if(nids.size()>0){
+                return newsService.getNidsNews(nids);
+            }
+        }
+        return new ArrayList<NewsCustom>();
     }
 
     /**
