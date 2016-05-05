@@ -114,7 +114,11 @@ public abstract class ParserBase {
     public void toMysql(){
         NewsVo newsVo = cleanNewsVo();
         try {
-            newsManagerMapper.insertNews(newsVo);
+            if(newsVo.getContent().length()>0 && newsVo.getTitle().length()>0) {
+                newsManagerMapper.insertNews(newsVo);
+            }else{
+                LoggerUtil.printJSON("ParserBase NewsManagerMapper NewsVo的内容和标题没有内容了！");
+            }
         } catch (Exception e) {
             LoggerUtil.printJSON("ParserBase NewsManagerMapper toMysql");
             e.printStackTrace();
