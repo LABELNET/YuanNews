@@ -34,14 +34,11 @@ public class HuanQiuSource {
     //环球网：主页
     private static final String HuanQiuUrl="http://huanqiu.com";
 
-    //
-    private static final String HuanQiuUrl_AUTO="http://auto.huanqiu.com/"; //汽车-分类 车与出行
-
     public static String getHuanQiuIndexUrl(){
         return HuanQiuUrl;
     }
 
-    public static void testHuXiuIndexPage() throws IOException {
+    public static void testHuanQiuIndexPage() throws IOException {
         Document doc = Jsoup.connect(HuanQiuUrl).timeout(100000).get();
         Set<String> qiuUrls = ParseIndex.getHuanQiuUrls(doc);
         LoggerUtil.printJSON(qiuUrls);

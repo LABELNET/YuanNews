@@ -60,7 +60,7 @@ public class ParseIndex {
         Set<String> urls=new HashSet<String>();
         Elements as = doc.select("a");
         for (Element a:as){
-            String href=a.attr("href");
+            String href=a.attr("href").trim();
             //过滤url
             if(href.contains("huanqiu.com") && href.contains("2016") && href.contains(".html") && !href.startsWith("http://v") && !href.startsWith("!http://photo")){
                 int i = href.indexOf("#");
@@ -70,6 +70,7 @@ public class ParseIndex {
                 urls.add(href);
             }
         }
+        LoggerUtil.print("　主页url已经遍历完毕！　");
         return urls;
     }
 

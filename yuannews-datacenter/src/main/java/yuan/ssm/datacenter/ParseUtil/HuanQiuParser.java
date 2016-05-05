@@ -49,7 +49,16 @@ public class HuanQiuParser extends ParserBase{
                  break;
              }
          }
-         String content=doc.select("#text").text();
+        StringBuffer buffer=new StringBuffer();
+        Elements elements = doc.select("#text p");
+        for(Element element : elements){
+            buffer.append("　　" + element.text()+" \n ");
+        }
+
+        String content=buffer.toString();
+        if(content.length()==0){
+            content=doc.select("#text").text();
+        }
 
         NewsVo newsVo=new NewsVo();
         newsVo.setImg(img);
