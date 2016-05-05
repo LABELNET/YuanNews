@@ -99,7 +99,7 @@ public class CustomerController {
      * @throws Exception
      */
     @RequestMapping("/pageIndex")
-    public ModelAndView pageIndex(HttpSession session,@ModelAttribute PageVo pageVo) throws Exception {
+    public ModelAndView pageIndex(@ModelAttribute PageVo pageVo) throws Exception {
         if(pageVo.getP()<0){
             pageVo.setP(1);
         }
