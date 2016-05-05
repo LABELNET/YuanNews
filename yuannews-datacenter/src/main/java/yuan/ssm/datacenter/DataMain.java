@@ -62,8 +62,9 @@ public class DataMain {
         DataMain dataMain=new DataMain();
 
 
+        dataMain.getHuxiuIndexData();
         //虎嗅-分类爬去
-        dataMain.getHuxiuCateData();
+//        dataMain.getHuxiuCateData();
 
 
     }
