@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Param;
 import yuan.ssm.other.CommentJo;
 import yuan.ssm.pojo.NewsCustom;
 import yuan.ssm.vo.CateVo;
+import yuan.ssm.vo.LikedVo;
 import yuan.ssm.vo.SourceVo;
 
 import java.util.List;
@@ -141,6 +142,14 @@ public interface NewsMapper {
      * @throws Exception
      */
     List<String> findLikedByNid(@Param("nid")Integer nid) throws Exception;
+
+    /**
+     * 根据新闻id，查询所有的点赞用户信息
+     * @param nid
+     * @return
+     * @throws Exception
+     */
+    List<LikedVo> findLikedNid(@Param("nid")Integer nid) throws Exception;
 
     /**
      * 根据新闻
