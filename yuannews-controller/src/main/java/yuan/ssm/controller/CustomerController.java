@@ -28,8 +28,9 @@ import java.util.Set;
  * 功能：用户中心页面及其功能
  */
 
+
 @Controller
-@RequestMapping("/html")
+@RequestMapping(value = "/html")
 public class CustomerController {
 
     //主页

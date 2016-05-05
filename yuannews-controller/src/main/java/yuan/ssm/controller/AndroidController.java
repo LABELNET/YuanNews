@@ -31,7 +31,7 @@ import java.util.UUID;
  * <p/>
  * 作者：　原明卓
  * <p/>
- * 版本：　1.1
+ * 版本：　1.0
  * <p/>
  * 创建日期：　16-5-5 下午3:41
  * <p/>
@@ -44,7 +44,7 @@ import java.util.UUID;
  */
 
 @Controller
-@RequestMapping("api/")
+@RequestMapping(value = "api/")
 public class AndroidController {
 
     @Autowired

@@ -1,7 +1,12 @@
 package yuan.ssm.controller;
 
+import com.alibaba.fastjson.JSON;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import yuan.ssm.other.DataBean;
+import yuan.ssm.vo.UserVo;
 
 /**
  * ==================================================
@@ -28,41 +33,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AndroidNController {
 
 
+    /**
+     * 分页查询新闻列表
+     * @param p
+     * @return
+     */
+    @RequestMapping("getNesList")
+    public @ResponseBody String getNesList(@RequestParam Integer p){
 
 
 
+        DataBean<UserVo> bean = new DataBean<UserVo>();
+        try{
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        } catch (Exception e) {
+            bean.setCode(-3);
+            bean.setMsg("系统错误");
+        }
+        return JSON.toJSONString(bean);
+    }
 
 
 }
