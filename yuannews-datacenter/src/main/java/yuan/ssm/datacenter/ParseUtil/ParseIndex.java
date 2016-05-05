@@ -1,6 +1,10 @@
 package yuan.ssm.datacenter.ParseUtil;
 
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+import yuan.ssm.common.util.LoggerUtil;
+import yuan.ssm.datacenter.common.UrlsContanst;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -36,23 +40,17 @@ public class ParseIndex {
      */
     public synchronized static Set<String> getHuXiuPageUrls(Document doc){
         Set<String> urls=new HashSet<String>();
-
-        //测试
-        urls.add("http://www.huxiu.com/article/146995/1.html");
+        Elements as = doc.select("a");
+        for (Element a:as) {
+            String href = a.attr("href");
+            if(href.contains("/1.html")){
+                href=href.substring(0,href.indexOf("?"));
+                String url= UrlsContanst.HUXIU_BASE_URL+href;
+                urls.add(url);
+                LoggerUtil.printJSON(url);
+            }
+        }
         return urls;
-
-
-//        Elements as = doc.select("a");
-//        for (Element a:as) {
-//            String href = a.attr("href");
-//            if(href.contains("/1.html")){
-//                href=href.substring(0,href.indexOf("?"));
-//                String url=UrlsContanst.HUXIU_BASE_URL+href;
-//                urls.add(url);
-//                LoggerUtil.printJSON(url);
-//            }
-//        }
-//        return urls;
     }
 
     //

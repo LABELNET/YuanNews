@@ -7,7 +7,6 @@ import org.jsoup.select.Elements;
 import yuan.ssm.common.util.LoggerUtil;
 import yuan.ssm.datacenter.LoadUtil.HuxiuLoader;
 import yuan.ssm.datacenter.base.ThreadPoolHttpClient;
-import yuan.ssm.datacenter.common.CSCommon;
 import yuan.ssm.datacenter.common.UrlsContanst;
 
 import java.io.IOException;
@@ -59,31 +58,36 @@ public class DataMain {
 
 
     public static void main(String [] args) throws IOException, InterruptedException {
-
+        //总调度类
         DataMain dataMain=new DataMain();
 
-       //总调度类
-//        dataMain.getData(HUXIUURL);
 
-//        dataMain.getData(HUXIUURL_CAR);
+        //虎嗅-分类爬去
+        dataMain.getHuxiuCateData();
 
-        int wooo = CSCommon.getCateId("wooo");
-        System.out.println(wooo);
 
-        //测试虎嗅主页
-//        testHuXiuIndexPage();
     }
 
-    private void getData(String url) {
-        //1.实现主页加载类
-        HuxiuLoader huxiuLoader=new HuxiuLoader(url);
 
-        //2.实现线程池
-        ThreadPoolHttpClient threadPoolHttpClient=new ThreadPoolHttpClient(huxiuLoader);
-
-        //3.执行开始操作
-        threadPoolHttpClient.start();
+    /**
+     * 其余的爬取主页数据即可
+     */
+    private void getHuxiuIndexData(){
+        getData(HUXIUURL);
     }
+
+    /**
+     * 虎嗅-首次爬去，可以爬取分类信息
+     */
+    private void getHuxiuCateData(){
+        getData(HUXIUURL_CAR);
+        getData(HUXIU_TIME);
+        getData(HUXIU_CHUANG);
+        getData(HUXIU_YU);
+        getData(HUXIU_SHUENGHUO);
+    }
+
+
 
 
     private static void testHuXiuIndexPage() throws IOException {
@@ -99,5 +103,22 @@ public class DataMain {
         }
         LoggerUtil.printJSON(urls);
     }
+
+
+    /**
+     * 总的爬去方法
+     * @param url
+     */
+    private synchronized void getData(String url) {
+        //1.实现主页加载类
+        HuxiuLoader huxiuLoader=new HuxiuLoader(url);
+
+        //2.实现线程池
+        ThreadPoolHttpClient threadPoolHttpClient=new ThreadPoolHttpClient(huxiuLoader);
+
+        //3.执行开始操作
+        threadPoolHttpClient.start();
+    }
+
 
 }

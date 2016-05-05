@@ -90,7 +90,7 @@ public abstract class LoaderBase {
                         }
                         bigUrls.addAll(newUrls);
                         FileTool.createNewFile(filename,bigUrls); //存储最新爬取过的url
-                        LoggerUtil.printJSON(bigUrls);
+//                        LoggerUtil.printJSON(bigUrls);
                     }
                 }
             }
