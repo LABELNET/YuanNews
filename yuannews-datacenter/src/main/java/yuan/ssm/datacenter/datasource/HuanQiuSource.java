@@ -1,5 +1,13 @@
 package yuan.ssm.datacenter.datasource;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import yuan.ssm.common.util.LoggerUtil;
+import yuan.ssm.datacenter.ParseUtil.ParseIndex;
+
+import java.io.IOException;
+import java.util.Set;
+
 /**
  * ==================================================
  * <p/>
@@ -26,5 +34,15 @@ public class HuanQiuSource {
     //环球网：主页
     private static final String HuanQiuUrl="http://huanqiu.com";
 
+
+    public static String getHuanQiuIndexUrl(){
+        return HuanQiuUrl;
+    }
+
+    public static void testHuXiuIndexPage() throws IOException {
+        Document doc = Jsoup.connect(HuanQiuUrl).timeout(100000).get();
+        Set<String> qiuUrls = ParseIndex.getHuanQiuUrls(doc);
+        LoggerUtil.printJSON(qiuUrls);
+    }
 
 }

@@ -43,7 +43,7 @@ public class ParseIndex {
         Elements as = doc.select("a");
         for (Element a:as) {
             String href = a.attr("href");
-            if(href.contains("/1.html")){
+            if(href.contains("/1.html") ){
                 int i = href.indexOf("?");
                 if(i>0) {
                     href = href.substring(0,i);
@@ -61,7 +61,11 @@ public class ParseIndex {
         Elements as = doc.select("a");
         for (Element a:as){
             String href=a.attr("href");
-            if(href.contains("huanqiu.com")){
+            if(href.contains("huanqiu.com") && href.contains("2016") && href.contains(".html")){
+                int i = href.indexOf("#");
+                if(i>0) {
+                    href = href.substring(0,i);
+                }
                 urls.add(href);
             }
         }
