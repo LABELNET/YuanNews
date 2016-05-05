@@ -25,4 +25,8 @@
 
     <bean id="userServiceImpl" class="yuan.ssm.service.customer.impl.UserServiceImpl"/>
 
+    <bean id="userAppService" class="yuan.ssm.service.mobile.impl.UserAppServiceImpl"/>
+
+    <bean id="newsAppService" class="yuan.ssm.service.mobile.impl.NewsAppServiceImpl"/>
+
 </beans>
