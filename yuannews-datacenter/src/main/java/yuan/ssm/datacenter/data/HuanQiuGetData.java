@@ -40,7 +40,8 @@ public class HuanQiuGetData extends GetDataBase{
      * @param parserBase 解析基类
      */
     protected void parserDetailToDb(ParserBase parserBase) {
-        parserBase.toLogPrint();
+        parserBase.toMysql();//存数据库
+        parserBase.toLogPrint();//日志打印
     }
 
     protected ParserBase parserDetailMethod(InputStream stream, String url) {
