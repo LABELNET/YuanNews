@@ -7,6 +7,7 @@ import org.jsoup.select.Elements;
 import yuan.ssm.common.util.LoggerUtil;
 import yuan.ssm.datacenter.LoadUtil.HuxiuLoader;
 import yuan.ssm.datacenter.base.ThreadPoolHttpClient;
+import yuan.ssm.datacenter.common.CSCommon;
 import yuan.ssm.datacenter.common.UrlsContanst;
 
 import java.io.IOException;
@@ -39,9 +40,23 @@ public class DataMain {
     private static final String HuanQiuUrl="http://huanqiu.com";
 
     //虎嗅网
-    private static final String HUXIUURL="http://www.huxiu.com";
+    private static final String HUXIUURL="http://www.huxiu.com";//主页
 
-    private static final String HUXIUURL_CAR="http://www.huxiu.com/mobility.html";
+    //虎嗅-车行
+    private static final String HUXIUURL_CAR="http://www.huxiu.com/mobility.html";//车与出行
+
+    //虎嗅-24小时
+    private static final String HUXIU_TIME="http://www.huxiu.com/whatsnew.html";//24小时
+
+    //虎嗅-娱乐影视
+    private static final String HUXIU_YU="http://www.huxiu.com/entertainment.html";//娱乐淘金
+
+    //虎嗅-创业
+    private static final String HUXIU_CHUANG="http://www.huxiu.com/startups.html";//创业维艰
+
+    //虎嗅-生活
+    private static final String HUXIU_SHUENGHUO="http://www.huxiu.com/lifestyle.html";//生活腔调
+
 
     public static void main(String [] args) throws IOException, InterruptedException {
 
@@ -50,8 +65,10 @@ public class DataMain {
        //总调度类
 //        dataMain.getData(HUXIUURL);
 
-        dataMain.getData(HUXIUURL_CAR);
+//        dataMain.getData(HUXIUURL_CAR);
 
+        int wooo = CSCommon.getCateId("wooo");
+        System.out.println(wooo);
 
         //测试虎嗅主页
 //        testHuXiuIndexPage();

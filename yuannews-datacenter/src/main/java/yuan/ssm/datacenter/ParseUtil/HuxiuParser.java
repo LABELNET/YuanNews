@@ -55,7 +55,9 @@ public class HuxiuParser extends ParserBase{
                 replace("-观点-@虎嗅网", "").replace("-读点-@虎嗅网", "");
         String dt=doc.select(".article-time").text();  // 发帖时间
         String content= doc.select("#article_content").get(0).text();//内容
-        String img="默认";
+        String img="";
+
+        String cate = doc.select(".column-link").get(0).text();
 
         Elements imgs = doc.select("img");
 
@@ -70,7 +72,7 @@ public class HuxiuParser extends ParserBase{
         newsVo.setImg(img);
         newsVo.setContent(content);
         newsVo.setRnum(100);
-        newsVo.setCid(CSCommon.getCateId(SourceEnum.huxiu));
+        newsVo.setCid(CSCommon.getCateId(cate));
         newsVo.setSid(CSCommon.getSourceId(SourceEnum.huxiu));
 
         return newsVo;

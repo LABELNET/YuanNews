@@ -2,6 +2,9 @@ package yuan.ssm.datacenter.common;
 
 import yuan.ssm.datacenter.base.SourceEnum;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * ==================================================
  * <p/>
@@ -27,6 +30,22 @@ import yuan.ssm.datacenter.base.SourceEnum;
  */
 public class CSCommon {
 
+    private static Map<String,Integer> cates=new HashMap<String, Integer>();
+
+    static {
+        cates.put("24小时",14);
+        cates.put("车与出行",16);
+        cates.put("娱乐淘金",17);
+        cates.put("创业维艰",18);
+        cates.put("生活腔调",19);
+        cates.put("社会百科",20);
+    }
+
+    /**
+     * 得到来源信息
+     * @param word
+     * @return
+     */
     public static int getSourceId(SourceEnum word){
         switch (word){
             case huxiu:
@@ -38,14 +57,13 @@ public class CSCommon {
         }
     }
 
-    public static int getCateId(SourceEnum word){
-        switch (word){
-            case huxiu:
-                return 13;
-            case huanqiu:
-                return 9;
+    //得到分类信息
+    public static int getCateId(String cate){
+        Integer cateId=cates.get(cate);
+        if(cateId==null){
+            return 20; //默认分类为社会百科
         }
-        return 0;
+        return cateId;
     }
 
 }
