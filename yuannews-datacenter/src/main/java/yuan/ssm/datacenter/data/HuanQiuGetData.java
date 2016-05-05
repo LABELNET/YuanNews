@@ -44,6 +44,12 @@ public class HuanQiuGetData extends GetDataBase{
         parserBase.toLogPrint();//日志打印
     }
 
+    /**
+     * 返回一个详情页解析类，进行解析操作
+     * @param stream 数据流
+     * @param url 当前地址
+     * @return
+     */
     protected ParserBase parserDetailMethod(InputStream stream, String url) {
         return new HuanQiuParser(stream,url);
     }
