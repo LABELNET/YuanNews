@@ -122,6 +122,10 @@ public abstract class ParserBase {
     }
 
 
+    public void toLogPrint(){
+        LoggerUtil.printJSON(parserDetailPage());
+    }
+
     /**
      * 文件存储
      */
