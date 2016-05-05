@@ -11,9 +11,9 @@ import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import yuan.ssm.common.util.LoggerUtil;
-import yuan.ssm.datacenter.common.IDataNotify;
 import yuan.ssm.datacenter.data.DataGetUtil;
 
+import java.util.Date;
 import java.util.Set;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -49,12 +49,17 @@ public class ThreadPoolHttpClient {
     //线程池
     private ThreadPoolExecutor threadPool=null;
 
+    //更新的Url条数
+    private int urlsSize=0;
+    private String poolName;
 
-    public ThreadPoolHttpClient(LoaderBase loaderBase) {
+
+    public ThreadPoolHttpClient(LoaderBase loaderBase,String poolName) {
         this.loaderBase = loaderBase;
         threadPool=new ThreadPoolExecutor(100,500,5, SECONDS,
                 new ArrayBlockingQueue<Runnable>(10000),
                 new ThreadPoolExecutor.DiscardOldestPolicy());
+        this.poolName=poolName;
     }
     public void start(){
         HttpParams params =new BasicHttpParams();
@@ -73,6 +78,7 @@ public class ThreadPoolHttpClient {
 
         if(loaderBase!=null){
             Set<String> urls = loaderBase.getUrls();
+            urlsSize=urls.size();
             for (String url:urls) {
                 HttpGet httpget = new HttpGet(url);
                 Runnable runnable = DataGetUtil.getRunnable(httpClient, httpget, loaderBase.getType());
@@ -107,6 +113,7 @@ public class ThreadPoolHttpClient {
         }else{
             LoggerUtil.printJSON("ThreadPoolHttpClient LoaderBase is Null!");
         }
+        LoggerUtil.printJSON(new Date()+" | "+poolName+" 更新了 "+urlsSize +" 条数据 .");
         LoggerUtil.printJSON("ThreadPoolHttpClient Done");
     }
 }
