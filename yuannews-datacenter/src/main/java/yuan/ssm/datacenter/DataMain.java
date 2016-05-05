@@ -7,7 +7,6 @@ import org.jsoup.select.Elements;
 import yuan.ssm.common.util.LoggerUtil;
 import yuan.ssm.datacenter.LoadUtil.HuxiuLoader;
 import yuan.ssm.datacenter.base.ThreadPoolHttpClient;
-import yuan.ssm.datacenter.common.IDataNotify;
 import yuan.ssm.datacenter.common.UrlsContanst;
 
 import java.io.IOException;
@@ -50,7 +49,6 @@ public class DataMain {
 
        //总调度类
 //        dataMain.getData(HUXIUURL);
-
 
         dataMain.getData(HUXIUURL_CAR);
 

@@ -63,6 +63,12 @@ public abstract class LoaderBase {
         Set<String> bigUrls=new HashSet<String>();
         try {
             List<String> oldUrls = FileTool.readData(filename);
+
+            if(newUrls==null){
+                //新的url为空
+                return bigUrls;//返回空的urls
+            }
+
             if(oldUrls==null){
                 FileTool.createNewFile(filename,newUrls);//存储最新的地址链接
                 return newUrls;//返回最新的地址链接
@@ -80,11 +86,11 @@ public abstract class LoaderBase {
                         for (String url :oldUrls) {
                             if(newUrls.contains(url)){
                                 newUrls.remove(url); //去除重复的
-                            }else{
-                                oldUrls.add(url); //添加最新的
                             }
                         }
+                        bigUrls.addAll(newUrls);
                         FileTool.createNewFile(filename,bigUrls); //存储最新爬取过的url
+                        LoggerUtil.printJSON(bigUrls);
                     }
                 }
             }

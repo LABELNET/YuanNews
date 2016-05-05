@@ -39,6 +39,10 @@ public class HuxiuLoader extends LoaderBase{
      * @return
      */
     protected Set<String> getUrls() {
+        //调式urls本地存储方式
+//        Set<String> stringSet = cleanUrls(ParseIndex.getHuXiuPageUrls(super.getDoc()), SourceEnum.huxiu.toString());
+//        LoggerUtil.printJSON(stringSet);
+//        return null;
         return cleanUrls(ParseIndex.getHuXiuPageUrls(super.getDoc()),SourceEnum.huxiu.toString());
     }
 

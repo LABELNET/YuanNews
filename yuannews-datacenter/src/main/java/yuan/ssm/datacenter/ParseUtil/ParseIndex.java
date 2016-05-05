@@ -38,12 +38,13 @@ public class ParseIndex {
      * @param doc 主页新闻对象
      * @return Set<String> 去重url
      */
-    public static Set<String> getHuXiuPageUrls(Document doc){
+    public synchronized static Set<String> getHuXiuPageUrls(Document doc){
         Set<String> urls=new HashSet<String>();
         Elements as = doc.select("a");
         for (Element a:as) {
             String href = a.attr("href");
             if(href.contains("/1.html")){
+                href=href.substring(0,href.indexOf("?"));
                 String url=UrlsContanst.HUXIU_BASE_URL+href;
                 urls.add(url);
                 LoggerUtil.printJSON(url);
