@@ -121,7 +121,12 @@ public class FileTool {
      * @throws Exception
      */
     public static List<Integer> readData(Integer uid) throws Exception{
-        return JSON.parseArray(readData(getFilePath(uid),uid),Integer.class);
+
+        String content=readData(getFilePath(uid),uid);
+        if(content==null){
+            return null;
+        }
+        return JSON.parseArray(content,Integer.class);
     }
 
     /**
@@ -131,7 +136,11 @@ public class FileTool {
      * @throws Exception
      */
     public static List<String> readData(String name) throws Exception{
-        return JSON.parseArray(readData(getFilePath(name),0),String.class);
+        String content=readData(getFilePath(name),0);
+        if(content==null){
+           return null;
+        }
+        return JSON.parseArray(content,String.class);
     }
 
 

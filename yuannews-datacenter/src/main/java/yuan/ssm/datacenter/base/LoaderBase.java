@@ -59,7 +59,7 @@ public abstract class LoaderBase {
      * 策略： 如果url大于1000,则不进行操作，直接删除文件，存储目前最新的urls
      * @return 最新的urls
      */
-    protected Set<String> cleanUrls(Set<String> newUrls,String filename){
+    protected synchronized Set<String> cleanUrls(Set<String> newUrls,String filename){
         Set<String> bigUrls=new HashSet<String>();
         try {
             List<String> oldUrls = FileTool.readData(filename);
