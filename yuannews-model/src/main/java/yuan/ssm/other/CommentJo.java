@@ -24,8 +24,17 @@ import yuan.ssm.base.Comment;
  */
 public class CommentJo extends Comment{
 
+    private Integer uid;
     private String nick;//昵称
     private String head;//头像
+
+    public Integer getUid() {
+        return uid;
+    }
+
+    public void setUid(Integer uid) {
+        this.uid = uid;
+    }
 
     public String getNick() {
         return nick;

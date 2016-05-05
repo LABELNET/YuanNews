@@ -238,7 +238,8 @@
                c.content AS content,
                c.status AS status,
                n.nick AS nick,
-               n.head AS head
+               n.head AS head,
+               n.id AS id
              FROM
               comment c,
                user n
