@@ -1,7 +1,10 @@
 package yuan.ssm.datacenter.ParseUtil;
 
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import yuan.ssm.datacenter.base.ParserBase;
 import yuan.ssm.datacenter.base.SourceEnum;
+import yuan.ssm.datacenter.common.CSCommon;
 import yuan.ssm.vo.NewsVo;
 
 import java.io.InputStream;
@@ -35,9 +38,29 @@ public class HuanQiuParser extends ParserBase{
     }
 
     protected NewsVo parserDetailPage() {
-        //解析详情页，稍后完成
 
-        return null;
+         String title=doc.select("h1").get(0).text();
+         String dt=doc.select("#pubtime_baidu").text();
+         String img="";
+         Elements imgs = doc.select("img");
+         for(Element i : imgs){
+             img=i.attr("src");
+             if(img.contains("huanqiu.com")){
+                 break;
+             }
+         }
+         String content=doc.select("#text").text();
+
+        NewsVo newsVo=new NewsVo();
+        newsVo.setImg(img);
+        newsVo.setRnum(102);
+        newsVo.setContent(content);
+        newsVo.setDt(dt);
+        newsVo.setTitle(title);
+        newsVo.setCid(CSCommon.getCateId());
+        newsVo.setSid(CSCommon.getSourceId(getType()));
+
+        return newsVo;
     }
 
     protected SourceEnum getType() {

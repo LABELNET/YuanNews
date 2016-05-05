@@ -58,19 +58,23 @@ public class ParseIndex {
 
     public synchronized static Set<String> getHuanQiuUrls(Document doc){
         Set<String> urls=new HashSet<String>();
-        Elements as = doc.select("a");
-        for (Element a:as){
-            String href=a.attr("href");
-            //过滤url
-            if(href.contains("huanqiu.com") && href.contains("2016") && href.contains(".html") && !href.startsWith("http://v") && !href.startsWith("!http://photo")){
-                int i = href.indexOf("#");
-                if(i>0) {
-                    href = href.substring(0,i);
-                }
-                urls.add(href);
-            }
-        }
+
+        urls.add("http://run.huanqiu.com/news/2016-05/8843281.html");
         return urls;
+
+//        Elements as = doc.select("a");
+//        for (Element a:as){
+//            String href=a.attr("href");
+//            //过滤url
+//            if(href.contains("huanqiu.com") && href.contains("2016") && href.contains(".html") && !href.startsWith("http://v") && !href.startsWith("!http://photo")){
+//                int i = href.indexOf("#");
+//                if(i>0) {
+//                    href = href.substring(0,i);
+//                }
+//                urls.add(href);
+//            }
+//        }
+//        return urls;
     }
 
 }
