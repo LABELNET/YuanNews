@@ -38,6 +38,12 @@ public class AndroidController {
     @Autowired
     private UserService userService;
 
+    /**
+     * 用户登录接口
+     * @param unum
+     * @param pass
+     * @return
+     */
     @RequestMapping("login")
     public @ResponseBody String login(@RequestParam String unum,@RequestParam String pass){
         DataBean<UserVo> bean = new DataBean<UserVo>();
@@ -57,6 +63,50 @@ public class AndroidController {
         }
         return JSON.toJSONString(bean);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
