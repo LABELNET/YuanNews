@@ -14,6 +14,8 @@ import yuan.ssm.pojo.CSCustom;
 import yuan.ssm.pojo.NewsCustom;
 import yuan.ssm.service.customer.NewsService;
 import yuan.ssm.service.customer.UserService;
+import yuan.ssm.service.mobile.UserAppService;
+import yuan.ssm.vo.LikedVo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +50,9 @@ public class AndroidNController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private UserAppService userAppService;
 
     //ID
     private final int idType=2;
@@ -166,11 +171,11 @@ public class AndroidNController {
      */
     @RequestMapping("getLikedHead")
     public @ResponseBody String getLikedHead(@RequestParam Integer nid){
-        DataBean<List<String>> bean = new DataBean<List<String>>();
+        DataBean<List<LikedVo>> bean = new DataBean<List<LikedVo>>();
         try{
-            List<String> heads = userService.selectLikedByNid(nid);
+            List<LikedVo> heads = userAppService.getLikedUserIfo(nid);
             if(heads==null){
-                heads=new ArrayList<String>();
+                heads= new ArrayList<LikedVo>();
             }
             bean.setCode(0);
             bean.setMsg("成功");

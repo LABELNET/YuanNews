@@ -4,9 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import yuan.ssm.common.util.DateUtil;
 import yuan.ssm.common.util.FontImageUtil;
 import yuan.ssm.common.util.StringUtil;
+import yuan.ssm.dao.customer.NewsMapper;
 import yuan.ssm.dao.manager.UserManagerMapper;
 import yuan.ssm.service.mobile.UserAppService;
+import yuan.ssm.vo.LikedVo;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -18,6 +21,9 @@ public class UserAppServiceImpl implements UserAppService{
 
     @Autowired
     private UserManagerMapper userManagerMapper;
+
+    @Autowired
+    private NewsMapper newsMapper;
 
     /**
      * 修改用户密码
@@ -32,12 +38,22 @@ public class UserAppServiceImpl implements UserAppService{
 
     /**
      * 修改用户头像
-     * @param id
-     * @param newHead
-     * @return
+     * @param id 用户id
+     * @param newHead 新头像
+     * @return 状态
      * @throws Exception
      */
     public Integer updateUserHead(Integer id, String newHead) throws Exception {
         return userManagerMapper.updateUserHead(id,newHead);
+    }
+
+    /**
+     * 查询
+     * @param nid 新闻id
+     * @return list
+     * @throws Exception
+     */
+    public List<LikedVo> getLikedUserIfo(Integer nid) throws Exception {
+        return newsMapper.findLikedNid(nid);
     }
 }
