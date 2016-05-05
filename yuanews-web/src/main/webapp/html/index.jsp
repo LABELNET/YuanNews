@@ -51,10 +51,10 @@
         $(function() {
             $("#paginationpage").pagination({
                 items: ${count},
-                itemsOnPage: 9,
+                itemsOnPage: 10,
                 page:10,
                 hrefTextPrefix:"?type=${type}&nType=${ntype}&p=",
-                cssStyle: 'light-theme',
+                cssStyle: 'compact-theme',
                 prevText:"上一页",
                 nextText:"下一页",
                 currentPage:${currectIndex}
@@ -199,10 +199,10 @@
            </c:if>
 
         </div>
-        <div class="r_box f_r">
+        <div class="r_box f_r" style="width: 90%;">
             <!--tit01 end-->
             <c:if test="${!empty customs}">
-                        <div id="paginationpage" style="float: right"></div>
+                        <div id="paginationpage" style="margin: 20px auto"></div>
             </c:if>
             <!--r_box end -->
         </div>
