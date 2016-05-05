@@ -29,8 +29,7 @@ import java.util.List;
  */
 public class DataMain {
 
-    //环球网：dai
-    private static final String HuanQiuUrl="http://huanqiu.com";
+
 
 
     public static void main(String [] args) throws IOException, InterruptedException {

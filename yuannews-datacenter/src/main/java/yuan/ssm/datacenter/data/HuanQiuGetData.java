@@ -35,8 +35,12 @@ public class HuanQiuGetData extends GetDataBase{
         super(httpClient, httpget);
     }
 
+    /**
+     * 目前测试阶段，使用toLogPrint方法，控制台查看
+     * @param parserBase 解析基类
+     */
     protected void parserDetailToDb(ParserBase parserBase) {
-
+        parserBase.toLogPrint();
     }
 
     protected ParserBase parserDetailMethod(InputStream stream, String url) {

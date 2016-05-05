@@ -1,5 +1,6 @@
 package yuan.ssm.datacenter.LoadUtil;
 
+import yuan.ssm.datacenter.ParseUtil.ParseIndex;
 import yuan.ssm.datacenter.base.LoaderBase;
 import yuan.ssm.datacenter.base.SourceEnum;
 
@@ -33,11 +34,11 @@ public class HuanQiuLoader extends LoaderBase {
     }
 
     protected Set<String> getUrls() {
-        return null;
+        return cleanUrls(ParseIndex.getHuanQiuUrls(super.getDoc()), SourceEnum.huanqiu.toString());
     }
 
     protected SourceEnum getType() {
-        return null;
+        return SourceEnum.huanqiu;
     }
 
 

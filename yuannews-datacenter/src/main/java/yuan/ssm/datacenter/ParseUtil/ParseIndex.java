@@ -56,6 +56,16 @@ public class ParseIndex {
         return urls;
     }
 
-    //
+    public synchronized static Set<String> getHuanQiuUrls(Document doc){
+        Set<String> urls=new HashSet<String>();
+        Elements as = doc.select("a");
+        for (Element a:as){
+            String href=a.attr("href");
+            if(href.contains("huanqiu.com")){
+                urls.add(href);
+            }
+        }
+        return urls;
+    }
 
 }

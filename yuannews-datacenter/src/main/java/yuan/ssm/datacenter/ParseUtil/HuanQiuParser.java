@@ -35,6 +35,8 @@ public class HuanQiuParser extends ParserBase{
     }
 
     protected NewsVo parserDetailPage() {
+        //解析详情页，稍后完成
+
         return null;
     }
 
