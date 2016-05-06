@@ -132,7 +132,7 @@ public abstract class ParserBase {
     public void toMysql(){
         NewsVo newsVo = cleanNewsVo();
         try {
-            if(newsVo.getContent().length()>0 && newsVo.getTitle().length()>0) {
+            if(newsVo.getContent().trim().length()>0 && newsVo.getTitle().trim().length()>0) {
                 newsManagerMapper.insertNews(newsVo);
             }else{
                 LoggerUtil.printJSON("ParserBase NewsManagerMapper NewsVo的内容和标题没有内容了！");

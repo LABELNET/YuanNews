@@ -56,7 +56,7 @@ public abstract class LoaderBase {
 
     /**
      * 去除重复的urls
-     * 策略： 如果url大于1000,则不进行操作，直接删除文件，存储目前最新的urls
+     * 策略： 如果url大于5000,则不进行操作，直接删除文件，存储目前最新的urls
      * @return 最新的urls
      */
     protected synchronized Set<String> cleanUrls(Set<String> newUrls,String filename){
@@ -76,7 +76,7 @@ public abstract class LoaderBase {
                     FileTool.createNewFile(filename,newUrls);//存储最新的地址链接
                     return newUrls;//返回最新的地址链接
                 }else{
-                    if(oldUrls.size()>=1000){
+                    if(oldUrls.size()>=5000){
                         FileTool.createNewFile(filename,newUrls);//存储最新的地址链接
                         return newUrls;//返回最新的地址链接
                     }else{

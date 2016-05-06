@@ -37,11 +37,12 @@ public class DataMain {
 
     public static void main(String [] args) throws IOException, InterruptedException {
 
-        getHuXiuData(HuxiuSource.getHuxiuIndexUrl(),"虎嗅主页");//虎嗅主页爬取
 
         getHuanQiuData(HuanQiuSource.getHuanQiuIndexUrl(),"环球网主页"); //环球网主页爬取
 
         getChinaNewsData(ChinaNewsSource.getChinaNewsPageIndex(),"中国新闻网主页");//中国新闻网主页爬去
+
+        getHuXiuData(HuxiuSource.getHuxiuIndexUrl(),"虎嗅主页");//虎嗅主页爬取
 
 //        HuanQiuSource.testHuanQiuIndexPage();
 
