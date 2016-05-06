@@ -37,7 +37,8 @@ public class ChinaNewsGetData extends GetDataBase{
 
     //解析后的操作
     protected void parserDetailToDb(ParserBase parserBase) {
-            parserBase.toLogPrint();//日志打印
+        parserBase.toMysql();
+        parserBase.toLogPrint();//日志打印
     }
 
     //详情页解析类

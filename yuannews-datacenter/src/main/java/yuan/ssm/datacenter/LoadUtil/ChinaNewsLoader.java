@@ -1,6 +1,5 @@
 package yuan.ssm.datacenter.LoadUtil;
 
-import yuan.ssm.common.util.LoggerUtil;
 import yuan.ssm.datacenter.ParseUtil.ParseIndex;
 import yuan.ssm.datacenter.base.LoaderBase;
 import yuan.ssm.datacenter.base.SourceEnum;
