@@ -68,7 +68,6 @@ public abstract class LoaderBase {
                 //新的url为空
                 return bigUrls;//返回空的urls
             }
-
             if(oldUrls==null){
                 FileTool.createNewFile(filename,newUrls);//存储最新的地址链接
                 return newUrls;//返回最新的地址链接
@@ -81,16 +80,13 @@ public abstract class LoaderBase {
                         FileTool.createNewFile(filename,newUrls);//存储最新的地址链接
                         return newUrls;//返回最新的地址链接
                     }else{
+                        //存储的urls
                         bigUrls.addAll(oldUrls);
                         //去除已经爬去的urls
-                        for (String url :oldUrls) {
-                            if(newUrls.contains(url)){
-                                newUrls.remove(url); //去除重复的
-                            }
-                        }
+                        newUrls.removeAll(oldUrls);
+                        //存储新的urls
                         bigUrls.addAll(newUrls);
                         FileTool.createNewFile(filename,bigUrls); //存储最新爬取过的url
-//                        LoggerUtil.printJSON(bigUrls);
                     }
                 }
             }

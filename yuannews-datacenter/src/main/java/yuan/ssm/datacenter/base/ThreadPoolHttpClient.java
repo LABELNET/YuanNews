@@ -115,9 +115,13 @@ public class ThreadPoolHttpClient {
             LoggerUtil.printJSON("ThreadPoolHttpClient LoaderBase is Null!");
         }
 
-        String log= DateUtil.getDate()+" | "+poolName+" 更新了 "+urlsSize +" 条数据 .";
-        LoggerUtil.printJSON(log);
-        FileTool.createNewFile(log);
+        if(urlsSize>0) {
+            String log = DateUtil.getDate() + " | " + poolName + " 更新了 " + urlsSize + " 条数据 .";
+            LoggerUtil.printJSON(log);
+            FileTool.createNewFile(log);
+        }else{
+            LoggerUtil.printJSON(DateUtil.getDate() + " | " + poolName + " 已是最新数据 .");
+        }
         LoggerUtil.printJSON("ThreadPoolHttpClient Done");
     }
 }

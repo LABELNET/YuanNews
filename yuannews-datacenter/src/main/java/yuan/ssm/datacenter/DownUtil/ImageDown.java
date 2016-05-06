@@ -62,8 +62,7 @@ public class ImageDown {
             }
             httpURLConnection.disconnect();
         } catch (Exception e) {
-            LoggerUtil.printJSON("ParserBase NewsManagerMapper downloadImage");
-            e.printStackTrace();
+            LoggerUtil.printJSON("ParserBase NewsManagerMapper downloadImage Exception");
         }
     }
 
