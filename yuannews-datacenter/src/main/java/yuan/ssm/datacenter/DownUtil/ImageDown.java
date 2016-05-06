@@ -1,5 +1,6 @@
 package yuan.ssm.datacenter.DownUtil;
 
+import yuan.ssm.common.util.DateUtil;
 import yuan.ssm.common.util.LoggerUtil;
 
 import java.io.ByteArrayOutputStream;
@@ -71,7 +72,7 @@ public class ImageDown {
      * @return
      */
     public String getImageName(){
-        return UUID.randomUUID()+".jpg";
+        return DateUtil.getDateFileName()+"-"+UUID.randomUUID()+".jpg";
     }
 
     /**
