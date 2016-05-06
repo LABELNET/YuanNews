@@ -169,7 +169,7 @@
 
         <div class="content_bottom">
              <div class="bottom_top">
-                     <img id="zan" onclick="zanClick()" src="<%=projectPath%>/image/icon/zan.png" />
+                     <img id="zan" onclick="zanClick()" src="/image/icon/zan.png" />
                      <label id="zantext">登陆后，才能点赞哦！</label>
               </div>
 
@@ -239,9 +239,9 @@
 
     var loginUrl="<%=projectPath%>/html/login/userLoginPage.action";
     var userDetalUrl="<%=projectPath%>/html/login/userDetail.action";
-    var normalZan="<%=projectPath%>/image/icon/normalzan.png";
-    var superZan="<%=projectPath%>/image/icon/superzan.png";
-    var zan="<%=projectPath%>/image/icon/zan.png";
+    var normalZan="/image/icon/normalzan.png";
+    var superZan="/image/icon/superzan.png";
+    var zan="/image/icon/zan.png";
 
     var uid=<%=userVo==null?0:userVo.getId()%>;
     var nid=${newsCustom.id};

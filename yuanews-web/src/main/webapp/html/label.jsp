@@ -214,7 +214,6 @@
 
     function likeLabel(label) {
 
-        alert(label);
         if(uid==0){
             btnDialog(0);
             return;
