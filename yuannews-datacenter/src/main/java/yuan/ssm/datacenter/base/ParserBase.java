@@ -50,7 +50,8 @@ public abstract class ParserBase {
     private final String APPLIACTION_CONTEXT_LOCATION="classpath:spring/applicationContext-dao.xml";
 
     //编码
-    protected final String ENCODEING_CODE="utf-8";
+    protected final String ENCODEING_CODE_UTF="utf-8";
+    protected final String ENCODEING_CODE_GBK="gbk";
 
     private final String MOREN_IMGAE="/image/head/moren.png";
 
@@ -71,7 +72,17 @@ public abstract class ParserBase {
         this.url = url;
 
         try {
-             doc = Jsoup.parse(inputStream,"gbk", url);
+            switch (getEncode()){
+                case utf:
+                    doc = Jsoup.parse(inputStream,ENCODEING_CODE_UTF, url);
+                    break;
+                case gbk:
+                    doc = Jsoup.parse(inputStream,ENCODEING_CODE_GBK, url);
+                    break;
+                default:
+                    doc = Jsoup.parse(inputStream,ENCODEING_CODE_UTF, url);//默认utf-8
+                    break;
+            }
         } catch (IOException e) {
             LoggerUtil.printJSON("ParserBase ParserBase IOException");
             e.printStackTrace();
@@ -107,6 +118,11 @@ public abstract class ParserBase {
      * @return
      */
     protected  abstract SourceEnum getType();
+
+    /**
+     * 当前详情页的编码类型
+     */
+    protected abstract EncodeEnum getEncode();
 
 
 

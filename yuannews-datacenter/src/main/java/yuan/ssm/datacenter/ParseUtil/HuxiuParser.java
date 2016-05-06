@@ -2,6 +2,7 @@ package yuan.ssm.datacenter.ParseUtil;
 
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import yuan.ssm.datacenter.base.EncodeEnum;
 import yuan.ssm.datacenter.base.ParserBase;
 import yuan.ssm.datacenter.base.SourceEnum;
 import yuan.ssm.datacenter.common.CSCommon;
@@ -80,6 +81,10 @@ public class HuxiuParser extends ParserBase{
 
     protected SourceEnum getType() {
         return SourceEnum.huxiu;
+    }
+
+    protected EncodeEnum getEncode() {
+        return EncodeEnum.utf;
     }
 
 

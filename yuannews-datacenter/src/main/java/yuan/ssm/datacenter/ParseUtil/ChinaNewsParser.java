@@ -3,6 +3,7 @@ package yuan.ssm.datacenter.ParseUtil;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import yuan.ssm.common.util.DateUtil;
+import yuan.ssm.datacenter.base.EncodeEnum;
 import yuan.ssm.datacenter.base.ParserBase;
 import yuan.ssm.datacenter.base.SourceEnum;
 import yuan.ssm.datacenter.common.CSCommon;
@@ -74,5 +75,9 @@ public class ChinaNewsParser extends ParserBase{
 
     protected SourceEnum getType() {
         return SourceEnum.chinanews;
+    }
+
+    protected EncodeEnum getEncode() {
+        return EncodeEnum.gbk;
     }
 }
