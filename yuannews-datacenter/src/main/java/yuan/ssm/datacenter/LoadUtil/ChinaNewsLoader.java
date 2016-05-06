@@ -34,8 +34,12 @@ public class ChinaNewsLoader extends LoaderBase{
         super(url);
     }
 
+    /**
+     * 一定要要在返回的时候，cleanurls，不然会重复数据
+     * @return
+     */
     protected Set<String> getUrls() {
-        return ParseIndex.getChinaNewsUrls(getDoc());
+        return cleanUrls(ParseIndex.getChinaNewsUrls(getDoc()),getType().toString());
     }
 
     protected SourceEnum getType() {
