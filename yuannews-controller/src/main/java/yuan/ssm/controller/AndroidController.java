@@ -95,21 +95,21 @@ public class AndroidController {
     public @ResponseBody String register(@RequestParam String unum,@RequestParam String pass,@RequestParam String nick){
         DataBean<UserVo> bean = new DataBean<UserVo>();
         try {
-            Integer integer = userService.userRegister(unum, pass, nick);
-            if(integer==-2){
-                bean.setCode(-2);
-                bean.setMsg("参数不正确");
-            }
+                Integer integer = userService.userRegister(unum, pass, nick);
+                if (integer == -2) {
+                    bean.setCode(-2);
+                    bean.setMsg("参数不正确");
+                }
 
-            if(integer==-1){
-                bean.setCode(-1);
-                bean.setMsg("账户已存在");
-            }
+                if (integer == -1) {
+                    bean.setCode(-1);
+                    bean.setMsg("账户已存在");
+                }
 
-            if(integer>0){
-                bean.setCode(0);
-                bean.setMsg("注册成功");
-            }
+                if (integer > 0) {
+                    bean.setCode(0);
+                    bean.setMsg("注册成功");
+                }
         } catch (Exception e) {
             bean.setCode(-3);
             bean.setMsg("系统错误");

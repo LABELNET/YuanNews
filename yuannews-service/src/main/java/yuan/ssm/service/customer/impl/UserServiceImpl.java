@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
     public boolean isCheckUnum(String unum) throws Exception {
         final Integer integer = userMapper.CheckUserUnum(unum);
         if(integer==null){
-            return true;
+            return false;
         }else {
             //开启子线程进行
             final int uid=integer;
