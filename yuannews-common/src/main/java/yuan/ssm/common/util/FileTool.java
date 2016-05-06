@@ -22,6 +22,8 @@ public class FileTool {
     private static final String BASE_PATH= ConfigConstant.JSON_IDS_BASE_PATH;
 
 
+    private static final String DATA_CENTER_LOG_NAEM="datacenter";
+
     /**
      * 获取文件路径
      * @param uid
@@ -35,6 +37,8 @@ public class FileTool {
         return BASE_PATH+name+".json";
     }
 
+    private static String getFilePath(){return BASE_PATH+DATA_CENTER_LOG_NAEM+".json";}
+
     /**
      * 新建文件
      * @param uid 用户id
@@ -44,6 +48,19 @@ public class FileTool {
          createNewFile(getFilePath(uid),JSON.toJSONString(t));
     }
 
+    /**
+     * 新建文件，存储爬虫后的日志文件
+     * @param logContent
+     */
+    public static void createNewFile(String logContent){
+        try {
+            List<String> logs = readData();
+            logs.add(logContent);//添加日志信息
+            createNewFile(getFilePath(),JSON.toJSONString(logs));
+        } catch (Exception e) {
+            log.error(" dataCenter 爬虫日志文件创建异常 : createNewFile: "+e.getMessage());
+        }
+    }
 
     /**
      * 新建文件
@@ -132,13 +149,26 @@ public class FileTool {
     /**
      * 读取urls
      * @param name
-     * @return
+     * @return 集合
      * @throws Exception
      */
     public static List<String> readData(String name) throws Exception{
         String content=readData(getFilePath(name),0);
         if(content==null){
            return null;
+        }
+        return JSON.parseArray(content,String.class);
+    }
+
+    /**
+     * 读取datacenter日志文件
+     * @return 集合
+     * @throws Exception
+     */
+    public static List<String> readData() throws Exception{
+        String content=readData(getFilePath(),0);
+        if(content==null){
+            return null;
         }
         return JSON.parseArray(content,String.class);
     }
