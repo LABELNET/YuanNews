@@ -18,7 +18,6 @@ import yuan.ssm.vo.TasteVo;
 import yuan.ssm.vo.UserVo;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -157,22 +156,6 @@ public class CustomerController {
         }
     }
 
-    /**
-     * TODO 推荐先不做，底层已经实现！
-     * 推荐类型
-     * @param pageVo
-     * @return
-     * @throws Exception
-     */
-    private List<NewsCustom> getPromoteNews(@ModelAttribute PageVo pageVo) throws Exception{
-        List<Integer> nids = pageVo.getNids();
-        if(nids!=null){
-            if(nids.size()>0){
-                return newsService.getNidsNews(nids);
-            }
-        }
-        return new ArrayList<NewsCustom>();
-    }
 
     /**
      * 用户登陆页面

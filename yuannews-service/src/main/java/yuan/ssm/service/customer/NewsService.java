@@ -73,7 +73,7 @@ public interface NewsService extends ServiceBase<NewsCustom> {
      * @return
      * @throws Exception
      */
-    List<NewsCustom> getNidsNews(List<Integer> nids) throws Exception;
+    List<NewsCustom> getNidsNews(List<Integer> nids,Integer type) throws Exception;
 
 
 }
