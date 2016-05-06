@@ -120,7 +120,8 @@ public class AndroidController {
 
     /**
      * 03.修改用户的昵称，性别信息
-     * @param userVo
+     * （1）id,nick,sex 都可以，id必须
+     * @param userVo 用户对象
      * @return json
      */
     @RequestMapping("updateUserIfo")
