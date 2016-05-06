@@ -20,7 +20,7 @@ import java.io.InputStream;
  * <p/>
  * 创建日期：　16-5-6 上午10:35
  * <p/>
- * 功能描述： TODO
+ * 功能描述： ChinaNews详情页获取-解析-操作类
  * <p>
  * <p/>
  * 功能更新历史：
