@@ -7,6 +7,7 @@ import yuan.ssm.datacenter.base.EncodeEnum;
 import yuan.ssm.datacenter.base.ParserBase;
 import yuan.ssm.datacenter.base.SourceEnum;
 import yuan.ssm.datacenter.common.CSCommon;
+import yuan.ssm.datacenter.common.UrlsContanst;
 import yuan.ssm.vo.NewsVo;
 
 import java.io.InputStream;
@@ -68,7 +69,7 @@ public class ChinaNewsParser extends ParserBase{
         newsVo.setRnum(121);
         newsVo.setTitle(title);
         newsVo.setContent(content);
-        newsVo.setImg(img);
+        newsVo.setImg(UrlsContanst.CHINA_BASE_URL+img);
 
         return newsVo;
     }
