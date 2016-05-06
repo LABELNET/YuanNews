@@ -178,7 +178,7 @@ public class CustomerController {
                 return new ModelAndView("redirect:/html/pageIndex.action?p=1&type=2&nType=6");
             }
             int count=newsIds.size()/pageVo.getNum()*pageVo.getNum();
-            List<Integer> nids = newsIds.subList(pageVo.getStart(), pageVo.getNum());
+            List<Integer> nids = newsIds.subList(pageVo.getStart(),endIndex);
             List<NewsCustom> nidsNews = newsService.getNidsNews(nids, pageVo.getType());
             return getModelAndView(NEWS_TUIJIAN_PAGE,pageVo,nidsNews,count);
         }catch (Exception e){

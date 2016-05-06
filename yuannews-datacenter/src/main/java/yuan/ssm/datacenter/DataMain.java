@@ -1,14 +1,14 @@
 package yuan.ssm.datacenter;
 
+import yuan.ssm.common.util.FileTool;
+import yuan.ssm.common.util.LoggerUtil;
 import yuan.ssm.datacenter.LoadUtil.ChinaNewsLoader;
 import yuan.ssm.datacenter.LoadUtil.HuanQiuLoader;
 import yuan.ssm.datacenter.LoadUtil.HuxiuLoader;
 import yuan.ssm.datacenter.base.ThreadPoolHttpClient;
-import yuan.ssm.datacenter.datasource.ChinaNewsSource;
-import yuan.ssm.datacenter.datasource.HuanQiuSource;
-import yuan.ssm.datacenter.datasource.HuxiuSource;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * ==================================================
@@ -38,11 +38,21 @@ public class DataMain {
     public static void main(String [] args) throws IOException, InterruptedException {
 
 
-        getHuanQiuData(HuanQiuSource.getHuanQiuIndexUrl(),"环球网主页"); //环球网主页爬取
+//        getHuanQiuData(HuanQiuSource.getHuanQiuIndexUrl(),"环球网主页"); //环球网主页爬取
+//
+//        getChinaNewsData(ChinaNewsSource.getChinaNewsPageIndex(),"中国新闻网主页");//中国新闻网主页爬去
+//
+//        getHuXiuData(HuxiuSource.getHuxiuIndexUrl(),"虎嗅主页");//虎嗅主页爬取
 
-        getChinaNewsData(ChinaNewsSource.getChinaNewsPageIndex(),"中国新闻网主页");//中国新闻网主页爬去
-
-        getHuXiuData(HuxiuSource.getHuxiuIndexUrl(),"虎嗅主页");//虎嗅主页爬取
+        try {
+            List<Integer> readData = FileTool.readData(1);
+            List<Integer> list = readData.subList(10, 20);
+            LoggerUtil.printJSON(readData);
+            LoggerUtil.printJSON(list);
+            LoggerUtil.printJSON(list.size());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 //        HuanQiuSource.testHuanQiuIndexPage();
 
