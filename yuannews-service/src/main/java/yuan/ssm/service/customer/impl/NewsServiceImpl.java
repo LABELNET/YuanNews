@@ -266,13 +266,25 @@ public class NewsServiceImpl implements NewsService {
 
     /**
      * 获取新闻的列表-根据id，批量查询
+     * 1.读取新闻当前用户的推荐列表
+     * 2.
      * @param nids 新闻id
      * @param type 查询类型
      * @return 数据
      * @throws Exception
      */
     public List<NewsCustom> getNidsNews(List<Integer> nids,Integer type) throws Exception {
+        return getNewsCustoms(nids, type);
+    }
 
+    /**
+     * 获取新闻数据内容
+     * @param nids 新闻id
+     * @param type 查询类型
+     * @return 新闻内容集合
+     * @throws Exception
+     */
+    private List<NewsCustom> getNewsCustoms(List<Integer> nids, Integer type) throws Exception {
         switch (type){
             case 2:
                 return newsMapper.findNewsByIds(nids);

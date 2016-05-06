@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import yuan.ssm.common.util.FileTool;
 import yuan.ssm.common.util.LoggerUtil;
 import yuan.ssm.other.CommentJo;
 import yuan.ssm.other.PageVo;
@@ -50,6 +51,9 @@ public class CustomerController {
     //标签页面
     private final String USER_LABEL_PAGE="html/label";
 
+    //推荐页面
+    private final String NEWS_TUIJIAN_PAGE="html/tuijian";
+
     //每页数量
     private final int PAGE_NUM=10;
     //标签每页显示数量
@@ -88,11 +92,7 @@ public class CustomerController {
      * 分类和来源信息；
      * 当前加载的类型：点赞，阅读，评论，普通
      *
-     * 2.推荐模块
-     *  (1)读取本地用户的推荐新闻id
-     *  (2)文件没有,返回null,执行 normal, 用户没有登陆执行normal
-     *  (3)文件存在,根据p;来判断；if start>size normal
-     *  (4)推荐下，不进行点赞/热度/评论
+
      * @param pageVo
      * @return
      * @throws Exception
@@ -105,25 +105,26 @@ public class CustomerController {
         pageVo.setStart((pageVo.getP()-1)*PAGE_NUM);//开始页面
         pageVo.setNum(PAGE_NUM);//每页总数
         LoggerUtil.printJSON(pageVo);
-       return getModelAndView(pageVo);
+        List<NewsCustom> normalNews = getNormalNews(pageVo);
+        Integer allCount = newsService.getNewsCount().getAllCount();
+        return getModelAndView(INDEX_PAGE,pageVo,normalNews,allCount);
     }
 
     /**
      * 正常的读取操作
-     * @param pageVo 页面操作对象
+     * @param customByComment 集合
      * @return
      * @throws Exception
      */
-    private ModelAndView getModelAndView(@ModelAttribute PageVo pageVo) throws Exception {
+    private ModelAndView getModelAndView(String page,@ModelAttribute PageVo pageVo,List<NewsCustom> customByComment,Integer allCount) throws Exception {
         ModelAndView andView = new ModelAndView();
         //当前页面
         andView.addObject("currectIndex",pageVo.getP()); //当前页面
         //页面
-        andView.setViewName(INDEX_PAGE);//页面对象
-        List<NewsCustom> customByComment = getNormalNews(pageVo);
+        andView.setViewName(page);//页面对象
         andView.addObject("customs",customByComment);
         //总数
-        andView.addObject("count",newsService.getNewsCount().getAllCount());
+        andView.addObject("count",allCount);
         //分类/来源数据
         CSCustom sourceIfo = newsService.findCateSourceIfo();
         andView.addObject("sourceIfo",sourceIfo);
@@ -132,6 +133,59 @@ public class CustomerController {
         andView.addObject("type",pageVo.getType());
         return andView;
     }
+
+    /**
+     *  2.推荐模块-用户登陆后的操作
+     *  (1)读取本地用户的推荐新闻id
+     *  (2)文件没有,返回null,执行 normal, 用户没有登陆执行normal
+     *  (3)文件存在,根据p;来判断；if start>size normal
+     *  (4)推荐下，不进行点赞/热度/评论
+     * @param pageVo
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/tuiJianIndexPage")
+    public ModelAndView tuiJianIndexPage(HttpSession session, @ModelAttribute PageVo pageVo) throws Exception {
+        UserVo userVo= (UserVo) session.getAttribute("user");
+        if(userVo==null){
+            return new ModelAndView("redirect:/html/pageIndex.action?p=1&type=2&nType=6");
+        }
+        if(userVo.getId()==0){
+            return new ModelAndView("redirect:/html/pageIndex.action?p=1&type=2&nType=6");
+        }
+
+        if(pageVo.getP()<0){
+            pageVo.setP(1);
+        }
+        pageVo.setStart((pageVo.getP()-1)*PAGE_NUM);//开始页面
+        pageVo.setNum(PAGE_NUM);//每页总数
+        LoggerUtil.printJSON(pageVo);
+
+        //读取
+        List<Integer> newsIds = FileTool.readData(userVo.getId());
+        //没有nid
+        if(newsIds==null){
+            return new ModelAndView("redirect:/html/pageIndex.action?p=1&type=2&nType=6");
+        }
+        //nid=0; 或者 nid 不足一页：不显示数据
+        if(newsIds.size()==0 || newsIds.size()<pageVo.getNum()){
+            return new ModelAndView("redirect:/html/pageIndex.action?p=1&type=2&nType=6");
+        }
+
+        try {
+            int endIndex=pageVo.getStart()+pageVo.getNum();
+            if(endIndex>newsIds.size()){
+                return new ModelAndView("redirect:/html/pageIndex.action?p=1&type=2&nType=6");
+            }
+            int count=newsIds.size()/pageVo.getNum()*pageVo.getNum();
+            List<Integer> nids = newsIds.subList(pageVo.getStart(), pageVo.getNum());
+            List<NewsCustom> nidsNews = newsService.getNidsNews(nids, pageVo.getType());
+            return getModelAndView(NEWS_TUIJIAN_PAGE,pageVo,nidsNews,count);
+        }catch (Exception e){
+            return new ModelAndView("redirect:/html/pageIndex.action?p=1&type=2&nType=6");
+        }
+    }
+
 
 
     /**

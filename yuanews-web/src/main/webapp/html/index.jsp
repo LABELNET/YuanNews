@@ -152,6 +152,7 @@
         <div class="topnews">
             <h2>
                 <span>
+                    <a href="<%=projectPath%>/html/tuiJianIndexPage.action?p=1&title=${title}&type=2&nType=${ntype}">推荐</a> |
                     <a href="<%=projectPath%>/html/pageIndex.action?p=1&title=${title}&type=4&nType=${ntype}">点赞</a> |
                     <a href="<%=projectPath%>/html/pageIndex.action?p=1&title=${title}&type=3&nType=${ntype}">热度</a> |
                     <a href="<%=projectPath%>/html/pageIndex.action?p=1&title=${title}&type=5&nType=${ntype}">评论</a>
