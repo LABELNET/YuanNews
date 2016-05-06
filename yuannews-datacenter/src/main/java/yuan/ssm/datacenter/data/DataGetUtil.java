@@ -32,12 +32,11 @@ public class DataGetUtil {
             case huanqiu:
                 return new HuanQiuGetData(httpClient, httpget);
             case chinanews:
-                break;
+                return new ChinaNewsGetData(httpClient, httpget);
             case huxiu:
                  return new HuxiuGetData(httpClient, httpget);
             default:
                 return null;
         }
-        return null;
     }
 }

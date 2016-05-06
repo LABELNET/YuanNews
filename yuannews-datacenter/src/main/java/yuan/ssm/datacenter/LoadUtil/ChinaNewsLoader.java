@@ -36,9 +36,7 @@ public class ChinaNewsLoader extends LoaderBase{
     }
 
     protected Set<String> getUrls() {
-        Set<String> chinaNewsUrls = ParseIndex.getChinaNewsUrls(getDoc());
-        LoggerUtil.printJSON(chinaNewsUrls);
-        return null;
+        return ParseIndex.getChinaNewsUrls(getDoc());
     }
 
     protected SourceEnum getType() {

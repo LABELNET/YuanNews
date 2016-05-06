@@ -79,6 +79,12 @@ public class ThreadPoolHttpClient {
 
         if(loaderBase!=null){
             Set<String> urls = loaderBase.getUrls();
+
+            if(urls==null){
+                LoggerUtil.printJSON("ThreadPoolHttpClient urls is Null!");
+                return;
+            }
+
             urlsSize=urls.size();
             for (String url:urls) {
                 HttpGet httpget = new HttpGet(url);

@@ -2,6 +2,7 @@ package yuan.ssm.datacenter.data;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import yuan.ssm.datacenter.ParseUtil.ChinaNewsParser;
 import yuan.ssm.datacenter.base.GetDataBase;
 import yuan.ssm.datacenter.base.ParserBase;
 
@@ -39,7 +40,8 @@ public class ChinaNewsGetData extends GetDataBase{
             parserBase.toLogPrint();//日志打印
     }
 
+    //详情页解析类
     protected ParserBase parserDetailMethod(InputStream stream, String url) {
-        return null;
+        return new ChinaNewsParser(stream,url);
     }
 }

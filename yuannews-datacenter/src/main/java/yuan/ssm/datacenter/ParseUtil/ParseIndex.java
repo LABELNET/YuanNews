@@ -9,8 +9,6 @@ import yuan.ssm.datacenter.common.UrlsContanst;
 import java.util.HashSet;
 import java.util.Set;
 
-import static yuan.ssm.datacenter.common.UrlsContanst.CHINA_BASE_URL;
-
 /**
  * ==================================================
  * <p/>
