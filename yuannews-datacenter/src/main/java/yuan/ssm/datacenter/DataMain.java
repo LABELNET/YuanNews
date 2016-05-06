@@ -1,9 +1,10 @@
 package yuan.ssm.datacenter;
 
-import yuan.ssm.common.util.FileTool;
 import yuan.ssm.datacenter.LoadUtil.HuanQiuLoader;
 import yuan.ssm.datacenter.LoadUtil.HuxiuLoader;
 import yuan.ssm.datacenter.base.ThreadPoolHttpClient;
+import yuan.ssm.datacenter.datasource.HuanQiuSource;
+import yuan.ssm.datacenter.datasource.HuxiuSource;
 
 import java.io.IOException;
 
@@ -34,11 +35,9 @@ public class DataMain {
 
     public static void main(String [] args) throws IOException, InterruptedException {
 
-//        getHuXiuData(HuxiuSource.getHuxiuIndexUrl(),"虎嗅主页");//虎嗅主页爬取
+        getHuXiuData(HuxiuSource.getHuxiuIndexUrl(),"虎嗅主页");//虎嗅主页爬取
 
-//        getHuanQiuData(HuanQiuSource.getHuanQiuIndexUrl(),"环球网主页"); //环球网主页爬取
-
-          FileTool.createNewFile("2016-05-06 11:00:48 | 虎嗅主页 更新了 1 条数据 .");
+        getHuanQiuData(HuanQiuSource.getHuanQiuIndexUrl(),"环球网主页"); //环球网主页爬取
 
 //        HuanQiuSource.testHuanQiuIndexPage();
 
