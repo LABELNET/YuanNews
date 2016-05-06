@@ -59,7 +59,7 @@ public class FileTool {
             if(logs==null){
                 logs=new ArrayList<String>();
             }
-            logs.add(logContent);//添加日志信息
+            logs.add(0,logContent);//添加日志信息
             createNewFile(getFilePath(),JSON.toJSONString(logs));
         } catch (Exception e) {
             log.error(" dataCenter 爬虫日志文件创建异常 : createNewFile: "+e.getMessage());
