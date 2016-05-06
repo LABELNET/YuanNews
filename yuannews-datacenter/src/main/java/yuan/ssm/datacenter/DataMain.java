@@ -39,7 +39,11 @@ public class DataMain {
 
         getChinaNewsData(ChinaNewsSource.getChinaNewsPageIndex(),"中国新闻网主页");//中国新闻网主页爬去
 
+        Thread.sleep(2000);
+
         getHuanQiuData(HuanQiuSource.getHuanQiuIndexUrl(),"环球网主页"); //环球网主页爬取
+
+        Thread.sleep(2000);
 
         getHuXiuData(HuxiuSource.getHuxiuIndexUrl(),"虎嗅主页");//虎嗅主页爬取
 
