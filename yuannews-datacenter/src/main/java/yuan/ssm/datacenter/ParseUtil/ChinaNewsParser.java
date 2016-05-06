@@ -56,7 +56,7 @@ public class ChinaNewsParser extends ParserBase{
         Elements imgs = doc.select("img");
         for (Element element:imgs){
             img=element.attr("src");
-            if(!img.contains("http:")){
+            if(!img.contains("http:") && !img.startsWith("/fileftp")){
                 break;
             }
         }
