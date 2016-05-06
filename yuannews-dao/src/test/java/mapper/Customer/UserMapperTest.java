@@ -52,7 +52,7 @@ public class UserMapperTest extends CustomerBaseTest{
 
     @Test
     public void CheckUserUnumTest() throws Exception {
-        Integer integer = userMapper.CheckUserUnum("15000000020");
+        Integer integer = userMapper.CheckUserUnum("15000000031");
         LoggerUtil.printJSON(integer);
     }
 
