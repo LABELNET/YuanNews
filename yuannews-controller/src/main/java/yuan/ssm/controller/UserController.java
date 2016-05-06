@@ -1,6 +1,5 @@
 package yuan.ssm.controller;
 
-import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +8,7 @@ import yuan.ssm.common.config.ConfigConstant;
 import yuan.ssm.common.constant.ManagerConstant;
 import yuan.ssm.common.util.LoggerUtil;
 import yuan.ssm.other.PageJo;
+import yuan.ssm.service.manager.IndexManager;
 import yuan.ssm.service.manager.UserManager;
 import yuan.ssm.vo.UserVo;
 
@@ -29,7 +29,7 @@ public class UserController {
     private UserManager userManager;
 
     @Autowired
-    private  ObjectMapper mapperJson;
+    private IndexManager indexManager;
 
     private int userPageNum= ConfigConstant.MAGAGER_USER_PAGE_NUM;
 
@@ -59,7 +59,17 @@ public class UserController {
         httpSession.setAttribute(ManagerConstant.MANAGER_USER_NAME,userVo);
         ModelAndView modelAndView=new ModelAndView();
         modelAndView.setViewName(ManagerConstant.MANAGER_INDEX);
-        //TODO 后台主页实现
+
+        Integer newsCount = indexManager.getCount(2);//新闻
+        Integer commentCount = indexManager.getCount(3);//评论
+        Integer userCount = indexManager.getCount(1);//用户
+        Integer tasteCount = indexManager.getCount(5);//兴趣
+        List<String> logs = indexManager.getLogs();//后台更新日志
+        modelAndView.addObject("newsCount",newsCount);
+        modelAndView.addObject("commentCount",commentCount);
+        modelAndView.addObject("userCount",userCount);
+        modelAndView.addObject("tasteCount",tasteCount);
+        modelAndView.addObject("logs",logs);
         return modelAndView;
     }
 

@@ -34,7 +34,7 @@ public class IndexManagerImpl implements IndexManager{
             case 1:
                 return managerCountMapper.findCount(1).getAllCount();//用户总数
             default:
-                return managerCountMapper.findCount(2).getAllCount();;
+                return managerCountMapper.findCount(2).getAllCount();
         }
     }
 

@@ -142,49 +142,32 @@
       <div style="border-right:5px solid #0c9c6e;float: left;width: 20%;height:180px;margin:10px;text-align:center;">
          <img src="<%=userVo.getHead()%>" style="width:120px;vertical-align:middle;border-radius:60px"/>
          <h1 style="color: #818181;">ID: <%=userVo.getUnum()%></h1>
+
+          <div style="width: 100%;;border-top:1px solid #0c9c6e;min-height:200px;margin-top: 50px;">
+              <h1 style="line-height: 20px;color: #0c9c6e">新闻总数: ${newsCount}</h1>
+              <h1 style="line-height: 20px;color: #0c9c6e">标签总数: ${tasteCount}</h1>
+              <h1 style="line-height: 20px;color: #0c9c6e">评论总数: ${commentCount}</h1>
+              <h1 style="line-height: 20px;color: #0c9c6e">用户总数: ${userCount}</h1>
+          </div>
+
       </div>
 
-      <div style="float: right;width: 75%;height:180px;margin:10px;text-align:left;">
+      <div style="float: right;width: 75%;height:100%;margin:10px;text-align:left;">
         <p><h1 style="color: purple"><%=userVo.getNick()%> </h1> <h1><%=userVo.getSex()==0?"男":"女"%>　/　<%=userVo.getStatus()==0?"用户":"管理员"%></h1></p>
-        <div style="height:80%;text-align: center;font-style: italic;color: #818181;">
-
-            <ul>
-                <li>geng xin le </li>
-                <li>geng xin le </li>
-                <li>geng xin le </li>
-                <li>geng xin le </li>
-            </ul>
-
-        </div>
+          <ul style="text-align: left;width: 70%;height: 100%; float: right;margin:-50px; auto;line-height: 20px;overflow-y: scroll;">
+              <c:if test="${empty logs}">
+                  <li>还没有日志输出！</li>
+              </c:if>
+              <c:if test="${!empty logs}">
+                  <c:forEach items="${logs}" var="str">
+                      <li>${str}</li>
+                  </c:forEach>
+              </c:if>
+          </ul>
       </div>
       <div style="clear: both;"></div>
    </div>
 
-   <div style="border-top:2px solid #0c9c6e;min-height:200px;margin-top: 10px;">
-      <div style="text-align: center;float: left;border: 1px solid purple;width:24%;height: 300px;margin-top: 10px;">
-
-        <img src="<%=userVo.getHead()%>" style="width:60px;vertical-align:middle;border-radius:60px"/>
-        <h1 style="height: 100%;line-height: 200px;color: #0c9c6e">新闻总数</h1>
-
-      </div>
-      <div style="text-align: center;float: left;border: 1px solid purple;width: 24%;height: 300px;margin-left: 10px;margin-top: 10px;">
-　
-        <img src="<%=userVo.getHead()%>" style="width:60px;vertical-align:middle;border-radius:60px"/>
-          <h1 style="height: 100%;line-height: 200px;color: #0c9c6e">标签总数</h1>
-      </div>
-
-      <div style="text-align: center;float: left;border: 1px solid purple;width: 24%;height: 300px;margin-left: 10px;margin-top: 10px;">
-
-        <img src="<%=userVo.getHead()%>" style="width:60px;vertical-align:middle;border-radius:60px"/>
-          <h1 style="height: 100%;line-height: 200px;color: #0c9c6e">评论总数</h1>
-     </div>
-
-     <div style="text-align: center;float: left;border: 1px solid purple;width: 24%;height: 300px;margin-left: 10px;margin-top: 10px;">
-       <img src="<%=userVo.getHead()%>" style="width:60px;vertical-align:middle;border-radius:60px"/>
-         <h1 style="height: 100%;line-height: 200px;color: #0c9c6e">用户总数</h1>
-     </div>
-
-   </div>
 
   </div>
 </section>
