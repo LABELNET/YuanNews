@@ -31,7 +31,7 @@ public class DataGetUtil {
         switch (sourceEnum){
             case huanqiu:
                 return new HuanQiuGetData(httpClient, httpget);
-            case cctv:
+            case chinanews:
                 break;
             case huxiu:
                  return new HuxiuGetData(httpClient, httpget);

@@ -22,5 +22,5 @@ package yuan.ssm.datacenter.base;
  * ==================================================
  */
 public enum SourceEnum {
-    huanqiu,cctv,huxiu
+    huanqiu,chinanews,huxiu
 }
