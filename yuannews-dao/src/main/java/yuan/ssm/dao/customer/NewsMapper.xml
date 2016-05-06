@@ -232,7 +232,7 @@
     </select>
 
     <select id="findLikedNid" resultType="yuan.ssm.vo.LikedVo">
-        select u.head from user u,liked l where u.id=l.uid and l.nid=#{nid} ORDER BY l.id DESC
+        select u.nick,u.id,u.head from user u,liked l where u.id=l.uid and l.nid=#{nid} ORDER BY l.id DESC
     </select>
 
 

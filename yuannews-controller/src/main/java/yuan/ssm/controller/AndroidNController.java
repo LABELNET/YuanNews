@@ -127,16 +127,22 @@ public class AndroidNController {
                         endIndex=startIndex+(endIndex-newsIds.size());
                     }
 
-                    List<Integer> nids = newsIds.subList(startIndex, endIndex);
-                    if(nids.size()==0){
+                    if(startIndex<newsIds.size() && endIndex<=newsIds.size()) {
+                        List<Integer> nids = newsIds.subList(startIndex, endIndex);
+                        if(nids.size()==0){
+                            bean.setCode(-1);
+                            bean.setMsg("没有数据");
+                        }else{
+                            List<NewsCustom> nidsNews = newsService.getNidsNews(nids, type);
+                            bean.setData(nidsNews);
+                            bean.setCode(0);
+                            bean.setMsg("成功");
+                        }
+                    }else{
                         bean.setCode(-1);
                         bean.setMsg("没有数据");
-                    }else{
-                        List<NewsCustom> nidsNews = newsService.getNidsNews(nids, type);
-                        bean.setData(nidsNews);
-                        bean.setCode(0);
-                        bean.setMsg("成功");
                     }
+
                 }else{
                     bean.setCode(-1);
                     bean.setMsg("没有数据");
