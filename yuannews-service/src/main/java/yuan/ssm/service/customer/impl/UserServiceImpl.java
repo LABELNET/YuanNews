@@ -60,9 +60,9 @@ public class UserServiceImpl implements UserService {
     //用户登陆
     public UserVo userLogin(String unum, String pass) throws Exception {
 
-        if(isCheckUnum(unum)){
+        if(!isCheckUnum(unum)){
             return userMapper.loginCheckPass(unum,pass);
-        }
+          }
        return null;
     }
 
@@ -79,6 +79,7 @@ public class UserServiceImpl implements UserService {
                 FontImageUtil.createImage(font,imgName);
                 head="/image/head/"+imgName;
             }catch (Exception e){
+                return -2;
             }
            return userMapper.registerUser(unum,pass,nick,head);
         }

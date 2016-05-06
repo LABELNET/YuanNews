@@ -113,7 +113,7 @@
   <div class="rt_content" style="margin-top: 10px;">
 
    <h1> hi , 新闻推荐API接口　v１.0 !</h1>
-
+<!-- 登陆 -->
    <table id="userrlogin" class="table center" style="margin-top:10px;text-align: left" >
       <thead>
           <th colspan="2"><h1>用户登录</h1></th>
@@ -172,6 +172,7 @@
      </tfoot>
    </table>
 
+<!-- 注册 -->
     <table id="userregister" class="table center" style="margin-top:10px;text-align: left" >
       <thead>
       <th colspan="2"><h1>用户注册</h1></th>
@@ -179,13 +180,14 @@
       <tbody>
       <tr>
         <td>接口地址 ：</td>
-        <td>api/login</td>
+        <td>api/register</td>
       </tr>
       <tr>
         <td>参数类型：</td>
         <td>
           unum : String 账户 <br>
-          pass : String 密码
+          pass : String 密码 <br>
+          nick : String 昵称
         </td>
       </tr>
       <tr>
@@ -193,16 +195,12 @@
         <td>
           {<br>
           "code": 0,<br>
-          "data": {<br>
-          "head": "/image/head/2016041514302526219e9e283-b330-47bc-9150-fb416ecd1e46.png",<br>
-          "id": 24,<br>
-          "nick": "明天",<br>
-          "pass": "123456",<br>
-          "sex": 0,<br>
-          "status": 1,<br>
-          "unum": "15000000020"<br>
-          },<br>
-          "msg": "登录成功"<br>
+          "msg": "注册成功"<br>
+          }<br>
+          <br>
+          {<br>
+          "code": -1,<br>
+          "msg": "用户已存在"<br>
           }<br>
         </td>
       </tr>
@@ -210,22 +208,15 @@
         <td>数据解释 ：</td>
         <td>
           code :响应码 0,成功;-1失败;-2 系统错误；<br>
-          data :用户实体对象 <br>
           msg  :响应信息<br>
           <br>
-          data/head :用户头像<br>
-          data/id   :用户id<br>
-          data/nick :用户昵称<br>
-          data/pass :用户密码<br>
-          data/sex  :用户性别 0,男 ; 1，女;<br>
-          data/status : 状态 0，普通用户;1,管理员；<br>
-          data/unum  : 用户账户<br>
+
         </td>
       </tr>
       </tbody>
       <tfoot>
       <tr>
-        <td colspan="2"><b>create by yuan on 2016/05/05 ;  update by yuan on 2016/05/05</b></td>
+        <td colspan="2"><b>create by yuan on 2016/05/05 ;  update by yuan on 2016/05/06</b></td>
       </tr>
       </tfoot>
     </table>
