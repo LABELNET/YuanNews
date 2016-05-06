@@ -1,5 +1,7 @@
 package yuan.ssm.datacenter.LoadUtil;
 
+import yuan.ssm.common.util.LoggerUtil;
+import yuan.ssm.datacenter.ParseUtil.ParseIndex;
 import yuan.ssm.datacenter.base.LoaderBase;
 import yuan.ssm.datacenter.base.SourceEnum;
 
@@ -34,6 +36,8 @@ public class ChinaNewsLoader extends LoaderBase{
     }
 
     protected Set<String> getUrls() {
+        Set<String> chinaNewsUrls = ParseIndex.getChinaNewsUrls(getDoc());
+        LoggerUtil.printJSON(chinaNewsUrls);
         return null;
     }
 

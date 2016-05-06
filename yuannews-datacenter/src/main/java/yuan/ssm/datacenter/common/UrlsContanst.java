@@ -13,7 +13,7 @@ package yuan.ssm.datacenter.common;
  * <p/>
  * 创建日期：　16-5-4 下午4:05
  * <p/>
- * 功能描述： url常量类
+ * 功能描述： url常量类 : 固定下来的常量，添加后不要修改，动态在datasource包下
  * <p>
  * <p/>
  * 功能更新历史：
@@ -26,6 +26,11 @@ public interface UrlsContanst {
      * 虎嗅网基地址 最后不填加 斜杠
      */
     String HUXIU_BASE_URL="http://www.huxiu.com";
+
+    /**
+     * 中国新闻网地址 最后不添加 斜杠
+     */
+    String CHINA_BASE_URL="http://www.chinanews.com";
 
 
 }

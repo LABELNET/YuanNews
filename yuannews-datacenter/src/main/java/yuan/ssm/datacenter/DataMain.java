@@ -1,10 +1,10 @@
 package yuan.ssm.datacenter;
 
+import yuan.ssm.datacenter.LoadUtil.ChinaNewsLoader;
 import yuan.ssm.datacenter.LoadUtil.HuanQiuLoader;
 import yuan.ssm.datacenter.LoadUtil.HuxiuLoader;
 import yuan.ssm.datacenter.base.ThreadPoolHttpClient;
-import yuan.ssm.datacenter.datasource.HuanQiuSource;
-import yuan.ssm.datacenter.datasource.HuxiuSource;
+import yuan.ssm.datacenter.datasource.ChinaNewsSource;
 
 import java.io.IOException;
 
@@ -35,14 +35,32 @@ public class DataMain {
 
     public static void main(String [] args) throws IOException, InterruptedException {
 
-        getHuXiuData(HuxiuSource.getHuxiuIndexUrl(),"虎嗅主页");//虎嗅主页爬取
+//        getHuXiuData(HuxiuSource.getHuxiuIndexUrl(),"虎嗅主页");//虎嗅主页爬取
 
-        getHuanQiuData(HuanQiuSource.getHuanQiuIndexUrl(),"环球网主页"); //环球网主页爬取
+//        getHuanQiuData(HuanQiuSource.getHuanQiuIndexUrl(),"环球网主页"); //环球网主页爬取
 
+        getChinaNewsData(ChinaNewsSource.getChinaNewsPageIndex(),"中国新闻网主页");//中国新闻网主页爬去
 
 //        HuanQiuSource.testHuanQiuIndexPage();
 
     }
+
+    /**
+     * 虎嗅的数据爬去方法
+     * @param url
+     */
+    private static synchronized void getChinaNewsData(String url,String source) {
+        //1.实现主页加载类
+
+        ChinaNewsLoader chinaNewsLoader=new ChinaNewsLoader(url);
+
+        //2.实现线程池
+        ThreadPoolHttpClient threadPoolHttpClient=new ThreadPoolHttpClient(chinaNewsLoader,source);
+
+        //3.执行开始操作
+        threadPoolHttpClient.start();
+    }
+
 
     /**
      * 虎嗅的数据爬去方法

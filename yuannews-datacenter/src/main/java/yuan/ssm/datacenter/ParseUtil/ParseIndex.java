@@ -9,6 +9,8 @@ import yuan.ssm.datacenter.common.UrlsContanst;
 import java.util.HashSet;
 import java.util.Set;
 
+import static yuan.ssm.datacenter.common.UrlsContanst.CHINA_BASE_URL;
+
 /**
  * ==================================================
  * <p/>
@@ -90,8 +92,8 @@ public class ParseIndex {
         Elements as = doc.select("a");
         for (Element a:as){
             String href=a.attr("href").trim();
-            if(!href.contains("http://")){
-                urls.add(href);
+            if(!href.contains("http://") && href.endsWith(".shtml")){
+                urls.add(UrlsContanst.CHINA_BASE_URL+href);
             }
         }
         LoggerUtil.print("　主页url已经遍历完毕！　");
