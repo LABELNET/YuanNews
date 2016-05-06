@@ -5,6 +5,7 @@ import org.apache.log4j.Logger;
 import yuan.ssm.common.config.ConfigConstant;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -55,10 +56,14 @@ public class FileTool {
     public static void createNewFile(String logContent){
         try {
             List<String> logs = readData();
+            if(logs==null){
+                logs=new ArrayList<String>();
+            }
             logs.add(logContent);//添加日志信息
             createNewFile(getFilePath(),JSON.toJSONString(logs));
         } catch (Exception e) {
             log.error(" dataCenter 爬虫日志文件创建异常 : createNewFile: "+e.getMessage());
+            e.printStackTrace();
         }
     }
 

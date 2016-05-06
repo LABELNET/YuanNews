@@ -10,10 +10,11 @@ import org.apache.http.impl.conn.PoolingClientConnectionManager;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
+import yuan.ssm.common.util.DateUtil;
+import yuan.ssm.common.util.FileTool;
 import yuan.ssm.common.util.LoggerUtil;
 import yuan.ssm.datacenter.data.DataGetUtil;
 
-import java.util.Date;
 import java.util.Set;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -113,7 +114,10 @@ public class ThreadPoolHttpClient {
         }else{
             LoggerUtil.printJSON("ThreadPoolHttpClient LoaderBase is Null!");
         }
-        LoggerUtil.printJSON(new Date()+" | "+poolName+" 更新了 "+urlsSize +" 条数据 .");
+
+        String log= DateUtil.getDate()+" | "+poolName+" 更新了 "+urlsSize +" 条数据 .";
+        LoggerUtil.printJSON(log);
+        FileTool.createNewFile(log);
         LoggerUtil.printJSON("ThreadPoolHttpClient Done");
     }
 }

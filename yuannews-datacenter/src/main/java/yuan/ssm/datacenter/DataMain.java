@@ -39,6 +39,7 @@ public class DataMain {
 
         getHuanQiuData(HuanQiuSource.getHuanQiuIndexUrl(),"环球网主页"); //环球网主页爬取
 
+
 //        HuanQiuSource.testHuanQiuIndexPage();
 
     }
