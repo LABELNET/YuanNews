@@ -56,6 +56,11 @@ public class ParseIndex {
         return urls;
     }
 
+    /**
+     * 解析环球网 新闻主页，返回详情页地址urls
+     * @param doc html对象
+     * @return urls
+     */
     public synchronized static Set<String> getHuanQiuUrls(Document doc){
         Set<String> urls=new HashSet<String>();
         Elements as = doc.select("a");
@@ -67,6 +72,25 @@ public class ParseIndex {
                 if(i>0) {
                     href = href.substring(0,i);
                 }
+                urls.add(href);
+            }
+        }
+        LoggerUtil.print("　主页url已经遍历完毕！　");
+        return urls;
+    }
+
+
+    /**
+     * 解析中国新闻网主页，返回详情页urls
+     * @param doc html对象
+     * @return urls
+     */
+    public synchronized static Set<String> getChinaNewsUrls(Document doc){
+        Set<String> urls=new HashSet<String>();
+        Elements as = doc.select("a");
+        for (Element a:as){
+            String href=a.attr("href").trim();
+            if(!href.contains("http://")){
                 urls.add(href);
             }
         }
