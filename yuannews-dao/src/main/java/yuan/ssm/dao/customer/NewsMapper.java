@@ -50,12 +50,27 @@ public interface NewsMapper {
     Set<Integer> findNewsByLabel(@Param("label") String label) throws Exception;
 
     /**
-     * 04.根据新闻ids，批量查询新闻
-     * @param list
-     * @return
+     * 04.推荐新闻：根据新闻ids，批量查询新闻
+     * @param list ids
+     * @return 集合
      * @throws Exception
      */
     List<NewsCustom> findNewsByIds(@Param("list") List<Integer> list) throws Exception;
+
+    /**
+     * @see #findNewsByIds(List)
+     */
+    List<NewsCustom> findNewsByRnum(@Param("list") List<Integer> list) throws Exception;
+
+    /**
+     * @see #findNewsByIds(List)
+     */
+    List<NewsCustom> findNewsByZan(@Param("list") List<Integer> list) throws Exception;
+
+    /**
+     * @see #findNewsByIds(List)
+     */
+    List<NewsCustom> findNewsByComment(@Param("list") List<Integer> list) throws Exception;
 
 
     //--------------------------------上面是推荐的mapper,下面是普通信息展示----------------------------------

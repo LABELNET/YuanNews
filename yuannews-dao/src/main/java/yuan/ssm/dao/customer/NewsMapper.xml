@@ -336,15 +336,158 @@
                  separator=",">
               #{id}
         </foreach>
+        ORDER BY n.id DESC
     </select>
 
+    <select id="findNewsByRnum" parameterType="java.util.List" resultType="yuan.ssm.pojo.NewsCustom">
+        select
+        n.id id,
+        n.title title,
+        n.dt dt,
+        n.content content,
+        n.img img,
+        n.rnum rnum,
+        IFNULL(znum,0) znum,
+        c.id cid,
+        c.content ccont,
+        IFNULL(cnum,0) cnum,
+        s.id AS sid,
+        s.source scont
+        from
+        source s,
+        cate c,
+        news n
+        left join (
+        select
+        nid,
+        count(1) as znum
+        from
+        liked
+        group by
+        nid) as z
+        on
+        z.nid=n.id
+        left join (
+        select
+        nid,
+        count(1) as cnum
+        from
+        comment
+        group by nid) as co
+        on
+        co.nid=z.nid
+        where
+        c.id=n.cid
+        AND
+        s.id=n.sid
+        AND
+        n.id IN
+        <foreach collection="list" index="index" item="id"  open="(" close=")"
+                 separator=",">
+            #{id}
+        </foreach>
+        ORDER BY rnum DESC
+    </select>
 
+    <select id="findNewsByZan" parameterType="java.util.List" resultType="yuan.ssm.pojo.NewsCustom">
+        select
+        n.id id,
+        n.title title,
+        n.dt dt,
+        n.content content,
+        n.img img,
+        n.rnum rnum,
+        IFNULL(znum,0) znum,
+        c.id cid,
+        c.content ccont,
+        IFNULL(cnum,0) cnum,
+        s.id AS sid,
+        s.source scont
+        from
+        source s,
+        cate c,
+        news n
+        left join (
+        select
+        nid,
+        count(1) as znum
+        from
+        liked
+        group by
+        nid) as z
+        on
+        z.nid=n.id
+        left join (
+        select
+        nid,
+        count(1) as cnum
+        from
+        comment
+        group by nid) as co
+        on
+        co.nid=z.nid
+        where
+        c.id=n.cid
+        AND
+        s.id=n.sid
+        AND
+        n.id IN
+        <foreach collection="list" index="index" item="id"  open="(" close=")"
+                 separator=",">
+            #{id}
+        </foreach>
+        ORDER BY znum DESC
+    </select>
 
-
-
-
-
-
+    <select id="findNewsByComment" parameterType="java.util.List" resultType="yuan.ssm.pojo.NewsCustom">
+        select
+        n.id id,
+        n.title title,
+        n.dt dt,
+        n.content content,
+        n.img img,
+        n.rnum rnum,
+        IFNULL(znum,0) znum,
+        c.id cid,
+        c.content ccont,
+        IFNULL(cnum,0) cnum,
+        s.id AS sid,
+        s.source scont
+        from
+        source s,
+        cate c,
+        news n
+        left join (
+        select
+        nid,
+        count(1) as znum
+        from
+        liked
+        group by
+        nid) as z
+        on
+        z.nid=n.id
+        left join (
+        select
+        nid,
+        count(1) as cnum
+        from
+        comment
+        group by nid) as co
+        on
+        co.nid=z.nid
+        where
+        c.id=n.cid
+        AND
+        s.id=n.sid
+        AND
+        n.id IN
+        <foreach collection="list" index="index" item="id"  open="(" close=")"
+                 separator=",">
+            #{id}
+        </foreach>
+        ORDER BY cnum DESC
+    </select>
 
 
 </mapper>

@@ -59,13 +59,46 @@ public class NewsMapperTest extends CustomerBaseTest{
     @Test
     public void findNewsByIdsTest() throws Exception {
         List<Integer> ids=new ArrayList<Integer>();
-        ids.add(2);
-        ids.add(3);
-        ids.add(11);
+        ids.add(300);
+        ids.add(301);
+        ids.add(240);
+        ids.add(400);
         List<NewsCustom> newsCustoms = newsMapper.findNewsByIds(ids);
         LoggerUtil.printJSON(newsCustoms);
     }
 
+    @Test
+    public void findNewsByRnumTest() throws Exception {
+        List<Integer> ids=new ArrayList<Integer>();
+        ids.add(300);
+        ids.add(301);
+        ids.add(240);
+        ids.add(400);
+        List<NewsCustom> newsCustoms = newsMapper.findNewsByRnum(ids);
+        LoggerUtil.printJSON(newsCustoms);
+    }
+
+    @Test
+    public void findNewsByZanTest() throws Exception {
+        List<Integer> ids=new ArrayList<Integer>();
+        ids.add(300);
+        ids.add(301);
+        ids.add(240);
+        ids.add(400);
+        List<NewsCustom> newsCustoms = newsMapper.findNewsByZan(ids);
+        LoggerUtil.printJSON(newsCustoms);
+    }
+
+    @Test
+    public void findNewsByCommentTest() throws Exception {
+        List<Integer> ids=new ArrayList<Integer>();
+        ids.add(300);
+        ids.add(301);
+        ids.add(240);
+        ids.add(400);
+        List<NewsCustom> newsCustoms = newsMapper.findNewsByComment(ids);
+        LoggerUtil.printJSON(newsCustoms);
+    }
 
     //------------------------上面是推荐测试-----------------------------
 
