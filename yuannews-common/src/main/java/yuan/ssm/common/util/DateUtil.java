@@ -21,4 +21,14 @@ public  class DateUtil {
         return sdf.format(dt);
     }
 
+    /**
+     * 获取时间
+     * @return
+     */
+    public static String getDate(){
+        Date dt = new Date(System.currentTimeMillis());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return sdf.format(dt);
+    }
+
 }
