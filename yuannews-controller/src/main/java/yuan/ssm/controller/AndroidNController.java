@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import yuan.ssm.common.util.FileTool;
 import yuan.ssm.other.CommentJo;
 import yuan.ssm.other.DataBean;
 import yuan.ssm.other.PageVo;
@@ -93,6 +94,60 @@ public class AndroidNController {
         } catch (Exception e) {
             bean.setCode(-3);
             bean.setMsg("系统错误");
+        }
+        return JSON.toJSONString(bean);
+    }
+
+    /**
+     * 获取推荐新闻列表-分页实现
+     * @param p 分页
+     * @param num 数量
+     * @param uid 用户id
+     * @param type 类型
+     * @return
+     */
+    @RequestMapping("getNesTuiList")
+    public @ResponseBody String getNesTuiList(@RequestParam Integer p,@RequestParam Integer num,@RequestParam Integer uid,@RequestParam Integer type){
+        DataBean<List<NewsCustom>> bean = new DataBean<List<NewsCustom>>();
+        if(uid>0){
+            if(p<0){
+                p=1;
+            }
+            if(num<0){
+                num=10;
+            }
+            int startIndex=(p-1)*num;
+            int endIndex=startIndex+num;
+
+            try {
+                List<Integer> newsIds = FileTool.readData(uid);
+                if(newsIds!=null){
+
+                    if(endIndex>newsIds.size()){
+                        endIndex=startIndex+(endIndex-newsIds.size());
+                    }
+
+                    List<Integer> nids = newsIds.subList(startIndex, endIndex);
+                    if(nids.size()==0){
+                        bean.setCode(-1);
+                        bean.setMsg("没有数据");
+                    }else{
+                        List<NewsCustom> nidsNews = newsService.getNidsNews(nids, type);
+                        bean.setData(nidsNews);
+                        bean.setCode(0);
+                        bean.setMsg("成功");
+                    }
+                }else{
+                    bean.setCode(-1);
+                    bean.setMsg("没有数据");
+                }
+            } catch (Exception e) {
+                bean.setCode(-3);
+                bean.setMsg("系统错误");
+            }
+        }else{
+            bean.setCode(-2);
+            bean.setMsg("uid 参数不正确");
         }
         return JSON.toJSONString(bean);
     }
