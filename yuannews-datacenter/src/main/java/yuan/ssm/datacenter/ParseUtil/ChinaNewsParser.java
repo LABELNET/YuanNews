@@ -43,12 +43,14 @@ public class ChinaNewsParser extends ParserBase{
     protected NewsVo parserDetailPage() {
         NewsVo newsVo=new NewsVo();
 
+        String time="2016年05月06日 13:16";
+
         String title = doc.select("h1").get(0).text();//标题
         String dt= DateUtil.getDate(); //时间
         Elements select = doc.select(".left-t");
         for(Element element:select){
             if(element.text().contains("年")){
-                dt=element.text();
+                dt=element.text().trim().substring(0,time.length());
                 break;
             }
         }
