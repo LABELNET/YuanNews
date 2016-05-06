@@ -58,6 +58,8 @@ public class CSCommon {
                 return 8;
             case huanqiu:
                 return 9;
+            case chinanews:
+                return 10;
             default:
                 return 0;
         }

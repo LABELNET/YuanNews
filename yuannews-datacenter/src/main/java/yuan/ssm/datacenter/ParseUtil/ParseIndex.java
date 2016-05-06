@@ -87,14 +87,18 @@ public class ParseIndex {
      */
     public synchronized static Set<String> getChinaNewsUrls(Document doc){
         Set<String> urls=new HashSet<String>();
-        Elements as = doc.select("a");
-        for (Element a:as){
-            String href=a.attr("href").trim();
-            if(!href.contains("http://") && href.endsWith(".shtml")){
-                urls.add(UrlsContanst.CHINA_BASE_URL+href);
-            }
-        }
-        LoggerUtil.print("　主页url已经遍历完毕！　");
+        urls.add("http://www.chinanews.com/cj/2016/05-06/7860150.shtml");
+        urls.add("http://www.chinanews.com/sh/2016/05-06/7860196.shtml");
+
+
+//        Elements as = doc.select("a");
+//        for (Element a:as){
+//            String href=a.attr("href").trim();
+//            if(!href.contains("http://") && href.endsWith(".shtml")){
+//                urls.add(UrlsContanst.CHINA_BASE_URL+href);
+//            }
+//        }
+//        LoggerUtil.print("　主页url已经遍历完毕！　");
         return urls;
     }
 

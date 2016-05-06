@@ -71,7 +71,7 @@ public abstract class ParserBase {
         this.url = url;
 
         try {
-             doc = Jsoup.parse(inputStream, ENCODEING_CODE, url);
+             doc = Jsoup.parse(inputStream,"gbk", url);
         } catch (IOException e) {
             LoggerUtil.printJSON("ParserBase ParserBase IOException");
             e.printStackTrace();
@@ -107,6 +107,8 @@ public abstract class ParserBase {
      * @return
      */
     protected  abstract SourceEnum getType();
+
+
 
     /**
      * 存储到mysql数据库

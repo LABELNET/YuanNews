@@ -1,7 +1,11 @@
 package yuan.ssm.datacenter.ParseUtil;
 
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+import yuan.ssm.common.util.DateUtil;
 import yuan.ssm.datacenter.base.ParserBase;
 import yuan.ssm.datacenter.base.SourceEnum;
+import yuan.ssm.datacenter.common.CSCommon;
 import yuan.ssm.vo.NewsVo;
 
 import java.io.InputStream;
@@ -33,11 +37,42 @@ public class ChinaNewsParser extends ParserBase{
         super(inputStream, url);
     }
 
+    //解析详情页
     protected NewsVo parserDetailPage() {
-        return null;
+        NewsVo newsVo=new NewsVo();
+
+        String title = doc.select("h1").get(0).text();//标题
+        String dt= DateUtil.getDate(); //时间
+        Elements select = doc.select(".left-t");
+        for(Element element:select){
+            if(element.text().contains("年")){
+                dt=element.text();
+                break;
+            }
+        }
+        String img="";
+        Elements imgs = doc.select("img");
+        for (Element element:imgs){
+            img=element.attr("src");
+            if(!img.contains("http:")){
+                break;
+            }
+        }
+
+        String content = doc.select(".left_zw").get(0).text();
+
+        newsVo.setSid(CSCommon.getSourceId(getType()));
+        newsVo.setCid(CSCommon.getCateId());
+        newsVo.setDt(dt);
+        newsVo.setRnum(121);
+        newsVo.setTitle(title);
+        newsVo.setContent(content);
+        newsVo.setImg(img);
+
+        return newsVo;
     }
 
     protected SourceEnum getType() {
-        return null;
+        return SourceEnum.chinanews;
     }
 }
