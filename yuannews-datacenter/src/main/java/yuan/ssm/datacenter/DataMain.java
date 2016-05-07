@@ -4,7 +4,6 @@ import yuan.ssm.datacenter.LoadUtil.ChinaNewsLoader;
 import yuan.ssm.datacenter.LoadUtil.HuanQiuLoader;
 import yuan.ssm.datacenter.LoadUtil.HuxiuLoader;
 import yuan.ssm.datacenter.base.ThreadPoolHttpClient;
-import yuan.ssm.datacenter.datasource.ChinaNewsSource;
 import yuan.ssm.datacenter.datasource.HuanQiuSource;
 import yuan.ssm.datacenter.datasource.HuxiuSource;
 
@@ -37,7 +36,7 @@ public class DataMain {
 
     public static void main(String [] args) throws IOException, InterruptedException {
 
-        getChinaNewsData(ChinaNewsSource.getChinaNewsPageIndex(),"中国新闻网主页");//中国新闻网主页爬去
+//        getChinaNewsData(ChinaNewsSource.getChinaNewsPageIndex(),"中国新闻网主页");//中国新闻网主页爬去
 
         Thread.sleep(2000);
 
