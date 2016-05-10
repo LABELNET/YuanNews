@@ -57,6 +57,20 @@ public class AndroidController {
     @Autowired
     private UserAppService userAppService;//用户特殊service
 
+
+    private final String API_PAGE="api/managerApi";
+
+
+    /**
+     * api主页
+     * @return
+     */
+    @RequestMapping("index")
+    public String apiIndex(){
+        return API_PAGE;
+    }
+
+
     /**
      * 01.用户登录接口
      * @param unum 账户
