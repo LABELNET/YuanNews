@@ -158,7 +158,7 @@
                 <label>时间：${newsCustom.dt}</label>　｜
                 <label>分类：<a href="<%=projectPath%>/html/pageIndex.action?p=1&title=${newsCustom.ccont}&type=2&nType=7">${newsCustom.ccont}</a></label>　｜
                 <label>来源：<a href="<%=projectPath%>/html/pageIndex.action?p=1&title=${newsCustom.scont}&type=2&nType=8">${newsCustom.scont}</a></label>　｜
-                <label>阅读(${newsCustom.rnum})</label>
+                <label>阅读(${newsCustom.rnum+1})</label>
         </div>
 
         <div class="content_center">
