@@ -57,7 +57,7 @@ public class ThreadPoolHttpClient {
 
     public ThreadPoolHttpClient(LoaderBase loaderBase,String poolName) {
         this.loaderBase = loaderBase;
-        threadPool=new ThreadPoolExecutor(100,500,5, SECONDS,
+        threadPool=new ThreadPoolExecutor(50,100,3, SECONDS,
                 new ArrayBlockingQueue<Runnable>(10000),
                 new ThreadPoolExecutor.DiscardOldestPolicy());
         this.poolName=poolName;
