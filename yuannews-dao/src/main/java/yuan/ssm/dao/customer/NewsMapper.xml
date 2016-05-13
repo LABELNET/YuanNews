@@ -252,6 +252,7 @@
              AND
                c.nid=#{nid}
               ORDER BY c.id DESC
+             limit #{start},#{num}
     </select>
 
     <update id="updateNewsRnum">
