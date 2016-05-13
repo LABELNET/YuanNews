@@ -19,7 +19,9 @@ import yuan.ssm.service.mobile.UserAppService;
 import yuan.ssm.vo.LikedVo;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * ==================================================
@@ -278,5 +280,104 @@ public class AndroidNController {
         }
         return JSON.toJSONString(bean);
     }
+
+
+    /**
+     * 分页查询兴趣标签（用户不存在的）
+     * @param p   当前页面
+     * @param num 总数
+     * @param    uid 不存在则传0
+     * @return json
+     */
+    @RequestMapping("getNewsTaste")
+    public @ResponseBody String getNewsTaste(@RequestParam Integer p,@RequestParam Integer num,@RequestParam Integer uid){
+        if(p<0){
+            p=1;
+        }
+        p=(p-1)*num;
+        DataBean<Set<String>> bean = new DataBean<Set<String>>();
+        try{
+            Set<String> taste = userService.selectTaste(p, num, uid);
+            if(taste==null){
+                taste=new HashSet<String>();
+            }
+            bean.setCode(0);
+            bean.setMsg("成功");
+            bean.setData(taste);
+        } catch (Exception e) {
+            bean.setCode(-3);
+            bean.setMsg("系统错误");
+        }
+        return JSON.toJSONString(bean);
+    }
+
+    /**
+     * 获取当前用户，当前新闻的点赞状态
+     * @param uid
+     * @param nid
+     * @return
+     */
+    @RequestMapping("getLikedApiStatus")
+    public @ResponseBody String getLikedApiStatus(@RequestParam Integer uid,@RequestParam Integer nid){
+        DataBean<Integer> bean = new DataBean<Integer>();
+        try{
+            Integer status = userService.selectZanStatus(uid, nid);
+            bean.setCode(0);
+            bean.setMsg("成功");
+            bean.setData(status);
+        } catch (Exception e) {
+            bean.setCode(-3);
+            bean.setMsg("系统错误");
+        }
+        return JSON.toJSONString(bean);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

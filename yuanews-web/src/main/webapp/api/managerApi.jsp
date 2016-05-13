@@ -47,6 +47,8 @@
         <dd><a href="#getNewsDetail">新闻详情</a></dd>
         <dd><a href="#getLikedHead">点赞列表</a></dd>
         <dd><a href="#getNewsComment">评论列表</a></dd>
+        <dd><a href="#getNewsTaste">兴趣标签列表</a></dd>
+        <dd><a href="#getLikedApiStatus">新闻的点赞状态</a></dd>
       </dl>
     </li>
 
@@ -991,6 +993,101 @@
       <tfoot>
       <tr>
         <td colspan="2"><b>create by yuan on 2016/05/05 ;  update by yuan on 2016/05/06</b></td>
+      </tr>
+      </tfoot>
+    </table>
+
+    <table id="getNewsTaste" class="table center" style="margin-top:10px;text-align: left" >
+      <thead>
+      <th colspan="2"><h1>分页查看兴趣标签</h1></th>
+      </thead>
+      <tbody>
+      <tr>
+        <td>接口地址 ：</td>
+        <td>api/getNewsTaste</td>
+      </tr>
+      <tr>
+        <td>参数类型：</td>
+        <td>
+          p  ： int 当前页面 Y<br>
+          num : int 数量 <br>
+          uid : int 用户id,没有的话，传0
+        </td>
+      </tr>
+      <tr>
+        <td>返回数据：</td>
+        <td>
+          {<br>
+          "code": 0,<br>
+          "data": [<br>
+          "新闻",<br>
+          "版本升级",<br>
+          "刘亦菲",<br>
+          "帮不帮我打",<br>
+          "错错错的",<br>
+          "vvv哈哈哈",<br>
+          "哇后台⊙ω⊙"<br>
+          ],<br>
+          "msg": "成功"<br>
+          }<br>
+        </td>
+      </tr>
+      <tr>
+        <td>数据解释 ：</td>
+        <td>
+          code :响应码 0,成功;-1失败;-2：其他；-3 系统错误；<br>
+          msg  :响应信息<br>
+          <br>
+          data string 集合
+        </td>
+      </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <td colspan="2"><b>create by yuan on 2016/05/05 ;  update by yuan on 2016/05/13</b></td>
+      </tr>
+      </tfoot>
+    </table>
+
+    <table id="getLikedApiStatus" class="table center" style="margin-top:10px;text-align: left" >
+      <thead>
+      <th colspan="2"><h1>查询当前用户当前新闻的点赞状态</h1></th>
+      </thead>
+      <tbody>
+      <tr>
+        <td>接口地址 ：</td>
+        <td>api/getLikedApiStatus</td>
+      </tr>
+      <tr>
+        <td>参数类型：</td>
+        <td>
+          nid  ： int 新闻id<br>
+          uid : int 用户id
+        </td>
+      </tr>
+      <tr>
+        <td>返回数据：</td>
+        <td>
+          {<br>
+          "code": 0,<br>
+          "data": 2,<br>
+          "msg": "成功"<br>
+          }<br>
+        </td>
+      </tr>
+      <tr>
+        <td>数据解释 ：</td>
+        <td>
+          code :响应码 0,成功;-1失败;-2：其他；-3 系统错误；<br>
+          msg  :响应信息<br>
+          <br>
+          data 点赞status
+        </td>
+      </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <td colspan="2"><b>create by yuan on 2016/05/05 ;  update by yuan on 2016/05/13</b></td>
       </tr>
       </tfoot>
     </table>
