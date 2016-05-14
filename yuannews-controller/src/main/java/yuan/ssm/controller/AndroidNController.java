@@ -11,6 +11,7 @@ import yuan.ssm.common.util.FileTool;
 import yuan.ssm.other.CommentJo;
 import yuan.ssm.other.DataBean;
 import yuan.ssm.other.PageVo;
+import yuan.ssm.other.TuijianModel;
 import yuan.ssm.pojo.CSCustom;
 import yuan.ssm.pojo.NewsCustom;
 import yuan.ssm.service.customer.NewsService;
@@ -333,6 +334,49 @@ public class AndroidNController {
     }
 
 
+    /**
+     * 得到推荐新闻的通知内容
+     * @param uid
+     * @return
+     */
+    @RequestMapping("getTuijianNotification")
+    public @ResponseBody String getTuijianNotification(@RequestParam Integer uid){
+        DataBean<TuijianModel> bean = new DataBean<TuijianModel>();
+            if(uid>0){
+                try {
+                    List<Integer> newsIds = FileTool.readData(uid);
+                    if(newsIds!=null){
+                        bean.setCode(0);
+                        TuijianModel model = new TuijianModel();
+                        if(newsIds.size()>0) {
+
+                            model.setCount(newsIds.size());
+                            NewsCustom newsCustom = userService.selectNewsDetailById(newsIds.get(0));
+                            model.setNewsCustom(newsCustom);
+
+                            bean.setMsg("成功");
+                            bean.setData(model);
+
+                        }else {
+                            bean.setMsg("没有推荐内容");
+                            model.setCount(0);
+                            bean.setData(model);
+                        }
+
+                    }else{
+                        bean.setCode(-1);
+                        bean.setMsg("没有数据");
+                    }
+                } catch (Exception e) {
+                    bean.setCode(-3);
+                    bean.setMsg("系统错误");
+                }
+            }else{
+                bean.setCode(-2);
+                bean.setMsg("uid 参数不正确");
+            }
+        return JSON.toJSONString(bean);
+    }
 
 
 
