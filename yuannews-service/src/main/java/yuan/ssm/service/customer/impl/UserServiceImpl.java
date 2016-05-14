@@ -97,7 +97,18 @@ public class UserServiceImpl implements UserService {
     }
 
     //添加兴趣标签
-    public Integer userAddTasteLabel(String label, Integer id) throws Exception {
+    public Integer userAddTasteLabel(String label,final Integer id) throws Exception {
+
+        if(id>0) {
+            new Thread(new Runnable() {
+                public void run() {
+                    synchronized (this){
+                        promoteNewsIds(id);
+                    }
+                }
+            }).start();
+        }
+
         return userMapper.userAddTasteLabel(label,id);
     }
 
