@@ -231,7 +231,7 @@
   <h1><img src="images/admin_logo.png"/></h1>
   <!-- 初始化 ：　管理员信息-->
   <ul class="rt_nav">
-    <li><a href="<%=projectPath%>/CustomerIndex.action" target="_blank" class="website_icon">站点首页</a></li>
+    <li><a href="<%=projectPath%>/html/pageIndex.action?p=1&type=2&nType=6" target="_blank" class="website_icon">站点首页</a></li>
     <li><a href="#" class="admin_icon"><%=userVo.getNick()%></a></li>
     <li><a href="#" class="set_icon">个人中心</a></li>
     <li><a href="<%=projectPath%>/manager/managerLoginOut.action" class="quit_icon">安全退出</a></li>

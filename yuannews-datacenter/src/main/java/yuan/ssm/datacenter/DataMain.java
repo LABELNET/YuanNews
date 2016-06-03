@@ -34,7 +34,7 @@ public class DataMain {
 
 
 
-    public static void main(String [] args) throws IOException, InterruptedException {
+    public static void main(String[] args) throws IOException, InterruptedException {
 
 //        getChinaNewsData(ChinaNewsSource.getChinaNewsPageIndex(),"中国新闻网主页");//中国新闻网主页爬去
 
@@ -53,7 +53,7 @@ public class DataMain {
      * 虎嗅的数据爬去方法
      * @param url
      */
-    private static synchronized void getChinaNewsData(String url,String source) {
+    private static synchronized void getChinaNewsData(String url, String source) {
         //1.实现主页加载类
 
         ChinaNewsLoader chinaNewsLoader=new ChinaNewsLoader(url);
